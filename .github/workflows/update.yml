@@ -74,11 +74,24 @@ jobs:
             --profile balanced \
             --workdir ./bestcf_work \
             --template ./template.yaml \
-            --mihomo ./bin/mihomo \
-            --output ./public/bestcf_final.txt
+            --mihomo ./bin/mihomo
+
+      - name: Validate generated result
+        run: |
+          if [ ! -s bestcf_work/bestcf_final.txt ]; then
+            echo "Generated bestcf_final.txt is empty; keeping previous public files."
+            exit 1
+          fi
+          line_count="$(wc -l < bestcf_work/bestcf_final.txt)"
+          if [ "$line_count" -lt 10 ]; then
+            echo "Generated bestcf_final.txt has too few lines: $line_count"
+            exit 1
+          fi
+          echo "Generated bestcf_final.txt lines: $line_count"
 
       - name: Copy reports
         run: |
+          cp bestcf_work/bestcf_final.txt public/bestcf_final.txt
           cp bestcf_work/bestcf_tested.csv public/bestcf_tested.csv || true
           cp bestcf_work/bestcf_failed.csv public/bestcf_failed.csv || true
           cp bestcf_work/bestcf_sources.csv public/bestcf_sources.csv || true
