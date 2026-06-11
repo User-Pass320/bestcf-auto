@@ -2355,6 +2355,39 @@ def preferred_counts(results: list[TestResult]) -> dict[str, int]:
     return counts
 
 
+def candidate_mentions_country(candidate: Candidate, code: str) -> bool:
+    code = code.upper()
+    names = {country_name(code)}
+    aliases = {alias for alias, name in REGION_ALIASES.items() if name in names}
+    declared = (candidate.declared_region or "").upper()
+    if declared == code or candidate.declared_region in names:
+        return True
+    text = f"{candidate.source} {candidate.name} {candidate.raw}".upper()
+    if re.search(rf"(?<![A-Z]){re.escape(code)}(?![A-Z])", text):
+        return True
+    return any(re.search(rf"(?<![A-Z]){re.escape(alias)}(?![A-Z])", text) for alias in aliases)
+
+
+def take_country_targeted_candidates(
+    eligible: list[tuple[str, Candidate, int]],
+    cursor: int,
+    code: str,
+    limit: int,
+) -> list[tuple[str, Candidate, int]]:
+    if limit <= 0:
+        return []
+    taken: list[tuple[str, Candidate, int]] = []
+    index = cursor
+    while index < len(eligible) and len(taken) < limit:
+        item = eligible[index]
+        if candidate_mentions_country(item[1], code):
+            taken.append(item)
+            del eligible[index]
+            continue
+        index += 1
+    return taken
+
+
 def refill_budget_remaining(args: argparse.Namespace) -> float:
     if args.time_budget <= 0:
         return float("inf")
@@ -2428,6 +2461,42 @@ def run_latency_first_tests(
     target_total = args.latency_pool_limit
     max_geo_tested = args.geo_refill_max_tested
     refill_stop_reason = ""
+
+    for code in args.preferred_country_min:
+        counts = preferred_counts(preferred_geo)
+        if counts.get(code, 0) >= args.preferred_country_min[code]:
+            continue
+        if cursor >= len(eligible):
+            break
+        if max_geo_tested > 0 and geo_tested >= max_geo_tested:
+            break
+        if args.max_final_candidates > 0 and len(preferred_geo) >= args.max_final_candidates:
+            break
+        batch_size = adaptive_refill_batch_size(args, geo_tested)
+        if batch_size < args.geo_refill_min_batch_size:
+            break
+        if max_geo_tested > 0:
+            batch_size = min(batch_size, max_geo_tested - geo_tested)
+        batch_size = min(batch_size, args.geo_refill_batch_size, len(eligible) - cursor)
+        targeted = take_country_targeted_candidates(eligible, cursor, code, batch_size)
+        if not targeted:
+            continue
+        before_country = counts.get(code, 0)
+        before_total = len(preferred_geo)
+        batch_results = run_geo_batch(targeted, template_proxy, args, f"target_{code.lower()}")
+        geo_tested += len(targeted)
+        geo_results.extend(batch_results)
+        preferred_geo = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
+        counts = preferred_counts(preferred_geo)
+        print(
+            f"[geo-target-refill] country={code}; tested={len(targeted)}; "
+            f"country_added={counts.get(code, 0) - before_country}; "
+            f"preferred_added={len(preferred_geo) - before_total}; "
+            f"current={counts.get(code, 0)}/{args.preferred_country_min[code]}; "
+            f"preferred_total={len(preferred_geo)}; remaining_budget={refill_budget_remaining(args):.1f}s",
+            flush=True,
+        )
+
     while cursor < len(eligible):
         if target_total > 0 and len(preferred_geo) >= target_total:
             refill_stop_reason = f"target reached {len(preferred_geo)}/{target_total}"
