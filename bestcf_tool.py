@@ -11,6 +11,7 @@ proxy egress region, and writes lines in this exact format:
 from __future__ import annotations
 
 import argparse
+import collections
 import csv
 import dataclasses
 import ipaddress
@@ -23,6 +24,7 @@ import socket
 import ssl
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -69,9 +71,11 @@ DEFAULT_TEMPLATE = Path(
 DEFAULT_MIHOMO = Path(r"E:\v2rayN-windows-64\bin\mihomo\mihomo.exe")
 DEFAULT_WORKDIR = Path(r"C:\Users\sundewang\bestcf_work")
 DEFAULT_SOURCE_CACHE_NAME = "bestcf_source_cache.json"
+DEFAULT_GEO_CACHE_NAME = "bestcf_geo_cache.json"
 DEFAULT_SOURCE_DENYLIST_NAME = "bestcf_source_denylist.txt"
 DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
+GEO_CACHE_VERSION = 1
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
 DEFAULT_SOURCE_PRUNE_MIN_LINES = 5
@@ -236,6 +240,7 @@ class TestResult:
     exit_region: str = "未知"
     cf_colo: str | None = None
     geo_evidence: str = ""
+    geo_cache_status: str = ""
     service_score: int = 0
     google_ok: bool | None = None
     youtube_ok: bool | None = None
@@ -476,6 +481,88 @@ def save_source_cache(path: Path, cache: dict[str, Any]) -> None:
         json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
         handle.write("\n")
     os.replace(tmp_path, path)
+
+
+def load_geo_cache(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {"version": GEO_CACHE_VERSION, "entries": {}}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return {"version": GEO_CACHE_VERSION, "entries": {}}
+    if not isinstance(data, dict):
+        return {"version": GEO_CACHE_VERSION, "entries": {}}
+    entries = data.get("entries")
+    if not isinstance(entries, dict):
+        entries = {}
+    return {"version": GEO_CACHE_VERSION, "entries": entries}
+
+
+def save_geo_cache(path: Path, cache: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    cache["version"] = GEO_CACHE_VERSION
+    cache["updated_at"] = time.time()
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with tmp_path.open("w", encoding="utf-8") as handle:
+        json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+    os.replace(tmp_path, path)
+
+
+def geo_cache_lookup(candidate: Candidate, args: argparse.Namespace, now: float) -> tuple[str, dict[str, Any] | None]:
+    if not args.geo_cache_enabled:
+        return "disabled", None
+    entries = args.geo_cache.setdefault("entries", {})
+    if not isinstance(entries, dict):
+        args.geo_cache["entries"] = {}
+        return "miss", None
+    entry = entries.get(candidate.endpoint)
+    if not isinstance(entry, dict):
+        return "miss", None
+    if float(entry.get("expires_at") or 0) <= now:
+        return "expired", None
+    if entry.get("providers") != args.geo_providers_resolved:
+        return "provider_mismatch", None
+    if not entry.get("exit_country_code"):
+        return "miss", None
+    return "hit", entry
+
+
+def geo_cache_update(candidate: Candidate, result: TestResult, args: argparse.Namespace, now: float) -> None:
+    if not args.geo_cache_enabled or not result.exit_country_code:
+        return
+    entry = {
+        "endpoint": candidate.endpoint,
+        "exit_ip": result.exit_ip or "",
+        "exit_country_code": result.exit_country_code or "",
+        "exit_region": result.exit_region,
+        "cf_colo": result.cf_colo or "",
+        "geo_evidence": result.geo_evidence,
+        "providers": list(args.geo_providers_resolved),
+        "checked_at": now,
+        "expires_at": now + args.geo_cache_ttl_hours * 3600,
+    }
+    with args.geo_cache_lock:
+        entries = args.geo_cache.setdefault("entries", {})
+        if isinstance(entries, dict):
+            entries[candidate.endpoint] = entry
+
+
+def test_result_from_geo_cache(candidate: Candidate, delay: float, entry: dict[str, Any], cache_status: str) -> TestResult:
+    code = str(entry.get("exit_country_code") or "").upper() or None
+    return TestResult(
+        candidate,
+        True,
+        "geo_cached",
+        latency_ms=delay,
+        exit_ip=str(entry.get("exit_ip") or "") or None,
+        exit_country_code=code,
+        exit_region=str(entry.get("exit_region") or country_name(code)),
+        cf_colo=str(entry.get("cf_colo") or "") or None,
+        geo_evidence=str(entry.get("geo_evidence") or ""),
+        geo_cache_status=cache_status,
+    )
 
 
 def format_timestamp(timestamp: float | int | None) -> str:
@@ -1227,24 +1314,53 @@ def geo_probe(proxy: str, timeout: int, name: str, url: str) -> tuple[str, str |
         return name, None, None, None
 
 
-def detect_geo(proxy: str, timeout: int, providers: list[str]) -> tuple[str | None, str, str | None, str | None, str]:
-    probes = [(provider, GEO_PROVIDER_URLS[provider]) for provider in providers if provider in GEO_PROVIDER_URLS]
-    results: list[tuple[str, str | None, str | None, str | None]] = []
-    counts: dict[str, int] = {}
+def run_geo_probes_parallel(
+    proxy: str,
+    timeout: int,
+    providers: list[str],
+) -> list[tuple[str, str | None, str | None, str | None]]:
+    providers = [provider for provider in providers if provider in GEO_PROVIDER_URLS]
+    if not providers:
+        return []
+    results_by_name: dict[str, tuple[str, str | None, str | None, str | None]] = {}
+    with ThreadPoolExecutor(max_workers=len(providers)) as pool:
+        future_map = {
+            pool.submit(geo_probe, proxy, timeout, provider, GEO_PROVIDER_URLS[provider]): provider
+            for provider in providers
+        }
+        for future in as_completed(future_map):
+            provider = future_map[future]
+            try:
+                results_by_name[provider] = future.result()
+            except Exception:
+                results_by_name[provider] = (provider, None, None, None)
+    return [results_by_name[provider] for provider in providers if provider in results_by_name]
 
-    for name, url in probes:
-        result = geo_probe(proxy, timeout, name, url)
-        results.append(result)
+
+def select_geo_result(
+    results: list[tuple[str, str | None, str | None, str | None]],
+    provider_order: list[str],
+) -> tuple[str | None, str, str | None, str | None, str]:
+    counts: dict[str, int] = {}
+    for result in results:
         _name, code, _ip, _colo = result
         if code:
             counts[code] = counts.get(code, 0) + 1
-        if len(results) >= 3 and counts and max(counts.values()) >= 2:
-            break
 
     evidence = ";".join(f"{name}:{code or '-'}" for name, code, _ip, _colo in results)
     selected_code: str | None = None
     if counts:
-        selected_code = sorted(counts.items(), key=lambda item: (-item[1], item[0]))[0][0]
+        max_votes = max(counts.values())
+        winners = {code for code, count in counts.items() if count == max_votes}
+        for provider in provider_order:
+            for name, code, _ip, _colo in results:
+                if name == provider and code in winners:
+                    selected_code = code
+                    break
+            if selected_code:
+                break
+        if selected_code is None:
+            selected_code = sorted(winners)[0]
 
     exit_ip: str | None = None
     colo: str | None = None
@@ -1264,6 +1380,28 @@ def detect_geo(proxy: str, timeout: int, providers: list[str]) -> tuple[str | No
         exit_ip = exit_ip or ip
         colo = colo or probe_colo
     return None, "未知", exit_ip, colo, evidence
+
+
+def detect_geo(proxy: str, timeout: int, providers: list[str]) -> tuple[str | None, str, str | None, str | None, str]:
+    providers = [provider for provider in providers if provider in GEO_PROVIDER_URLS]
+    if not providers:
+        providers = list(DEFAULT_GEO_PROVIDERS_DAILY)
+
+    if providers == DEFAULT_GEO_PROVIDERS_DAILY:
+        first_stage = providers[:2]
+        results = run_geo_probes_parallel(proxy, timeout, first_stage)
+        codes = [code for _name, code, _ip, _colo in results if code]
+        if len(set(codes)) <= 1 and codes:
+            return select_geo_result(results, providers)
+        if len(codes) == 1:
+            return select_geo_result(results, providers)
+        remaining = providers[2:]
+        if remaining:
+            results.extend(run_geo_probes_parallel(proxy, timeout, remaining))
+        return select_geo_result(results, providers)
+
+    results = run_geo_probes_parallel(proxy, timeout, providers)
+    return select_geo_result(results, providers)
 
 
 def measure_speed_once(proxy: str, url: str, timeout: int) -> tuple[float | None, float | None, int, str | None]:
@@ -1764,6 +1902,82 @@ def write_region_counts(path: Path, ok_results: list[TestResult], final_results:
             )
 
 
+def parse_geo_evidence(evidence: str) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for part in str(evidence or "").split(";"):
+        if ":" not in part:
+            continue
+        provider, code = part.split(":", 1)
+        provider = provider.strip()
+        code = code.strip().upper()
+        if provider:
+            result[provider] = "" if code == "-" else code
+    return result
+
+
+def compact_counter(counter: collections.Counter[str], limit: int = 8) -> str:
+    return "|".join(f"{key}:{value}" for key, value in counter.most_common(limit))
+
+
+def write_geo_provider_stats(path: Path, results: list[TestResult], providers: list[str]) -> None:
+    geo_results = [result for result in results if result.exit_country_code and result.geo_evidence]
+    total = len(geo_results)
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "provider",
+                "total_geo_results",
+                "covered_count",
+                "coverage_rate",
+                "agree_count",
+                "agree_rate",
+                "disagree_count",
+                "unknown_count",
+                "gb_count",
+                "provider_country_top",
+                "selected_country_top",
+            ],
+        )
+        writer.writeheader()
+        selected_counter = collections.Counter(
+            (result.exit_country_code or "").upper()
+            for result in geo_results
+            if result.exit_country_code
+        )
+        for provider in providers:
+            covered = 0
+            agree = 0
+            unknown = 0
+            provider_counter: collections.Counter[str] = collections.Counter()
+            for result in geo_results:
+                evidence = parse_geo_evidence(result.geo_evidence)
+                code = evidence.get(provider, "")
+                if not code:
+                    unknown += 1
+                    continue
+                covered += 1
+                provider_counter[code] += 1
+                if code == (result.exit_country_code or "").upper():
+                    agree += 1
+            disagree = max(0, covered - agree)
+            writer.writerow(
+                {
+                    "provider": provider,
+                    "total_geo_results": total,
+                    "covered_count": covered,
+                    "coverage_rate": f"{covered / total:.6f}" if total else "0.000000",
+                    "agree_count": agree,
+                    "agree_rate": f"{agree / covered:.6f}" if covered else "0.000000",
+                    "disagree_count": disagree,
+                    "unknown_count": unknown,
+                    "gb_count": provider_counter.get("GB", 0),
+                    "provider_country_top": compact_counter(provider_counter),
+                    "selected_country_top": compact_counter(selected_counter),
+                }
+            )
+
+
 def write_results(
     workdir: Path,
     results: list[TestResult],
@@ -1776,6 +1990,7 @@ def write_results(
     final_path = workdir / "bestcf_final.txt"
     other_regions_path = workdir / "bestcf_other_regions.csv"
     region_counts_path = workdir / "bestcf_region_counts.csv"
+    provider_stats_path = workdir / "bestcf_geo_provider_stats.csv"
 
     with tested_path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(
@@ -1794,6 +2009,7 @@ def write_results(
                 "exit_region_name",
                 "cf_colo",
                 "geo_evidence",
+                "geo_cache_status",
                 "is_cloudflare",
                 "service_score",
                 "google_ok",
@@ -1824,6 +2040,7 @@ def write_results(
                     "exit_region_name": result.exit_region,
                     "cf_colo": result.cf_colo or "",
                     "geo_evidence": result.geo_evidence,
+                    "geo_cache_status": result.geo_cache_status,
                     "is_cloudflare": item.is_cloudflare,
                     "service_score": result.service_score,
                     "google_ok": result.google_ok if result.google_ok is not None else "",
@@ -1879,6 +2096,7 @@ def write_results(
     ok_results = [result for result in results if result.ok]
     final_results = select_final_results(ok_results, args)
     write_region_counts(region_counts_path, ok_results, final_results)
+    write_geo_provider_stats(provider_stats_path, results, args.geo_providers_resolved)
 
     counters: dict[str, int] = {}
     with final_path.open("w", encoding="utf-8", newline="\n") as handle:
@@ -1918,6 +2136,7 @@ def write_results(
                 "latency_ms",
                 "cf_colo",
                 "geo_evidence",
+                "geo_cache_status",
                 "status",
                 "error",
                 "raw_line",
@@ -1936,6 +2155,7 @@ def write_results(
                     "latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
                     "cf_colo": result.cf_colo or "",
                     "geo_evidence": result.geo_evidence,
+                    "geo_cache_status": result.geo_cache_status,
                     "status": result.status,
                     "error": result.error,
                     "raw_line": result.candidate.raw,
@@ -2273,7 +2493,22 @@ def test_geo_chunk(
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
-            code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+            cache_status, cache_entry = geo_cache_lookup(candidate, args, time.time())
+            if cache_entry:
+                cached = test_result_from_geo_cache(candidate, delay, cache_entry, cache_status)
+                code = cached.exit_country_code
+                region = cached.exit_region
+                exit_ip = cached.exit_ip
+                colo = cached.cf_colo
+                geo_evidence = cached.geo_evidence
+                geo_cache_status = cache_status
+            else:
+                code, region, exit_ip, colo, geo_evidence = detect_geo(
+                    proxy,
+                    timeout=args.timeout,
+                    providers=args.geo_providers_resolved,
+                )
+                geo_cache_status = cache_status
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
                     TestResult(
@@ -2287,6 +2522,7 @@ def test_geo_chunk(
                         exit_region=region,
                         cf_colo=colo,
                         geo_evidence=geo_evidence,
+                        geo_cache_status=geo_cache_status,
                     )
                 )
                 continue
@@ -2303,49 +2539,52 @@ def test_geo_chunk(
                         exit_region=region,
                         cf_colo=colo,
                         geo_evidence=geo_evidence,
+                        geo_cache_status=geo_cache_status,
                     )
                 )
                 continue
             service_score, google_ok, youtube_ok, gpt_ok, service_error = check_services(proxy, args)
             if args.service_check and service_score < args.min_service_score:
-                results.append(
-                    TestResult(
-                        candidate,
-                        False,
-                        "service_check_failed",
-                        f"service_score={service_score} < {args.min_service_score}",
-                        latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
-                        service_score=service_score,
-                        google_ok=google_ok,
-                        youtube_ok=youtube_ok,
-                        gpt_ok=gpt_ok,
-                        service_error=service_error,
-                    )
-                )
-                continue
-            results.append(
-                TestResult(
+                result = TestResult(
                     candidate,
-                    True,
-                    "geo_only",
+                    False,
+                    "service_check_failed",
+                    f"service_score={service_score} < {args.min_service_score}",
                     latency_ms=delay,
                     exit_ip=exit_ip,
                     exit_country_code=code,
                     exit_region=region,
                     cf_colo=colo,
                     geo_evidence=geo_evidence,
+                    geo_cache_status=geo_cache_status,
                     service_score=service_score,
                     google_ok=google_ok,
                     youtube_ok=youtube_ok,
                     gpt_ok=gpt_ok,
                     service_error=service_error,
                 )
+                geo_cache_update(candidate, result, args, time.time())
+                results.append(result)
+                continue
+            result = TestResult(
+                candidate,
+                True,
+                "geo_only" if geo_cache_status != "hit" else "geo_cached",
+                latency_ms=delay,
+                exit_ip=exit_ip,
+                exit_country_code=code,
+                exit_region=region,
+                cf_colo=colo,
+                geo_evidence=geo_evidence,
+                geo_cache_status=geo_cache_status,
+                service_score=service_score,
+                google_ok=google_ok,
+                youtube_ok=youtube_ok,
+                gpt_ok=gpt_ok,
+                service_error=service_error,
             )
+            geo_cache_update(candidate, result, args, time.time())
+            results.append(result)
     except Exception as exc:
         for candidate in candidates:
             results.append(TestResult(candidate, False, "exception", str(exc), latency_ms=float(delay_map.get(candidate.key, 0))))
@@ -2951,6 +3190,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--latency-timeout", type=int, default=5000, help="Mihomo delay timeout in milliseconds")
     parser.add_argument("--latency-threshold", type=int, default=None, help="max delay in ms before geo pool")
     parser.add_argument("--geo-providers", default=None, help="geo providers: daily, all, or comma-separated names")
+    parser.add_argument("--geo-cache", default=None, help="geo cache path")
+    parser.add_argument("--geo-cache-ttl-hours", type=float, default=12.0, help="hours before geo cache entries expire")
+    parser.add_argument("--no-geo-cache", dest="geo_cache_enabled", action="store_false", help="disable geo cache read/write")
+    parser.set_defaults(geo_cache_enabled=True)
     parser.add_argument("--time-budget", type=float, default=None, help="target end-to-end runtime budget in seconds; 0 disables")
     parser.add_argument("--time-safety-margin", type=float, default=None, help="seconds reserved before time budget for speed/write cleanup")
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
@@ -3059,6 +3302,7 @@ def main(argv: list[str] | None = None) -> int:
     args.latency_concurrency = max(1, args.latency_concurrency)
     args.geo_concurrency = max(1, args.geo_concurrency)
     args.geo_providers_resolved = parse_geo_providers(args.geo_providers)
+    args.geo_cache_ttl_hours = max(0.0, float(args.geo_cache_ttl_hours))
     args.speed_concurrency = max(1, args.speed_concurrency)
     args.speed_bands_parsed = parse_speed_bands(args.speed_bands)
     args.min_service_score = max(0, min(3, args.min_service_score))
@@ -3083,6 +3327,9 @@ def main(argv: list[str] | None = None) -> int:
     args.preferred_countries = set(args.preferred_country_order)
     workdir = Path(args.workdir)
     workdir.mkdir(parents=True, exist_ok=True)
+    args.geo_cache_path = Path(args.geo_cache) if args.geo_cache else workdir / DEFAULT_GEO_CACHE_NAME
+    args.geo_cache = load_geo_cache(args.geo_cache_path) if args.geo_cache_enabled else {"version": GEO_CACHE_VERSION, "entries": {}}
+    args.geo_cache_lock = threading.Lock()
     if not args.keep_workers:
         clean_workers(workdir)
     timer.mark("setup")
@@ -3213,6 +3460,8 @@ def main(argv: list[str] | None = None) -> int:
     if args.output:
         shutil.copyfile(final, args.output)
         final = Path(args.output)
+    if args.geo_cache_enabled:
+        save_geo_cache(args.geo_cache_path, args.geo_cache)
     args.timings["write_results"] = time.monotonic() - stage_started
     print(f"Final output: {final}", flush=True)
     print(f"Successful: {sum(1 for result in results if result.ok)}; failed: {sum(1 for result in results if not result.ok)}", flush=True)
