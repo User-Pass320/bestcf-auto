@@ -1,325 +1,326 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,status,error,raw_line
-GB,英国,43.154.131.189,443,43.154.131.189:443,cf_junzhen_qzz_io_best_ips_txt,164,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",43.154.131.189:443#HK [高速 by Jz 15M]
-GB,英国,43.168.16.112,443,43.168.16.112:443,xinyitang3,182,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",43.168.16.112:443#Mia优选 | HK @MiaChatChannel | 43.168.16.112:443
-GB,英国,4.194.113.191,443,4.194.113.191:443,cf_junzhen_qzz_io_best_ips_txt,408,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",4.194.113.191:443#SG [高速 by Jz 18M]
-GB,英国,149.104.5.234,443,149.104.5.234:443,moistr,443,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",149.104.5.234:443#MoistR优选 | 港岛古惑 | HK | 149.104.5.234:443
-GB,英国,2803:f800:51::f6af:41c1,443,[2803:f800:51::f6af:41c1]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,449,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2803:f800:51::f6af:41c1]:443#WeTestV6-870d58
-GB,英国,104.25.0.4,443,104.25.0.4:443,bestcf_pages_dev_gslege_DE_txt,450,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.25.0.4:443#Gslege优选 | de 【德国】 DE | 104.25.0.4
-GB,英国,108.162.198.18,443,108.162.198.18:443,gslege_jp,451,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.18:443#Gslege优选 | jp 【日本】 JP | 108.162.198.18
-GB,英国,2606:4700::8fa9:5b1f:a2c2:9565,443,[2606:4700::8fa9:5b1f:a2c2:9565]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,452,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700::8fa9:5b1f:a2c2:9565
-GB,英国,104.17.0.5,443,104.17.0.5:443,gslege_us,454,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.5:443#Gslege优选 | us 【美国】 US | 104.17.0.5
-GB,英国,104.17.129.117,2087,104.17.129.117:2087,gshtwy_wetest_v4,454,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:2087#联通-SJC-2087-WS-TLS
-GB,英国,172.64.158.177,443,172.64.158.177:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,454,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.158.177:443#US-299b42
-GB,英国,104.26.15.76,443,104.26.15.76:443,uouin,455,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.15.76:443#麒麟优选 | 联通 | 104.26.15.76 | 121.67ms | 0.25mb/s
-GB,英国,104.17.97.3,443,104.17.97.3:443,uouin,456,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.97.3:443#麒麟优选 | 移动 | 104.17.97.3 | 49.32ms | 0.25mb/s
-GB,英国,141.101.115.1,443,141.101.115.1:443,bestcf_pages_dev_entryip_50_txt,456,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",141.101.115.1:443#141.101.115.1 | 跨境优化段，路径短，适合海外资源
-GB,英国,162.159.34.117,2087,162.159.34.117:2087,gshtwy_wetest_v4,456,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.117:2087#电信-SIN-2087-WS-TLS
-GB,英国,104.19.155.135,2096,104.19.155.135:2096,gshtwy_wetest_v4,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.155.135:2096#移动-HKG-2096-WS-TLS
-GB,英国,162.159.34.117,2096,162.159.34.117:2096,gshtwy_wetest_v4,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.117:2096#电信-SIN-2096-WS-TLS
-GB,英国,172.64.154.148,443,172.64.154.148:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.154.148
-GB,英国,2606:4700:25:fd0d:74c8:3e2:6b48:6501,443,[2606:4700:25:fd0d:74c8:3e2:6b48:6501]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:3e2:6b48:6501]:443#IPDBv6-10bf46
-GB,英国,2606:4700:57::60a1:520d,443,[2606:4700:57::60a1:520d]:443,bestcf_pages_dev_vvhan_ipv6_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::60a1:520d]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::60a1:520d
-GB,英国,104.16.149.166,443,104.16.149.166:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,459,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.149.166
-GB,英国,104.17.133.6,2087,104.17.133.6:2087,gshtwy_wetest_v4,459,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.6:2087#联通-SJC-2087-WS-TLS
-GB,英国,104.17.0.3,443,104.17.0.3:443,gslege_us,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.3:443#Gslege优选 | us 【美国】 US | 104.17.0.3
-GB,英国,104.17.149.95,2087,104.17.149.95:2087,gshtwy_wetest_v4,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.149.95:2087#移动-HKG-2087-WS-TLS
-GB,英国,104.19.148.135,443,104.19.148.135:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.148.135
-GB,英国,104.19.159.48,443,104.19.159.48:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.159.48
-GB,英国,2a06:98c1:3121:5d:1caa:56dd:a908:af7b,443,[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443#Uouin-c3ceb9
-GB,英国,2606:4700:57::9907:5db8,443,[2606:4700:57::9907:5db8]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,461,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::9907:5db8]:443#WeTestV6-027d26
-GB,英国,104.16.105.166,443,104.16.105.166:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.105.166:443#US-d1b078
-GB,英国,104.17.125.54,443,104.17.125.54:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.125.54
-GB,英国,104.17.129.117,2053,104.17.129.117:2053,gshtwy_wetest_v4,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:2053#联通-SJC-2053-WS-TLS
-GB,英国,104.17.129.117,8443,104.17.129.117:8443,gshtwy_wetest_v4,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:8443#联通-SJC-8443-WS-TLS
-GB,英国,104.17.133.6,2053,104.17.133.6:2053,gshtwy_wetest_v4,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.6:2053#联通-SJC-2053-WS-TLS
-GB,英国,104.18.46.37,443,104.18.46.37:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.46.37:443#US-0c0f75
-GB,英国,cf.mubaiovo.top,443,cf.mubaiovo.top:443,domain_ai_vps789,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.mubaiovo.top:443#AI优选 | cf.mubaiovo.top
-GB,英国,104.17.0.4,443,104.17.0.4:443,gslege_us,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.4:443#Gslege优选 | us 【美国】 US | 104.17.0.4
-GB,英国,104.24.0.2,443,104.24.0.2:443,bestcf_pages_dev_gslege_DE_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.24.0.2:443#Gslege优选 | de 【德国】 DE | 104.24.0.2
-GB,英国,104.27.0.5,443,104.27.0.5:443,bestcf_pages_dev_gslege_DE_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.27.0.5:443#Gslege优选 | de 【德国】 DE | 104.27.0.5
-GB,英国,104.17.156.246,2053,104.17.156.246:2053,gshtwy_wetest_v4,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:2053#移动-HKG-2053-WS-TLS
-GB,英国,162.159.41.65,443,162.159.41.65:443,gshtwy_wetest_v4,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.41.65:443#电信-SIN-443-WS-TLS
-GB,英国,172.64.144.222,443,172.64.144.222:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.144.222:443#US-4d1a82
-GB,英国,2606:4700:3032:7270:d52f:d871:63dd:7757,443,[2606:4700:3032:7270:d52f:d871:63dd:7757]:443,bestcf_pages_dev_nirevil_ipv6_txt,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3032:7270:d52f:d871:63dd:7757]:443#NiREvil优选 | 移动 | Default | 3ms | 361mbps
-GB,英国,104.16.4.183,443,104.16.4.183:443,cfyes_ipv4,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.4.183:443#CFYes优选 | 电信 | 104.16.4.183
-GB,英国,104.17.139.37,443,104.17.139.37:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.139.37:443#US-078da0
-GB,英国,104.17.149.95,8443,104.17.149.95:8443,gshtwy_wetest_v4,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.149.95:8443#移动-HKG-8443-WS-TLS
-GB,英国,104.26.0.4,443,104.26.0.4:443,bestcf_pages_dev_gslege_DE_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.0.4:443#Gslege优选 | de 【德国】 DE | 104.26.0.4
-GB,英国,172.64.32.3,443,172.64.32.3:443,gslege_sg,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.3:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.3
-GB,英国,104.16.0.6,443,104.16.0.6:443,gslege_us,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.6:443#Gslege优选 | us 【美国】 US | 104.16.0.6
-GB,英国,104.19.154.152,443,104.19.154.152:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.154.152
-GB,英国,108.162.198.189,443,108.162.198.189:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.189:443#US-4126c7
-GB,英国,162.159.16.250,2053,162.159.16.250:2053,gshtwy_wetest_v4,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:2053#电信-SIN-2053-WS-TLS
-GB,英国,2606:4700:57::e80a:34b8,443,[2606:4700:57::e80a:34b8]:443,bestcf_pages_dev_vvhan_ipv6_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::e80a:34b8]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::e80a:34b8
-GB,英国,2a06:98c1:56::54a:d52b,443,[2a06:98c1:56::54a:d52b]:443,bestcf_pages_dev_vvhan_ipv6_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:56::54a:d52b]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:56::54a:d52b
-GB,英国,cf.3666888.xyz,443,cf.3666888.xyz:443,domain_ai_vps789,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.3666888.xyz:443#AI优选 | cf.3666888.xyz
+GB,英国,43.168.16.112,443,43.168.16.112:443,xinyitang3,178,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",43.168.16.112:443#Mia优选 | HK @MiaChatChannel | 43.168.16.112:443
+GB,英国,38.190.210.250,443,38.190.210.250:443,tiancheng2,355,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",38.190.210.250:443#天诚优选2 | 港岛古惑 | HK | 38.190.210.250:443
+GB,英国,206.237.9.241,443,206.237.9.241:443,junzhen_bj,359,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",206.237.9.241:443#HK [高速 by Jz 28M]
+GB,英国,38.55.192.142,443,38.55.192.142:443,xinyitang3,394,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",38.55.192.142:443#Mia优选 | HK @MiaChatChannel | 38.55.192.142:443
+GB,英国,43.160.195.223,443,43.160.195.223:443,tiancheng2,407,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",43.160.195.223:443#天诚优选2 | 坡县狮城 | SG | 43.160.195.223:443
+GB,英国,www.kingpower.com,443,www.kingpower.com:443,domain_asia,447,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.kingpower.com:443#亚洲域名 | 泰国皇权免税
+GB,英国,162.159.40.144,443,162.159.40.144:443,gshtwy_wetest_v4,450,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:443#电信-SIN-443-WS-TLS
+GB,英国,104.17.129.117,2087,104.17.129.117:2087,gshtwy_wetest_v4,452,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:2087#联通-SJC-2087-WS-TLS
+GB,英国,104.16.0.5,443,104.16.0.5:443,gslege_us,453,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.5:443#Gslege优选 | us 【美国】 US | 104.16.0.5
+GB,英国,104.17.150.17,443,104.17.150.17:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,454,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.150.17
+GB,英国,2606:4700::d21a:a198:b881:65db,443,[2606:4700::d21a:a198:b881:65db]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,454,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700::d21a:a198:b881:65db
+GB,英国,104.26.4.90,443,104.26.4.90:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,455,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.4.90:443#US-99b3e9
+GB,英国,ct.877774.xyz,443,ct.877774.xyz:443,domain_all,455,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ct.877774.xyz:443#按运营商 | 电信QMS
+GB,英国,104.17.147.17,443,104.17.147.17:443,gshtwy_wetest_v4,456,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.17:443#联通-SJC-443-WS-TLS
+GB,英国,104.27.0.1,443,104.27.0.1:443,bestcf_pages_dev_gslege_DE_txt,457,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.27.0.1:443#Gslege优选 | de 【德国】 DE | 104.27.0.1
+GB,英国,104.17.0.1,443,104.17.0.1:443,gslege_us,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.1:443#Gslege优选 | us 【美国】 US | 104.17.0.1
+GB,英国,104.26.0.1,443,104.26.0.1:443,bestcf_pages_dev_gslege_DE_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.0.1:443#Gslege优选 | de 【德国】 DE | 104.26.0.1
+GB,英国,104.26.0.3,443,104.26.0.3:443,bestcf_pages_dev_gslege_DE_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.0.3:443#Gslege优选 | de 【德国】 DE | 104.26.0.3
+GB,英国,162.159.128.253,443,162.159.128.253:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,458,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.128.253:443#US-2570d8
+GB,英国,172.64.48.226,443,172.64.48.226:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,459,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.48.226:443#US-9a3862
+GB,英国,6.cf.3666888.xyz,443,6.cf.3666888.xyz:443,domain_ai_vps789,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",6.cf.3666888.xyz:443#AI优选 | 6.cf.3666888.xyz
+GB,英国,2606:4700:57::ad69:e10,443,[2606:4700:57::ad69:e10]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::ad69:e10]:443#WeTestV6-66b270
+GB,英国,2606:4700:c:9815:346d:6086:3829:68dd,443,[2606:4700:c:9815:346d:6086:3829:68dd]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700:c:9815:346d:6086:3829:68dd
+GB,英国,fnp.ircf.space,443,fnp.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,460,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
+GB,英国,162.159.136.89,443,162.159.136.89:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,461,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.136.89:443#US-1f5d95
+GB,英国,icook.tw,2053,icook.tw:2053,luoli,461,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",icook.tw:2053#洛璃优选 | 官方优选域名 | icook.tw:2053
+GB,英国,yg12.ygkkk.dpdns.org,443,yg12.ygkkk.dpdns.org:443,bestcf_pages_dev_domain_ygkkk_all_txt,461,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
+GB,英国,103.21.244.1,443,103.21.244.1:443,bestcf_pages_dev_entryip_50_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",103.21.244.1:443#103.21.244.1 | 亚太入口，覆盖华南及港澳接入中心
+GB,英国,104.17.0.9,443,104.17.0.9:443,gslege_us,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.9:443#Gslege优选 | us 【美国】 US | 104.17.0.9
+GB,英国,104.17.117.114,443,104.17.117.114:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.117.114
+GB,英国,104.17.149.95,8443,104.17.149.95:8443,gshtwy_wetest_v4,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.149.95:8443#移动-HKG-8443-WS-TLS
+GB,英国,104.17.57.125,443,104.17.57.125:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.57.125
+GB,英国,2606:4700:57::60a1:520d,443,[2606:4700:57::60a1:520d]:443,bestcf_pages_dev_vvhan_ipv6_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::60a1:520d]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::60a1:520d
+GB,英国,dx.4.hhhhh.eu.org,443,dx.4.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,462,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dx.4.hhhhh.eu.org:443#乌鸦优选 | 电信4 | dx.4.hhhhh.eu.org
+GB,英国,104.16.0.1,443,104.16.0.1:443,gslege_us,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.1:443#Gslege优选 | us 【美国】 US | 104.16.0.1
+GB,英国,104.17.101.157,443,104.17.101.157:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.101.157
+GB,英国,104.17.139.37,443,104.17.139.37:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.139.37:443#US-078da0
+GB,英国,104.18.0.8,443,104.18.0.8:443,gslege_us,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.8:443#Gslege优选 | us 【美国】 US | 104.18.0.8
+GB,英国,162.159.153.216,443,162.159.153.216:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.153.216:443#US-650686
+GB,英国,2606:4700:3036:0:a36a:4a23:4a60:9f3f,443,[2606:4700:3036:0:a36a:4a23:4a60:9f3f]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:0:a36a:4a23:4a60:9f3f]:443#CMLiussv6-57b863
+GB,英国,doordash.com,443,doordash.com:443,domain_all,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",doordash.com:443#更多选择 | DoorDash
+GB,英国,fw8je9.cf.3666888.xyz,443,fw8je9.cf.3666888.xyz:443,domain_ai_vps789,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fw8je9.cf.3666888.xyz:443#AI优选 | fw8je9.cf.3666888.xyz
+GB,英国,starbucks.qa,443,starbucks.qa:443,domain_asia,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",starbucks.qa:443#亚洲域名 | 卡塔尔星巴克
+GB,英国,tradepro.wealthmanagement.scotiabank.com,443,tradepro.wealthmanagement.scotiabank.com:443,domain_all,463,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",tradepro.wealthmanagement.scotiabank.com:443#金融域名 | 丰业银行
+GB,英国,104.17.0.3,443,104.17.0.3:443,gslege_us,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.3:443#Gslege优选 | us 【美国】 US | 104.17.0.3
+GB,英国,162.159.193.1,443,162.159.193.1:443,bestcf_pages_dev_entryip_50_txt,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
+GB,英国,2606:4700:54::2c87:cb79,2096,[2606:4700:54::2c87:cb79]:2096,moistr,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:54::2c87:cb79]:2096#MoistR优选 | 电信 IPV6 03 | [2606:4700:54::2c87:cb79]:2096
+GB,英国,leyun.cloud,443,leyun.cloud:443,domain_asia,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",leyun.cloud:443#亚洲域名 | 中国台湾乐云
+GB,英国,www.allianz.com.my,443,www.allianz.com.my:443,domain_asia,464,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.allianz.com.my:443#亚洲域名 | 大马安联
+GB,英国,104.18.0.7,443,104.18.0.7:443,gslege_us,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.7:443#Gslege优选 | us 【美国】 US | 104.18.0.7
+GB,英国,104.20.0.7,443,104.20.0.7:443,bestcf_pages_dev_gslege_NL_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.7:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.7
+GB,英国,104.25.0.6,443,104.25.0.6:443,bestcf_pages_dev_gslege_DE_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.25.0.6:443#Gslege优选 | de 【德国】 DE | 104.25.0.6
+GB,英国,198.41.208.220,443,198.41.208.220:443,cfyes_ipv4,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.208.220:443#CFYes优选 | 移动 | 198.41.208.220
+GB,英国,2606:4700:57::9907:5db8,443,[2606:4700:57::9907:5db8]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::9907:5db8]:443#WeTestV6-027d26
+GB,英国,2606:4700:9a68::ff89:95a,443,[2606:4700:9a68::ff89:95a]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:9a68::ff89:95a]:443#WeTestV6-d772a6
+GB,英国,2a06:98c1:3121:c6d4:af96:6677:59bf:faec,443,[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443#Uouin-d82bf5
+GB,英国,academy.mastercard.com,443,academy.mastercard.com:443,domain_all,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",academy.mastercard.com:443#金融域名 | 万事达卡
+GB,英国,youxuan.cf.3666888.xyz,443,youxuan.cf.3666888.xyz:443,domain_ai_vps789,465,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",youxuan.cf.3666888.xyz:443#AI优选 | youxuan.cf.3666888.xyz
+GB,英国,104.17.125.54,443,104.17.125.54:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.125.54
+GB,英国,104.20.0.8,443,104.20.0.8:443,bestcf_pages_dev_gslege_NL_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.8:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.8
+GB,英国,172.67.70.92,443,172.67.70.92:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.67.70.92:443#US-a18612
+GB,英国,2606:4700:3032:51e3:c843:4d45:6abc:ac15,443,[2606:4700:3032:51e3:c843:4d45:6abc:ac15]:443,bestcf_pages_dev_nirevil_ipv6_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3032:51e3:c843:4d45:6abc:ac15]:443#NiREvil优选 | 移动 | Default | 13ms | 308mbps
+GB,英国,2606:4700:3036:6ed4:260:e367:c3d4:d3bb,443,[2606:4700:3036:6ed4:260:e367:c3d4:d3bb]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:6ed4:260:e367:c3d4:d3bb]:443#CMLiussv6-b7c137
+GB,英国,2606:4700:4403::2f7d:18fd,443,[2606:4700:4403::2f7d:18fd]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:4403::2f7d:18fd]:443#WeTestV6-920fe9
+GB,英国,cfvip.cf.3666888.xyz,443,cfvip.cf.3666888.xyz:443,domain_ai_vps789,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cfvip.cf.3666888.xyz:443#AI优选 | cfvip.cf.3666888.xyz
+GB,英国,eteaf.cf.3666888.xyz,443,eteaf.cf.3666888.xyz:443,vps789_top100,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
+GB,英国,guardian.com.vn,443,guardian.com.vn:443,domain_asia,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",guardian.com.vn:443#亚洲域名 | 越南Guardian
+GB,英国,www.toysrus.co.th,443,www.toysrus.co.th:443,domain_asia,466,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
+GB,英国,090.hhhhh.eu.org,443,090.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",090.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 090.hhhhh.eu.org
+GB,英国,104.17.0.6,443,104.17.0.6:443,gslege_us,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.6:443#Gslege优选 | us 【美国】 US | 104.17.0.6
+GB,英国,104.17.129.117,443,104.17.129.117:443,gshtwy_wetest_v4,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:443#联通-SJC-443-WS-TLS
+GB,英国,104.18.37.133,443,104.18.37.133:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.37.133:443#US-629953
 GB,英国,104.26.3.162,443,104.26.3.162:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.3.162:443#US-a35124
-GB,英国,2606:4700:25:832:6840:9ad7:dae3:6648,443,[2606:4700:25:832:6840:9ad7:dae3:6648]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:832:6840:9ad7:dae3:6648]:443#IPDBv6-02ca67
-GB,英国,2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8,443,[2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8]:443#IPDBv6-13abb5
-GB,英国,104.17.133.132,443,104.17.133.132:443,cfyes_ipv4,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.132:443#CFYes优选 | 电信 | 104.17.133.132
-GB,英国,104.17.147.17,2096,104.17.147.17:2096,gshtwy_wetest_v4,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.17:2096#联通-SJC-2096-WS-TLS
-GB,英国,108.162.198.10,443,108.162.198.10:443,gslege_jp,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.10:443#Gslege优选 | jp 【日本】 JP | 108.162.198.10
-GB,英国,108.162.198.13,443,108.162.198.13:443,gslege_jp,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.13:443#Gslege优选 | jp 【日本】 JP | 108.162.198.13
-GB,英国,172.64.32.5,443,172.64.32.5:443,gslege_sg,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.5:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.5
-GB,英国,2606:4700:8397::15a3:8989,2096,[2606:4700:8397::15a3:8989]:2096,moistr,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:8397::15a3:8989]:2096#MoistR优选 | 移动 IPV6 03 | [2606:4700:8397::15a3:8989]:2096
-GB,英国,104.17.0.1,443,104.17.0.1:443,gslege_us,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.1:443#Gslege优选 | us 【美国】 US | 104.17.0.1
-GB,英国,104.17.110.253,443,104.17.110.253:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.110.253
-GB,英国,104.17.118.115,443,104.17.118.115:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.118.115:443#US-9665e7
-GB,英国,104.18.189.153,443,104.18.189.153:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.189.153:443#US-e3cdd2
-GB,英国,104.19.0.8,443,104.19.0.8:443,gslege_us,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.0.8:443#Gslege优选 | us 【美国】 US | 104.19.0.8
-GB,英国,104.26.4.114,443,104.26.4.114:443,uouin,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.4.114:443#麒麟优选 | 联通 | 104.26.4.114 | 122.44ms | 0.34mb/s
-GB,英国,108.162.198.19,443,108.162.198.19:443,gslege_jp,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.19:443#Gslege优选 | jp 【日本】 JP | 108.162.198.19
-GB,英国,162.159.14.66,443,162.159.14.66:443,uouin,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.14.66:443#麒麟优选 | 多线 | 162.159.14.66 | 64.96ms | 0.13mb/s
-GB,英国,162.159.153.239,443,162.159.153.239:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.153.239:443#US-10fcb6
-GB,英国,172.64.147.93,443,172.64.147.93:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.147.93
-GB,英国,2606:4700:3032:51e3:c843:4d45:6abc:ac15,443,[2606:4700:3032:51e3:c843:4d45:6abc:ac15]:443,bestcf_pages_dev_nirevil_ipv6_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3032:51e3:c843:4d45:6abc:ac15]:443#NiREvil优选 | 移动 | Default | 13ms | 308mbps
-GB,英国,2606:4700:57::380:a766,443,[2606:4700:57::380:a766]:443,bestcf_pages_dev_vvhan_ipv6_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::380:a766]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::380:a766
-GB,英国,2a06:98c1:3121:0:ef18:6ab0:b648:d756,443,[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443#Uouin-b616b6
-GB,英国,ct.877774.xyz,443,ct.877774.xyz:443,domain_all,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ct.877774.xyz:443#按运营商 | 电信QMS
-GB,英国,104.17.148.141,443,104.17.148.141:443,wetest,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.148.141:443#微测优选 | 移动 | HKG | 104.17.148.141
-GB,英国,104.18.43.246,443,104.18.43.246:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.43.246:443#US-0c15810
-GB,英国,104.20.23.12,443,104.20.23.12:443,uouin,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.23.12:443#麒麟优选 | 联通 | 104.20.23.12 | 120.86ms | 0.24mb/s
-GB,英国,162.159.198.1,443,162.159.198.1:443,uouin,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.198.1:443#麒麟优选 | 06-11 14:21 | BestCF.pages.dev
-GB,英国,162.159.20.48,443,162.159.20.48:443,gshtwy_wetest_v4,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:443#电信-SIN-443-WS-TLS
-GB,英国,172.64.147.134,443,172.64.147.134:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.147.134:443#US-1274c4
-GB,英国,198.41.208.224,443,198.41.208.224:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.208.224:443#US-ba9e32
-GB,英国,2606:4700:3036:ef:92f:be51:8695:9fc5,443,[2606:4700:3036:ef:92f:be51:8695:9fc5]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:ef:92f:be51:8695:9fc5]:443#CMLiussv6-87bf27
-GB,英国,static.cloudflareinsights.com,443,static.cloudflareinsights.com:443,domain_all,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",static.cloudflareinsights.com:443#官方域名 | Analytics
-GB,英国,104.17.118.14,443,104.17.118.14:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.118.14
-GB,英国,108.162.198.17,443,108.162.198.17:443,gslege_jp,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.17:443#Gslege优选 | jp 【日本】 JP | 108.162.198.17
-GB,英国,162.159.40.181,2096,162.159.40.181:2096,moistr,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
-GB,英国,digitalocean.com,443,digitalocean.com:443,domain_all,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",digitalocean.com:443#企业域名 | DigitalOcean
-GB,英国,104.17.129.131,443,104.17.129.131:443,wetest,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.131:443#微测优选 | 联通 | SJC | 104.17.129.131
-GB,英国,104.17.18.154,443,104.17.18.154:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.18.154
-GB,英国,104.19.53.2,443,104.19.53.2:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.53.2:443#US-286dc9
-GB,英国,162.159.20.48,2053,162.159.20.48:2053,gshtwy_wetest_v4,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:2053#电信-SIN-2053-WS-TLS
-GB,英国,162.159.20.48,2096,162.159.20.48:2096,gshtwy_wetest_v4,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:2096#电信-SIN-2096-WS-TLS
-GB,英国,162.159.40.144,443,162.159.40.144:443,gshtwy_wetest_v4,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:443#电信-SIN-443-WS-TLS
-GB,英国,172.67.66.208,443,172.67.66.208:443,uouin,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.67.66.208:443#麒麟优选 | 联通 | 172.67.66.208 | 120.22ms | 0.28mb/s
-GB,英国,2606:4700:25:fdc4:4b4:9174:ed1e:ae64,443,[2606:4700:25:fdc4:4b4:9174:ed1e:ae64]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fdc4:4b4:9174:ed1e:ae64]:443#IPDBv6-ddc170
-GB,英国,2606:4700:3036:6ed4:260:e367:c3d4:d3bb,443,[2606:4700:3036:6ed4:260:e367:c3d4:d3bb]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:6ed4:260:e367:c3d4:d3bb]:443#CMLiussv6-b7c137
-GB,英国,2a06:98c1:3121:c6d4:af96:6677:59bf:faec,443,[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443#Uouin-d82bf5
-GB,英国,104.17.0.7,443,104.17.0.7:443,gslege_us,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.7:443#Gslege优选 | us 【美国】 US | 104.17.0.7
-GB,英国,104.19.0.2,443,104.19.0.2:443,gslege_us,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.0.2:443#Gslege优选 | us 【美国】 US | 104.19.0.2
-GB,英国,104.25.0.2,443,104.25.0.2:443,bestcf_pages_dev_gslege_DE_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.25.0.2:443#Gslege优选 | de 【德国】 DE | 104.25.0.2
-GB,英国,162.159.40.47,443,162.159.40.47:443,wetest,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.47:443#微测优选 | 电信 | SIN | 162.159.40.47
-GB,英国,172.64.150.94,443,172.64.150.94:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.150.94:443#US-d5ef50
-GB,英国,172.64.229.7,443,172.64.229.7:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.229.7:443#US-bdbda7
-GB,英国,www.mc.js.cool,443,www.mc.js.cool:443,domain_ai_vps789,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.mc.js.cool:443#AI优选 | www.mc.js.cool
-GB,英国,104.17.125.204,443,104.17.125.204:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.125.204:443#US-fca724
-GB,英国,104.18.81.94,8443,104.18.81.94:8443,gshtwy_wetest_v4,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.81.94:8443#联通-LAX-8443-WS-TLS
-GB,英国,104.19.220.22,443,104.19.220.22:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.220.22:443#US-d8f4c9
-GB,英国,104.26.14.116,443,104.26.14.116:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.14.116:443#US-c774c5
-GB,英国,172.64.48.226,443,172.64.48.226:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.48.226:443#US-9a3862
-GB,英国,2400:cb00:2049::ffee:46ba,443,[2400:cb00:2049::ffee:46ba]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2400:cb00:2049::ffee:46ba]:443#WeTestV6-d63475
-GB,英国,104.17.101.157,443,104.17.101.157:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.101.157
-GB,英国,104.19.154.200,443,104.19.154.200:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.154.200:443#US-653131
-GB,英国,162.159.20.48,2087,162.159.20.48:2087,gshtwy_wetest_v4,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:2087#电信-SIN-2087-WS-TLS
-GB,英国,172.64.53.142,443,172.64.53.142:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.53.142:443#US-63c338
-GB,英国,190.93.244.1,443,190.93.244.1:443,bestcf_pages_dev_entryip_50_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",190.93.244.1:443#190.93.244.1 | 链路冗余段，提供差异化出口路径选择
-GB,英国,198.41.223.129,443,198.41.223.129:443,cfyes_ipv4,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.223.129:443#CFYes优选 | 电信 | 198.41.223.129
-GB,英国,104.17.147.17,443,104.17.147.17:443,gshtwy_wetest_v4,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.17:443#联通-SJC-443-WS-TLS
-GB,英国,104.19.50.49,443,104.19.50.49:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.50.49:443#US-c3f547
-GB,英国,162.159.193.1,443,162.159.193.1:443,bestcf_pages_dev_entryip_50_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
-GB,英国,172.64.151.254,2096,172.64.151.254:2096,moistr,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.151.254:2096#MoistR优选 | 电信优选 03 | 172.64.151.254:2096
-GB,英国,172.64.156.204,443,172.64.156.204:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.156.204
-GB,英国,162.159.16.250,443,162.159.16.250:443,gshtwy_wetest_v4,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:443#电信-SIN-443-WS-TLS
-GB,英国,172.64.157.39,443,172.64.157.39:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.157.39:443#US-062635
-GB,英国,172.64.35.23,443,172.64.35.23:443,wetest,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.35.23:443#微测优选 | 电信 | SIN | 172.64.35.23
-GB,英国,2606:4700:3036:6ed4:ffdf:15bf:7d77:5f52,443,[2606:4700:3036:6ed4:ffdf:15bf:7d77:5f52]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:6ed4:ffdf:15bf:7d77:5f52]:443#CMLiussv6-293cc8
-GB,英国,cmcc.cc.cd,443,cmcc.cc.cd:443,domain_ai_vps789,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cmcc.cc.cd:443#AI优选 | cmcc.cc.cd
-GB,英国,104.17.0.6,443,104.17.0.6:443,gslege_us,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.6:443#Gslege优选 | us 【美国】 US | 104.17.0.6
-GB,英国,104.17.133.6,8443,104.17.133.6:8443,gshtwy_wetest_v4,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.6:8443#联通-SJC-8443-WS-TLS
-GB,英国,104.17.176.95,443,104.17.176.95:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.176.95
-GB,英国,104.27.0.8,443,104.27.0.8:443,bestcf_pages_dev_gslege_DE_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.27.0.8:443#Gslege优选 | de 【德国】 DE | 104.27.0.8
-GB,英国,141.101.120.1,443,141.101.120.1:443,bestcf_pages_dev_entryip_50_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",141.101.120.1:443#141.101.120.1 | 边缘端点，部分地区具备超额带宽
-GB,英国,172.64.32.1,443,172.64.32.1:443,gslege_sg,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.1:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.1
-GB,英国,172.64.32.6,443,172.64.32.6:443,gslege_sg,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.6:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.6
-GB,英国,2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5,443,[2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5]:443#IPDBv6-c9d729
-GB,英国,2a06:98c1:3121:c677:c614:1f96:d4bf:a723,443,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443#Uouin-12b731
-GB,英国,104.17.156.246,2096,104.17.156.246:2096,gshtwy_wetest_v4,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:2096#移动-HKG-2096-WS-TLS
-GB,英国,104.17.165.125,443,104.17.165.125:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.165.125:443#US-8f0c42
-GB,英国,104.19.0.3,443,104.19.0.3:443,gslege_us,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.0.3:443#Gslege优选 | us 【美国】 US | 104.19.0.3
-GB,英国,108.162.193.1,443,108.162.193.1:443,bestcf_pages_dev_entryip_50_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.193.1:443#108.162.193.1 | 高权重中转，流量杂乱，隐蔽性极佳
-GB,英国,162.159.153.217,443,162.159.153.217:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.153.217:443#US-9413b1
-GB,英国,www.sloomb.com,443,www.sloomb.com:443,domain_ai_vps789,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.sloomb.com:443#AI优选 | www.sloomb.com
-GB,英国,104.17.158.197,443,104.17.158.197:443,wetest,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.158.197:443#微测优选 | 移动 | HKG | 104.17.158.197
-GB,英国,108.162.198.3,443,108.162.198.3:443,gslege_jp,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.3:443#Gslege优选 | jp 【日本】 JP | 108.162.198.3
-GB,英国,162.159.16.250,2096,162.159.16.250:2096,gshtwy_wetest_v4,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:2096#电信-SIN-2096-WS-TLS
-GB,英国,162.159.34.117,8443,162.159.34.117:8443,gshtwy_wetest_v4,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.117:8443#电信-SIN-8443-WS-TLS
-GB,英国,172.64.155.250,443,172.64.155.250:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.155.250:443#US-1f7908
-GB,英国,2606:4700:22:e9df:8935:dc89:7b64:1fbb,443,[2606:4700:22:e9df:8935:dc89:7b64:1fbb]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:22:e9df:8935:dc89:7b64:1fbb]:443#IPDBv6-038af6
-GB,英国,104.20.0.2,443,104.20.0.2:443,bestcf_pages_dev_gslege_NL_txt,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.2:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.2
-GB,英国,104.26.5.82,443,104.26.5.82:443,uouin,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.5.82:443#麒麟优选 | 联通 | 104.26.5.82 | 122.70ms | 0.45mb/s
-GB,英国,162.159.197.1,443,162.159.197.1:443,uouin,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.197.1:443#麒麟优选 | 分享免费优选网 BestCF.pages.dev
-GB,英国,104.17.147.167,443,104.17.147.167:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.167
-GB,英国,104.17.156.246,2087,104.17.156.246:2087,gshtwy_wetest_v4,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:2087#移动-HKG-2087-WS-TLS
-GB,英国,104.18.40.189,443,104.18.40.189:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.40.189:443#US-14cd14
-GB,英国,104.19.148.121,443,104.19.148.121:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.148.121:443#US-0c4311
-GB,英国,162.159.153.216,443,162.159.153.216:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.153.216:443#US-650686
-GB,英国,162.159.40.144,2096,162.159.40.144:2096,gshtwy_wetest_v4,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:2096#电信-SIN-2096-WS-TLS
-GB,英国,104.16.0.5,443,104.16.0.5:443,gslege_us,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.5:443#Gslege优选 | us 【美国】 US | 104.16.0.5
-GB,英国,104.17.149.95,2096,104.17.149.95:2096,gshtwy_wetest_v4,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.149.95:2096#移动-HKG-2096-WS-TLS
-GB,英国,198.41.208.218,443,198.41.208.218:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.208.218
-GB,英国,2606:4700:25:fd0d:74c8:3cb4:63a7:6684,443,[2606:4700:25:fd0d:74c8:3cb4:63a7:6684]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:3cb4:63a7:6684]:443#IPDBv6-124d98
-GB,英国,104.16.150.241,443,104.16.150.241:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.150.241
-GB,英国,104.20.19.128,443,104.20.19.128:443,uouin,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.19.128:443#麒麟优选 | 联通 | 104.20.19.128 | 117.55ms | 0.46mb/s
-GB,英国,162.159.48.178,443,162.159.48.178:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.48.178
-GB,英国,2606:4700:9a68::ff89:95a,443,[2606:4700:9a68::ff89:95a]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:9a68::ff89:95a]:443#WeTestV6-d772a6
-GB,英国,104.17.91.149,443,104.17.91.149:443,cfyes_ipv4,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.91.149:443#CFYes优选 | 电信 | 104.17.91.149
-GB,英国,104.19.155.135,2087,104.19.155.135:2087,gshtwy_wetest_v4,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.155.135:2087#移动-HKG-2087-WS-TLS
-GB,英国,104.19.212.207,443,104.19.212.207:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.212.207:443#US-45cd910
-GB,英国,162.159.34.117,2053,162.159.34.117:2053,gshtwy_wetest_v4,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.117:2053#电信-SIN-2053-WS-TLS
-GB,英国,2606:4700::9452:27d0:38ae:8921,443,[2606:4700::9452:27d0:38ae:8921]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700::9452:27d0:38ae:8921
-GB,英国,104.17.156.246,443,104.17.156.246:443,gshtwy_wetest_v4,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:443#移动-HKG-443-WS-TLS
-GB,英国,104.17.51.127,443,104.17.51.127:443,wetest,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.51.127:443#微测优选 | 移动 | HKG | 104.17.51.127
-GB,英国,104.18.0.1,443,104.18.0.1:443,bestcf_pages_dev_entryip_50_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.1:443#104.18.0.1 | 企业接口段，API小包转发响应极快
-GB,英国,104.18.166.129,443,104.18.166.129:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.166.129:443#US-900385
-GB,英国,108.162.198.206,443,108.162.198.206:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.206
-GB,英国,172.64.32.7,443,172.64.32.7:443,gslege_sg,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.7:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.7
-GB,英国,198.41.208.220,443,198.41.208.220:443,cfyes_ipv4,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.208.220:443#CFYes优选 | 移动 | 198.41.208.220
-GB,英国,2606:4700:4402::9cf0:7fe2,443,[2606:4700:4402::9cf0:7fe2]:443,bestcf_pages_dev_vvhan_ipv6_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:4402::9cf0:7fe2]:443#vvHan优选 | 电信 | SIN | 2606:4700:4402::9cf0:7fe2
-GB,英国,www.researchgate.net,443,www.researchgate.net:443,domain_all,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.researchgate.net:443#教育域名 | ResearchGate
-GB,英国,104.17.62.98,443,104.17.62.98:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.62.98
-GB,英国,104.18.46.163,443,104.18.46.163:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.46.163
-GB,英国,104.20.0.8,443,104.20.0.8:443,bestcf_pages_dev_gslege_NL_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.8:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.8
-GB,英国,198.41.208.236,443,198.41.208.236:443,bestcf_pages_dev_nirevil_ipv4_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.208.236:443#NiREvil优选 | 移动 | 198.41.208.236 | Default | 55ms | 290mbps
-GB,英国,2606:4700:90d5::444e:d15a,2096,[2606:4700:90d5::444e:d15a]:2096,moistr,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:90d5::444e:d15a]:2096#MoistR优选 | 移动 IPV6 02 | [2606:4700:90d5::444e:d15a]:2096
-GB,英国,engage.cloudflareclient.com,443,engage.cloudflareclient.com:443,domain_all,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",engage.cloudflareclient.com:443#官方域名 | WireGuard
-GB,英国,104.17.159.187,2087,104.17.159.187:2087,gshtwy_wetest_v4,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:2087#移动-HKG-2087-WS-TLS
-GB,英国,104.17.221.156,443,104.17.221.156:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.221.156
-GB,英国,172.64.159.151,443,172.64.159.151:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.159.151
-GB,英国,2606:4700:90c5:387b:ee3:c06a:fcfd:77de,443,[2606:4700:90c5:387b:ee3:c06a:fcfd:77de]:443,bestcf_pages_dev_nirevil_ipv6_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:90c5:387b:ee3:c06a:fcfd:77de]:443#NiREvil优选 | 移动 | Default | 3ms | 592mbps
-GB,英国,104.17.174.38,443,104.17.174.38:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.174.38
-GB,英国,104.17.189.72,443,104.17.189.72:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.189.72
-GB,英国,104.18.32.106,443,104.18.32.106:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.32.106
-GB,英国,104.26.0.3,443,104.26.0.3:443,bestcf_pages_dev_gslege_DE_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.0.3:443#Gslege优选 | de 【德国】 DE | 104.26.0.3
-GB,英国,dnew.cc,443,dnew.cc:443,domain_ai_vps789,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dnew.cc:443#AI优选 | dnew.cc
-GB,英国,104.17.147.17,2087,104.17.147.17:2087,gshtwy_wetest_v4,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.17:2087#联通-SJC-2087-WS-TLS
-GB,英国,104.17.159.187,2096,104.17.159.187:2096,gshtwy_wetest_v4,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:2096#移动-HKG-2096-WS-TLS
-GB,英国,108.162.198.11,443,108.162.198.11:443,gslege_jp,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.11:443#Gslege优选 | jp 【日本】 JP | 108.162.198.11
-GB,英国,108.162.198.6,443,108.162.198.6:443,gslege_jp,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.6:443#Gslege优选 | jp 【日本】 JP | 108.162.198.6
-GB,英国,108.162.198.99,443,108.162.198.99:443,uouin,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.99:443#麒麟优选 | 多线 | 108.162.198.99 | 63.45ms | 14.69mb/s
-GB,英国,162.159.16.250,2087,162.159.16.250:2087,gshtwy_wetest_v4,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:2087#电信-SIN-2087-WS-TLS
-GB,英国,198.41.209.243,443,198.41.209.243:443,cfyes_ipv4,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.209.243:443#CFYes优选 | 移动 | 198.41.209.243
-GB,英国,asia.877774.xyz,443,asia.877774.xyz:443,bestcf_pages_dev_domain_qms_all_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",asia.877774.xyz:443#秋名山优选 | 亚洲 | asia.877774.xyz
-GB,英国,104.17.145.180,443,104.17.145.180:443,uouin,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.145.180:443#麒麟优选 | 移动 | 104.17.145.180 | 49.54ms | 0.12mb/s
-GB,英国,104.17.159.20,443,104.17.159.20:443,gshtwy_wetest_v4,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.20:443#移动-HKG-443-WS-TLS
-GB,英国,104.17.167.134,443,104.17.167.134:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.167.134:443#US-b88fe2
-GB,英国,172.64.53.121,443,172.64.53.121:443,uouin,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.53.121:443#麒麟优选 | 多线 | 172.64.53.121 | 43.11ms | 14.30mb/s
-GB,英国,2606:4700:9ad1::c1e2:45b7,2096,[2606:4700:9ad1::c1e2:45b7]:2096,moistr,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:9ad1::c1e2:45b7]:2096#MoistR优选 | 移动 IPV6 01 | [2606:4700:9ad1::c1e2:45b7]:2096
-GB,英国,www.speedtest.net,443,www.speedtest.net:443,domain_all,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.speedtest.net:443#更多选择 | Ookla
-GB,英国,108.162.198.14,443,108.162.198.14:443,gslege_jp,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.14:443#Gslege优选 | jp 【日本】 JP | 108.162.198.14
-GB,英国,162.159.0.2,443,162.159.0.2:443,gslege_sg,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.0.2:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.2
-GB,英国,162.159.1.215,443,162.159.1.215:443,gslege,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.1.215:443#Gslege优选 | 【测速 Nodes】0.78MB/s | 162.159.1.215
-GB,英国,198.41.223.6,443,198.41.223.6:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.223.6
-GB,英国,104.17.159.20,2053,104.17.159.20:2053,gshtwy_wetest_v4,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.20:2053#移动-HKG-2053-WS-TLS
-GB,英国,162.159.34.224,443,162.159.34.224:443,wetest,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.224:443#微测优选 | 电信 | SIN | 162.159.34.224
-GB,英国,104.17.222.71,443,104.17.222.71:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.222.71
-GB,英国,108.162.198.1,443,108.162.198.1:443,gslege_jp,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.1:443#Gslege优选 | jp 【日本】 JP | 108.162.198.1
-GB,英国,104.17.148.81,443,104.17.148.81:443,uouin,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.148.81:443#麒麟优选 | 移动 | 104.17.148.81 | 49.23ms | 0.56mb/s
-GB,英国,104.20.0.3,443,104.20.0.3:443,bestcf_pages_dev_gslege_NL_txt,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.3:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.3
-GB,英国,108.162.198.7,443,108.162.198.7:443,gslege_jp,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.7:443#Gslege优选 | jp 【日本】 JP | 108.162.198.7
-GB,英国,104.17.57.125,443,104.17.57.125:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.57.125
-GB,英国,108.162.194.1,443,108.162.194.1:443,bestcf_pages_dev_entryip_50_txt,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
-GB,英国,104.17.159.187,2053,104.17.159.187:2053,gshtwy_wetest_v4,497,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:2053#移动-HKG-2053-WS-TLS
-GB,英国,104.18.12.229,443,104.18.12.229:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,497,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.12.229:443#US-571b85
-GB,英国,108.162.192.135,443,108.162.192.135:443,uouin,497,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.192.135:443#麒麟优选 | 电信 | 108.162.192.135 | 46.39ms | 23.04mb/s
-GB,英国,8.cf.3666888.xyz,443,8.cf.3666888.xyz:443,domain_ai_vps789,497,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",8.cf.3666888.xyz:443#AI优选 | 8.cf.3666888.xyz
-GB,英国,162.159.192.1,443,162.159.192.1:443,bestcf_pages_dev_entryip_50_txt,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
-GB,英国,2606:4700:25:832:8f1b:ee1c:9e37:2cb1,443,[2606:4700:25:832:8f1b:ee1c:9e37:2cb1]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:832:8f1b:ee1c:9e37:2cb1]:443#IPDBv6-62f576
-GB,英国,104.17.116.155,443,104.17.116.155:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,499,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.116.155
-GB,英国,104.18.13.229,443,104.18.13.229:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,499,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.13.229:443#US-8092a4
-GB,英国,cm.cdn.djx-ybelove.pp.ua,443,cm.cdn.djx-ybelove.pp.ua:443,bestcf_pages_dev_domain_fiatnorm_all_txt,500,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 移动 (CM) · 低延迟专线，告别卡顿
-GB,英国,104.17.159.187,8443,104.17.159.187:8443,gshtwy_wetest_v4,501,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:8443#移动-HKG-8443-WS-TLS
-GB,英国,172.66.0.1,443,172.66.0.1:443,bestcf_pages_dev_entryip_50_txt,501,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.66.0.1:443#172.66.0.1 | 主干网优化段，物理跳数少，握手快
-GB,英国,zeas.top,443,zeas.top:443,domain_ai_vps789,501,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",zeas.top:443#AI优选 | zeas.top
-GB,英国,104.20.0.7,443,104.20.0.7:443,bestcf_pages_dev_gslege_NL_txt,502,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.7:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.7
-GB,英国,108.162.198.149,443,108.162.198.149:443,gslege,502,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.149:443#Gslege优选 | 【测速 Nodes】38.46MB/s | 108.162.198.149
-GB,英国,coke.cf.3666888.xyz,443,coke.cf.3666888.xyz:443,vps789_top100,503,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",coke.cf.3666888.xyz:443#VPS789优选 | coke.cf.3666888.xyz
-GB,英国,104.19.54.144,443,104.19.54.144:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,504,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.54.144:443#US-44fb65
-GB,英国,test2.509666.xyz,443,test2.509666.xyz:443,vps789_top100,504,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",test2.509666.xyz:443#VPS789优选 | test2.509666.xyz
-GB,英国,104.20.0.5,443,104.20.0.5:443,bestcf_pages_dev_gslege_NL_txt,505,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.5:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.5
-GB,英国,www.wto.org,443,www.wto.org:443,domain_all,505,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.wto.org:443#更多选择 | WTO世贸
-GB,英国,104.17.162.3,443,104.17.162.3:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,506,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.162.3:443#US-6d2787
-GB,英国,www.stheadline.com,443,www.stheadline.com:443,domain_asia,506,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.stheadline.com:443#亚洲域名 | 香港星岛头条
-GB,英国,104.17.189.115,443,104.17.189.115:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,508,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.189.115
-GB,英国,104.18.0.2,443,104.18.0.2:443,gslege_us,508,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.2:443#Gslege优选 | us 【美国】 US | 104.18.0.2
-GB,英国,162.159.16.250,8443,162.159.16.250:8443,gshtwy_wetest_v4,508,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:8443#电信-SIN-8443-WS-TLS
-GB,英国,162.159.36.47,443,162.159.36.47:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,509,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.36.47:443#US-88fde3
-GB,英国,172.64.148.143,443,172.64.148.143:443,uouin,509,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.148.143:443#麒麟优选 | 电信 | 172.64.148.143 | 46.60ms | 64.97mb/s
-GB,英国,visa.com,443,visa.com:443,domain_all,510,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",visa.com:443#企业域名 | VISA
-GB,英国,104.17.181.116,443,104.17.181.116:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,511,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.181.116
-GB,英国,162.159.140.85,443,162.159.140.85:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,511,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.140.85:443#US-0d6393
-GB,英国,vip.cf.3666888.xyz,443,vip.cf.3666888.xyz:443,domain_ai_vps789,511,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",vip.cf.3666888.xyz:443#AI优选 | vip.cf.3666888.xyz
-GB,英国,freeyx.cloudflare88.eu.org,443,freeyx.cloudflare88.eu.org:443,domain_ai_vps789,512,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",freeyx.cloudflare88.eu.org:443#AI优选 | freeyx.cloudflare88.eu.org
-GB,英国,usa.visa.com,443,usa.visa.com:443,domain_all,512,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",usa.visa.com:443#金融域名 | VISA美国
-GB,英国,172.64.52.214,443,172.64.52.214:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,516,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.52.214
-GB,英国,lt.hhhhh.eu.org,443,lt.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,518,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.hhhhh.eu.org:443#乌鸦优选 | 联通 | lt.hhhhh.eu.org
-GB,英国,104.18.45.74,443,104.18.45.74:443,uouin,520,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.45.74:443#麒麟优选 | 电信 | 104.18.45.74 | 46.42ms | 54.90mb/s
-GB,英国,2.cf.3666888.xyz,443,2.cf.3666888.xyz:443,domain_ai_vps789,520,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2.cf.3666888.xyz:443#AI优选 | 2.cf.3666888.xyz
-GB,英国,www.xiaoshuofen.com,443,www.xiaoshuofen.com:443,domain_ai_vps789,523,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.xiaoshuofen.com:443#AI优选 | www.xiaoshuofen.com
-GB,英国,2606:4700:3036:0:a36a:4a23:4a60:9f3f,443,[2606:4700:3036:0:a36a:4a23:4a60:9f3f]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,525,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3036:0:a36a:4a23:4a60:9f3f]:443#CMLiussv6-57b863
-GB,英国,cf.553314.xyz,443,cf.553314.xyz:443,vps789_top100,530,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.553314.xyz:443#VPS789优选 | cf.553314.xyz
-GB,英国,eteaf.cf.3666888.xyz,443,eteaf.cf.3666888.xyz:443,vps789_top100,534,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
-GB,英国,1111111.hhhhh.eu.org,443,1111111.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,535,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",1111111.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 1111111.hhhhh.eu.org
-GB,英国,fnp.ircf.space,443,fnp.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,535,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
-GB,英国,104.18.223.253,443,104.18.223.253:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,537,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.223.253:443#US-7b8697
-GB,英国,104.19.155.135,443,104.19.155.135:443,gshtwy_wetest_v4,538,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.155.135:443#移动-HKG-443-WS-TLS
-GB,英国,cdn.cf.3666888.xyz,443,cdn.cf.3666888.xyz:443,domain_ai_vps789,538,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cdn.cf.3666888.xyz:443#AI优选 | cdn.cf.3666888.xyz
-GB,英国,cm.3.hhhhh.eu.org,443,cm.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,539,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.3.hhhhh.eu.org:443#乌鸦优选 | cm3 | cm.3.hhhhh.eu.org
-GB,英国,nexusmods.com,443,nexusmods.com:443,domain_ai_vps789,540,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",nexusmods.com:443#AI优选 | nexusmods.com
-GB,英国,yg5.ygkkk.dpdns.org,443,yg5.ygkkk.dpdns.org:443,domain_ai_vps789,541,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg5.ygkkk.dpdns.org:443#AI优选 | yg5.ygkkk.dpdns.org
-GB,英国,2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2,443,[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,542,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443#Uouin-890a22
-GB,英国,camperandnicholsons.com,443,camperandnicholsons.com:443,domain_asia,544,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",camperandnicholsons.com:443#亚洲域名 | 新加坡游艇
-GB,英国,carrefour.com,443,carrefour.com:443,domain_all,544,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",carrefour.com:443#更多选择 | 家乐福
-GB,英国,cf.tencentapp.cn,443,cf.tencentapp.cn:443,domain_all,544,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.tencentapp.cn:443#大佬维护 | KTFF
-GB,英国,cloudflare.dev,443,cloudflare.dev:443,domain_all,544,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare.dev:443#官方域名 | Developers
-GB,英国,cm.1.hhhhh.eu.org,443,cm.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,545,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
-GB,英国,173.245.49.194,443,173.245.49.194:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",173.245.49.194:443#US-cd8be5
-GB,英国,hongkongairport.com,443,hongkongairport.com:443,domain_all,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",hongkongairport.com:443#企业域名 | 香港机场
-GB,英国,ipv4.ircf.space,443,ipv4.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ipv4.ircf.space:443#IRCF优选 | Universal IPv4 | ipv4.ircf.space
-GB,英国,lt.1.hhhhh.eu.org,443,lt.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
-GB,英国,yd.hhhhh.eu.org,443,yd.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
-GB,英国,yg4.ygkkk.dpdns.org,443,yg4.ygkkk.dpdns.org:443,bestcf_pages_dev_domain_ygkkk_all_txt,546,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg4.ygkkk.dpdns.org:443#甬哥优选 | yg4.ygkkk.dpdns.org
-GB,英国,dx.4.hhhhh.eu.org,443,dx.4.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,547,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dx.4.hhhhh.eu.org:443#乌鸦优选 | 电信4 | dx.4.hhhhh.eu.org
-GB,英国,fictiv.com,443,fictiv.com:443,domain_asia,547,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fictiv.com:443#亚洲域名 | Fictiv
-GB,英国,sbn.ircf.space,443,sbn.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,547,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",sbn.ircf.space:443#IRCF优选 | Sabanet | sbn.ircf.space
-GB,英国,woodsbagot.com,443,woodsbagot.com:443,domain_asia,547,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",woodsbagot.com:443#亚洲域名 | 伍兹贝格
-GB,英国,sanwang.cf.3666888.xyz,443,sanwang.cf.3666888.xyz:443,domain_ai_vps789,548,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",sanwang.cf.3666888.xyz:443#AI优选 | sanwang.cf.3666888.xyz
-GB,英国,ztl.ircf.space,443,ztl.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,548,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ztl.ircf.space:443#IRCF优选 | Zitel | ztl.ircf.space
-GB,英国,cfip-avg.stoeaves.us.ci,443,cfip-avg.stoeaves.us.ci:443,vps789_top100,550,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cfip-avg.stoeaves.us.ci:443#VPS789优选 | cfip-avg.stoeaves.us.ci
-GB,英国,cm.hhhhh.eu.org,443,cm.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,550,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.hhhhh.eu.org:443#乌鸦优选 | cm | cm.hhhhh.eu.org
-GB,英国,dongbanghong.com,443,dongbanghong.com:443,domain_ai_vps789,550,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dongbanghong.com:443#AI优选 | dongbanghong.com
-GB,英国,doosan.com,443,doosan.com:443,domain_asia,550,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",doosan.com:443#亚洲域名 | 韩国斗山
-GB,英国,test.509666.xyz,443,test.509666.xyz:443,domain_ai_vps789,550,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",test.509666.xyz:443#AI优选 | test.509666.xyz
-GB,英国,www.polestar.com,443,www.polestar.com:443,domain_all,551,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.polestar.com:443#更多选择 | 极星
-GB,英国,172.64.32.8,443,172.64.32.8:443,gslege_sg,553,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.8:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.8
-GB,英国,wto.hhhhh.eu.org,443,wto.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,553,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",wto.hhhhh.eu.org:443#乌鸦优选 | wto | wto.hhhhh.eu.org
-GB,英国,yg8.ygkkk.dpdns.org,443,yg8.ygkkk.dpdns.org:443,bestcf_pages_dev_domain_ygkkk_all_txt,553,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg8.ygkkk.dpdns.org:443#甬哥优选 | yg8.ygkkk.dpdns.org
-GB,英国,visasg.hhhhh.eu.org,443,visasg.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,556,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",visasg.hhhhh.eu.org:443#乌鸦优选 | visasg | visasg.hhhhh.eu.org
-GB,英国,cf.090227.xyz,443,cf.090227.xyz:443,domain_all,558,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.090227.xyz:443#大佬维护 | CMLiu
-GB,英国,cloudflare-ech.com,443,cloudflare-ech.com:443,domain_all,558,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare-ech.com:443#官方域名 | ECH
-GB,英国,jp.cf.3666888.xyz,443,jp.cf.3666888.xyz:443,domain_ai_vps789,558,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",jp.cf.3666888.xyz:443#AI优选 | jp.cf.3666888.xyz
-GB,英国,ask.ircf.space,443,ask.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,559,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ask.ircf.space:443#IRCF优选 | ASK | ask.ircf.space
-GB,英国,w3.org,443,w3.org:443,domain_all,559,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",w3.org:443#更多选择 | W3C万维
-GB,英国,104.27.0.1,443,104.27.0.1:443,bestcf_pages_dev_gslege_DE_txt,561,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.27.0.1:443#Gslege优选 | de 【德国】 DE | 104.27.0.1
-GB,英国,dx.5.hhhhh.eu.org,443,dx.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,561,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
-GB,英国,ikea.com,443,ikea.com:443,domain_all,561,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ikea.com:443#更多选择 | 宜家
-GB,英国,sy.2.hhhhh.eu.org,443,sy.2.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,561,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",sy.2.hhhhh.eu.org:443#乌鸦优选 | shopify2 | sy.2.hhhhh.eu.org
-GB,英国,yd.3.hhhhh.eu.org,443,yd.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,562,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yd.3.hhhhh.eu.org:443#乌鸦优选 | 移动3 | yd.3.hhhhh.eu.org
-GB,英国,yd.5.hhhhh.eu.org,443,yd.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,562,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
-GB,英国,172.64.53.172,443,172.64.53.172:443,gslege,563,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.53.172:443#Gslege优选 | 【测速 Nodes】78.36MB/s | 172.64.53.172
-GB,英国,lt.5.hhhhh.eu.org,443,lt.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,565,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.5.hhhhh.eu.org:443#乌鸦优选 | 联通5 | lt.5.hhhhh.eu.org
-ID,印度尼西亚,43.218.77.16,443,43.218.77.16:443,raw_githubusercontent_com_love_ztm_cfip_refs_heads_main_ubest_ips_txt,491,,region_not_preferred,"ID not in HK,JP,KR,SG,TW,US",43.218.77.16:443#ID [优选高速 106.0ms]
-RS,塞尔维亚,206.237.9.241,443,206.237.9.241:443,junzhen_bj,374,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",206.237.9.241:443#HK [高速 by Jz 28M]
-RS,塞尔维亚,104.18.42.54,443,104.18.42.54:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,464,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.18.42.54
-RS,塞尔维亚,162.159.0.3,443,162.159.0.3:443,gslege_sg,464,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",162.159.0.3:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.3
-RS,塞尔维亚,104.17.150.17,443,104.17.150.17:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,470,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.17.150.17
-RS,塞尔维亚,2a06:98c1:56::69f:1065,443,[2a06:98c1:56::69f:1065]:443,bestcf_pages_dev_vvhan_ipv6_txt,474,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",[2a06:98c1:56::69f:1065]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:56::69f:1065
-RS,塞尔维亚,104.20.0.9,443,104.20.0.9:443,bestcf_pages_dev_gslege_NL_txt,480,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.20.0.9:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.9
-RS,塞尔维亚,104.18.0.7,443,104.18.0.7:443,gslege_us,481,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.18.0.7:443#Gslege优选 | us 【美国】 US | 104.18.0.7
-RS,塞尔维亚,104.18.0.5,443,104.18.0.5:443,gslege_us,482,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.18.0.5:443#Gslege优选 | us 【美国】 US | 104.18.0.5
-RS,塞尔维亚,172.64.156.112,443,172.64.156.112:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,484,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",172.64.156.112:443#US-ff22e2
-RS,塞尔维亚,104.20.0.4,443,104.20.0.4:443,bestcf_pages_dev_gslege_NL_txt,497,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.20.0.4:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.4
-RS,塞尔维亚,104.25.0.9,443,104.25.0.9:443,bestcf_pages_dev_gslege_DE_txt,500,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.25.0.9:443#Gslege优选 | de 【德国】 DE | 104.25.0.9
+GB,英国,162.159.40.181,2096,162.159.40.181:2096,moistr,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
+GB,英国,172.64.229.7,443,172.64.229.7:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.229.7:443#US-bdbda7
+GB,英国,9.cf.3666888.xyz,443,9.cf.3666888.xyz:443,domain_ai_vps789,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",9.cf.3666888.xyz:443#AI优选 | 9.cf.3666888.xyz
+GB,英国,lt.2.hhhhh.eu.org,443,lt.2.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,467,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.2.hhhhh.eu.org:443#乌鸦优选 | 联通2 | lt.2.hhhhh.eu.org
+GB,英国,104.17.0.7,443,104.17.0.7:443,gslege_us,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.7:443#Gslege优选 | us 【美国】 US | 104.17.0.7
+GB,英国,104.17.133.6,2053,104.17.133.6:2053,gshtwy_wetest_v4,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.6:2053#联通-SJC-2053-WS-TLS
+GB,英国,104.17.18.154,443,104.17.18.154:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.18.154
+GB,英国,104.25.0.9,443,104.25.0.9:443,bestcf_pages_dev_gslege_DE_txt,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.25.0.9:443#Gslege优选 | de 【德国】 DE | 104.25.0.9
+GB,英国,104.26.4.114,443,104.26.4.114:443,uouin,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.4.114:443#麒麟优选 | 联通 | 104.26.4.114 | 122.44ms | 0.34mb/s
+GB,英国,108.162.192.1,443,108.162.192.1:443,gslege_sg,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.192.1:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.1
+GB,英国,1111111.hhhhh.eu.org,443,1111111.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",1111111.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 1111111.hhhhh.eu.org
+GB,英国,162.159.197.1,443,162.159.197.1:443,uouin,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.197.1:443#麒麟优选 | 分享免费优选网 BestCF.pages.dev
+GB,英国,162.159.40.144,2087,162.159.40.144:2087,gshtwy_wetest_v4,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:2087#电信-SIN-2087-WS-TLS
+GB,英国,2606:4700:25:fd0d:44eb:a9e0:5a70:cb57,443,[2606:4700:25:fd0d:44eb:a9e0:5a70:cb57]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:44eb:a9e0:5a70:cb57]:443#IPDBv6-a07ff4
+GB,英国,2606:4700:99eb:4c68:2a0a:ddec:839d:6f2e,443,[2606:4700:99eb:4c68:2a0a:ddec:839d:6f2e]:443,cfyes_ipv6,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:99eb:4c68:2a0a:ddec:839d:6f2e]:443#CFYes优选 | 移动 | [2606:4700:99eb:4c68:2a0a:ddec:839d:6f2e]
+GB,英国,www.pcone.com.tw,443,www.pcone.com.tw:443,domain_asia,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.pcone.com.tw:443#亚洲域名 | 中国台湾披西玩
+GB,英国,www.sloomb.com,443,www.sloomb.com:443,domain_ai_vps789,468,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.sloomb.com:443#AI优选 | www.sloomb.com
+GB,英国,104.17.149.95,2053,104.17.149.95:2053,gshtwy_wetest_v4,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.149.95:2053#移动-HKG-2053-WS-TLS
+GB,英国,104.18.47.74,443,104.18.47.74:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.47.74
+GB,英国,104.20.0.6,443,104.20.0.6:443,bestcf_pages_dev_gslege_NL_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.6:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.6
+GB,英国,108.162.193.1,443,108.162.193.1:443,bestcf_pages_dev_entryip_50_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.193.1:443#108.162.193.1 | 高权重中转，流量杂乱，隐蔽性极佳
+GB,英国,162.159.34.117,2053,162.159.34.117:2053,gshtwy_wetest_v4,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.34.117:2053#电信-SIN-2053-WS-TLS
+GB,英国,172.64.32.3,443,172.64.32.3:443,gslege_sg,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.3:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.3
+GB,英国,2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8,443,[2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:b1e2:5cf0:86b8]:443#IPDBv6-13abb5
+GB,英国,jimdo.com,443,jimdo.com:443,domain_all,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",jimdo.com:443#企业域名 | Jimdo
+GB,英国,news.cathaypacific.com,443,news.cathaypacific.com:443,domain_asia,469,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",news.cathaypacific.com:443#亚洲域名 | 香港国泰航空
+GB,英国,104.17.110.253,443,104.17.110.253:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.110.253
+GB,英国,104.17.118.14,443,104.17.118.14:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.118.14
+GB,英国,104.17.148.45,443,104.17.148.45:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.148.45
+GB,英国,104.17.97.3,443,104.17.97.3:443,uouin,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.97.3:443#麒麟优选 | 移动 | 104.17.97.3 | 49.32ms | 0.25mb/s
+GB,英国,108.162.192.3,443,108.162.192.3:443,gslege_sg,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.192.3:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.3
+GB,英国,108.162.198.10,443,108.162.198.10:443,gslege_jp,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.10:443#Gslege优选 | jp 【日本】 JP | 108.162.198.10
+GB,英国,162.159.40.47,443,162.159.40.47:443,wetest,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.47:443#微测优选 | 电信 | SIN | 162.159.40.47
+GB,英国,172.64.53.142,443,172.64.53.142:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.53.142:443#US-63c338
+GB,英国,fictiv.com,443,fictiv.com:443,domain_asia,470,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fictiv.com:443#亚洲域名 | Fictiv
+GB,英国,104.17.129.117,8443,104.17.129.117:8443,gshtwy_wetest_v4,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:8443#联通-SJC-8443-WS-TLS
+GB,英国,104.17.133.6,8443,104.17.133.6:8443,gshtwy_wetest_v4,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.6:8443#联通-SJC-8443-WS-TLS
+GB,英国,104.18.12.229,443,104.18.12.229:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.12.229:443#US-571b85
+GB,英国,104.19.148.121,443,104.19.148.121:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.148.121:443#US-0c4311
+GB,英国,198.41.209.243,443,198.41.209.243:443,cfyes_ipv4,471,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.209.243:443#CFYes优选 | 移动 | 198.41.209.243
+GB,英国,104.16.0.6,443,104.16.0.6:443,gslege_us,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.6:443#Gslege优选 | us 【美国】 US | 104.16.0.6
+GB,英国,104.16.150.241,443,104.16.150.241:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.150.241
+GB,英国,104.24.0.2,443,104.24.0.2:443,bestcf_pages_dev_gslege_DE_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.24.0.2:443#Gslege优选 | de 【德国】 DE | 104.24.0.2
+GB,英国,162.159.41.65,2053,162.159.41.65:2053,gshtwy_wetest_v4,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.41.65:2053#电信-SIN-2053-WS-TLS
+GB,英国,172.64.52.214,443,172.64.52.214:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.52.214
+GB,英国,advantech.com,443,advantech.com:443,domain_asia,472,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",advantech.com:443#亚洲域名 | 中国台湾研华
+GB,英国,104.17.133.132,443,104.17.133.132:443,cfyes_ipv4,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.133.132:443#CFYes优选 | 电信 | 104.17.133.132
+GB,英国,104.17.156.231,443,104.17.156.231:443,uouin,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.231:443#麒麟优选 | 移动 | 104.17.156.231 | 49.26ms | 0.16mb/s
+GB,英国,104.17.189.72,443,104.17.189.72:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.189.72
+GB,英国,104.18.0.2,443,104.18.0.2:443,gslege_us,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.2:443#Gslege优选 | us 【美国】 US | 104.18.0.2
+GB,英国,162.159.0.3,443,162.159.0.3:443,gslege_sg,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.0.3:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.3
+GB,英国,162.159.140.85,443,162.159.140.85:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.140.85:443#US-0d6393
+GB,英国,172.64.157.39,443,172.64.157.39:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.157.39:443#US-062635
+GB,英国,2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5,443,[2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fdc4:4b4:4a9d:9b23:cdb5]:443#IPDBv6-c9d729
+GB,英国,emerson.com,443,emerson.com:443,domain_all,473,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",emerson.com:443#更多选择 | 艾默生
+GB,英国,104.17.0.5,443,104.17.0.5:443,gslege_us,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.0.5:443#Gslege优选 | us 【美国】 US | 104.17.0.5
+GB,英国,104.17.116.155,443,104.17.116.155:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.116.155
+GB,英国,104.17.167.10,443,104.17.167.10:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.167.10
+GB,英国,104.18.0.3,443,104.18.0.3:443,gslege_us,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.0.3:443#Gslege优选 | us 【美国】 US | 104.18.0.3
+GB,英国,104.18.43.246,443,104.18.43.246:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.43.246:443#US-0c15810
+GB,英国,104.19.148.135,443,104.19.148.135:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.148.135
+GB,英国,104.19.52.177,443,104.19.52.177:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.52.177
+GB,英国,104.26.0.8,443,104.26.0.8:443,bestcf_pages_dev_gslege_DE_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.0.8:443#Gslege优选 | de 【德国】 DE | 104.26.0.8
+GB,英国,104.26.5.82,443,104.26.5.82:443,uouin,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.5.82:443#麒麟优选 | 联通 | 104.26.5.82 | 122.70ms | 0.45mb/s
+GB,英国,162.159.20.48,2096,162.159.20.48:2096,gshtwy_wetest_v4,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:2096#电信-SIN-2096-WS-TLS
+GB,英国,anadoluefes.com,443,anadoluefes.com:443,domain_all,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",anadoluefes.com:443#更多选择 | AnadoluEfes
+GB,英国,hk.cf.3666888.xyz,443,hk.cf.3666888.xyz:443,domain_ai_vps789,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",hk.cf.3666888.xyz:443#AI优选 | hk.cf.3666888.xyz
+GB,英国,qms.2.hhhhh.eu.org,443,qms.2.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",qms.2.hhhhh.eu.org:443#乌鸦优选 | qms2 | qms.2.hhhhh.eu.org
+GB,英国,ten.com,443,ten.com:443,domain_asia,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ten.com:443#亚洲域名 | 日本营销科技
+GB,英国,www.researchgate.net,443,www.researchgate.net:443,domain_all,474,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.researchgate.net:443#教育域名 | ResearchGate
+GB,英国,104.17.62.98,443,104.17.62.98:443,raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.62.98
+GB,英国,104.19.154.152,443,104.19.154.152:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.154.152
+GB,英国,104.20.0.5,443,104.20.0.5:443,bestcf_pages_dev_gslege_NL_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.5:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.5
+GB,英国,172.64.157.2,443,172.64.157.2:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.157.2:443#US-5569b0
+GB,英国,2606:4700:8397::15a3:8989,2096,[2606:4700:8397::15a3:8989]:2096,moistr,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:8397::15a3:8989]:2096#MoistR优选 | 移动 IPV6 03 | [2606:4700:8397::15a3:8989]:2096
+GB,英国,cloudflare.rainyfall.com,443,cloudflare.rainyfall.com:443,domain_ai_vps789,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare.rainyfall.com:443#AI优选 | cloudflare.rainyfall.com
+GB,英国,cm.1.hhhhh.eu.org,443,cm.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
+GB,英国,prs.ircf.space,443,prs.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",prs.ircf.space:443#IRCF优选 | Pars Online | prs.ircf.space
+GB,英国,qms.3.hhhhh.eu.org,443,qms.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,475,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",qms.3.hhhhh.eu.org:443#乌鸦优选 | qms3 | qms.3.hhhhh.eu.org
+GB,英国,172.64.159.151,443,172.64.159.151:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.159.151
+GB,英国,2606:4700:57::e80a:34b8,443,[2606:4700:57::e80a:34b8]:443,bestcf_pages_dev_vvhan_ipv6_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::e80a:34b8]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::e80a:34b8
+GB,英国,cm.3.hhhhh.eu.org,443,cm.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.3.hhhhh.eu.org:443#乌鸦优选 | cm3 | cm.3.hhhhh.eu.org
+GB,英国,fk.hshwk.org,443,fk.hshwk.org:443,vps789_top100,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fk.hshwk.org:443#VPS789优选 | fk.hshwk.org
+GB,英国,lt.5.hhhhh.eu.org,443,lt.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.5.hhhhh.eu.org:443#乌鸦优选 | 联通5 | lt.5.hhhhh.eu.org
+GB,英国,nexusmods.com,443,nexusmods.com:443,domain_ai_vps789,476,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",nexusmods.com:443#AI优选 | nexusmods.com
+GB,英国,104.18.81.94,2053,104.18.81.94:2053,gshtwy_wetest_v4,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.81.94:2053#联通-LAX-2053-WS-TLS
+GB,英国,123.cf.3666888.xyz,443,123.cf.3666888.xyz:443,domain_ai_vps789,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",123.cf.3666888.xyz:443#AI优选 | 123.cf.3666888.xyz
+GB,英国,162.159.137.204,443,162.159.137.204:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.137.204:443#US-c1ced3
+GB,英国,162.159.14.66,443,162.159.14.66:443,uouin,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.14.66:443#麒麟优选 | 多线 | 162.159.14.66 | 64.96ms | 0.13mb/s
+GB,英国,2606:4700:57::380:a766,443,[2606:4700:57::380:a766]:443,bestcf_pages_dev_vvhan_ipv6_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:57::380:a766]:443#vvHan优选 | 移动 | HKG | 2606:4700:57::380:a766
+GB,英国,2803:f800:51::f6af:41c1,443,[2803:f800:51::f6af:41c1]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2803:f800:51::f6af:41c1]:443#WeTestV6-870d58
+GB,英国,2a06:98c1:56::69f:1065,443,[2a06:98c1:56::69f:1065]:443,bestcf_pages_dev_vvhan_ipv6_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:56::69f:1065]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:56::69f:1065
+GB,英国,dongbanghong.com,443,dongbanghong.com:443,domain_ai_vps789,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dongbanghong.com:443#AI优选 | dongbanghong.com
+GB,英国,sy.1.hhhhh.eu.org,443,sy.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",sy.1.hhhhh.eu.org:443#乌鸦优选 | shopify1 | sy.1.hhhhh.eu.org
+GB,英国,www.vastnovel.com,443,www.vastnovel.com:443,domain_ai_vps789,477,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.vastnovel.com:443#AI优选 | www.vastnovel.com
+GB,英国,104.17.147.17,2087,104.17.147.17:2087,gshtwy_wetest_v4,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.147.17:2087#联通-SJC-2087-WS-TLS
+GB,英国,104.19.0.1,443,104.19.0.1:443,bestcf_pages_dev_entryip_50_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.0.1:443#104.19.0.1 | 动态加速段，低延迟跨境数据传输首选
+GB,英国,104.20.0.4,443,104.20.0.4:443,bestcf_pages_dev_gslege_NL_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.4:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.4
+GB,英国,bp.3.hhhhh.eu.org,443,bp.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",bp.3.hhhhh.eu.org:443#乌鸦优选 | bp3 | bp.3.hhhhh.eu.org
+GB,英国,cdn.2020111.xyz,443,cdn.2020111.xyz:443,domain_ai_vps789,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
+GB,英国,polestar.com,443,polestar.com:443,domain_asia,478,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",polestar.com:443#亚洲域名 | 中国极星汽车
+GB,英国,104.19.57.2,443,104.19.57.2:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.57.2:443#US-b47bc10
+GB,英国,104.20.0.2,443,104.20.0.2:443,bestcf_pages_dev_gslege_NL_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.0.2:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.2
+GB,英国,141.101.120.1,443,141.101.120.1:443,bestcf_pages_dev_entryip_50_txt,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",141.101.120.1:443#141.101.120.1 | 边缘端点，部分地区具备超额带宽
+GB,英国,2606:4700:90d5::444e:d15a,2096,[2606:4700:90d5::444e:d15a]:2096,moistr,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:90d5::444e:d15a]:2096#MoistR优选 | 移动 IPV6 02 | [2606:4700:90d5::444e:d15a]:2096
+GB,英国,cf.877774.xyz,443,cf.877774.xyz:443,domain_all,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.877774.xyz:443#大佬维护 | QMS
+GB,英国,www.kohler.co.id,443,www.kohler.co.id:443,domain_asia,479,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.kohler.co.id:443#亚洲域名 | 印尼科勒
+GB,英国,104.16.4.183,443,104.16.4.183:443,cfyes_ipv4,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.4.183:443#CFYes优选 | 电信 | 104.16.4.183
+GB,英国,104.17.69.244,443,104.17.69.244:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.69.244:443#US-5db103
+GB,英国,162.159.16.250,2087,162.159.16.250:2087,gshtwy_wetest_v4,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:2087#电信-SIN-2087-WS-TLS
+GB,英国,162.159.20.48,443,162.159.20.48:443,gshtwy_wetest_v4,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:443#电信-SIN-443-WS-TLS
+GB,英国,172.64.91.69,443,172.64.91.69:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.91.69:443#US-e45d90
+GB,英国,2606:4700:13a:1807:a0e0:1c58:650b:a3b8,443,[2606:4700:13a:1807:a0e0:1c58:650b:a3b8]:443,cfyes_ipv6,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:13a:1807:a0e0:1c58:650b:a3b8]:443#CFYes优选 | 移动 | [2606:4700:13a:1807:a0e0:1c58:650b:a3b8]
+GB,英国,2606:4700:3032:7270:d52f:d871:63dd:7757,443,[2606:4700:3032:7270:d52f:d871:63dd:7757]:443,bestcf_pages_dev_nirevil_ipv6_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:3032:7270:d52f:d871:63dd:7757]:443#NiREvil优选 | 移动 | Default | 3ms | 361mbps
+GB,英国,2a06:98c1:3121:5d:1caa:56dd:a908:af7b,443,[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443#Uouin-c3ceb9
+GB,英国,2a06:98c1:56::38f8:4281,2096,[2a06:98c1:56::38f8:4281]:2096,moistr,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:56::38f8:4281]:2096#MoistR优选 | 电信 IPV6 02 | [2a06:98c1:56::38f8:4281]:2096
+GB,英国,avido.cf.3666888.xyz,443,avido.cf.3666888.xyz:443,domain_ai_vps789,480,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",avido.cf.3666888.xyz:443#AI优选 | avido.cf.3666888.xyz
+GB,英国,104.17.129.117,2096,104.17.129.117:2096,gshtwy_wetest_v4,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.129.117:2096#联通-SJC-2096-WS-TLS
+GB,英国,2606:4700:4402::9cf0:7fe2,443,[2606:4700:4402::9cf0:7fe2]:443,bestcf_pages_dev_vvhan_ipv6_txt,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:4402::9cf0:7fe2]:443#vvHan优选 | 电信 | SIN | 2606:4700:4402::9cf0:7fe2
+GB,英国,cmcc.cc.cd,443,cmcc.cc.cd:443,domain_ai_vps789,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cmcc.cc.cd:443#AI优选 | cmcc.cc.cd
+GB,英国,static.cloudflareinsights.com,443,static.cloudflareinsights.com:443,domain_all,481,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",static.cloudflareinsights.com:443#官方域名 | Analytics
+GB,英国,104.19.154.200,443,104.19.154.200:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.154.200:443#US-653131
+GB,英国,108.162.192.4,443,108.162.192.4:443,gslege_sg,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.192.4:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.4
+GB,英国,162.159.153.239,443,162.159.153.239:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.153.239:443#US-10fcb6
+GB,英国,162.159.195.1,443,162.159.195.1:443,bestcf_pages_dev_entryip_50_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.195.1:443#162.159.195.1 | 备用业务入口，路由宣告极其精准
+GB,英国,162.159.40.144,2053,162.159.40.144:2053,gshtwy_wetest_v4,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:2053#电信-SIN-2053-WS-TLS
+GB,英国,172.64.32.9,443,172.64.32.9:443,gslege_sg,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.9:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.9
+GB,英国,cfsaas.080112.xyz,443,cfsaas.080112.xyz:443,domain_ai_vps789,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cfsaas.080112.xyz:443#AI优选 | cfsaas.080112.xyz
+GB,英国,cm.2.hhhhh.eu.org,443,cm.2.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.2.hhhhh.eu.org:443#乌鸦优选 | cm2 | cm.2.hhhhh.eu.org
+GB,英国,www.aeon.info,443,www.aeon.info:443,domain_asia,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.aeon.info:443#亚洲域名 | 中国香港永旺
+GB,英国,www.visa.cn,443,www.visa.cn:443,domain_all,482,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.visa.cn:443#金融域名 | VISA中国
+GB,英国,104.17.159.187,8443,104.17.159.187:8443,gshtwy_wetest_v4,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:8443#移动-HKG-8443-WS-TLS
+GB,英国,104.19.42.11,443,104.19.42.11:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.42.11:443#US-627179
+GB,英国,104.25.0.4,443,104.25.0.4:443,bestcf_pages_dev_gslege_DE_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.25.0.4:443#Gslege优选 | de 【德国】 DE | 104.25.0.4
+GB,英国,108.162.198.13,443,108.162.198.13:443,gslege_jp,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.13:443#Gslege优选 | jp 【日本】 JP | 108.162.198.13
+GB,英国,108.162.198.206,443,108.162.198.206:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.198.206
+GB,英国,162.159.152.225,443,162.159.152.225:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.152.225:443#US-59e6810
+GB,英国,2606:4700:25:fd0d:74c8:342:77e3:5aa4,443,[2606:4700:25:fd0d:74c8:342:77e3:5aa4]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:342:77e3:5aa4]:443#IPDBv6-9387a10
+GB,英国,2a06:98c1:3121:0:efde:82d1:8124:3fed,443,[2a06:98c1:3121:0:efde:82d1:8124:3fed]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:3121:0:efde:82d1:8124:3fed]:443#Uouin-236cb10
+GB,英国,cdn.7zz.cn,443,cdn.7zz.cn:443,domain_ai_vps789,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cdn.7zz.cn:443#AI优选 | cdn.7zz.cn
+GB,英国,lt.4.hhhhh.eu.org,443,lt.4.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.4.hhhhh.eu.org:443#乌鸦优选 | 联通4 | lt.4.hhhhh.eu.org
+GB,英国,staticdelivery.nexusmods.com,443,staticdelivery.nexusmods.com:443,domain_all,483,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",staticdelivery.nexusmods.com:443#企业域名 | NexusMods
+GB,英国,104.17.159.187,443,104.17.159.187:443,gshtwy_wetest_v4,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:443#移动-HKG-443-WS-TLS
+GB,英国,104.18.42.243,8443,104.18.42.243:8443,moistr,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.42.243:8443#MoistR优选 | Tg里的欢乐时光 | 104.18.42.243:8443
+GB,英国,104.19.159.254,443,104.19.159.254:443,wetest,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.159.254:443#微测优选 | 移动 | HKG | 104.19.159.254
+GB,英国,104.26.8.117,443,104.26.8.117:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.26.8.117:443#US-5d7920
+GB,英国,162.159.16.250,2096,162.159.16.250:2096,gshtwy_wetest_v4,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:2096#电信-SIN-2096-WS-TLS
+GB,英国,172.64.156.118,443,172.64.156.118:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.156.118:443#US-c54169
+GB,英国,bluehost.com,443,bluehost.com:443,domain_all,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",bluehost.com:443#企业域名 | BlueHost
+GB,英国,qms.hhhhh.eu.org,443,qms.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",qms.hhhhh.eu.org:443#乌鸦优选 | qms | qms.hhhhh.eu.org
+GB,英国,yg11.ygkkk.dpdns.org,443,yg11.ygkkk.dpdns.org:443,domain_ai_vps789,484,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg11.ygkkk.dpdns.org:443#AI优选 | yg11.ygkkk.dpdns.org
+GB,英国,104.16.147.178,443,104.16.147.178:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.147.178:443#US-8a98e8
+GB,英国,104.17.158.197,443,104.17.158.197:443,wetest,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.158.197:443#微测优选 | 移动 | HKG | 104.17.158.197
+GB,英国,104.17.162.3,443,104.17.162.3:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.162.3:443#US-6d2787
+GB,英国,104.18.189.153,443,104.18.189.153:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.189.153:443#US-e3cdd2
+GB,英国,104.18.81.19,443,104.18.81.19:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.81.19:443#US-5403f4
+GB,英国,162.159.20.48,2087,162.159.20.48:2087,gshtwy_wetest_v4,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.20.48:2087#电信-SIN-2087-WS-TLS
+GB,英国,wto.3.hhhhh.eu.org,443,wto.3.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",wto.3.hhhhh.eu.org:443#乌鸦优选 | wto3 | wto.3.hhhhh.eu.org
+GB,英国,www.buy123.com.tw,443,www.buy123.com.tw:443,domain_asia,485,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.buy123.com.tw:443#亚洲域名 | 中国台湾帮客
+GB,英国,104.17.156.246,2087,104.17.156.246:2087,gshtwy_wetest_v4,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:2087#移动-HKG-2087-WS-TLS
+GB,英国,104.17.156.246,2096,104.17.156.246:2096,gshtwy_wetest_v4,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.156.246:2096#移动-HKG-2096-WS-TLS
+GB,英国,104.18.81.94,2096,104.18.81.94:2096,gshtwy_wetest_v4,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.81.94:2096#联通-LAX-2096-WS-TLS
+GB,英国,104.20.19.128,443,104.20.19.128:443,uouin,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.20.19.128:443#麒麟优选 | 联通 | 104.20.19.128 | 117.55ms | 0.46mb/s
+GB,英国,162.159.24.131,443,162.159.24.131:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.24.131:443#US-5594c5
+GB,英国,172.64.154.148,443,172.64.154.148:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.154.148
+GB,英国,172.64.229.239,443,172.64.229.239:443,uouin,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.229.239:443#麒麟优选 | 多线 | 172.64.229.239 | 43.35ms | 0.13mb/s
+GB,英国,2a06:98c1:56::54a:d52b,443,[2a06:98c1:56::54a:d52b]:443,bestcf_pages_dev_vvhan_ipv6_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2a06:98c1:56::54a:d52b]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:56::54a:d52b
+GB,英国,cm.cdn.djx-ybelove.pp.ua,443,cm.cdn.djx-ybelove.pp.ua:443,bestcf_pages_dev_domain_fiatnorm_all_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cm.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 移动 (CM) · 低延迟专线，告别卡顿
+GB,英国,dx.5.hhhhh.eu.org,443,dx.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
+GB,英国,mci.ircf.space,443,mci.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",mci.ircf.space:443#IRCF优选 | MCI | mci.ircf.space
+GB,英国,yd.5.hhhhh.eu.org,443,yd.5.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,486,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
+GB,英国,104.19.0.2,443,104.19.0.2:443,gslege_us,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.0.2:443#Gslege优选 | us 【美国】 US | 104.19.0.2
+GB,英国,2606:4700:0:46:c45f:b672:5d1:c968,443,[2606:4700:0:46:c45f:b672:5d1:c968]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700:0:46:c45f:b672:5d1:c968
+GB,英国,2606:4700:25:fd0d:74c8:3e2:6b48:6501,443,[2606:4700:25:fd0d:74c8:3e2:6b48:6501]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fd0d:74c8:3e2:6b48:6501]:443#IPDBv6-10bf46
+GB,英国,hongkongairport.com,443,hongkongairport.com:443,domain_all,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",hongkongairport.com:443#企业域名 | 香港机场
+GB,英国,lt.1.hhhhh.eu.org,443,lt.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
+GB,英国,ptk.ircf.space,443,ptk.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ptk.ircf.space:443#IRCF优选 | Petyak | ptk.ircf.space
+GB,英国,yg7.ygkkk.dpdns.org,443,yg7.ygkkk.dpdns.org:443,domain_ai_vps789,487,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg7.ygkkk.dpdns.org:443#AI优选 | yg7.ygkkk.dpdns.org
+GB,英国,104.16.0.4,443,104.16.0.4:443,gslege_us,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.16.0.4:443#Gslege优选 | us 【美国】 US | 104.16.0.4
+GB,英国,104.18.255.167,443,104.18.255.167:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.255.167:443#US-2cc637
+GB,英国,104.19.44.36,443,104.19.44.36:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.44.36:443#US-66f452
+GB,英国,172.64.145.94,2096,172.64.145.94:2096,moistr,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.145.94:2096#MoistR优选 | 移动优选 03 | 172.64.145.94:2096
+GB,英国,172.64.158.177,443,172.64.158.177:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.158.177:443#US-299b42
+GB,英国,198.41.222.103,443,198.41.222.103:443,bestcf_pages_dev_nirevil_ipv4_txt,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.222.103:443#NiREvil优选 | 电信 | 198.41.222.103 | Default | 78ms | 245mbps
+GB,英国,cf.mubaiovo.top,443,cf.mubaiovo.top:443,domain_ai_vps789,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cf.mubaiovo.top:443#AI优选 | cf.mubaiovo.top
+GB,英国,cloudflare.cfgo.cc,443,cloudflare.cfgo.cc:443,domain_ai_vps789,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare.cfgo.cc:443#AI优选 | cloudflare.cfgo.cc
+GB,英国,newsmarket.com.tw,443,newsmarket.com.tw:443,domain_asia,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",newsmarket.com.tw:443#亚洲域名 | 中国台湾上下游
+GB,英国,www.mc.js.cool,443,www.mc.js.cool:443,domain_ai_vps789,488,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.mc.js.cool:443#AI优选 | www.mc.js.cool
+GB,英国,104.19.236.116,443,104.19.236.116:443,cfyes_ipv4,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.236.116:443#CFYes优选 | 电信 | 104.19.236.116
+GB,英国,108.162.192.5,443,108.162.192.5:443,gslege_sg,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",108.162.192.5:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.5
+GB,英国,172.64.32.2,443,172.64.32.2:443,gslege_sg,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.2:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.2
+GB,英国,172.64.32.8,443,172.64.32.8:443,gslege_sg,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.8:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.8
+GB,英国,172.66.0.1,443,172.66.0.1:443,bestcf_pages_dev_entryip_50_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.66.0.1:443#172.66.0.1 | 主干网优化段，物理跳数少，握手快
+GB,英国,2606:4700::8fa9:f8dc:f4db:43b,443,[2606:4700::8fa9:f8dc:f4db:43b]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",2606:4700::8fa9:f8dc:f4db:43b
+GB,英国,avg.cdn.djx-ybelove.pp.ua,443,avg.cdn.djx-ybelove.pp.ua:443,bestcf_pages_dev_domain_fiatnorm_all_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",avg.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 三网 BGP · 智能均衡，永远在线
+GB,英国,cu.cdn.djx-ybelove.pp.ua,443,cu.cdn.djx-ybelove.pp.ua:443,bestcf_pages_dev_domain_fiatnorm_all_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cu.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 联通 (CU) · 双线护航，全速满跑
+GB,英国,jp.cf.3666888.xyz,443,jp.cf.3666888.xyz:443,domain_ai_vps789,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",jp.cf.3666888.xyz:443#AI优选 | jp.cf.3666888.xyz
+GB,英国,loreal.com,443,loreal.com:443,domain_all,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",loreal.com:443#更多选择 | 欧莱雅
+GB,英国,r2.dev,443,r2.dev:443,domain_all,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",r2.dev:443#官方域名 | R2
+GB,英国,ryn.ircf.space,443,ryn.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,489,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",ryn.ircf.space:443#IRCF优选 | Raynet | ryn.ircf.space
+GB,英国,104.18.166.129,443,104.18.166.129:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.166.129:443#US-900385
+GB,英国,104.18.46.163,443,104.18.46.163:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.46.163
+GB,英国,104.19.53.2,443,104.19.53.2:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.19.53.2:443#US-286dc9
+GB,英国,162.159.16.250,443,162.159.16.250:443,gshtwy_wetest_v4,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.16.250:443#电信-SIN-443-WS-TLS
+GB,英国,162.159.198.1,443,162.159.198.1:443,uouin,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.198.1:443#麒麟优选 | 06-11 14:21 | BestCF.pages.dev
+GB,英国,172.64.52.190,443,172.64.52.190:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.52.190:443#US-0aaa74
+GB,英国,172.67.66.208,443,172.67.66.208:443,uouin,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.67.66.208:443#麒麟优选 | 联通 | 172.67.66.208 | 120.22ms | 0.28mb/s
+GB,英国,2606:4700:90c3::864a:6c49,443,[2606:4700:90c3::864a:6c49]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:90c3::864a:6c49]:443#WeTestV6-b0d269
+GB,英国,www.5199dy.com,443,www.5199dy.com:443,domain_ai_vps789,490,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.5199dy.com:443#AI优选 | www.5199dy.com
+GB,英国,104.17.142.212,443,104.17.142.212:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.142.212:443#US-0551910
+GB,英国,172.64.32.7,443,172.64.32.7:443,gslege_sg,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.7:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.7
+GB,英国,edion.co.jp,443,edion.co.jp:443,domain_asia,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",edion.co.jp:443#亚洲域名 | 日本爱电王
+GB,英国,fnv.ircf.space,443,fnv.ircf.space:443,bestcf_pages_dev_domain_ircf_all_txt,491,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",fnv.ircf.space:443#IRCF优选 | Fanava | fnv.ircf.space
+GB,英国,162.159.40.144,8443,162.159.40.144:8443,gshtwy_wetest_v4,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.40.144:8443#电信-SIN-8443-WS-TLS
+GB,英国,198.41.223.129,443,198.41.223.129:443,cfyes_ipv4,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.223.129:443#CFYes优选 | 电信 | 198.41.223.129
+GB,英国,cfyx.qdqqd.com,443,cfyx.qdqqd.com:443,domain_ai_vps789,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cfyx.qdqqd.com:443#AI优选 | cfyx.qdqqd.com
+GB,英国,www.hthkh.com,443,www.hthkh.com:443,domain_asia,492,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.hthkh.com:443#亚洲域名 | 中国香港和记电讯
+GB,英国,104.17.145.180,443,104.17.145.180:443,uouin,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.145.180:443#麒麟优选 | 移动 | 104.17.145.180 | 49.54ms | 0.12mb/s
+GB,英国,104.18.46.111,443,104.18.46.111:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.46.111:443#US-d7aa33
+GB,英国,104.18.47.140,2096,104.18.47.140:2096,moistr,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.47.140:2096#MoistR优选 | 移动优选 02 | 104.18.47.140:2096
+GB,英国,104.18.89.52,443,104.18.89.52:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.18.89.52:443#US-5edcd2
+GB,英国,172.64.32.6,443,172.64.32.6:443,gslege_sg,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.6:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.6
+GB,英国,172.64.53.121,443,172.64.53.121:443,uouin,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.53.121:443#麒麟优选 | 多线 | 172.64.53.121 | 43.11ms | 14.30mb/s
+GB,英国,7.cf.3666888.xyz,443,7.cf.3666888.xyz:443,domain_ai_vps789,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",7.cf.3666888.xyz:443#AI优选 | 7.cf.3666888.xyz
+GB,英国,2606:4700:25:fdc4:4b4:9174:ed1e:ae64,443,[2606:4700:25:fdc4:4b4:9174:ed1e:ae64]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",[2606:4700:25:fdc4:4b4:9174:ed1e:ae64]:443#IPDBv6-ddc170
+GB,英国,serviceshub.samsclub.com,443,serviceshub.samsclub.com:443,domain_all,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",serviceshub.samsclub.com:443#企业域名 | 山姆会员
+GB,英国,wto.1.hhhhh.eu.org,443,wto.1.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",wto.1.hhhhh.eu.org:443#乌鸦优选 | wto1 | wto.1.hhhhh.eu.org
+GB,英国,www.bitkub.com,443,www.bitkub.com:443,domain_asia,493,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.bitkub.com:443#亚洲域名 | 泰国加密货币
+GB,英国,104.17.116.114,443,104.17.116.114:443,uouin,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.116.114:443#麒麟优选 | 移动 | 104.17.116.114 | 48.50ms | 0.45mb/s
+GB,英国,104.17.174.38,443,104.17.174.38:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.174.38
+GB,英国,172.64.154.231,443,172.64.154.231:443,uouin,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.154.231:443#麒麟优选 | 多线 | 172.64.154.231 | 67.24ms | 10.90mb/s
+GB,英国,172.64.32.5,443,172.64.32.5:443,gslege_sg,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",172.64.32.5:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.5
+GB,英国,cloudflare-eth.com,443,cloudflare-eth.com:443,domain_all,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare-eth.com:443#官方域名 | Web3
+GB,英国,lac.com.tw,443,lac.com.tw:443,domain_asia,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",lac.com.tw:443#亚洲域名 | 中国台湾LAC
+GB,英国,shiseido.com,443,shiseido.com:443,domain_all,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",shiseido.com:443#更多选择 | 资生堂
+GB,英国,www.allianz.co.id,443,www.allianz.co.id:443,domain_asia,494,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.allianz.co.id:443#亚洲域名 | 印尼安联
+GB,英国,162.159.140.116,443,162.159.140.116:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.140.116:443#US-d42199
+GB,英国,198.41.223.6,443,198.41.223.6:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",198.41.223.6
+GB,英国,gh-proxy.com,443,gh-proxy.com:443,domain_ai_vps789,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",gh-proxy.com:443#AI优选 | gh-proxy.com
+GB,英国,zeas.top,443,zeas.top:443,domain_ai_vps789,495,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",zeas.top:443#AI优选 | zeas.top
+GB,英国,104.17.159.20,2096,104.17.159.20:2096,gshtwy_wetest_v4,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.20:2096#移动-HKG-2096-WS-TLS
+GB,英国,162.159.41.65,2096,162.159.41.65:2096,gshtwy_wetest_v4,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",162.159.41.65:2096#电信-SIN-2096-WS-TLS
+GB,英国,cloudflare.468123.xyz,443,cloudflare.468123.xyz:443,domain_ai_vps789,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",cloudflare.468123.xyz:443#AI优选 | cloudflare.468123.xyz
+GB,英国,test2.509666.xyz,443,test2.509666.xyz:443,vps789_top100,496,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",test2.509666.xyz:443#VPS789优选 | test2.509666.xyz
+GB,英国,yg1.ygkkk.dpdns.org,443,yg1.ygkkk.dpdns.org:443,domain_all,497,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yg1.ygkkk.dpdns.org:443#大佬维护 | YGKKK
+GB,英国,asda.com,443,asda.com:443,domain_all,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",asda.com:443#更多选择 | 阿斯达
+GB,英国,www.lacoste.qa,443,www.lacoste.qa:443,domain_asia,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
+GB,英国,www.speedtest.net,443,www.speedtest.net:443,domain_all,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",www.speedtest.net:443#更多选择 | Ookla
+GB,英国,yd.hhhhh.eu.org,443,yd.hhhhh.eu.org:443,bestcf_pages_dev_domain_wuya_all_txt,498,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
+GB,英国,104.17.159.187,2053,104.17.159.187:2053,gshtwy_wetest_v4,499,,region_not_preferred,"GB not in HK,JP,KR,SG,TW,US",104.17.159.187:2053#移动-HKG-2053-WS-TLS
+RS,塞尔维亚,149.104.4.249,2053,149.104.4.249:2053,tiancheng2,432,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",149.104.4.249:2053#天诚优选2 | 港岛古惑 | HK | 149.104.4.249:2053
+RS,塞尔维亚,104.26.0.4,443,104.26.0.4:443,bestcf_pages_dev_gslege_DE_txt,470,,region_not_preferred,"RS not in HK,JP,KR,SG,TW,US",104.26.0.4:443#Gslege优选 | de 【德国】 DE | 104.26.0.4
