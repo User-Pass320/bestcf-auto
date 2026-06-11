@@ -2,8 +2,6 @@ name: Update BestCF
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "17 */6 * * *"
 
 permissions:
   contents: write
@@ -99,6 +97,8 @@ jobs:
           cp bestcf_work/bestcf_failed.csv public/bestcf_failed.csv || true
           cp bestcf_work/bestcf_sources.csv public/bestcf_sources.csv || true
           cp bestcf_work/bestcf_other_regions.csv public/bestcf_other_regions.csv || true
+          cp bestcf_work/bestcf_region_counts.csv public/bestcf_region_counts.csv || true
+          cp bestcf_work/bestcf_geo_provider_stats.csv public/bestcf_geo_provider_stats.csv || true
 
       - name: Commit generated files
         if: env.VALID_RESULT == 'true'
