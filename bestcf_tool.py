@@ -50,6 +50,12 @@ DEFAULT_SOURCES = {
     "domain_mini": "https://bestcf.pages.dev/domain/mini.txt",
     "domain_asia": "https://bestcf.pages.dev/domain/Domain-Asia.txt",
     "domain_ai_vps789": "https://bestcf.pages.dev/domain/Domain-AI-VPS789.txt",
+    "domain_ygkkk_all": "https://bestcf.pages.dev/domain/ygkkk/all.txt",
+    "domain_qms_all": "https://bestcf.pages.dev/domain/qms/all.txt",
+    "domain_fiatnorm_all": "https://bestcf.pages.dev/domain/fiatnorm/all.txt",
+    "domain_senflare_all": "https://bestcf.pages.dev/domain/senflare/all.txt",
+    "domain_wuya_all": "https://bestcf.pages.dev/domain/wuya/all.txt",
+    "domain_ircf_all": "https://bestcf.pages.dev/domain/ircf/all.txt",
     "vps789_top100": "https://bestcf.pages.dev/vps789/top100.txt",
     "tiancheng2": "https://bestcf.pages.dev/tiancheng2/all.txt",
     "junzhen_bj": "https://cf.junzhen.qzz.io/best_ips_bj.txt",
@@ -91,6 +97,17 @@ PREFERRED_COUNTRY_ORDER = ["JP", "SG", "US", "HK", "KR", "TW"]
 PREFERRED_COUNTRY_CODES = set(PREFERRED_COUNTRY_ORDER)
 PREFERRED_REGION_NAMES = {"香港", "日本", "新加坡", "美国", "韩国", "台湾"}
 DEFAULT_LATENCY_URL = "https://www.gstatic.com/generate_204"
+GEO_PROVIDER_URLS = {
+    "ipinfo": "https://ipinfo.io/json",
+    "ip_sb": "https://api.ip.sb/geoip",
+    "cloudflare": "https://www.cloudflare.com/cdn-cgi/trace",
+    "ping0": "https://ip.ping0.cc/geo",
+    "ipapi": "https://ipapi.co/json/",
+    "ipwhois": "https://ipwho.is/",
+    "ip_api": "http://ip-api.com/json/?fields=status,countryCode,query",
+}
+DEFAULT_GEO_PROVIDERS_DAILY = ["ipwhois", "ping0", "cloudflare"]
+DEFAULT_GEO_PROVIDERS_ALL = ["ipinfo", "ip_sb", "cloudflare", "ping0", "ipapi", "ipwhois", "ip_api"]
 SOURCE_SKIP_MARKERS = (
     "/CIDR/",
     "/WARP/",
@@ -218,6 +235,7 @@ class TestResult:
     exit_country_code: str | None = None
     exit_region: str = "未知"
     cf_colo: str | None = None
+    geo_evidence: str = ""
     service_score: int = 0
     google_ok: bool | None = None
     youtube_ok: bool | None = None
@@ -251,6 +269,20 @@ def country_rank(code: str | None, order: list[str]) -> int:
         return order.index(code)
     except ValueError:
         return 999
+
+
+def country_code_from_text(text: str) -> str | None:
+    upper = text.upper()
+    for code in sorted(COUNTRY_NAMES, key=len, reverse=True):
+        if re.search(rf"(?<![A-Z]){re.escape(code)}(?![A-Z])", upper):
+            return code
+    for code, name in sorted(COUNTRY_NAMES.items(), key=lambda item: len(item[1]), reverse=True):
+        if name and name in text:
+            return code
+    for alias, name in REGION_ALIASES.items():
+        if alias in upper or name in text:
+            return next((code for code, country in COUNTRY_NAMES.items() if country == name), None)
+    return None
 
 
 def sort_geo_results(results: list[TestResult], order: list[str]) -> list[TestResult]:
@@ -640,6 +672,9 @@ def update_source_cache(
 
 
 def parse_region(text: str) -> str | None:
+    code_from_text = country_code_from_text(text)
+    if code_from_text:
+        return code_from_text
     for match in ASCII_REGION_RE.finditer(text.upper()):
         token = match.group(1)
         if token in COUNTRY_NAMES:
@@ -1142,44 +1177,93 @@ def start_mihomo(mihomo: Path, config_path: Path, data_dir: Path, log_path: Path
         raise
 
 
-def detect_geo(proxy: str, timeout: int) -> tuple[str | None, str, str | None, str | None]:
-    ok, text = curl_text("https://ipinfo.io/json", timeout=timeout, proxy=proxy)
-    if ok:
-        try:
-            data = json.loads(text)
+def parse_cloudflare_trace(text: str) -> dict[str, str]:
+    fields: dict[str, str] = {}
+    for line in text.splitlines():
+        if "=" in line:
+            key, value = line.split("=", 1)
+            fields[key.strip()] = value.strip()
+    return fields
+
+
+def geo_probe(proxy: str, timeout: int, name: str, url: str) -> tuple[str, str | None, str | None, str | None]:
+    ok, text = curl_text(url, timeout=timeout, proxy=proxy)
+    if not ok:
+        return name, None, None, None
+    try:
+        if name == "cloudflare":
+            fields = parse_cloudflare_trace(text)
+            code = str(fields.get("loc") or "").upper() or None
+            return name, code, fields.get("ip"), fields.get("colo")
+        if name == "ping0":
+            lines = [line.strip() for line in text.splitlines() if line.strip()]
+            ip = lines[0] if lines else None
+            location = lines[1] if len(lines) > 1 else ""
+            code = parse_region(location)
+            if code and len(code) != 2:
+                code = next((country_code for country_code, name_zh in COUNTRY_NAMES.items() if name_zh == code), code)
+            return name, code.upper() if code and len(code) == 2 else None, ip, None
+
+        data = json.loads(text)
+        if name == "ipinfo":
             code = str(data.get("country") or "").upper() or None
             ip = data.get("ip")
-            if code:
-                return code, country_name(code), str(ip) if ip else None, None
-        except json.JSONDecodeError:
-            pass
-
-    ok, text = curl_text("https://api.ip.sb/geoip", timeout=timeout, proxy=proxy)
-    if ok:
-        try:
-            data = json.loads(text)
+        elif name == "ip_sb":
             code = str(data.get("country_code") or "").upper() or None
             ip = data.get("ip")
-            if code:
-                return code, country_name(code), str(ip) if ip else None, None
-        except json.JSONDecodeError:
-            pass
+        elif name == "ipapi":
+            code = str(data.get("country_code") or "").upper() or None
+            ip = data.get("ip")
+        elif name == "ipwhois":
+            code = str(data.get("country_code") or "").upper() or None
+            ip = data.get("ip")
+        elif name == "ip_api":
+            code = str(data.get("countryCode") or "").upper() or None
+            ip = data.get("query")
+        else:
+            return name, None, None, None
+        return name, code, str(ip) if ip else None, None
+    except (json.JSONDecodeError, TypeError, ValueError):
+        return name, None, None, None
 
-    ok, text = curl_text("https://www.cloudflare.com/cdn-cgi/trace", timeout=timeout, proxy=proxy)
-    if ok:
-        fields: dict[str, str] = {}
-        for line in text.splitlines():
-            if "=" in line:
-                key, value = line.split("=", 1)
-                fields[key.strip()] = value.strip()
-        code = fields.get("loc")
-        colo = fields.get("colo")
-        ip = fields.get("ip")
+
+def detect_geo(proxy: str, timeout: int, providers: list[str]) -> tuple[str | None, str, str | None, str | None, str]:
+    probes = [(provider, GEO_PROVIDER_URLS[provider]) for provider in providers if provider in GEO_PROVIDER_URLS]
+    results: list[tuple[str, str | None, str | None, str | None]] = []
+    counts: dict[str, int] = {}
+
+    for name, url in probes:
+        result = geo_probe(proxy, timeout, name, url)
+        results.append(result)
+        _name, code, _ip, _colo = result
         if code:
-            return code.upper(), country_name(code), ip, colo
-        return None, "未知", ip, colo
+            counts[code] = counts.get(code, 0) + 1
+        if len(results) >= 3 and counts and max(counts.values()) >= 2:
+            break
 
-    return None, "未知", None, None
+    evidence = ";".join(f"{name}:{code or '-'}" for name, code, _ip, _colo in results)
+    selected_code: str | None = None
+    if counts:
+        selected_code = sorted(counts.items(), key=lambda item: (-item[1], item[0]))[0][0]
+
+    exit_ip: str | None = None
+    colo: str | None = None
+    if selected_code:
+        for _name, code, ip, probe_colo in results:
+            if code == selected_code:
+                exit_ip = exit_ip or ip
+                colo = colo or probe_colo
+        if colo is None:
+            for _name, _code, _ip, probe_colo in results:
+                if probe_colo:
+                    colo = probe_colo
+                    break
+        return selected_code, country_name(selected_code), exit_ip, colo, evidence
+
+    for _name, _code, ip, probe_colo in results:
+        exit_ip = exit_ip or ip
+        colo = colo or probe_colo
+    return None, "未知", exit_ip, colo, evidence
 
 
 def measure_speed_once(proxy: str, url: str, timeout: int) -> tuple[float | None, float | None, int, str | None]:
@@ -1268,7 +1352,7 @@ def test_candidate(
         if not wait_port(mixed_port, timeout=args.start_timeout):
             return TestResult(candidate, False, "mihomo_start_failed", "mixed port not ready")
         proxy = f"http://127.0.0.1:{mixed_port}"
-        code, region, exit_ip, colo = detect_geo(proxy, timeout=args.timeout)
+        code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
         speed, latency, speed_status, error = measure_speed(
             proxy,
             args.speed_urls,
@@ -1286,6 +1370,7 @@ def test_candidate(
                 exit_country_code=code,
                 exit_region=region,
                 cf_colo=colo,
+                geo_evidence=geo_evidence,
             )
         if speed < args.min_speed:
             return TestResult(
@@ -1299,6 +1384,7 @@ def test_candidate(
                 exit_country_code=code,
                 exit_region=region,
                 cf_colo=colo,
+                geo_evidence=geo_evidence,
             )
         return TestResult(
             candidate,
@@ -1310,6 +1396,7 @@ def test_candidate(
             exit_country_code=code,
             exit_region=region,
             cf_colo=colo,
+            geo_evidence=geo_evidence,
         )
     except Exception as exc:
         return TestResult(candidate, False, "exception", str(exc))
@@ -1494,18 +1581,201 @@ def write_source_prune_report(
             )
 
 
+def result_region(result: TestResult) -> str:
+    return result.exit_region or country_name(result.exit_country_code) or "未知"
+
+
+def result_latency(result: TestResult) -> float:
+    return result.latency_ms if result.latency_ms is not None else float("inf")
+
+
+def result_quality_key(result: TestResult) -> tuple[float, int, bool, float, str]:
+    return (
+        result_latency(result),
+        -result.service_score,
+        result.measured_speed is None,
+        -(result.measured_speed or 0),
+        result.candidate.endpoint,
+    )
+
+
+def median_number(values: list[float]) -> float | None:
+    if not values:
+        return None
+    ordered = sorted(values)
+    mid = len(ordered) // 2
+    if len(ordered) % 2:
+        return ordered[mid]
+    return (ordered[mid - 1] + ordered[mid]) / 2
+
+
+def dynamic_region_limit(target_count: int, region_count: int, configured_limit: int) -> int:
+    if configured_limit > 0:
+        return configured_limit
+    if target_count <= 0:
+        return 0
+    if region_count >= 20:
+        return 30
+    if region_count >= 10:
+        return 40
+    return 60
+
+
+def add_final_result(
+    selected: list[TestResult],
+    selected_keys: set[tuple[str, int]],
+    selected_counts: dict[str, int],
+    result: TestResult,
+    target_count: int,
+    region_limit: int,
+    enforce_region_limit: bool,
+) -> bool:
+    if target_count > 0 and len(selected) >= target_count:
+        return False
+    if result.candidate.key in selected_keys:
+        return False
+    region = result_region(result)
+    if enforce_region_limit and region_limit > 0 and selected_counts.get(region, 0) >= region_limit:
+        return False
+    selected.append(result)
+    selected_keys.add(result.candidate.key)
+    selected_counts[region] = selected_counts.get(region, 0) + 1
+    return True
+
+
+def select_final_results(ok_results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
+    target_count = args.max_final_candidates
+    if not ok_results:
+        return []
+
+    groups: dict[str, list[TestResult]] = {}
+    for result in ok_results:
+        groups.setdefault(result_region(result), []).append(result)
+    for items in groups.values():
+        items.sort(key=result_quality_key)
+
+    region_limit = dynamic_region_limit(target_count, len(groups), args.country_max)
+    selected: list[TestResult] = []
+    selected_keys: set[tuple[str, int]] = set()
+    selected_counts: dict[str, int] = {}
+
+    # First pass guarantees region coverage. Scarce regions get preference, but
+    # high-latency scarce nodes are left for the final fallback pass.
+    for region, items in sorted(groups.items(), key=lambda item: (len(item[1]), item[0])):
+        size = len(items)
+        if size <= 3:
+            keep_limit = min(size, 3)
+            stage_items = [item for item in items if result_latency(item) <= args.final_preferred_latency_ms]
+        elif size <= 10:
+            keep_limit = min(size, 5)
+            stage_items = items
+        elif size <= 30:
+            keep_limit = min(size, 5)
+            stage_items = items
+        else:
+            keep_limit = min(size, 3)
+            stage_items = items
+        for result in stage_items[:keep_limit]:
+            add_final_result(
+                selected,
+                selected_keys,
+                selected_counts,
+                result,
+                target_count,
+                region_limit,
+                enforce_region_limit=False,
+            )
+
+    if target_count <= 0 or len(selected) < target_count:
+        remaining = [result for result in ok_results if result.candidate.key not in selected_keys]
+        remaining.sort(
+            key=lambda result: (
+                result_latency(result),
+                -result.service_score,
+                result.measured_speed is None,
+                -(result.measured_speed or 0),
+                selected_counts.get(result_region(result), 0),
+                result.candidate.endpoint,
+            )
+        )
+        for result in remaining:
+            add_final_result(
+                selected,
+                selected_keys,
+                selected_counts,
+                result,
+                target_count,
+                region_limit,
+                enforce_region_limit=True,
+            )
+
+    if target_count > 0 and len(selected) < target_count:
+        fallback = [result for result in ok_results if result.candidate.key not in selected_keys]
+        fallback.sort(key=result_quality_key)
+        for result in fallback:
+            add_final_result(
+                selected,
+                selected_keys,
+                selected_counts,
+                result,
+                target_count,
+                region_limit,
+                enforce_region_limit=args.country_max > 0,
+            )
+
+    return selected[:target_count] if target_count > 0 else selected
+
+
+def write_region_counts(path: Path, ok_results: list[TestResult], final_results: list[TestResult]) -> None:
+    groups: dict[str, list[TestResult]] = {}
+    final_counts: dict[str, int] = {}
+    for result in ok_results:
+        groups.setdefault(result_region(result), []).append(result)
+    for result in final_results:
+        region = result_region(result)
+        final_counts[region] = final_counts.get(region, 0) + 1
+
+    with path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "exit_region_name",
+                "exit_country_code",
+                "eligible_count",
+                "selected_count",
+                "min_latency_ms",
+                "median_latency_ms",
+            ],
+        )
+        writer.writeheader()
+        for region, items in sorted(groups.items(), key=lambda item: (len(item[1]), item[0])):
+            latencies = [result_latency(result) for result in items if result_latency(result) != float("inf")]
+            codes = sorted({(result.exit_country_code or "").upper() for result in items if result.exit_country_code})
+            median = median_number(latencies)
+            writer.writerow(
+                {
+                    "exit_region_name": region,
+                    "exit_country_code": ",".join(codes),
+                    "eligible_count": len(items),
+                    "selected_count": final_counts.get(region, 0),
+                    "min_latency_ms": f"{min(latencies):.0f}" if latencies else "",
+                    "median_latency_ms": f"{median:.0f}" if median is not None else "",
+                }
+            )
+
+
 def write_results(
     workdir: Path,
     results: list[TestResult],
     parse_failures: list[dict[str, str]],
     source_failures: list[dict[str, str]],
-    preferred_order: list[str] | None = None,
-    country_max: int = 0,
+    args: argparse.Namespace,
 ) -> Path:
     tested_path = workdir / "bestcf_tested.csv"
     failed_path = workdir / "bestcf_failed.csv"
     final_path = workdir / "bestcf_final.txt"
     other_regions_path = workdir / "bestcf_other_regions.csv"
+    region_counts_path = workdir / "bestcf_region_counts.csv"
 
     with tested_path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(
@@ -1523,6 +1793,7 @@ def write_results(
                 "exit_country_code",
                 "exit_region_name",
                 "cf_colo",
+                "geo_evidence",
                 "is_cloudflare",
                 "service_score",
                 "google_ok",
@@ -1552,6 +1823,7 @@ def write_results(
                     "exit_country_code": result.exit_country_code or "",
                     "exit_region_name": result.exit_region,
                     "cf_colo": result.cf_colo or "",
+                    "geo_evidence": result.geo_evidence,
                     "is_cloudflare": item.is_cloudflare,
                     "service_score": result.service_score,
                     "google_ok": result.google_ok if result.google_ok is not None else "",
@@ -1605,24 +1877,13 @@ def write_results(
             )
 
     ok_results = [result for result in results if result.ok]
-    region_order = {country_name(code): index for index, code in enumerate(preferred_order or PREFERRED_COUNTRY_ORDER)}
-    ok_results.sort(
-        key=lambda result: (
-            region_order.get(result.exit_region, 999),
-            result.exit_region,
-            -result.service_score,
-            result.measured_speed is None,
-            -(result.measured_speed or 0),
-            result.latency_ms or 10**9,
-            result.candidate.endpoint,
-        )
-    )
+    final_results = select_final_results(ok_results, args)
+    write_region_counts(region_counts_path, ok_results, final_results)
+
     counters: dict[str, int] = {}
     with final_path.open("w", encoding="utf-8", newline="\n") as handle:
-        for result in ok_results:
+        for result in final_results:
             region = result.exit_region or "未知"
-            if country_max > 0 and counters.get(region, 0) >= country_max:
-                continue
             counters[region] = counters.get(region, 0) + 1
             line = f"{result.candidate.endpoint}#{region}-{counters[region]}"
             if result.measured_speed is not None:
@@ -1634,7 +1895,7 @@ def write_results(
         if result.status == "region_not_preferred" or (
             result.ok
             and result.exit_country_code
-            and result.exit_country_code.upper() not in set(preferred_order or PREFERRED_COUNTRY_ORDER)
+            and result.exit_country_code.upper() not in set(args.preferred_country_order or PREFERRED_COUNTRY_ORDER)
         )
     ]
     other_region_results.sort(
@@ -1656,6 +1917,7 @@ def write_results(
                 "source",
                 "latency_ms",
                 "cf_colo",
+                "geo_evidence",
                 "status",
                 "error",
                 "raw_line",
@@ -1673,6 +1935,7 @@ def write_results(
                     "source": result.candidate.source,
                     "latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
                     "cf_colo": result.cf_colo or "",
+                    "geo_evidence": result.geo_evidence,
                     "status": result.status,
                     "error": result.error,
                     "raw_line": result.candidate.raw,
@@ -1880,7 +2143,7 @@ def test_speed_geo_chunk(
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
-            code, region, exit_ip, colo = detect_geo(proxy, timeout=args.timeout)
+            code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
                     TestResult(
@@ -1893,6 +2156,7 @@ def test_speed_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -1908,6 +2172,7 @@ def test_speed_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -1929,6 +2194,7 @@ def test_speed_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -1945,6 +2211,7 @@ def test_speed_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -1959,6 +2226,7 @@ def test_speed_geo_chunk(
                     exit_country_code=code,
                     exit_region=region,
                     cf_colo=colo,
+                    geo_evidence=geo_evidence,
                 )
             )
     except Exception as exc:
@@ -2005,7 +2273,7 @@ def test_geo_chunk(
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
-            code, region, exit_ip, colo = detect_geo(proxy, timeout=args.timeout)
+            code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
                     TestResult(
@@ -2018,6 +2286,7 @@ def test_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -2033,6 +2302,7 @@ def test_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                     )
                 )
                 continue
@@ -2049,6 +2319,7 @@ def test_geo_chunk(
                         exit_country_code=code,
                         exit_region=region,
                         cf_colo=colo,
+                        geo_evidence=geo_evidence,
                         service_score=service_score,
                         google_ok=google_ok,
                         youtube_ok=youtube_ok,
@@ -2067,6 +2338,7 @@ def test_geo_chunk(
                     exit_country_code=code,
                     exit_region=region,
                     cf_colo=colo,
+                    geo_evidence=geo_evidence,
                     service_score=service_score,
                     google_ok=google_ok,
                     youtube_ok=youtube_ok,
@@ -2234,17 +2506,38 @@ def parse_country_min(text: str) -> dict[str, int]:
     return result
 
 
+def parse_geo_providers(text: str) -> list[str]:
+    value = str(text or "daily").strip().lower()
+    if value == "all":
+        return list(DEFAULT_GEO_PROVIDERS_ALL)
+    if value == "daily":
+        return list(DEFAULT_GEO_PROVIDERS_DAILY)
+    providers: list[str] = []
+    for part in value.split(","):
+        provider = part.strip().lower().replace("-", "_")
+        if not provider:
+            continue
+        if provider not in GEO_PROVIDER_URLS:
+            valid = ",".join(sorted(GEO_PROVIDER_URLS))
+            raise ValueError(f"invalid geo provider: {provider}; valid: daily,all,{valid}")
+        providers.append(provider)
+    return providers or list(DEFAULT_GEO_PROVIDERS_DAILY)
+
+
 def profile_defaults(profile: str) -> dict[str, Any]:
     profiles: dict[str, dict[str, Any]] = {
         "fast": {
             "source_timeout": 8,
             "source_retries": 0,
             "source_concurrency": 12,
+            "latency_threshold": 800,
+            "geo_providers": "daily",
             "time_budget": 180,
             "time_safety_margin": 20,
             "latency_pool_limit": 120,
             "max_final_candidates": 180,
-            "country_max": 30,
+            "country_max": 0,
+            "final_preferred_latency_ms": 800,
             "geo_initial_limit": 200,
             "geo_refill_batch_size": 50,
             "geo_refill_min_batch_size": 20,
@@ -2264,18 +2557,21 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "source_timeout": 8,
             "source_retries": 0,
             "source_concurrency": 12,
-            "time_budget": 300,
-            "time_safety_margin": 75,
-            "latency_pool_limit": 250,
+            "latency_threshold": 800,
+            "geo_providers": "daily",
+            "time_budget": 0,
+            "time_safety_margin": 0,
+            "latency_pool_limit": 0,
             "max_final_candidates": 300,
             "country_max": 50,
-            "geo_initial_limit": 300,
+            "final_preferred_latency_ms": 800,
+            "geo_initial_limit": 0,
             "geo_refill_batch_size": 75,
             "geo_refill_min_batch_size": 20,
-            "geo_refill_max_tested": 525,
+            "geo_refill_max_tested": 0,
             "preferred_country_min": "JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
             "geo_concurrency": 8,
-            "speed_limit": 30,
+            "speed_limit": 0,
             "speed_bands": "100:30",
             "speed_concurrency": 4,
             "speed_timeout": 8,
@@ -2288,11 +2584,14 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "source_timeout": 20,
             "source_retries": 2,
             "source_concurrency": 6,
+            "latency_threshold": 1000,
+            "geo_providers": "daily",
             "time_budget": 0,
             "time_safety_margin": 0,
             "latency_pool_limit": 0,
             "max_final_candidates": 0,
             "country_max": 0,
+            "final_preferred_latency_ms": 800,
             "geo_initial_limit": 0,
             "geo_refill_batch_size": 100,
             "geo_refill_min_batch_size": 1,
@@ -2318,11 +2617,14 @@ def apply_profile_defaults(args: argparse.Namespace) -> None:
         "source_timeout",
         "source_retries",
         "source_concurrency",
+        "latency_threshold",
+        "geo_providers",
         "time_budget",
         "time_safety_margin",
         "latency_pool_limit",
         "max_final_candidates",
         "country_max",
+        "final_preferred_latency_ms",
         "geo_initial_limit",
         "geo_refill_batch_size",
         "geo_refill_min_batch_size",
@@ -2470,8 +2772,6 @@ def run_latency_first_tests(
             break
         if max_geo_tested > 0 and geo_tested >= max_geo_tested:
             break
-        if args.max_final_candidates > 0 and len(preferred_geo) >= args.max_final_candidates:
-            break
         batch_size = adaptive_refill_batch_size(args, geo_tested)
         if batch_size < args.geo_refill_min_batch_size:
             break
@@ -2542,8 +2842,6 @@ def run_latency_first_tests(
             break
         if max_geo_tested > 0 and geo_tested >= max_geo_tested:
             break
-        if args.max_final_candidates > 0 and len(preferred_geo) >= args.max_final_candidates:
-            break
         while counts.get(code, 0) < args.preferred_country_min[code] and cursor < len(eligible):
             if max_geo_tested > 0 and geo_tested >= max_geo_tested:
                 break
@@ -2570,18 +2868,11 @@ def run_latency_first_tests(
                 f"preferred_total={len(preferred_geo)}; remaining_budget={refill_budget_remaining(args):.1f}s",
                 flush=True,
             )
-            if args.max_final_candidates > 0 and len(preferred_geo) >= args.max_final_candidates:
-                break
-        if args.max_final_candidates > 0 and len(preferred_geo) >= args.max_final_candidates:
-            break
 
     if not country_refill_started:
         args.timings.setdefault("geo_country_refill_test", 0.0)
     preferred_geo_all = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
-    if args.max_final_candidates > 0:
-        preferred_geo = preferred_geo_all[: args.max_final_candidates]
-    else:
-        preferred_geo = preferred_geo_all
+    preferred_geo = preferred_geo_all
     skipped_latency_pool = eligible[cursor:]
     latency_failures.extend(
         TestResult(
@@ -2658,12 +2949,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-discover-sources", action="store_true", help="disable bestcf.pages.dev source discovery")
     parser.add_argument("--latency-url", default=DEFAULT_LATENCY_URL, help="URL used by Mihomo delay API")
     parser.add_argument("--latency-timeout", type=int, default=5000, help="Mihomo delay timeout in milliseconds")
-    parser.add_argument("--latency-threshold", type=int, default=1000, help="max delay in ms before geo pool")
+    parser.add_argument("--latency-threshold", type=int, default=None, help="max delay in ms before geo pool")
+    parser.add_argument("--geo-providers", default=None, help="geo providers: daily, all, or comma-separated names")
     parser.add_argument("--time-budget", type=float, default=None, help="target end-to-end runtime budget in seconds; 0 disables")
     parser.add_argument("--time-safety-margin", type=float, default=None, help="seconds reserved before time budget for speed/write cleanup")
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
     parser.add_argument("--max-final-candidates", type=int, default=None, help="maximum preferred candidates written to final output; 0 disables")
     parser.add_argument("--country-max", type=int, default=None, help="maximum final output candidates per exit country; 0 disables")
+    parser.add_argument("--final-preferred-latency-ms", type=int, default=None, help="scarce regions prefer nodes no slower than this latency")
     parser.add_argument("--geo-initial-limit", type=int, default=None, help="initial latency-ranked candidates selected for geo; 0 means all")
     parser.add_argument("--geo-refill-batch-size", type=int, default=None, help="candidate count per geo refill batch")
     parser.add_argument("--geo-refill-min-batch-size", type=int, default=None, help="stop refill when time budget allows fewer than this batch size")
@@ -2683,7 +2976,9 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=None,
         help="minimum preferred output by country, e.g. JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
     )
-    parser.add_argument("--allow-other-regions", action="store_true", help="do not filter non-preferred exit countries")
+    parser.add_argument("--allow-other-regions", dest="allow_other_regions", action="store_true", help="do not filter non-preferred exit countries")
+    parser.add_argument("--preferred-regions-only", dest="allow_other_regions", action="store_false", help="filter non-preferred exit countries")
+    parser.set_defaults(allow_other_regions=True)
     parser.add_argument("--allow-unknown-region", action="store_true", help="allow speed test when exit country is unknown")
     parser.add_argument("--no-service-check", dest="service_check", action="store_false", help="disable Google/YouTube/GPT reachability checks")
     parser.set_defaults(service_check=True)
@@ -2763,6 +3058,7 @@ def main(argv: list[str] | None = None) -> int:
     args.source_retries = max(0, args.source_retries)
     args.latency_concurrency = max(1, args.latency_concurrency)
     args.geo_concurrency = max(1, args.geo_concurrency)
+    args.geo_providers_resolved = parse_geo_providers(args.geo_providers)
     args.speed_concurrency = max(1, args.speed_concurrency)
     args.speed_bands_parsed = parse_speed_bands(args.speed_bands)
     args.min_service_score = max(0, min(3, args.min_service_score))
@@ -2771,6 +3067,7 @@ def main(argv: list[str] | None = None) -> int:
     args.latency_pool_limit = max(0, int(args.latency_pool_limit))
     args.max_final_candidates = max(0, int(args.max_final_candidates))
     args.country_max = max(0, int(args.country_max))
+    args.final_preferred_latency_ms = max(0, int(args.final_preferred_latency_ms))
     args.geo_initial_limit = max(0, int(args.geo_initial_limit))
     args.geo_refill_batch_size = max(1, int(args.geo_refill_batch_size))
     args.geo_refill_min_batch_size = max(1, int(args.geo_refill_min_batch_size))
@@ -2879,7 +3176,7 @@ def main(argv: list[str] | None = None) -> int:
     timer.mark("source_fetch_parse")
 
     if args.dry_run:
-        final = write_results(workdir, [], parse_failures, source_failures, args.preferred_country_order, args.country_max)
+        final = write_results(workdir, [], parse_failures, source_failures, args)
         if args.output:
             shutil.copyfile(final, args.output)
         print(f"Dry-run completed. Parsed CSV: {workdir / 'bestcf_parsed.csv'}", flush=True)
@@ -2912,7 +3209,7 @@ def main(argv: list[str] | None = None) -> int:
         allowed = {id(item) for item in ok[: args.top]}
         results = [item for item in results if not item.ok or id(item) in allowed]
     stage_started = time.monotonic()
-    final = write_results(workdir, results, parse_failures, source_failures, args.preferred_country_order, args.country_max)
+    final = write_results(workdir, results, parse_failures, source_failures, args)
     if args.output:
         shutil.copyfile(final, args.output)
         final = Path(args.output)
