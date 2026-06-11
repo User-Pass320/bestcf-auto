@@ -98,6 +98,7 @@ jobs:
           cp bestcf_work/bestcf_tested.csv public/bestcf_tested.csv || true
           cp bestcf_work/bestcf_failed.csv public/bestcf_failed.csv || true
           cp bestcf_work/bestcf_sources.csv public/bestcf_sources.csv || true
+          cp bestcf_work/bestcf_other_regions.csv public/bestcf_other_regions.csv || true
 
       - name: Commit generated files
         if: env.VALID_RESULT == 'true'

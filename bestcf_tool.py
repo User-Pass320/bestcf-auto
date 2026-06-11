@@ -1479,10 +1479,12 @@ def write_results(
     parse_failures: list[dict[str, str]],
     source_failures: list[dict[str, str]],
     preferred_order: list[str] | None = None,
+    country_max: int = 0,
 ) -> Path:
     tested_path = workdir / "bestcf_tested.csv"
     failed_path = workdir / "bestcf_failed.csv"
     final_path = workdir / "bestcf_final.txt"
+    other_regions_path = workdir / "bestcf_other_regions.csv"
 
     with tested_path.open("w", encoding="utf-8-sig", newline="") as handle:
         writer = csv.DictWriter(
@@ -1598,11 +1600,63 @@ def write_results(
     with final_path.open("w", encoding="utf-8", newline="\n") as handle:
         for result in ok_results:
             region = result.exit_region or "未知"
+            if country_max > 0 and counters.get(region, 0) >= country_max:
+                continue
             counters[region] = counters.get(region, 0) + 1
             line = f"{result.candidate.endpoint}#{region}-{counters[region]}"
             if result.measured_speed is not None:
                 line += f"|{result.measured_speed:.2f}MB/s"
             handle.write(line + "\n")
+
+    other_region_results = [
+        result for result in results
+        if result.status == "region_not_preferred" or (
+            result.ok
+            and result.exit_country_code
+            and result.exit_country_code.upper() not in set(preferred_order or PREFERRED_COUNTRY_ORDER)
+        )
+    ]
+    other_region_results.sort(
+        key=lambda result: (
+            result.exit_country_code or "",
+            result.latency_ms or 10**9,
+            result.candidate.endpoint,
+        )
+    )
+    with other_regions_path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "exit_country_code",
+                "exit_region_name",
+                "host",
+                "port",
+                "endpoint",
+                "source",
+                "latency_ms",
+                "cf_colo",
+                "status",
+                "error",
+                "raw_line",
+            ],
+        )
+        writer.writeheader()
+        for result in other_region_results:
+            writer.writerow(
+                {
+                    "exit_country_code": result.exit_country_code or "",
+                    "exit_region_name": result.exit_region,
+                    "host": result.candidate.host,
+                    "port": result.candidate.port,
+                    "endpoint": result.candidate.endpoint,
+                    "source": result.candidate.source,
+                    "latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
+                    "cf_colo": result.cf_colo or "",
+                    "status": result.status,
+                    "error": result.error,
+                    "raw_line": result.candidate.raw,
+                }
+            )
     return final_path
 
 
@@ -2169,6 +2223,7 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "time_safety_margin": 20,
             "latency_pool_limit": 120,
             "max_final_candidates": 180,
+            "country_max": 30,
             "geo_initial_limit": 200,
             "geo_refill_batch_size": 50,
             "geo_refill_min_batch_size": 20,
@@ -2192,6 +2247,7 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "time_safety_margin": 75,
             "latency_pool_limit": 250,
             "max_final_candidates": 300,
+            "country_max": 50,
             "geo_initial_limit": 300,
             "geo_refill_batch_size": 75,
             "geo_refill_min_batch_size": 20,
@@ -2215,6 +2271,7 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "time_safety_margin": 0,
             "latency_pool_limit": 0,
             "max_final_candidates": 0,
+            "country_max": 0,
             "geo_initial_limit": 0,
             "geo_refill_batch_size": 100,
             "geo_refill_min_batch_size": 1,
@@ -2244,6 +2301,7 @@ def apply_profile_defaults(args: argparse.Namespace) -> None:
         "time_safety_margin",
         "latency_pool_limit",
         "max_final_candidates",
+        "country_max",
         "geo_initial_limit",
         "geo_refill_batch_size",
         "geo_refill_min_batch_size",
@@ -2515,6 +2573,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--time-safety-margin", type=float, default=None, help="seconds reserved before time budget for speed/write cleanup")
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
     parser.add_argument("--max-final-candidates", type=int, default=None, help="maximum preferred candidates written to final output; 0 disables")
+    parser.add_argument("--country-max", type=int, default=None, help="maximum final output candidates per exit country; 0 disables")
     parser.add_argument("--geo-initial-limit", type=int, default=None, help="initial latency-ranked candidates selected for geo; 0 means all")
     parser.add_argument("--geo-refill-batch-size", type=int, default=None, help="candidate count per geo refill batch")
     parser.add_argument("--geo-refill-min-batch-size", type=int, default=None, help="stop refill when time budget allows fewer than this batch size")
@@ -2621,6 +2680,7 @@ def main(argv: list[str] | None = None) -> int:
     args.time_safety_margin = max(0.0, float(args.time_safety_margin))
     args.latency_pool_limit = max(0, int(args.latency_pool_limit))
     args.max_final_candidates = max(0, int(args.max_final_candidates))
+    args.country_max = max(0, int(args.country_max))
     args.geo_initial_limit = max(0, int(args.geo_initial_limit))
     args.geo_refill_batch_size = max(1, int(args.geo_refill_batch_size))
     args.geo_refill_min_batch_size = max(1, int(args.geo_refill_min_batch_size))
@@ -2729,7 +2789,7 @@ def main(argv: list[str] | None = None) -> int:
     timer.mark("source_fetch_parse")
 
     if args.dry_run:
-        final = write_results(workdir, [], parse_failures, source_failures, args.preferred_country_order)
+        final = write_results(workdir, [], parse_failures, source_failures, args.preferred_country_order, args.country_max)
         if args.output:
             shutil.copyfile(final, args.output)
         print(f"Dry-run completed. Parsed CSV: {workdir / 'bestcf_parsed.csv'}", flush=True)
@@ -2762,7 +2822,7 @@ def main(argv: list[str] | None = None) -> int:
         allowed = {id(item) for item in ok[: args.top]}
         results = [item for item in results if not item.ok or id(item) in allowed]
     stage_started = time.monotonic()
-    final = write_results(workdir, results, parse_failures, source_failures, args.preferred_country_order)
+    final = write_results(workdir, results, parse_failures, source_failures, args.preferred_country_order, args.country_max)
     if args.output:
         shutil.copyfile(final, args.output)
         final = Path(args.output)
