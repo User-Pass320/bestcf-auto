@@ -224,3 +224,44 @@ https://test1-45b.pages.dev/sub?token=你的token
 ```
 
 不要直接把 `bestcf_final.txt` 当 Clash 订阅。
+
+## 9. 本机定时更新
+
+GitHub Actions 会定时尝试更新，但云端网络不一定能测出适合你本地使用的 Cloudflare 优选结果。稳定方案是用本机 Windows 定时任务运行脚本，并把新结果推送到 GitHub；Cloudflare Pages 会跟随 GitHub 仓库自动重新部署。
+
+先手动跑一次：
+
+```powershell
+cd C:\Users\sundewang\bestcf-auto
+.\scripts\update-local-and-push.ps1
+```
+
+注册每 6 小时运行一次的 Windows 定时任务：
+
+```powershell
+cd C:\Users\sundewang\bestcf-auto
+.\scripts\register-windows-task.ps1
+```
+
+立即触发一次定时任务：
+
+```powershell
+cd C:\Users\sundewang\bestcf-auto
+.\scripts\run-windows-task-now.ps1
+```
+
+查看任务状态：
+
+```powershell
+Get-ScheduledTask -TaskName "BestCF Auto Update"
+Get-ScheduledTaskInfo -TaskName "BestCF Auto Update"
+```
+
+该任务要求：
+
+```text
+本机已登录 Windows
+本机 GitHub 凭据可 push 到 User-Pass320/bestcf-auto
+E:\v2rayN-windows-64\bin\mihomo\mihomo.exe 存在
+template.yaml 存在
+```
