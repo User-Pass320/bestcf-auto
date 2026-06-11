@@ -37,11 +37,20 @@ import yaml
 DEFAULT_SOURCES = {
     "uouin": "https://bestcf.pages.dev/uouin/all.txt",
     "wetest": "https://bestcf.pages.dev/wetest/ipv4.txt",
+    "cfyes_ipv4": "https://bestcf.pages.dev/cfyes/ipv4.txt",
+    "cfyes_ipv6": "https://bestcf.pages.dev/cfyes/ipv6.txt",
     "moistr": "https://bestcf.pages.dev/moistr/all.txt",
     "xinyitang3": "https://bestcf.pages.dev/xinyitang3/ipv4.txt",
     "luoli": "https://bestcf.pages.dev/luoli/all.txt",
     "gslege": "https://bestcf.pages.dev/gslege/Cfxyz.txt",
     "gslege_jp": "https://bestcf.pages.dev/gslege/JP.txt",
+    "gslege_us": "https://bestcf.pages.dev/gslege/US.txt",
+    "gslege_sg": "https://bestcf.pages.dev/gslege/SG.txt",
+    "domain_all": "https://bestcf.pages.dev/domain/all.txt",
+    "domain_mini": "https://bestcf.pages.dev/domain/mini.txt",
+    "domain_asia": "https://bestcf.pages.dev/domain/Domain-Asia.txt",
+    "domain_ai_vps789": "https://bestcf.pages.dev/domain/Domain-AI-VPS789.txt",
+    "vps789_top100": "https://bestcf.pages.dev/vps789/top100.txt",
     "tiancheng2": "https://bestcf.pages.dev/tiancheng2/all.txt",
     "junzhen_bj": "https://cf.junzhen.qzz.io/best_ips_bj.txt",
     "love_ztm_best_ips": "https://raw.githubusercontent.com/love-ztm/cfip/refs/heads/main/best_ips.txt",
@@ -86,13 +95,15 @@ SOURCE_SKIP_MARKERS = (
     "/CIDR/",
     "/WARP/",
     "/subconfig/",
-    "/domain/",
     "/random-region/",
+    "Domain-Checked.txt",
+    "Domain-TOP.txt",
     "client-ver.txt",
     "workers-date-card.txt",
 )
 BESTCF_SOURCE_PATH_ALLOW = (
     "/cfyes/",
+    "/domain/",
     "/entryip/",
     "/gslege/",
     "/ircf/",
@@ -133,6 +144,7 @@ COUNTRY_NAMES = {
     "ID": "印度尼西亚",
     "PH": "菲律宾",
     "IN": "印度",
+    "RS": "塞尔维亚",
 }
 
 REGION_ALIASES = {
@@ -817,7 +829,16 @@ def powershell_text(url: str, timeout: int = 20) -> tuple[bool, str]:
 def fetch_url(url: str, timeout: int = 20) -> tuple[bool, str]:
     context = ssl.create_default_context()
     try:
-        request = urllib.request.Request(url, headers={"User-Agent": "bestcf-tool/1.0"})
+        request = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/125.0 Safari/537.36"
+                )
+            },
+        )
         with urllib.request.urlopen(request, timeout=timeout, context=context) as response:
             content = response.read().decode("utf-8", errors="replace")
             if content.strip():
