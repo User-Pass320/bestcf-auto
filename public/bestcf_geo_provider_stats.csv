@@ -1,0 +1,4 @@
+﻿provider,total_geo_results,covered_count,coverage_rate,agree_count,agree_rate,disagree_count,unknown_count,gb_count,provider_country_top,selected_country_top
+ipwhois,827,523,0.632406,512,0.978967,11,304,0,HK:286|SG:185|JP:47|KR:5,HK:569|SG:203|JP:48|KR:5|TW:2
+ping0,827,826,0.998791,648,0.784504,178,1,0,HK:745|JP:47|SG:26|KR:5|TW:2|ID:1,HK:569|SG:203|JP:48|KR:5|TW:2
+cloudflare,827,189,0.228537,189,1.000000,0,638,0,SG:188|JP:1,HK:569|SG:203|JP:48|KR:5|TW:2
