@@ -1,0 +1,14 @@
+proxies:
+  - name: template
+    type: vless
+    server: example.pages.dev
+    port: 443
+    uuid: 00000000-0000-0000-0000-000000000000
+    network: ws
+    tls: true
+    udp: true
+    servername: example.pages.dev
+    ws-opts:
+      path: /
+      headers:
+        Host: example.pages.dev

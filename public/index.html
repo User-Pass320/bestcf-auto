@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BestCF Auto</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d8dee8;
+      --accent: #f28c28;
+      --accent-2: #0ea5b7;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Segoe UI", "Noto Sans SC", sans-serif;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(242, 140, 40, .16), transparent 32%),
+        radial-gradient(circle at 82% 12%, rgba(14, 165, 183, .14), transparent 30%),
+        linear-gradient(135deg, #fbfcff 0%, var(--bg) 100%);
+    }
+    main {
+      width: min(920px, calc(100% - 32px));
+      margin: 56px auto;
+    }
+    .card {
+      padding: 36px;
+      border: 1px solid rgba(216, 222, 232, .9);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .86);
+      box-shadow: 0 24px 70px rgba(23, 32, 51, .10);
+      backdrop-filter: blur(12px);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: .95;
+      letter-spacing: -.04em;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+    a {
+      display: block;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      color: var(--ink);
+      text-decoration: none;
+      background: var(--card);
+      transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+    }
+    a:hover {
+      transform: translateY(-2px);
+      border-color: rgba(242, 140, 40, .55);
+      box-shadow: 0 12px 28px rgba(242, 140, 40, .14);
+    }
+    code {
+      display: inline-block;
+      max-width: 100%;
+      margin-top: 20px;
+      padding: 10px 12px;
+      overflow-wrap: anywhere;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #1f2937;
+      background: #f8fafc;
+      font-family: "Cascadia Mono", Consolas, monospace;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="card">
+      <h1>BestCF Auto</h1>
+      <p>自动更新的 edgetunnel 优选源。将 <code>bestcf_final.txt</code> 的公网地址填入 edgetunnel 后台的“自定义优选地址”，Clash 使用 edgetunnel 生成的订阅链接。</p>
+      <div class="links">
+        <a href="./bestcf_final.txt">bestcf_final.txt</a>
+        <a href="./bestcf_tested.csv">bestcf_tested.csv</a>
+        <a href="./bestcf_failed.csv">bestcf_failed.csv</a>
+        <a href="./bestcf_sources.csv">bestcf_sources.csv</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

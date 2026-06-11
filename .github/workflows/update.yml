@@ -1,0 +1,92 @@
+name: Update BestCF
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bestcf-update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Restore private template
+        env:
+          TEMPLATE_YAML_B64: ${{ secrets.TEMPLATE_YAML_B64 }}
+        run: |
+          if [ -z "$TEMPLATE_YAML_B64" ]; then
+            echo "Missing GitHub secret: TEMPLATE_YAML_B64"
+            exit 1
+          fi
+          printf '%s' "$TEMPLATE_YAML_B64" | base64 -d > template.yaml
+          test -s template.yaml
+
+      - name: Download mihomo
+        run: |
+          mkdir -p bin
+          python - <<'PY' > mihomo_url.txt
+          import json
+          import re
+          import urllib.request
+
+          api = "https://api.github.com/repos/MetaCubeX/mihomo/releases/latest"
+          with urllib.request.urlopen(api, timeout=30) as response:
+              release = json.load(response)
+          urls = [asset["browser_download_url"] for asset in release.get("assets", [])]
+          matches = [
+              url for url in urls
+              if re.search(r"/mihomo-linux-amd64-v[0-9][^/]*\.gz$", url)
+          ]
+          if not matches:
+              raise SystemExit("No linux amd64 mihomo asset found in latest release")
+          print(matches[0])
+          PY
+          curl -fsSL "$(cat mihomo_url.txt)" -o bin/mihomo.gz
+          gzip -d bin/mihomo.gz
+          chmod +x bin/mihomo
+          ./bin/mihomo -v
+
+      - name: Run BestCF
+        run: |
+          mkdir -p public
+          python bestcf_tool.py \
+            --profile balanced \
+            --workdir ./bestcf_work \
+            --template ./template.yaml \
+            --mihomo ./bin/mihomo \
+            --output ./public/bestcf_final.txt
+
+      - name: Copy reports
+        run: |
+          cp bestcf_work/bestcf_tested.csv public/bestcf_tested.csv || true
+          cp bestcf_work/bestcf_failed.csv public/bestcf_failed.csv || true
+          cp bestcf_work/bestcf_sources.csv public/bestcf_sources.csv || true
+
+      - name: Commit generated files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/
+          git commit -m "Update BestCF results" || echo "No changes"
+          git push
