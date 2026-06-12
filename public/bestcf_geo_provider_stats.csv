@@ -1,4 +1,4 @@
 ﻿provider,total_geo_results,covered_count,coverage_rate,agree_count,agree_rate,disagree_count,unknown_count,gb_count,provider_country_top,selected_country_top
-ipwhois,756,613,0.810847,604,0.985318,9,143,0,HK:338|SG:226|JP:44|KR:5,HK:463|SG:240|JP:44|KR:7|TW:2
-ping0,756,751,0.993386,535,0.712383,216,5,0,HK:677|JP:43|SG:23|KR:6|TW:2,HK:463|SG:240|JP:44|KR:7|TW:2
-cloudflare,756,226,0.298942,226,1.000000,0,530,0,SG:225|KR:1,HK:463|SG:240|JP:44|KR:7|TW:2
+ipwhois,709,581,0.819464,571,0.982788,10,128,0,HK:332|SG:208|JP:40|KR:1,HK:442|SG:223|JP:40|KR:2|TW:2
+ping0,709,704,0.992948,508,0.721591,196,5,0,HK:636|JP:39|SG:25|KR:2|TW:2,HK:442|SG:223|JP:40|KR:2|TW:2
+cloudflare,709,206,0.290550,206,1.000000,0,503,0,SG:206,HK:442|SG:223|JP:40|KR:2|TW:2
