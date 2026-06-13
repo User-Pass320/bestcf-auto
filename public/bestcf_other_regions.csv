@@ -1,4 +1,6 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-CN,CN,206.237.9.241,443,206.237.9.241:443,junzhen_bj,340,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,206.237.9.241:443#HK [高速 by Jz 23M]
-CN,CN,104.17.146.129,443,104.17.146.129:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,472,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,104.17.146.129:443#US-725667
-CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,559,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
+CN,CN,2606:4700:4406::8aa2:882,443,[2606:4700:4406::8aa2:882]:443,bestcf_pages_dev_vvhan_ipv6_txt,468,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2606:4700:4406::8aa2:882]:443#vvHan优选 | 电信 | SIN | 2606:4700:4406::8aa2:882
+CN,CN,172.64.144.177,443,172.64.144.177:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,172.64.144.177:443#US-c7cb52
+CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,551,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
+CN,CN,cfip-avg.stoeaves.us.ci,443,cfip-avg.stoeaves.us.ci:443,vps789_top100,587,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,cfip-avg.stoeaves.us.ci:443#VPS789优选 | cfip-avg.stoeaves.us.ci
+CN,CN,104.17.146.129,443,104.17.146.129:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,756,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,104.17.146.129:443#US-84f866
