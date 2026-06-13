@@ -1,1 +1,12 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
+CN,CN,104.17.146.129,443,104.17.146.129:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,463,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,104.17.146.129
+CN,CN,2a06:98c1:3100::6597:e5b3,443,[2a06:98c1:3100::6597:e5b3]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,465,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2a06:98c1:3100::6597:e5b3]:443#WeTestV6-c10124
+CN,CN,104.16.249.184,443,104.16.249.184:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,471,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,104.16.249.184
+CN,CN,162.159.21.101,443,162.159.21.101:443,wetest,473,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,162.159.21.101:443#微测优选 | 电信 | SIN | 162.159.21.101
+CN,CN,2606:4700:9766::7d46:1287,443,[2606:4700:9766::7d46:1287]:443,bestcf_pages_dev_vvhan_ipv6_txt,475,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2606:4700:9766::7d46:1287]:443#vvHan优选 | 移动 | HKG | 2606:4700:9766::7d46:1287
+CN,CN,104.26.2.187,443,104.26.2.187:443,uouin,487,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,104.26.2.187:443#麒麟优选 | 联通 | 104.26.2.187 | 121.07ms | 0.48mb/s
+CN,CN,2a06:98c1:310d::7a77:3e80,443,[2a06:98c1:310d::7a77:3e80]:443,bestcf_pages_dev_vvhan_ipv6_txt,492,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2a06:98c1:310d::7a77:3e80]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:310d::7a77:3e80
+CN,CN,206.237.9.241,443,206.237.9.241:443,junzhen_bj,494,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,206.237.9.241:443#HK [高速 by Jz 21M]
+CN,CN,162.159.6.8,443,162.159.6.8:443,uouin,534,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,162.159.6.8:443#麒麟优选 | 多线 | 162.159.6.8 | 67.87ms | 15.69mb/s
+CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,563,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
+CN,CN,baka.fun,443,baka.fun:443,domain_ai_vps789,777,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,baka.fun:443#AI优选 | baka.fun

@@ -1,471 +1,473 @@
 ﻿source,host,port,status,error,raw_line
+love_ztm_best_ips,,,source_fetch_failed,"urllib: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)> | powershell: empty response | direct: curl: (28) Operation timed out after 8014 milliseconds with 0 bytes received | http://127.0.0.1:7897: curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed | http://127.0.0.1:7899: curl: (7) Failed to connect to raw.githubusercontent.com port 443 via 127.0.0.1 after 2042 ms: Could not connect to server | socks5://127.0.0.1:7898: curl: (7) Failed to connect to raw.githubusercontent.com port 443 via 127.0.0.1 after 2033 ms: Could not connect to server",https://raw.githubusercontent.com/love-ztm/cfip/refs/heads/main/best_ips.txt
+gshtwy_wetest_v4,,,source_fetch_failed,"urllib: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)> | powershell: empty response | direct: curl: (28) Operation timed out after 8014 milliseconds with 0 bytes received | http://127.0.0.1:7897: curl: (35) schannel: failed to receive handshake, SSL/TLS connection failed | http://127.0.0.1:7899: curl: (7) Failed to connect to raw.githubusercontent.com port 443 via 127.0.0.1 after 2042 ms: Could not connect to server | socks5://127.0.0.1:7898: curl: (7) Failed to connect to raw.githubusercontent.com port 443 via 127.0.0.1 after 2040 ms: Could not connect to server",https://raw.githubusercontent.com/gshtwy/CF-DNS-Clone/refs/heads/main/wetest-cloudflare-v4.txt
 domain_senflare_all,,,parse_failed,,ctcc.cloudflare.seeck.cn#Senflare优选 | 电信 | ctcc.cloudflare.seeck.cn
 domain_senflare_all,,,parse_failed,,cmcc.cloudflare.seeck.cn#Senflare优选 | 移动 | cmcc.cloudflare.seeck.cn
 domain_senflare_all,,,parse_failed,,cucc.cloudflare.seeck.cn#Senflare优选 | 联通 | cucc.cloudflare.seeck.cn
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,,,parse_failed,,ipv4.list.updated.at#Upd20260613_05:46
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,,,parse_failed,,ipv6.list.updated.at#Upd20260613_05:46
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,,,parse_failed,,ipv4.list.updated.at#Upd20260613_11:56
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,,,parse_failed,,ipv6.list.updated.at#Upd20260613_11:56
 domain_ai_vps789,01-cctv.com,443,latency_failed,HTTP Error 503: Service Unavailable,01-cctv.com:443#AI优选 | 01-cctv.com
 domain_ai_vps789,101yaoye.com,443,latency_failed,HTTP Error 503: Service Unavailable,101yaoye.com:443#AI优选 | 101yaoye.com
 domain_ai_vps789,01-qq.com,443,latency_failed,HTTP Error 503: Service Unavailable,01-qq.com:443#AI优选 | 01-qq.com
-uouin,162.159.11.31,443,latency_too_high,1274ms > 800ms,162.159.11.31:443#麒麟优选 | 电信 | 162.159.11.31 | 46.30ms | 67.02mb/s
-uouin,162.159.36.178,443,latency_too_high,1277ms > 800ms,162.159.36.178:443#麒麟优选 | 多线 | 162.159.36.178 | 66.55ms | 22.13mb/s
-domain_ai_vps789,1.cf.3666888.xyz,443,latency_too_high,834ms > 800ms,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
-domain_ai_vps789,10.cf.3666888.xyz,443,latency_too_high,982ms > 800ms,10.cf.3666888.xyz:443#AI优选 | 10.cf.3666888.xyz
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,103.136.146.98,443,latency_too_high,1040ms > 800ms,103.136.146.98:443#AU [优选高速 341.33ms 8.39Mbps]
-uouin,172.64.152.18,443,latency_too_high,1287ms > 800ms,172.64.152.18:443#麒麟优选 | 移动 | 172.64.152.18 | 49.81ms | 13.60mb/s
-uouin,172.64.52.233,443,latency_too_high,1240ms > 800ms,172.64.52.233:443#麒麟优选 | 多线 | 172.64.52.233 | 67.07ms | 0.21mb/s
-moistr,103.251.89.251,443,latency_too_high,1372ms > 800ms,103.251.89.251:443#MoistR优选 | 中国香港 HK | 103.251.89.251:443
-gslege_us,103.31.4.1,443,latency_too_high,1419ms > 800ms,103.31.4.1:443#Gslege优选 | us 【美国】 US | 103.31.4.1
-gslege_us,103.31.4.3,443,latency_too_high,1430ms > 800ms,103.31.4.3:443#Gslege优选 | us 【美国】 US | 103.31.4.3
-gslege_us,103.31.4.6,443,latency_too_high,1376ms > 800ms,103.31.4.6:443#Gslege优选 | us 【美国】 US | 103.31.4.6
-gslege_us,103.31.4.7,443,latency_too_high,1373ms > 800ms,103.31.4.7:443#Gslege优选 | us 【美国】 US | 103.31.4.7
-gslege_us,103.31.4.9,443,latency_too_high,1399ms > 800ms,103.31.4.9:443#Gslege优选 | us 【美国】 US | 103.31.4.9
-gslege_us,103.31.4.5,443,latency_too_high,1428ms > 800ms,103.31.4.5:443#Gslege优选 | us 【美国】 US | 103.31.4.5
-gslege_us,103.31.4.4,443,latency_too_high,1434ms > 800ms,103.31.4.4:443#Gslege优选 | us 【美国】 US | 103.31.4.4
-vps789_top100,0.5.0.0.7.0.f.1.0.7.4.0.1.0.0.2.xzhi.eu.org,443,latency_too_high,1749ms > 800ms,0.5.0.0.7.0.f.1.0.7.4.0.1.0.0.2.xzhi.eu.org:443#VPS789优选 | 0.5.0.0.7.0.f.1.0.7.4.0.1.0.0.2.xzhi.eu.org
-gslege_us,104.17.0.1,443,latency_too_high,1260ms > 800ms,104.17.0.1:443#Gslege优选 | us 【美国】 US | 104.17.0.1
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.105.76,443,latency_too_high,1243ms > 800ms,104.17.105.76
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.113.106,443,latency_too_high,1226ms > 800ms,104.17.113.106
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.17.143.76,443,latency_too_high,1231ms > 800ms,104.17.143.76:443#US-dd1286
-gshtwy_wetest_v4,104.17.145.129,2053,latency_too_high,1247ms > 800ms,104.17.145.129:2053#移动-HKG-2053-WS-TLS
-gshtwy_wetest_v4,104.17.147.50,8443,latency_too_high,1238ms > 800ms,104.17.147.50:8443#移动-HKG-8443-WS-TLS
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.17.150.154,443,latency_too_high,1238ms > 800ms,104.17.150.154:443#US-eeb3d5
-gshtwy_wetest_v4,104.17.154.13,8443,latency_too_high,1240ms > 800ms,104.17.154.13:8443#移动-HKG-8443-WS-TLS
-bestcf_pages_dev_vvhan_ipv4_txt,104.17.156.53,443,latency_too_high,1229ms > 800ms,104.17.156.53:443#vvHan优选 | 联通 | SJC | 104.17.156.53
-gshtwy_wetest_v4,104.17.157.245,2087,latency_too_high,1232ms > 800ms,104.17.157.245:2087#移动-HKG-2087-WS-TLS
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.17.197.205,443,latency_too_high,1246ms > 800ms,104.17.197.205:443#US-ad3c81
-bestcf_pages_dev_nirevil_ipv4_txt,104.17.212.47,443,latency_too_high,1228ms > 800ms,104.17.212.47:443#NiREvil优选 | 电信 | 104.17.212.47 | Default | 134ms | 210mbps
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.17.219.27,443,latency_too_high,1225ms > 800ms,104.17.219.27:443#US-035f30
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.17.26.137,443,latency_too_high,1259ms > 800ms,104.17.26.137
-gshtwy_wetest_v4,104.17.59.9,2053,latency_too_high,1225ms > 800ms,104.17.59.9:2053#移动-HKG-2053-WS-TLS
-bestcf_pages_dev_ircf_ipv4_txt,104.18.31.164,443,latency_too_high,1230ms > 800ms,104.18.31.164:443#IRCF优选 | 104.18.31.164
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.46.111,443,latency_too_high,1233ms > 800ms,104.18.46.111
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.47.221,443,latency_too_high,1213ms > 800ms,104.18.47.221
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.18.81.19,443,latency_too_high,1226ms > 800ms,104.18.81.19:443#US-0d17f1
-gshtwy_wetest_v4,104.18.89.192,2096,latency_too_high,1212ms > 800ms,104.18.89.192:2096#联通-LAX-2096-WS-TLS
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.18.90.209,443,latency_too_high,1235ms > 800ms,104.18.90.209
-bestcf_pages_dev_gslege_NL_txt,104.20.0.4,443,latency_too_high,1219ms > 800ms,104.20.0.4:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.4
+uouin,104.18.43.188,443,latency_too_high,1290ms > 800ms,104.18.43.188:443#麒麟优选 | 多线 | 104.18.43.188 | 68.88ms | 5.32mb/s
+uouin,108.162.198.220,443,latency_too_high,1294ms > 800ms,108.162.198.220:443#麒麟优选 | 多线 | 108.162.198.220 | 55.66ms | 15.52mb/s
+uouin,104.18.32.31,443,latency_too_high,1308ms > 800ms,104.18.32.31:443#麒麟优选 | 电信 | 104.18.32.31 | 46.39ms | 2.61mb/s
+uouin,162.159.25.194,443,latency_too_high,1236ms > 800ms,162.159.25.194:443#麒麟优选 | 电信 | 162.159.25.194 | 46.25ms | 0.58mb/s
+gslege_us,103.31.4.3,443,latency_too_high,1420ms > 800ms,103.31.4.3:443#Gslege优选 | us 【美国】 US | 103.31.4.3
+gslege_us,103.31.4.1,443,latency_too_high,1436ms > 800ms,103.31.4.1:443#Gslege优选 | us 【美国】 US | 103.31.4.1
+gslege_us,103.31.4.4,443,latency_too_high,1417ms > 800ms,103.31.4.4:443#Gslege优选 | us 【美国】 US | 103.31.4.4
+domain_ai_vps789,1.cf.3666888.xyz,443,latency_too_high,1580ms > 800ms,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
+gslege_us,103.31.4.5,443,latency_too_high,1383ms > 800ms,103.31.4.5:443#Gslege优选 | us 【美国】 US | 103.31.4.5
+gslege_us,103.31.4.6,443,latency_too_high,1383ms > 800ms,103.31.4.6:443#Gslege优选 | us 【美国】 US | 103.31.4.6
+gslege_us,103.31.4.9,443,latency_too_high,1398ms > 800ms,103.31.4.9:443#Gslege优选 | us 【美国】 US | 103.31.4.9
+gslege_us,103.31.4.7,443,latency_too_high,1414ms > 800ms,103.31.4.7:443#Gslege优选 | us 【美国】 US | 103.31.4.7
+gslege_us,104.17.0.1,443,latency_too_high,1248ms > 800ms,104.17.0.1:443#Gslege优选 | us 【美国】 US | 104.17.0.1
+wetest,104.17.145.95,443,latency_too_high,1232ms > 800ms,104.17.145.95:443#微测优选 | 联通 | SJC | 104.17.145.95
+raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.17.158.50,443,latency_too_high,1244ms > 800ms,104.17.158.50
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.18.84.126,443,latency_too_high,1235ms > 800ms,104.18.84.126:443#US-0841c0
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.18.92.254,443,latency_too_high,1261ms > 800ms,104.18.92.254
+bestcf_pages_dev_gslege_DE_txt,104.21.0.4,443,latency_too_high,801ms > 800ms,104.21.0.4:443#Gslege优选 | de 【德国】 DE | 104.21.0.4
+gslege_us,104.19.0.2,443,latency_too_high,1252ms > 800ms,104.19.0.2:443#Gslege优选 | us 【美国】 US | 104.19.0.2
+cfyes_ipv4,104.19.112.117,443,latency_too_high,1229ms > 800ms,104.19.112.117:443#CFYes优选 | 电信 | 104.19.112.117
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.19.212.207,443,latency_too_high,1240ms > 800ms,104.19.212.207:443#US-c68615
+bestcf_pages_dev_gslege_NL_txt,104.20.0.2,443,latency_too_high,1231ms > 800ms,104.20.0.2:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.2
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,103.136.146.98,443,latency_too_high,4024ms > 800ms,103.136.146.98:443#AU [优选高速 341.33ms 8.39Mbps]
+bestcf_pages_dev_gslege_NL_txt,104.20.0.7,443,latency_too_high,1234ms > 800ms,104.20.0.7:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.7
+bestcf_pages_dev_entryip_50_txt,104.24.0.1,443,latency_too_high,1240ms > 800ms,104.24.0.1:443#▼ Cloudflare Anycast Entry IP TOP50 | 2026.4
+bestcf_pages_dev_gslege_DE_txt,104.26.0.5,443,latency_too_high,1230ms > 800ms,104.26.0.5:443#Gslege优选 | de 【德国】 DE | 104.26.0.5
+bestcf_pages_dev_gslege_DE_txt,104.26.0.8,443,latency_too_high,1240ms > 800ms,104.26.0.8:443#Gslege优选 | de 【德国】 DE | 104.26.0.8
+luoli,103.201.131.83,443,latency_failed,HTTP Error 504: Gateway Timeout,103.201.131.83:443#洛璃优选 | 小日子 JP | 103.201.131.83:443
 bestcf_pages_dev_entryip_50_txt,103.22.200.1,443,latency_failed,HTTP Error 504: Gateway Timeout,103.22.200.1:443#103.22.200.1 | 东南亚号段，跨太平洋拥堵时的补充
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.31.16.158,443,latency_too_high,1335ms > 800ms,104.31.16.158:443#US-10f239
+gslege_sg,108.162.192.7,443,latency_too_high,1247ms > 800ms,108.162.192.7:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.7
 raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,103.39.78.118,8443,latency_failed,HTTP Error 504: Gateway Timeout,103.39.78.118:8443#HK [优选高速 326.62ms 15.61Mbps]
-bestcf_pages_dev_gslege_DE_txt,104.24.0.8,443,latency_too_high,1227ms > 800ms,104.24.0.8:443#Gslege优选 | de 【德国】 DE | 104.24.0.8
-bestcf_pages_dev_gslege_DE_txt,104.25.0.4,443,latency_too_high,1230ms > 800ms,104.25.0.4:443#Gslege优选 | de 【德国】 DE | 104.25.0.4
-bestcf_pages_dev_entryip_50_txt,104.26.0.1,443,latency_too_high,1217ms > 800ms,104.26.0.1:443#104.26.0.1 | 商业中转端，IP信誉极高，阻断率低
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.26.14.116,443,latency_too_high,1225ms > 800ms,104.26.14.116:443#US-390712
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.31.16.158,443,latency_too_high,895ms > 800ms,104.31.16.158:443#US-1aa253
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.26.3.162,443,latency_too_high,1229ms > 800ms,104.26.3.162:443#US-bd9fb5
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.26.5.134,443,latency_too_high,1237ms > 800ms,104.26.5.134:443#US-d904f10
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.26.8.117,443,latency_too_high,1237ms > 800ms,104.26.8.117:443#US-0e76c1
-bestcf_pages_dev_tiancheng_mini_txt,119.206.17.38,12510,latency_failed,HTTP Error 503: Service Unavailable,119.206.17.38:12510#天诚优选1 | 泡菜欧巴 | KR | 119.206.17.38:12510
-moistr,122.248.208.225,443,latency_failed,HTTP Error 503: Service Unavailable,122.248.208.225:443#MoistR优选 | 新加坡 SG | 122.248.208.225:443
-gslege_sg,108.162.192.9,443,latency_too_high,1217ms > 800ms,108.162.192.9:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.9
-bestcf_pages_dev_entryip_50_txt,108.162.193.1,443,latency_too_high,1241ms > 800ms,108.162.193.1:443#108.162.193.1 | 高权重中转，流量杂乱，隐蔽性极佳
-gslege_jp,108.162.198.12,443,latency_too_high,1230ms > 800ms,108.162.198.12:443#Gslege优选 | jp 【日本】 JP | 108.162.198.12
-gslege_jp,108.162.198.1,443,latency_too_high,1240ms > 800ms,108.162.198.1:443#Gslege优选 | jp 【日本】 JP | 108.162.198.1
-moistr,129.153.213.12,443,latency_failed,HTTP Error 503: Service Unavailable,129.153.213.12:443#MoistR优选 | 美国 US | 129.153.213.12:443
-domain_ai_vps789,11.cf.3666888.xyz,443,latency_too_high,932ms > 800ms,11.cf.3666888.xyz:443#AI优选 | 11.cf.3666888.xyz
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,125.7.24.251,443,latency_too_high,988ms > 800ms,125.7.24.251:443#AU [优选高速 540.5ms 8.41Mbps]
-tiancheng2,126.220.82.161,443,latency_too_high,976ms > 800ms,126.220.82.161:443#天诚优选2 | 小日本子 | JP | 126.220.82.161:443
+gslege_sg,108.162.192.9,443,latency_too_high,1234ms > 800ms,108.162.192.9:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.9
+bestcf_pages_dev_entryip_50_txt,108.162.194.1,443,latency_too_high,1244ms > 800ms,108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
+bestcf_pages_dev_tiancheng_all_txt,119.206.17.38,12510,latency_failed,HTTP Error 503: Service Unavailable,119.206.17.38:12510#天诚优选1 | 泡菜欧巴 | KR | 119.206.17.38:12510
+domain_ai_vps789,11.cf.3666888.xyz,443,latency_too_high,894ms > 800ms,11.cf.3666888.xyz:443#AI优选 | 11.cf.3666888.xyz
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,108.162.198.201,443,latency_too_high,1242ms > 800ms,108.162.198.201:443#US-68e1f7
 bestcf_pages_dev_tiancheng_all_txt,104.223.22.77,2053,latency_failed,HTTP Error 503: Service Unavailable,104.223.22.77:2053#天诚优选1 | 大漂亮国 | US | 104.223.22.77:2053
-tiancheng2,129.150.48.17,443,latency_too_high,1274ms > 800ms,129.150.48.17:443#天诚优选2 | 坡县狮城 | SG | 129.150.48.17:443
-bestcf_pages_dev_tiancheng_mini_txt,140.238.50.134,443,latency_too_high,842ms > 800ms,140.238.50.134:443#天诚优选1 | 小日本子 | JP | 140.238.50.134:443
+tiancheng2,126.220.82.161,443,latency_too_high,1017ms > 800ms,126.220.82.161:443#天诚优选2 | 小日本子 | JP | 126.220.82.161:443
+moistr,129.153.213.12,443,latency_failed,HTTP Error 503: Service Unavailable,129.153.213.12:443#MoistR优选 | 美国 US | 129.153.213.12:443
 moistr,140.245.59.245,443,latency_failed,HTTP Error 503: Service Unavailable,140.245.59.245:443#MoistR优选 | 新加坡 SG | 140.245.59.245:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,119.28.162.39,8443,latency_too_high,1554ms > 800ms,119.28.162.39:8443#KR [优选高速 359.18ms 20.87Mbps]
-tiancheng2,143.42.66.91,443,latency_failed,HTTP Error 503: Service Unavailable,143.42.66.91:443#天诚优选2 | 坡县狮城 | SG | 143.42.66.91:443
-bestcf_pages_dev_tiancheng_all_txt,114.32.9.249,51443,latency_failed,HTTP Error 503: Service Unavailable,114.32.9.249:51443#天诚优选1 | 宝岛正妹 | TW | 114.32.9.249:51443
-tiancheng2,139.162.62.195,443,latency_too_high,1778ms > 800ms,139.162.62.195:443#天诚优选2 | 坡县狮城 | SG | 139.162.62.195:443
-xinyitang3,139.180.159.58,443,latency_too_high,1834ms > 800ms,139.180.159.58:443#Mia优选 | 新加坡 SG | 139.180.159.58:443
-tiancheng2,139.162.16.236,2053,latency_too_high,1978ms > 800ms,139.162.16.236:2053#天诚优选2 | 坡县狮城 | SG | 139.162.16.236:2053
-tiancheng2,151.242.164.122,443,latency_failed,HTTP Error 503: Service Unavailable,151.242.164.122:443#天诚优选2 | 小日本子 | JP | 151.242.164.122:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,138.2.85.81,2083,latency_too_high,2002ms > 800ms,138.2.85.81:2083#TH [优选高速 674.45ms 10.32Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,129.154.251.13,443,latency_too_high,2389ms > 800ms,129.154.251.13:443#IN [优选高速 512.62ms 8.96Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,134.209.148.128,443,latency_too_high,2308ms > 800ms,134.209.148.128:443#IN [优选高速 713.23ms 9.95Mbps]
-bestcf_pages_dev_tiancheng_mini_txt,109.123.231.212,443,latency_failed,HTTP Error 503: Service Unavailable,109.123.231.212:443#天诚优选1 | 小日本子 | JP | 109.123.231.212:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,139.59.33.167,443,latency_too_high,2232ms > 800ms,139.59.33.167:443#IN [优选高速 838.22ms 10.39Mbps]
-tiancheng2,143.198.85.69,443,latency_too_high,1702ms > 800ms,143.198.85.69:443#天诚优选2 | 坡县狮城 | SG | 143.198.85.69:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.247.61,443,latency_too_high,2146ms > 800ms,143.110.247.61:443#IN [优选高速 914.76ms 9.82Mbps]
-tiancheng2,140.235.37.58,443,latency_too_high,2656ms > 800ms,140.235.37.58:443#天诚优选2 | 小日本子 | JP | 140.235.37.58:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.14.11.61,443,latency_too_high,2178ms > 800ms,143.14.11.61:443#TH [优选高速 813.51ms 9.14Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.247.61,8443,latency_too_high,2250ms > 800ms,143.110.247.61:8443#IN [优选高速 907.72ms 8.28Mbps]
+bestcf_pages_dev_tiancheng_all_txt,14.52.210.173,12312,latency_too_high,1086ms > 800ms,14.52.210.173:12312#天诚优选1 | 泡菜欧巴 | KR | 14.52.210.173:12312
+cf_junzhen_qzz_io_best_ips_txt,132.145.127.203,8443,latency_too_high,1685ms > 800ms,132.145.127.203:8443#JP [高速 by Jz 15M]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,138.2.85.81,2083,latency_too_high,1663ms > 800ms,138.2.85.81:2083#TH [优选高速 674.45ms 10.32Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,129.154.251.13,443,latency_too_high,2214ms > 800ms,129.154.251.13:443#IN [优选高速 512.62ms 8.96Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,125.7.24.251,443,latency_too_high,2604ms > 800ms,125.7.24.251:443#AU [优选高速 540.5ms 8.41Mbps]
 bestcf_pages_dev_entryip_50_txt,104.22.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.22.0.1:443#104.22.0.1 | 重载站点专用，连接承载与吞吐能力强
 bestcf_pages_dev_entryip_50_txt,104.23.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.23.0.1:443#104.23.0.1 | 清洗中心，协议转发逻辑严密且对等
 raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,104.248.159.171,443,latency_failed,HTTP Error 504: Gateway Timeout,104.248.159.171:443#SG [优选高速 269.61ms 10.36Mbps]
-tiancheng2,154.17.225.54,443,latency_too_high,982ms > 800ms,154.17.225.54:443#天诚优选2 | 大漂亮国 | US | 154.17.225.54:443
-moistr,154.17.22.175,443,latency_too_high,988ms > 800ms,154.17.22.175:443#MoistR优选 | 美国 US | 154.17.22.175:443
-cf_junzhen_qzz_io_best_ips_txt,151.242.189.137,443,latency_too_high,1573ms > 800ms,151.242.189.137:443#TW [高速 by Jz 13M]
+tiancheng2,140.235.37.58,443,latency_too_high,2748ms > 800ms,140.235.37.58:443#天诚优选2 | 小日本子 | JP | 140.235.37.58:443
+tiancheng2,143.198.85.69,443,latency_too_high,1797ms > 800ms,143.198.85.69:443#天诚优选2 | 坡县狮城 | SG | 143.198.85.69:443
 bestcf_pages_dev_entryip_50_txt,104.28.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.28.0.1:443#104.28.0.1 | 托管应用口，处理高频动态数据响应
 bestcf_pages_dev_entryip_50_txt,104.29.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.29.0.1:443#104.29.0.1 | 定制化网段，接入资源足，性能稳定
-bestcf_pages_dev_tiancheng_all_txt,114.32.9.249,16443,latency_failed,HTTP Error 503: Service Unavailable,114.32.9.249:16443#天诚优选1 | 宝岛正妹 | TW | 114.32.9.249:16443
-tiancheng2,152.42.194.191,443,latency_too_high,1799ms > 800ms,152.42.194.191:443#天诚优选2 | 坡县狮城 | SG | 152.42.194.191:443
-tiancheng2,152.42.199.134,443,latency_too_high,1808ms > 800ms,152.42.199.134:443#天诚优选2 | 坡县狮城 | SG | 152.42.199.134:443
-tiancheng2,151.242.125.226,443,latency_too_high,2057ms > 800ms,151.242.125.226:443#天诚优选2 | 港岛古惑 | HK | 151.242.125.226:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.67.125.174,443,latency_too_high,1734ms > 800ms,152.67.125.174:443#AU [优选高速 548.35ms 8.29Mbps]
-tiancheng2,154.17.3.148,443,latency_too_high,1422ms > 800ms,154.17.3.148:443#天诚优选2 | 大漂亮国 | US | 154.17.3.148:443
-tiancheng2,154.26.176.148,8443,latency_too_high,966ms > 800ms,154.26.176.148:8443#天诚优选2 | 大漂亮国 | US | 154.26.176.148:8443
-tiancheng2,154.26.184.229,8443,latency_too_high,940ms > 800ms,154.26.184.229:8443#天诚优选2 | 大漂亮国 | US | 154.26.184.229:8443
-moistr,154.26.185.78,443,latency_too_high,922ms > 800ms,154.26.185.78:443#MoistR优选 | 美国 US | 154.26.185.78:443
-tiancheng2,151.241.131.13,8443,latency_too_high,2629ms > 800ms,151.241.131.13:8443#天诚优选2 | 小日本子 | JP | 151.241.131.13:8443
+tiancheng2,147.79.20.149,8443,latency_too_high,1011ms > 800ms,147.79.20.149:8443#天诚优选2 | 小日本子 | JP | 147.79.20.149:8443
+tiancheng2,139.162.16.236,2053,latency_too_high,3841ms > 800ms,139.162.16.236:2053#天诚优选2 | 坡县狮城 | SG | 139.162.16.236:2053
+bestcf_pages_dev_tiancheng_all_txt,109.123.231.212,443,latency_failed,HTTP Error 504: Gateway Timeout,109.123.231.212:443#天诚优选1 | 小日本子 | JP | 109.123.231.212:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.247.61,443,latency_too_high,3342ms > 800ms,143.110.247.61:443#IN [优选高速 914.76ms 9.82Mbps]
+bestcf_pages_dev_tiancheng_all_txt,114.32.9.249,16443,latency_failed,HTTP Error 504: Gateway Timeout,114.32.9.249:16443#天诚优选1 | 宝岛正妹 | TW | 114.32.9.249:16443
+bestcf_pages_dev_tiancheng_all_txt,114.32.9.249,51443,latency_failed,HTTP Error 504: Gateway Timeout,114.32.9.249:51443#天诚优选1 | 宝岛正妹 | TW | 114.32.9.249:51443
 tiancheng2,115.163.106.137,443,latency_failed,HTTP Error 504: Gateway Timeout,115.163.106.137:443#天诚优选2 | 小日本子 | JP | 115.163.106.137:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.14.11.61,443,latency_too_high,3215ms > 800ms,143.14.11.61:443#TH [优选高速 813.51ms 9.14Mbps]
+cf_junzhen_qzz_io_best_ips_txt,119.28.162.39,8443,latency_failed,HTTP Error 504: Gateway Timeout,119.28.162.39:8443#KR [高速 by Jz 19M]
+moistr,122.248.208.225,443,latency_failed,HTTP Error 504: Gateway Timeout,122.248.208.225:443#MoistR优选 | 新加坡 SG | 122.248.208.225:443
+tiancheng2,129.150.48.17,443,latency_failed,HTTP Error 504: Gateway Timeout,129.150.48.17:443#天诚优选2 | 坡县狮城 | SG | 129.150.48.17:443
+tiancheng2,129.226.150.167,443,latency_failed,HTTP Error 504: Gateway Timeout,129.226.150.167:443#天诚优选2 | 坡县狮城 | SG | 129.226.150.167:443
+moistr,13.113.100.83,443,latency_failed,HTTP Error 504: Gateway Timeout,13.113.100.83:443#MoistR优选 | 小日子 JP | 13.113.100.83:443
 tiancheng2,131.143.251.121,443,latency_failed,HTTP Error 504: Gateway Timeout,131.143.251.121:443#天诚优选2 | 大漂亮国 | US | 131.143.251.121:443
-bestcf_pages_dev_tiancheng_mini_txt,155.248.181.189,443,latency_too_high,1463ms > 800ms,155.248.181.189:443#天诚优选1 | 小日本子 | JP | 155.248.181.189:443
-tiancheng2,157.245.198.117,443,latency_too_high,1725ms > 800ms,157.245.198.117:443#天诚优选2 | 坡县狮城 | SG | 157.245.198.117:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,134.209.148.128,443,latency_failed,HTTP Error 504: Gateway Timeout,134.209.148.128:443#IN [优选高速 713.23ms 9.95Mbps]
+tiancheng2,139.162.62.195,443,latency_failed,HTTP Error 504: Gateway Timeout,139.162.62.195:443#天诚优选2 | 坡县狮城 | SG | 139.162.62.195:443
+cf_junzhen_qzz_io_best_ips_txt,139.180.143.248,8443,latency_failed,HTTP Error 504: Gateway Timeout,139.180.143.248:8443#SG [高速 by Jz 14M]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,139.59.33.167,443,latency_failed,HTTP Error 504: Gateway Timeout,139.59.33.167:443#IN [优选高速 838.22ms 10.39Mbps]
+tiancheng2,151.242.125.226,443,latency_too_high,1389ms > 800ms,151.242.125.226:443#天诚优选2 | 港岛古惑 | HK | 151.242.125.226:443
+bestcf_pages_dev_tiancheng_all_txt,140.238.50.134,443,latency_failed,HTTP Error 504: Gateway Timeout,140.238.50.134:443#天诚优选1 | 小日本子 | JP | 140.238.50.134:443
+moistr,154.17.22.175,443,latency_too_high,948ms > 800ms,154.17.22.175:443#MoistR优选 | 美国 US | 154.17.22.175:443
+tiancheng2,141.11.43.124,443,latency_too_high,4862ms > 800ms,141.11.43.124:443#天诚优选2 | 坡县狮城 | SG | 141.11.43.124:443
 bestcf_pages_dev_entryip_50_txt,141.101.64.1,443,latency_failed,HTTP Error 504: Gateway Timeout,141.101.64.1:443#141.101.64.1 | 全球通用口，骨干网原始带宽储备大
-tiancheng2,141.11.43.124,443,latency_failed,HTTP Error 504: Gateway Timeout,141.11.43.124:443#天诚优选2 | 坡县狮城 | SG | 141.11.43.124:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,157.245.60.179,443,latency_too_high,1745ms > 800ms,157.245.60.179:443#SG [优选高速 316.85ms 12.41Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,157.254.192.20,443,latency_too_high,1675ms > 800ms,157.254.192.20:443#TH [优选高速 390.08ms 12.63Mbps]
-moistr,154.17.12.91,443,latency_too_high,3564ms > 800ms,154.17.12.91:443#MoistR优选 | 美国 US | 154.17.12.91:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,159.223.41.212,443,latency_too_high,1799ms > 800ms,159.223.41.212:443#SG [优选高速 310.73ms 10.09Mbps]
+tiancheng2,154.17.3.148,443,latency_too_high,962ms > 800ms,154.17.3.148:443#天诚优选2 | 大漂亮国 | US | 154.17.3.148:443
+cf_junzhen_qzz_io_best_ips_txt,141.11.90.246,443,latency_failed,HTTP Error 504: Gateway Timeout,141.11.90.246:443#HK [高速 by Jz 13M]
+tiancheng2,154.26.176.148,8443,latency_too_high,934ms > 800ms,154.26.176.148:8443#天诚优选2 | 大漂亮国 | US | 154.26.176.148:8443
+tiancheng2,151.241.131.13,8443,latency_too_high,2675ms > 800ms,151.241.131.13:8443#天诚优选2 | 小日本子 | JP | 151.241.131.13:8443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.247.61,8443,latency_failed,HTTP Error 504: Gateway Timeout,143.110.247.61:8443#IN [优选高速 907.72ms 8.28Mbps]
+tiancheng2,152.42.194.191,443,latency_too_high,1835ms > 800ms,152.42.194.191:443#天诚优选2 | 坡县狮城 | SG | 152.42.194.191:443
+moistr,154.17.12.91,443,latency_too_high,1896ms > 800ms,154.17.12.91:443#MoistR优选 | 美国 US | 154.17.12.91:443
 tiancheng2,143.20.204.5,443,latency_failed,HTTP Error 504: Gateway Timeout,143.20.204.5:443#天诚优选2 | 港岛古惑 | HK | 143.20.204.5:443
-tiancheng2,159.223.78.76,443,latency_too_high,1781ms > 800ms,159.223.78.76:443#天诚优选2 | 坡县狮城 | SG | 159.223.78.76:443
-bestcf_pages_dev_tiancheng_mini_txt,144.126.132.39,8443,latency_failed,HTTP Error 504: Gateway Timeout,144.126.132.39:8443#天诚优选1 | 大漂亮国 | US | 144.126.132.39:8443
-bestcf_pages_dev_tiancheng_sg_txt,146.235.19.79,28983,latency_failed,HTTP Error 504: Gateway Timeout,146.235.19.79:28983#天诚优选1 | 坡县狮城 | SG | 146.235.19.79:28983
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.152.11,443,latency_failed,HTTP Error 503: Service Unavailable,162.159.152.11:443#US-b1ae66
+tiancheng2,154.26.184.229,8443,latency_too_high,1089ms > 800ms,154.26.184.229:8443#天诚优选2 | 大漂亮国 | US | 154.26.184.229:8443
+moistr,154.26.185.78,443,latency_too_high,976ms > 800ms,154.26.185.78:443#MoistR优选 | 美国 US | 154.26.185.78:443
+tiancheng2,143.42.66.91,443,latency_failed,HTTP Error 503: Service Unavailable,143.42.66.91:443#天诚优选2 | 坡县狮城 | SG | 143.42.66.91:443
+bestcf_pages_dev_tiancheng_all_txt,144.126.132.39,8443,latency_failed,HTTP Error 504: Gateway Timeout,144.126.132.39:8443#天诚优选1 | 大漂亮国 | US | 144.126.132.39:8443
+cf_junzhen_qzz_io_best_ips_txt,151.242.189.137,443,latency_too_high,2859ms > 800ms,151.242.189.137:443#TW [高速 by Jz 12M]
+bestcf_pages_dev_tiancheng_all_txt,146.235.19.79,28983,latency_failed,HTTP Error 504: Gateway Timeout,146.235.19.79:28983#天诚优选1 | 坡县狮城 | SG | 146.235.19.79:28983
+tiancheng2,149.104.4.249,2053,latency_failed,HTTP Error 504: Gateway Timeout,149.104.4.249:2053#天诚优选2 | 港岛古惑 | HK | 149.104.4.249:2053
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,157.254.192.20,443,latency_too_high,1660ms > 800ms,157.254.192.20:443#TH [优选高速 390.08ms 12.63Mbps]
+cf_junzhen_qzz_io_best_ips_txt,149.28.142.169,443,latency_failed,HTTP Error 504: Gateway Timeout,149.28.142.169:443#SG [高速 by Jz 13M]
+cf_junzhen_qzz_io_best_ips_txt,15.164.84.61,443,latency_failed,HTTP Error 504: Gateway Timeout,15.164.84.61:443#KR [高速 by Jz 15M]
 tiancheng2,150.109.11.223,443,latency_failed,HTTP Error 504: Gateway Timeout,150.109.11.223:443#天诚优选2 | 坡县狮城 | SG | 150.109.11.223:443
-gshtwy_wetest_v4,162.159.10.160,443,latency_too_high,1220ms > 800ms,162.159.10.160:443#联通-LAX-443-WS-TLS
-gshtwy_wetest_v4,162.159.10.160,2096,latency_too_high,1239ms > 800ms,162.159.10.160:2096#联通-LAX-2096-WS-TLS
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.137.204,443,latency_too_high,1228ms > 800ms,162.159.137.204:443#US-408a43
-gshtwy_wetest_v4,162.159.14.39,2087,latency_too_high,1233ms > 800ms,162.159.14.39:2087#电信-SIN-2087-WS-TLS
-gshtwy_wetest_v4,162.159.15.173,2053,latency_too_high,1240ms > 800ms,162.159.15.173:2053#电信-SIN-2053-WS-TLS
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,159.223.41.212,443,latency_too_high,1889ms > 800ms,159.223.41.212:443#SG [优选高速 310.73ms 10.09Mbps]
+tiancheng2,151.242.164.122,443,latency_failed,HTTP Error 504: Gateway Timeout,151.242.164.122:443#天诚优选2 | 小日本子 | JP | 151.242.164.122:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.67.125.174,443,latency_failed,HTTP Error 504: Gateway Timeout,152.67.125.174:443#AU [优选高速 548.35ms 8.29Mbps]
+tiancheng2,152.42.199.134,443,latency_failed,HTTP Error 504: Gateway Timeout,152.42.199.134:443#天诚优选2 | 坡县狮城 | SG | 152.42.199.134:443
+tiancheng2,153.121.45.101,443,latency_failed,HTTP Error 504: Gateway Timeout,153.121.45.101:443#天诚优选2 | 小日本子 | JP | 153.121.45.101:443
+gslege_sg,162.159.0.2,443,latency_too_high,1242ms > 800ms,162.159.0.2:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.2
 tiancheng2,154.17.20.161,443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.20.161:443#天诚优选2 | 大漂亮国 | US | 154.17.20.161:443
+tiancheng2,154.17.225.54,443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.225.54:443#天诚优选2 | 大漂亮国 | US | 154.17.225.54:443
 tiancheng2,154.17.25.156,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.25.156:8443#天诚优选2 | 大漂亮国 | US | 154.17.25.156:8443
-gshtwy_wetest_v4,162.159.15.173,8443,latency_too_high,1218ms > 800ms,162.159.15.173:8443#电信-SIN-8443-WS-TLS
 tiancheng2,154.17.3.204,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.3.204:8443#天诚优选2 | 大漂亮国 | US | 154.17.3.204:8443
 tiancheng2,154.19.187.181,443,latency_failed,HTTP Error 504: Gateway Timeout,154.19.187.181:443#天诚优选2 | 小日本子 | JP | 154.19.187.181:443
-bestcf_pages_dev_entryip_50_txt,162.159.192.1,443,latency_too_high,1240ms > 800ms,162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
 tiancheng2,154.19.187.181,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.19.187.181:8443#天诚优选2 | 小日本子 | JP | 154.19.187.181:8443
-bestcf_pages_dev_tiancheng_all_txt,162.220.13.14,8443,latency_failed,HTTP Error 503: Service Unavailable,162.220.13.14:8443#天诚优选1 | 大漂亮国 | US | 162.220.13.14:8443
 tiancheng2,154.21.89.103,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.21.89.103:8443#天诚优选2 | 大漂亮国 | US | 154.21.89.103:8443
 tiancheng2,154.21.95.34,443,latency_failed,HTTP Error 504: Gateway Timeout,154.21.95.34:443#天诚优选2 | 大漂亮国 | US | 154.21.95.34:443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.137.204,443,latency_too_high,1255ms > 800ms,162.159.137.204:443#US-bbb889
 tiancheng2,154.26.183.210,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.183.210:8443#天诚优选2 | 大漂亮国 | US | 154.26.183.210:8443
 tiancheng2,154.26.186.47,443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.186.47:443#天诚优选2 | 大漂亮国 | US | 154.26.186.47:443
 tiancheng2,154.26.187.44,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.187.44:8443#天诚优选2 | 大漂亮国 | US | 154.26.187.44:8443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.41.249,443,latency_too_high,1211ms > 800ms,162.159.41.249:443#US-4fed61
+bestcf_pages_dev_tiancheng_all_txt,162.220.13.14,8443,latency_failed,HTTP Error 503: Service Unavailable,162.220.13.14:8443#天诚优选1 | 大漂亮国 | US | 162.220.13.14:8443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.17.201,443,latency_too_high,1229ms > 800ms,162.159.17.201:443#US-ce49a9
 tiancheng2,154.31.117.200,443,latency_failed,HTTP Error 504: Gateway Timeout,154.31.117.200:443#天诚优选2 | 小日本子 | JP | 154.31.117.200:443
+uouin,162.159.198.1,443,latency_too_high,1225ms > 800ms,162.159.198.1:443#麒麟优选 | 06-13 12:06 | BestCF.pages.dev
+bestcf_pages_dev_tiancheng_all_txt,155.248.181.189,443,latency_failed,HTTP Error 504: Gateway Timeout,155.248.181.189:443#天诚优选1 | 小日本子 | JP | 155.248.181.189:443
+tiancheng2,157.245.198.117,443,latency_failed,HTTP Error 504: Gateway Timeout,157.245.198.117:443#天诚优选2 | 坡县狮城 | SG | 157.245.198.117:443
 raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,157.245.56.32,443,latency_failed,HTTP Error 504: Gateway Timeout,157.245.56.32:443#SG [优选高速 318.38ms 12.37Mbps]
-tiancheng2,172.104.97.39,443,latency_too_high,950ms > 800ms,172.104.97.39:443#天诚优选2 | 小日本子 | JP | 172.104.97.39:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,157.245.60.179,443,latency_failed,HTTP Error 504: Gateway Timeout,157.245.60.179:443#SG [优选高速 316.85ms 12.41Mbps]
+cf_junzhen_qzz_io_best_ips_txt,158.180.72.60,443,latency_failed,HTTP Error 504: Gateway Timeout,158.180.72.60:443#KR [高速 by Jz 16M]
+tiancheng2,158.51.110.61,8443,latency_failed,HTTP Error 504: Gateway Timeout,158.51.110.61:8443#天诚优选2 | 小日本子 | JP | 158.51.110.61:8443
+tiancheng2,159.223.78.76,443,latency_failed,HTTP Error 504: Gateway Timeout,159.223.78.76:443#天诚优选2 | 坡县狮城 | SG | 159.223.78.76:443
+moistr,172.64.145.94,2096,latency_too_high,1236ms > 800ms,172.64.145.94:2096#MoistR优选 | 移动优选 03 | 172.64.145.94:2096
 raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,159.223.84.236,443,latency_failed,HTTP Error 504: Gateway Timeout,159.223.84.236:443#SG [优选高速 310.7ms 11.45Mbps]
-luoli,163.61.74.121,443,latency_too_high,1569ms > 800ms,163.61.74.121:443#洛璃优选 | 越南 VN | 163.61.74.121:443
-bestcf_pages_dev_tiancheng_mini_txt,165.154.226.214,27017,latency_too_high,1592ms > 800ms,165.154.226.214:27017#天诚优选1 | 宝岛正妹 | TW | 165.154.226.214:27017
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.145.202,443,latency_too_high,1228ms > 800ms,172.64.145.202:443#US-04d600
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,172.64.147.173,443,latency_too_high,1254ms > 800ms,172.64.147.173
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,172.64.152.164,443,latency_too_high,1211ms > 800ms,172.64.152.164
-tiancheng2,165.245.178.114,443,latency_too_high,1795ms > 800ms,165.245.178.114:443#天诚优选2 | 坡县狮城 | SG | 165.245.178.114:443
-bestcf_pages_dev_tiancheng_sg_txt,168.138.165.174,443,latency_too_high,1578ms > 800ms,168.138.165.174:443#天诚优选1 | 坡县狮城 | SG | 168.138.165.174:443
+moistr,16.162.187.66,443,latency_failed,HTTP Error 504: Gateway Timeout,16.162.187.66:443#MoistR优选 | 中国香港 HK | 16.162.187.66:443
 bestcf_pages_dev_entryip_50_txt,172.65.0.1,443,latency_failed,HTTP Error 503: Service Unavailable,172.65.0.1:443#172.65.0.1 | 实时通信段，针对协议转发抖动优化
+bestcf_pages_dev_tiancheng_all_txt,168.138.165.174,443,latency_too_high,1626ms > 800ms,168.138.165.174:443#天诚优选1 | 坡县狮城 | SG | 168.138.165.174:443
 bestcf_pages_dev_entryip_50_txt,162.158.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,162.158.0.1:443#162.158.0.1 | 泛分发网段，覆盖全球各大ISP中心
-tiancheng2,167.71.221.62,443,latency_too_high,1769ms > 800ms,167.71.221.62:443#天诚优选2 | 坡县狮城 | SG | 167.71.221.62:443
 bestcf_pages_dev_entryip_50_txt,162.158.10.1,443,latency_failed,HTTP Error 504: Gateway Timeout,162.158.10.1:443#162.158.10.1 | 中转加速点，针对长途链路握手优化
-tiancheng2,167.172.87.155,443,latency_too_high,1845ms > 800ms,167.172.87.155:443#天诚优选2 | 坡县狮城 | SG | 167.172.87.155:443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.65.43.151,443,latency_failed,HTTP Error 503: Service Unavailable,172.65.43.151:443#US-56e619
+bestcf_pages_dev_tiancheng_all_txt,165.154.226.214,27017,latency_too_high,2448ms > 800ms,165.154.226.214:27017#天诚优选1 | 宝岛正妹 | TW | 165.154.226.214:27017
+luoli,163.61.74.121,443,latency_too_high,3119ms > 800ms,163.61.74.121:443#洛璃优选 | 越南 VN | 163.61.74.121:443
+cf_junzhen_qzz_io_best_ips_txt,168.110.113.248,443,latency_too_high,2996ms > 800ms,168.110.113.248:443#KR [高速 by Jz 15M]
+tiancheng2,178.128.19.168,443,latency_too_high,1874ms > 800ms,178.128.19.168:443#天诚优选2 | 坡县狮城 | SG | 178.128.19.168:443
 bestcf_pages_dev_tiancheng_all_txt,175.200.140.27,12282,latency_failed,HTTP Error 503: Service Unavailable,175.200.140.27:12282#天诚优选1 | 泡菜欧巴 | KR | 175.200.140.27:12282
-gshtwy_wetest_v4,172.64.42.183,2087,latency_too_high,1233ms > 800ms,172.64.42.183:2087#联通-LAX-2087-WS-TLS
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,173.245.58.189,443,latency_too_high,1225ms > 800ms,173.245.58.189:443#US-6aa584
-tiancheng2,185.81.28.39,443,latency_too_high,952ms > 800ms,185.81.28.39:443#天诚优选2 | 坡县狮城 | SG | 185.81.28.39:443
-tiancheng2,178.128.19.168,443,latency_too_high,1805ms > 800ms,178.128.19.168:443#天诚优选2 | 坡县狮城 | SG | 178.128.19.168:443
-tiancheng2,178.128.97.53,443,latency_too_high,1800ms > 800ms,178.128.97.53:443#天诚优选2 | 坡县狮城 | SG | 178.128.97.53:443
-cf_junzhen_qzz_io_best_ips_txt,188.253.6.249,443,latency_too_high,1567ms > 800ms,188.253.6.249:443#TW [高速 by Jz 12M]
-tiancheng2,188.166.245.164,443,latency_too_high,1769ms > 800ms,188.166.245.164:443#天诚优选2 | 坡县狮城 | SG | 188.166.245.164:443
-tiancheng2,192.124.176.70,443,latency_too_high,1776ms > 800ms,192.124.176.70:443#天诚优选2 | 坡县狮城 | SG | 192.124.176.70:443
-tiancheng2,194.87.10.77,443,latency_too_high,1753ms > 800ms,194.87.10.77:443#天诚优选2 | 坡县狮城 | SG | 194.87.10.77:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,163.5.58.140,443,latency_failed,HTTP Error 504: Gateway Timeout,163.5.58.140:443#HK [优选高速 352.53ms 18.99Mbps]
+junzhen_bj,163.5.58.140,443,latency_failed,HTTP Error 504: Gateway Timeout,163.5.58.140:443#HK [高速 by Jz 19M]
+tiancheng2,165.245.178.114,443,latency_failed,HTTP Error 504: Gateway Timeout,165.245.178.114:443#天诚优选2 | 坡县狮城 | SG | 165.245.178.114:443
 tiancheng2,166.88.97.209,443,latency_failed,HTTP Error 504: Gateway Timeout,166.88.97.209:443#天诚优选2 | 小日本子 | JP | 166.88.97.209:443
+tiancheng2,167.172.87.155,443,latency_failed,HTTP Error 504: Gateway Timeout,167.172.87.155:443#天诚优选2 | 坡县狮城 | SG | 167.172.87.155:443
+tiancheng2,167.71.221.62,443,latency_failed,HTTP Error 504: Gateway Timeout,167.71.221.62:443#天诚优选2 | 坡县狮城 | SG | 167.71.221.62:443
 bestcf_pages_dev_tiancheng_all_txt,168.138.46.67,443,latency_failed,HTTP Error 504: Gateway Timeout,168.138.46.67:443#天诚优选1 | 小日本子 | JP | 168.138.46.67:443
 tiancheng2,172.104.53.198,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.53.198:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.198:443
 tiancheng2,172.104.53.25,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.53.25:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.25:443
+tiancheng2,172.104.97.39,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.97.39:443#天诚优选2 | 小日本子 | JP | 172.104.97.39:443
 tiancheng2,172.236.154.50,443,latency_failed,HTTP Error 504: Gateway Timeout,172.236.154.50:443#天诚优选2 | 坡县狮城 | SG | 172.236.154.50:443
 bestcf_pages_dev_entryip_50_txt,172.64.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.0.1:443#172.64.0.1 | 边缘处理点，负载策略松，接入响应快
-junzhen_bj,192.243.123.44,443,latency_too_high,2706ms > 800ms,192.243.123.44:443#JP [高速 by Jz 29M]
-xinyitang3,207.148.119.176,443,latency_failed,HTTP Error 503: Service Unavailable,207.148.119.176:443#Mia优选 | 新加坡 SG | 207.148.119.176:443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.82.114,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.82.114:443#US-7611b4
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.82.114,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.82.114:443#US-183ad7
 bestcf_pages_dev_entryip_50_txt,172.67.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.67.0.1:443#172.67.0.1 | Anycast入口，针对中国骨干网深度优化
 bestcf_pages_dev_entryip_50_txt,172.68.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.68.0.1:443#172.68.0.1 | 区域中转，针对特定ISP线路差异化通告
-bestcf_pages_dev_entryip_50_txt,172.69.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.69.0.1:443#172.69.0.1 | 流量汇聚网，特征复杂，利于协议混淆
 bestcf_pages_dev_entryip_50_txt,172.70.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.70.0.1:443#172.70.0.1 | 基础设施段，极高在线率，长连接极稳
-bestcf_pages_dev_entryip_50_txt,172.71.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.71.0.1:443#172.71.0.1 | 后端跳板，承载多种非标准加密流量
 bestcf_pages_dev_entryip_50_txt,173.245.48.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.48.1:443#173.245.48.1 | 基础任播段，路由稳定，适合长效优选
+bestcf_pages_dev_entryip_50_txt,172.71.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.71.0.1:443#172.71.0.1 | 后端跳板，承载多种非标准加密流量
+bestcf_pages_dev_entryip_50_txt,172.69.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.69.0.1:443#172.69.0.1 | 流量汇聚网，特征复杂，利于协议混淆
 bestcf_pages_dev_entryip_50_txt,173.245.52.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.52.1:443#173.245.52.1 | 配套业务段，特征贴近标准网页流量
 bestcf_pages_dev_entryip_50_txt,173.245.56.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.56.1:443#173.245.56.1 | 安全加速点，支持底层协议硬件加速
+tiancheng2,188.166.234.172,443,latency_too_high,3030ms > 800ms,188.166.234.172:443#天诚优选2 | 坡县狮城 | SG | 188.166.234.172:443
 bestcf_pages_dev_tiancheng_all_txt,175.215.39.167,30700,latency_failed,HTTP Error 504: Gateway Timeout,175.215.39.167:30700#天诚优选1 | 泡菜欧巴 | KR | 175.215.39.167:30700
-xinyitang3,207.148.119.223,443,latency_too_high,1289ms > 800ms,207.148.119.223:443#Mia优选 | 新加坡 SG | 207.148.119.223:443
-cf_junzhen_qzz_io_best_ips_txt,23.249.17.25,443,latency_failed,HTTP Error 503: Service Unavailable,23.249.17.25:443#JP [高速 by Jz 15M]
-tiancheng2,219.76.13.177,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.177:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.177:443
-tiancheng2,23.151.104.198,443,latency_failed,HTTP Error 503: Service Unavailable,23.151.104.198:443#天诚优选2 | 小日本子 | JP | 23.151.104.198:443
-tiancheng2,219.76.13.180,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.180:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.180:443
-xinyitang3,216.236.58.13,443,latency_too_high,1234ms > 800ms,216.236.58.13:443#Mia优选 | 中国香港 HK | 216.236.58.13:443
-tiancheng2,188.166.234.172,443,latency_failed,HTTP Error 504: Gateway Timeout,188.166.234.172:443#天诚优选2 | 坡县狮城 | SG | 188.166.234.172:443
-luoli,35.74.74.6,443,latency_failed,HTTP Error 503: Service Unavailable,35.74.74.6:443#洛璃优选 | 小日子 JP | 35.74.74.6:443
-tiancheng2,219.76.13.183,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.183:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.183:443
+tiancheng2,178.128.97.53,443,latency_failed,HTTP Error 504: Gateway Timeout,178.128.97.53:443#天诚优选2 | 坡县狮城 | SG | 178.128.97.53:443
+tiancheng2,18.138.34.221,443,latency_failed,HTTP Error 504: Gateway Timeout,18.138.34.221:443#天诚优选2 | 坡县狮城 | SG | 18.138.34.221:443
+luoli,18.182.54.28,443,latency_failed,HTTP Error 504: Gateway Timeout,18.182.54.28:443#洛璃优选 | 小日子 JP | 18.182.54.28:443
+tiancheng2,185.81.28.39,443,latency_failed,HTTP Error 504: Gateway Timeout,185.81.28.39:443#天诚优选2 | 坡县狮城 | SG | 185.81.28.39:443
+tiancheng2,216.23.86.110,8443,latency_too_high,1018ms > 800ms,216.23.86.110:8443#天诚优选2 | 小日本子 | JP | 216.23.86.110:8443
+junzhen_bj,211.49.57.178,443,latency_too_high,1133ms > 800ms,211.49.57.178:443#KR [高速 by Jz 16M]
+tiancheng2,219.76.13.166,443,latency_too_high,1606ms > 800ms,219.76.13.166:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.166:443
+tiancheng2,188.166.245.164,443,latency_failed,HTTP Error 504: Gateway Timeout,188.166.245.164:443#天诚优选2 | 坡县狮城 | SG | 188.166.245.164:443
 bestcf_pages_dev_entryip_50_txt,190.93.240.1,443,latency_failed,HTTP Error 504: Gateway Timeout,190.93.240.1:443#190.93.240.1 | 跨区域端点，规避常规黑洞及路由封锁
-bestcf_pages_dev_tiancheng_mini_txt,192.18.136.86,9002,latency_failed,HTTP Error 504: Gateway Timeout,192.18.136.86:9002#天诚优选1 | 大漂亮国 | US | 192.18.136.86:9002
+bestcf_pages_dev_tiancheng_all_txt,192.18.136.86,9002,latency_failed,HTTP Error 504: Gateway Timeout,192.18.136.86:9002#天诚优选1 | 大漂亮国 | US | 192.18.136.86:9002
+tiancheng2,192.124.176.70,443,latency_failed,HTTP Error 504: Gateway Timeout,192.124.176.70:443#天诚优选2 | 坡县狮城 | SG | 192.124.176.70:443
+tiancheng2,194.87.10.77,443,latency_failed,HTTP Error 504: Gateway Timeout,194.87.10.77:443#天诚优选2 | 坡县狮城 | SG | 194.87.10.77:443
 tiancheng2,195.245.229.66,8443,latency_failed,HTTP Error 504: Gateway Timeout,195.245.229.66:8443#天诚优选2 | 小日本子 | JP | 195.245.229.66:8443
 tiancheng2,195.245.241.135,443,latency_failed,HTTP Error 504: Gateway Timeout,195.245.241.135:443#天诚优选2 | 小日本子 | JP | 195.245.241.135:443
 bestcf_pages_dev_entryip_50_txt,197.234.240.1,443,latency_failed,HTTP Error 504: Gateway Timeout,197.234.240.1:443#197.234.240.1 | 辅助业务段，流量密度低，适应力强
 bestcf_pages_dev_entryip_50_txt,198.41.128.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.128.1:443#198.41.128.1 | 核心解析入口，CF架构中最高权重级
 bestcf_pages_dev_entryip_50_txt,198.41.129.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.129.1:443#198.41.129.1 | 业务子网段，适合大规模全域优选
-tiancheng2,38.207.130.231,8443,latency_failed,HTTP Error 503: Service Unavailable,38.207.130.231:8443#天诚优选2 | 小日本子 | JP | 38.207.130.231:8443
 bestcf_pages_dev_entryip_50_txt,198.41.130.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.130.1:443#198.41.130.1 | 认证服务段，深度检测通过表现平稳
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.194.162,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.194.162:443#US-ccb4a1
-tiancheng2,23.175.201.2,8443,latency_too_high,1832ms > 800ms,23.175.201.2:8443#天诚优选2 | 港岛古惑 | HK | 23.175.201.2:8443
-tiancheng2,38.190.210.250,443,latency_too_high,1148ms > 800ms,38.190.210.250:443#天诚优选2 | 港岛古惑 | HK | 38.190.210.250:443
-moistr,43.163.26.227,443,latency_failed,HTTP Error 503: Service Unavailable,43.163.26.227:443#MoistR优选 | 新加坡 SG | 43.163.26.227:443
-luoli,43.200.87.5,443,latency_failed,HTTP Error 503: Service Unavailable,43.200.87.5:443#洛璃优选 | 韩国 KR | 43.200.87.5:443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.208.15,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.208.15:443#US-e8b491
-junzhen_bj,43.154.131.189,443,latency_too_high,922ms > 800ms,43.154.131.189:443#HK [高速 by Jz 18M]
-tiancheng2,38.147.187.14,443,latency_failed,HTTP Error 503: Service Unavailable,38.147.187.14:443#天诚优选2 | 港岛古惑 | HK | 38.147.187.14:443
-tiancheng2,219.76.13.169,443,latency_too_high,3415ms > 800ms,219.76.13.169:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.169:443
-bestcf_pages_dev_tiancheng_all_txt,38.47.105.82,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.105.82:443#天诚优选1 | 小日本子 | JP | 38.47.105.82:443
-tiancheng2,38.47.126.125,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.126.125:443#天诚优选2 | 小日本子 | JP | 38.47.126.125:443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.194.162,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.194.162:443#US-aaff36
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.208.15,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.208.15:443#US-b1bd97
+cf_junzhen_qzz_io_best_ips_txt,31.25.88.191,443,latency_too_high,1111ms > 800ms,31.25.88.191:443#DE [高速 by Jz 13M]
 luoli,202.144.194.170,443,latency_failed,HTTP Error 504: Gateway Timeout,202.144.194.170:443#洛璃优选 | 小日子 JP | 202.144.194.170:443
-tiancheng2,219.76.13.167,443,latency_too_high,3791ms > 800ms,219.76.13.167:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.167:443
 bestcf_pages_dev_tiancheng_all_txt,202.85.53.160,7000,latency_failed,HTTP Error 504: Gateway Timeout,202.85.53.160:7000#天诚优选1 | 港岛古惑 | HK | 202.85.53.160:7000
-tiancheng2,45.221.112.81,443,latency_failed,HTTP Error 503: Service Unavailable,45.221.112.81:443#天诚优选2 | 港岛古惑 | HK | 45.221.112.81:443
-bestcf_pages_dev_tiancheng_mini_txt,210.179.125.32,12328,latency_failed,HTTP Error 504: Gateway Timeout,210.179.125.32:12328#天诚优选1 | 泡菜欧巴 | KR | 210.179.125.32:12328
-bestcf_pages_dev_tiancheng_all_txt,211.184.99.67,12232,latency_failed,HTTP Error 504: Gateway Timeout,211.184.99.67:12232#天诚优选1 | 泡菜欧巴 | KR | 211.184.99.67:12232
+bestcf_pages_dev_tiancheng_all_txt,210.179.125.32,12328,latency_failed,HTTP Error 504: Gateway Timeout,210.179.125.32:12328#天诚优选1 | 泡菜欧巴 | KR | 210.179.125.32:12328
 bestcf_pages_dev_tiancheng_all_txt,211.196.12.95,15831,latency_failed,HTTP Error 504: Gateway Timeout,211.196.12.95:15831#天诚优选1 | 泡菜欧巴 | KR | 211.196.12.95:15831
+bestcf_pages_dev_tiancheng_all_txt,211.184.99.67,12232,latency_failed,HTTP Error 504: Gateway Timeout,211.184.99.67:12232#天诚优选1 | 泡菜欧巴 | KR | 211.184.99.67:12232
 bestcf_pages_dev_tiancheng_all_txt,211.248.156.161,21271,latency_failed,HTTP Error 504: Gateway Timeout,211.248.156.161:21271#天诚优选1 | 泡菜欧巴 | KR | 211.248.156.161:21271
+luoli,211.49.57.161,443,latency_failed,HTTP Error 504: Gateway Timeout,211.49.57.161:443#洛璃优选 | 韩国 KR | 211.49.57.161:443
+cf_junzhen_qzz_io_best_ips_txt,211.49.57.175,443,latency_failed,HTTP Error 504: Gateway Timeout,211.49.57.175:443#KR [高速 by Jz 17M]
 luoli,211.49.57.179,443,latency_failed,HTTP Error 504: Gateway Timeout,211.49.57.179:443#洛璃优选 | 韩国 KR | 211.49.57.179:443
 luoli,213.210.4.19,443,latency_failed,HTTP Error 504: Gateway Timeout,213.210.4.19:443#洛璃优选 | 中国台湾 TW | 213.210.4.19:443
-tiancheng2,43.254.164.50,8443,latency_too_high,1836ms > 800ms,43.254.164.50:8443#天诚优选2 | 港岛古惑 | HK | 43.254.164.50:8443
-tiancheng2,219.76.13.166,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.166:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.166:443
+tiancheng2,219.76.13.183,443,latency_too_high,3934ms > 800ms,219.76.13.183:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.183:443
+xinyitang3,216.236.58.13,443,latency_failed,HTTP Error 504: Gateway Timeout,216.236.58.13:443#Mia优选 | 中国香港 HK | 216.236.58.13:443
+tiancheng2,219.76.13.167,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.167:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.167:443
+tiancheng2,219.76.13.169,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.169:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.169:443
+tiancheng2,219.76.13.177,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.177:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.177:443
+tiancheng2,219.76.13.180,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.180:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.180:443
+luoli,43.200.87.5,443,latency_failed,HTTP Error 503: Service Unavailable,43.200.87.5:443#洛璃优选 | 韩国 KR | 43.200.87.5:443
 tiancheng2,219.76.13.181,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.181:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.181:443
+tiancheng2,38.147.187.14,443,latency_failed,HTTP Error 503: Service Unavailable,38.147.187.14:443#天诚优选2 | 港岛古惑 | HK | 38.147.187.14:443
+moistr,43.163.26.227,443,latency_failed,HTTP Error 503: Service Unavailable,43.163.26.227:443#MoistR优选 | 新加坡 SG | 43.163.26.227:443
+luoli,35.72.81.216,443,latency_too_high,2635ms > 800ms,35.72.81.216:443#洛璃优选 | 小日子 JP | 35.72.81.216:443
+bestcf_pages_dev_tiancheng_all_txt,38.47.105.82,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.105.82:443#天诚优选1 | 小日本子 | JP | 38.47.105.82:443
+tiancheng2,43.156.181.203,443,latency_too_high,1203ms > 800ms,43.156.181.203:443#天诚优选2 | 坡县狮城 | SG | 43.156.181.203:443
+bestcf_pages_dev_entryip_50_txt,45.64.64.1,443,latency_failed,HTTP Error 503: Service Unavailable,45.64.64.1:443#45.64.64.1 | 亚洲优化段，地理位置近，物理时延低
+tiancheng2,43.133.61.219,443,latency_too_high,1566ms > 800ms,43.133.61.219:443#天诚优选2 | 坡县狮城 | SG | 43.133.61.219:443
+luoli,43.133.237.158,8443,latency_too_high,1818ms > 800ms,43.133.237.158:8443#洛璃优选 | 韩国 KR | 43.133.237.158:8443
 tiancheng2,23.141.52.169,443,latency_failed,HTTP Error 504: Gateway Timeout,23.141.52.169:443#天诚优选2 | 港岛古惑 | HK | 23.141.52.169:443
-tiancheng2,45.95.212.117,443,latency_too_high,1397ms > 800ms,45.95.212.117:443#天诚优选2 | 小日本子 | JP | 45.95.212.117:443
-tiancheng2,45.136.14.61,2053,latency_too_high,2206ms > 800ms,45.136.14.61:2053#天诚优选2 | 港岛古惑 | HK | 45.136.14.61:2053
-xinyitang3,45.32.106.220,443,latency_too_high,1828ms > 800ms,45.32.106.220:443#Mia优选 | 新加坡 SG | 45.32.106.220:443
-xinyitang3,45.76.153.73,443,latency_too_high,1763ms > 800ms,45.76.153.73:443#Mia优选 | 新加坡 SG | 45.76.153.73:443
-cf_junzhen_qzz_io_best_ips_txt,45.77.255.153,8443,latency_too_high,1807ms > 800ms,45.77.255.153:8443#SG [高速 by Jz 18M]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,45.91.134.91,2053,latency_too_high,1681ms > 800ms,45.91.134.91:2053#TH [优选高速 1118.92ms 8.79Mbps]
-xinyitang3,45.77.241.64,443,latency_too_high,2002ms > 800ms,45.77.241.64:443#Mia优选 | 新加坡 SG | 45.77.241.64:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,47.250.212.59,2053,latency_too_high,1150ms > 800ms,47.250.212.59:2053#MY [优选高速 790.16ms 11.27Mbps]
-bestcf_pages_dev_tiancheng_sg_txt,34.143.159.175,443,latency_failed,HTTP Error 504: Gateway Timeout,34.143.159.175:443#天诚优选1 | 坡县狮城 | SG | 34.143.159.175:443
+tiancheng2,45.221.112.81,443,latency_failed,HTTP Error 503: Service Unavailable,45.221.112.81:443#天诚优选2 | 港岛古惑 | HK | 45.221.112.81:443
+bestcf_pages_dev_tiancheng_all_txt,43.156.116.194,443,latency_too_high,2040ms > 800ms,43.156.116.194:443#天诚优选1 | 坡县狮城 | SG | 43.156.116.194:443
+tiancheng2,23.151.104.198,443,latency_failed,HTTP Error 504: Gateway Timeout,23.151.104.198:443#天诚优选2 | 小日本子 | JP | 23.151.104.198:443
+tiancheng2,23.175.201.2,8443,latency_failed,HTTP Error 504: Gateway Timeout,23.175.201.2:8443#天诚优选2 | 港岛古惑 | HK | 23.175.201.2:8443
+junzhen_bj,43.154.131.189,443,latency_too_high,2349ms > 800ms,43.154.131.189:443#HK [高速 by Jz 17M]
+tiancheng2,38.47.126.125,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.126.125:443#天诚优选2 | 小日本子 | JP | 38.47.126.125:443
+bestcf_pages_dev_tiancheng_all_txt,34.143.159.175,443,latency_failed,HTTP Error 504: Gateway Timeout,34.143.159.175:443#天诚优选1 | 坡县狮城 | SG | 34.143.159.175:443
 xinyitang3,35.201.155.121,443,latency_failed,HTTP Error 504: Gateway Timeout,35.201.155.121:443#Mia优选 | 中国台湾 TW | 35.201.155.121:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,47.250.212.59,443,latency_too_high,1164ms > 800ms,47.250.212.59:443#MY [优选高速 790.71ms 9.73Mbps]
+tiancheng2,38.190.210.250,443,latency_failed,HTTP Error 504: Gateway Timeout,38.190.210.250:443#天诚优选2 | 港岛古惑 | HK | 38.190.210.250:443
 tiancheng2,38.162.115.250,2053,latency_failed,HTTP Error 504: Gateway Timeout,38.162.115.250:2053#天诚优选2 | 大漂亮国 | US | 38.162.115.250:2053
-moistr,5.181.219.212,443,latency_failed,HTTP Error 503: Service Unavailable,5.181.219.212:443#MoistR优选 | 美国 US | 5.181.219.212:443
-cf_junzhen_qzz_io_best_ips_txt,47.250.81.46,2087,latency_too_high,1138ms > 800ms,47.250.81.46:2087#MY [高速 by Jz 13M]
+tiancheng2,38.207.130.136,443,latency_failed,HTTP Error 504: Gateway Timeout,38.207.130.136:443#天诚优选2 | 小日本子 | JP | 38.207.130.136:443
+tiancheng2,38.207.130.231,8443,latency_failed,HTTP Error 504: Gateway Timeout,38.207.130.231:8443#天诚优选2 | 小日本子 | JP | 38.207.130.231:8443
 tiancheng2,38.47.126.215,443,latency_failed,HTTP Error 504: Gateway Timeout,38.47.126.215:443#天诚优选2 | 小日本子 | JP | 38.47.126.215:443
-moistr,54.169.110.63,443,latency_failed,HTTP Error 503: Service Unavailable,54.169.110.63:443#MoistR优选 | 新加坡 SG | 54.169.110.63:443
-moistr,54.254.216.225,443,latency_failed,HTTP Error 503: Service Unavailable,54.254.216.225:443#MoistR优选 | 新加坡 SG | 54.254.216.225:443
 tiancheng2,4.155.83.212,443,latency_failed,HTTP Error 504: Gateway Timeout,4.155.83.212:443#天诚优选2 | 大漂亮国 | US | 4.155.83.212:443
+luoli,49.128.204.75,443,latency_too_high,1360ms > 800ms,49.128.204.75:443#洛璃优选 | 韩国 KR | 49.128.204.75:443
 bestcf_pages_dev_tiancheng_all_txt,43.130.134.123,65002,latency_failed,HTTP Error 504: Gateway Timeout,43.130.134.123:65002#天诚优选1 | 大漂亮国 | US | 43.130.134.123:65002
 bestcf_pages_dev_tiancheng_all_txt,43.153.68.102,31222,latency_failed,HTTP Error 504: Gateway Timeout,43.153.68.102:31222#天诚优选1 | 大漂亮国 | US | 43.153.68.102:31222
-bestcf_pages_dev_tiancheng_sg_txt,43.156.116.194,443,latency_failed,HTTP Error 504: Gateway Timeout,43.156.116.194:443#天诚优选1 | 坡县狮城 | SG | 43.156.116.194:443
-tiancheng2,47.79.94.192,443,latency_too_high,1565ms > 800ms,47.79.94.192:443#天诚优选2 | 小日本子 | JP | 47.79.94.192:443
+bestcf_pages_dev_tiancheng_all_txt,50.228.203.26,443,latency_too_high,1401ms > 800ms,50.228.203.26:443#天诚优选1 | 大漂亮国 | US | 50.228.203.26:443
+tiancheng2,45.95.212.117,443,latency_too_high,3909ms > 800ms,45.95.212.117:443#天诚优选2 | 小日本子 | JP | 45.95.212.117:443
 tiancheng2,43.160.195.223,443,latency_failed,HTTP Error 504: Gateway Timeout,43.160.195.223:443#天诚优选2 | 坡县狮城 | SG | 43.160.195.223:443
-bestcf_pages_dev_tiancheng_all_txt,50.228.203.26,443,latency_too_high,1387ms > 800ms,50.228.203.26:443#天诚优选1 | 大漂亮国 | US | 50.228.203.26:443
+moistr,43.161.254.71,443,latency_failed,HTTP Error 504: Gateway Timeout,43.161.254.71:443#MoistR优选 | 中国香港 HK | 43.161.254.71:443
 bestcf_pages_dev_tiancheng_all_txt,43.167.157.65,12345,latency_failed,HTTP Error 504: Gateway Timeout,43.167.157.65:12345#天诚优选1 | 小日本子 | JP | 43.167.157.65:12345
 luoli,43.168.16.112,443,latency_failed,HTTP Error 504: Gateway Timeout,43.168.16.112:443#洛璃优选 | 中国香港 HK | 43.168.16.112:443
-luoli,43.218.77.16,443,latency_failed,HTTP Error 504: Gateway Timeout,43.218.77.16:443#洛璃优选 | 印尼 ID | 43.218.77.16:443
+moistr,54.254.216.225,443,latency_failed,HTTP Error 503: Service Unavailable,54.254.216.225:443#MoistR优选 | 新加坡 SG | 54.254.216.225:443
 tiancheng2,43.247.135.211,8443,latency_failed,HTTP Error 504: Gateway Timeout,43.247.135.211:8443#天诚优选2 | 港岛古惑 | HK | 43.247.135.211:8443
-tiancheng2,64.186.227.83,443,latency_failed,HTTP Error 503: Service Unavailable,64.186.227.83:443#天诚优选2 | 大漂亮国 | US | 64.186.227.83:443
+tiancheng2,43.254.164.50,8443,latency_failed,HTTP Error 504: Gateway Timeout,43.254.164.50:8443#天诚优选2 | 港岛古惑 | HK | 43.254.164.50:8443
 xinyitang3,43.98.251.142,443,latency_failed,HTTP Error 504: Gateway Timeout,43.98.251.142:443#Mia优选 | 新加坡 SG | 43.98.251.142:443
-domain_asia,52pojie.org,443,latency_too_high,1775ms > 800ms,52pojie.org:443#亚洲域名 | 吾爱破解
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.225.11,443,latency_too_high,903ms > 800ms,64.186.225.11:443#US [优选高速 179.99ms 8.61Mbps]
-tiancheng2,64.186.231.175,443,latency_too_high,923ms > 800ms,64.186.231.175:443#天诚优选2 | 大漂亮国 | US | 64.186.231.175:443
-tiancheng2,64.186.233.224,443,latency_too_high,927ms > 800ms,64.186.233.224:443#天诚优选2 | 大漂亮国 | US | 64.186.233.224:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.110.71.6,443,latency_too_high,1692ms > 800ms,64.110.71.6:443#KR [优选高速 120.86ms 8.43Mbps]
-bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,10428,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:10428#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:10428
-bestcf_pages_dev_entryip_50_txt,45.64.64.1,443,latency_failed,HTTP Error 504: Gateway Timeout,45.64.64.1:443#45.64.64.1 | 亚洲优化段，地理位置近，物理时延低
-moistr,57.181.79.239,443,latency_failed,HTTP Error 503: Service Unavailable,57.181.79.239:443#MoistR优选 | 小日子 JP | 57.181.79.239:443
-bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,11017,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:11017#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:11017
-bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,12128,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:12128#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:12128
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.235.57,443,latency_too_high,973ms > 800ms,64.186.235.57:443#US [优选高速 176.6ms 8.16Mbps]
-tiancheng2,64.186.236.184,8443,latency_too_high,977ms > 800ms,64.186.236.184:8443#天诚优选2 | 大漂亮国 | US | 64.186.236.184:8443
-bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,23281,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:23281#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:23281
+tiancheng2,45.136.14.61,2053,latency_failed,HTTP Error 504: Gateway Timeout,45.136.14.61:2053#天诚优选2 | 港岛古惑 | HK | 45.136.14.61:2053
+bestcf_pages_dev_tiancheng_all_txt,47.242.145.136,8001,latency_too_high,4102ms > 800ms,47.242.145.136:8001#天诚优选1 | 港岛古惑 | HK | 47.242.145.136:8001
+tiancheng2,45.89.232.111,8443,latency_failed,HTTP Error 504: Gateway Timeout,45.89.232.111:8443#天诚优选2 | 小日本子 | JP | 45.89.232.111:8443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,45.91.134.91,2053,latency_failed,HTTP Error 504: Gateway Timeout,45.91.134.91:2053#TH [优选高速 1118.92ms 8.79Mbps]
 tiancheng2,47.239.231.121,443,latency_failed,HTTP Error 504: Gateway Timeout,47.239.231.121:443#天诚优选2 | 港岛古惑 | HK | 47.239.231.121:443
-bestcf_pages_dev_tiancheng_mini_txt,60.248.139.106,32770,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:32770#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:32770
-bestcf_pages_dev_tiancheng_mini_txt,60.251.232.240,995,latency_failed,HTTP Error 503: Service Unavailable,60.251.232.240:995#天诚优选1 | 宝岛正妹 | TW | 60.251.232.240:995
-tiancheng2,47.239.4.246,443,latency_failed,HTTP Error 504: Gateway Timeout,47.239.4.246:443#天诚优选2 | 港岛古惑 | HK | 47.239.4.246:443
 tiancheng2,47.239.4.246,2053,latency_failed,HTTP Error 504: Gateway Timeout,47.239.4.246:2053#天诚优选2 | 港岛古惑 | HK | 47.239.4.246:2053
+tiancheng2,47.239.4.246,443,latency_failed,HTTP Error 504: Gateway Timeout,47.239.4.246:443#天诚优选2 | 港岛古惑 | HK | 47.239.4.246:443
 tiancheng2,47.239.4.246,8443,latency_failed,HTTP Error 504: Gateway Timeout,47.239.4.246:8443#天诚优选2 | 港岛古惑 | HK | 47.239.4.246:8443
-tiancheng2,64.186.237.92,8443,latency_too_high,934ms > 800ms,64.186.237.92:8443#天诚优选2 | 大漂亮国 | US | 64.186.237.92:8443
-bestcf_pages_dev_tiancheng_all_txt,69.63.220.89,443,latency_failed,HTTP Error 503: Service Unavailable,69.63.220.89:443#天诚优选1 | 大漂亮国 | US | 69.63.220.89:443
-bestcf_pages_dev_tiancheng_all_txt,47.242.145.136,8001,latency_failed,HTTP Error 504: Gateway Timeout,47.242.145.136:8001#天诚优选1 | 港岛古惑 | HK | 47.242.145.136:8001
-tiancheng2,64.186.238.108,8443,latency_too_high,975ms > 800ms,64.186.238.108:8443#天诚优选2 | 大漂亮国 | US | 64.186.238.108:8443
-tiancheng2,64.186.239.202,443,latency_too_high,947ms > 800ms,64.186.239.202:443#天诚优选2 | 大漂亮国 | US | 64.186.239.202:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,67.230.174.48,443,latency_too_high,928ms > 800ms,67.230.174.48:443#US [优选高速 175.9ms 9.01Mbps]
-bestcf_pages_dev_tiancheng_mini_txt,74.208.150.213,443,latency_failed,HTTP Error 503: Service Unavailable,74.208.150.213:443#天诚优选1 | 大漂亮国 | US | 74.208.150.213:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.216.10,443,latency_too_high,960ms > 800ms,69.63.216.10:443#US [优选高速 170.94ms 8.99Mbps]
-tiancheng2,64.186.242.138,8443,latency_too_high,1216ms > 800ms,64.186.242.138:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.138:8443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.217.6,443,latency_too_high,952ms > 800ms,69.63.217.6:443#US [优选高速 176.81ms 8.64Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.222.124,443,latency_too_high,913ms > 800ms,69.63.222.124:443#US [优选高速 177.65ms 8.45Mbps]
-xinyitang3,68.64.183.46,443,latency_too_high,1117ms > 800ms,68.64.183.46:443#Mia优选 | 中国香港 HK | 68.64.183.46:443
+tiancheng2,47.79.94.192,443,latency_too_high,3660ms > 800ms,47.79.94.192:443#天诚优选2 | 小日本子 | JP | 47.79.94.192:443
+xinyitang3,47.242.28.106,443,latency_failed,HTTP Error 504: Gateway Timeout,47.242.28.106:443#Mia优选 | 中国香港 HK | 47.242.28.106:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,47.250.212.59,2053,latency_failed,HTTP Error 504: Gateway Timeout,47.250.212.59:2053#MY [优选高速 790.16ms 11.27Mbps]
+bestcf_pages_dev_tiancheng_all_txt,61.72.208.162,18011,latency_too_high,924ms > 800ms,61.72.208.162:18011#天诚优选1 | 泡菜欧巴 | KR | 61.72.208.162:18011
+cf_junzhen_qzz_io_best_ips_txt,47.250.212.59,443,latency_failed,HTTP Error 504: Gateway Timeout,47.250.212.59:443#MY [高速 by Jz 12M]
 tiancheng2,47.57.181.17,443,latency_failed,HTTP Error 504: Gateway Timeout,47.57.181.17:443#天诚优选2 | 大漂亮国 | US | 47.57.181.17:443
 tiancheng2,47.76.218.163,443,latency_failed,HTTP Error 504: Gateway Timeout,47.76.218.163:443#天诚优选2 | 港岛古惑 | HK | 47.76.218.163:443
+tiancheng2,64.186.227.83,443,latency_failed,HTTP Error 503: Service Unavailable,64.186.227.83:443#天诚优选2 | 大漂亮国 | US | 64.186.227.83:443
 bestcf_pages_dev_tiancheng_all_txt,47.79.145.241,4439,latency_failed,HTTP Error 504: Gateway Timeout,47.79.145.241:4439#天诚优选1 | 小日本子 | JP | 47.79.145.241:4439
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.225.11,443,latency_too_high,992ms > 800ms,64.186.225.11:443#US [优选高速 179.99ms 8.61Mbps]
+moistr,57.181.79.239,443,latency_failed,HTTP Error 503: Service Unavailable,57.181.79.239:443#MoistR优选 | 小日子 JP | 57.181.79.239:443
+bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,10428,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:10428#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:10428
+bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,11017,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:11017#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:11017
+bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,12128,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:12128#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:12128
+tiancheng2,64.186.231.175,443,latency_too_high,938ms > 800ms,64.186.231.175:443#天诚优选2 | 大漂亮国 | US | 64.186.231.175:443
 tiancheng2,47.79.38.36,443,latency_failed,HTTP Error 504: Gateway Timeout,47.79.38.36:443#天诚优选2 | 小日本子 | JP | 47.79.38.36:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.227.180,443,latency_too_high,1733ms > 800ms,68.183.227.180:443#SG [优选高速 256.76ms 15.08Mbps]
+tiancheng2,64.186.233.224,443,latency_too_high,1004ms > 800ms,64.186.233.224:443#天诚优选2 | 大漂亮国 | US | 64.186.233.224:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.235.57,443,latency_too_high,981ms > 800ms,64.186.235.57:443#US [优选高速 176.6ms 8.16Mbps]
+bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,23281,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:23281#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:23281
+tiancheng2,64.186.236.184,8443,latency_too_high,982ms > 800ms,64.186.236.184:8443#天诚优选2 | 大漂亮国 | US | 64.186.236.184:8443
 tiancheng2,47.83.14.42,8443,latency_failed,HTTP Error 504: Gateway Timeout,47.83.14.42:8443#天诚优选2 | 港岛古惑 | HK | 47.83.14.42:8443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,80.66.196.231,443,latency_too_high,979ms > 800ms,80.66.196.231:443#US [优选高速 173.19ms 8.53Mbps]
+bestcf_pages_dev_tiancheng_all_txt,60.248.139.106,32770,latency_failed,HTTP Error 503: Service Unavailable,60.248.139.106:32770#天诚优选1 | 宝岛正妹 | TW | 60.248.139.106:32770
+tiancheng2,64.186.237.92,8443,latency_too_high,1039ms > 800ms,64.186.237.92:8443#天诚优选2 | 大漂亮国 | US | 64.186.237.92:8443
+moistr,5.181.219.212,443,latency_failed,HTTP Error 504: Gateway Timeout,5.181.219.212:443#MoistR优选 | 美国 US | 5.181.219.212:443
+tiancheng2,64.186.238.108,8443,latency_too_high,960ms > 800ms,64.186.238.108:8443#天诚优选2 | 大漂亮国 | US | 64.186.238.108:8443
+bestcf_pages_dev_tiancheng_all_txt,60.251.232.240,995,latency_failed,HTTP Error 503: Service Unavailable,60.251.232.240:995#天诚优选1 | 宝岛正妹 | TW | 60.251.232.240:995
+tiancheng2,64.186.239.202,443,latency_too_high,956ms > 800ms,64.186.239.202:443#天诚优选2 | 大漂亮国 | US | 64.186.239.202:443
+bestcf_pages_dev_tiancheng_all_txt,69.63.220.89,443,latency_failed,HTTP Error 503: Service Unavailable,69.63.220.89:443#天诚优选1 | 大漂亮国 | US | 69.63.220.89:443
+bestcf_pages_dev_tiancheng_all_txt,74.208.150.213,443,latency_failed,HTTP Error 503: Service Unavailable,74.208.150.213:443#天诚优选1 | 大漂亮国 | US | 74.208.150.213:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,67.230.174.48,443,latency_too_high,919ms > 800ms,67.230.174.48:443#US [优选高速 175.9ms 9.01Mbps]
+cf_junzhen_qzz_io_best_ips_txt,52.194.99.211,443,latency_failed,HTTP Error 504: Gateway Timeout,52.194.99.211:443#JP [高速 by Jz 19M]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.216.10,443,latency_too_high,959ms > 800ms,69.63.216.10:443#US [优选高速 170.94ms 8.99Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.110.71.6,443,latency_too_high,3090ms > 800ms,64.110.71.6:443#KR [优选高速 120.86ms 8.43Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.217.6,443,latency_too_high,971ms > 800ms,69.63.217.6:443#US [优选高速 176.81ms 8.64Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,69.63.222.124,443,latency_too_high,938ms > 800ms,69.63.222.124:443#US [优选高速 177.65ms 8.45Mbps]
 tiancheng2,52.196.133.194,443,latency_failed,HTTP Error 504: Gateway Timeout,52.196.133.194:443#天诚优选2 | 小日本子 | JP | 52.196.133.194:443
-cf_junzhen_qzz_io_best_ips_txt,8.219.155.125,443,latency_too_high,1408ms > 800ms,8.219.155.125:443#JP [高速 by Jz 16M]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,8.219.195.31,443,latency_too_high,1404ms > 800ms,8.219.195.31:443#JP [优选高速 103.69ms 9.68Mbps]
-cf_junzhen_qzz_io_best_ips_txt,82.152.91.210,443,latency_too_high,1088ms > 800ms,82.152.91.210:443#TW [高速 by Jz 12M]
-vps789_top100,99.co,443,latency_failed,HTTP Error 503: Service Unavailable,99.co:443#VPS789优选 | 99.co
+cf_junzhen_qzz_io_best_ips_txt,65.20.85.14,443,latency_too_high,1487ms > 800ms,65.20.85.14:443#IN [高速 by Jz 13M]
+tiancheng2,64.186.234.108,443,latency_too_high,2524ms > 800ms,64.186.234.108:443#天诚优选2 | 大漂亮国 | US | 64.186.234.108:443
+xinyitang3,52.199.101.150,443,latency_failed,HTTP Error 504: Gateway Timeout,52.199.101.150:443#Mia优选 | 小日子 JP | 52.199.101.150:443
+cf_junzhen_qzz_io_best_ips_txt,52.199.22.23,443,latency_failed,HTTP Error 504: Gateway Timeout,52.199.22.23:443#JP [高速 by Jz 18M]
+junzhen_bj,52.76.97.123,443,latency_failed,HTTP Error 504: Gateway Timeout,52.76.97.123:443#SG [高速 by Jz 18M]
+moistr,54.169.110.63,443,latency_failed,HTTP Error 504: Gateway Timeout,54.169.110.63:443#MoistR优选 | 新加坡 SG | 54.169.110.63:443
 tiancheng2,54.238.157.207,443,latency_failed,HTTP Error 504: Gateway Timeout,54.238.157.207:443#天诚优选2 | 小日本子 | JP | 54.238.157.207:443
-bestcf_pages_dev_tiancheng_sg_txt,92.243.74.4,8443,latency_too_high,945ms > 800ms,92.243.74.4:8443#天诚优选1 | 坡县狮城 | SG | 92.243.74.4:8443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.231.228,443,latency_too_high,1935ms > 800ms,68.183.231.228:443#SG [优选高速 109.79ms 15.15Mbps]
+xinyitang3,54.95.229.6,443,latency_failed,HTTP Error 504: Gateway Timeout,54.95.229.6:443#Mia优选 | 小日子 JP | 54.95.229.6:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,80.66.196.231,443,latency_too_high,1010ms > 800ms,80.66.196.231:443#US [优选高速 173.19ms 8.53Mbps]
+junzhen_bj,57.182.89.177,443,latency_failed,HTTP Error 504: Gateway Timeout,57.182.89.177:443#JP [高速 by Jz 26M]
+xinyitang3,8.219.155.125,443,latency_too_high,1423ms > 800ms,8.219.155.125:443#Mia优选 | 新加坡 SG | 8.219.155.125:443
 bestcf_pages_dev_tiancheng_all_txt,59.4.166.72,12504,latency_failed,HTTP Error 504: Gateway Timeout,59.4.166.72:12504#天诚优选1 | 泡菜欧巴 | KR | 59.4.166.72:12504
-tiancheng2,77.93.90.231,443,latency_too_high,2140ms > 800ms,77.93.90.231:443#天诚优选2 | 坡县狮城 | SG | 77.93.90.231:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,98.70.26.236,443,latency_too_high,951ms > 800ms,98.70.26.236:443#IN [优选高速 170.41ms 9.19Mbps]
+vps789_top100,99.co,443,latency_failed,HTTP Error 503: Service Unavailable,99.co:443#VPS789优选 | 99.co
 tiancheng2,64.186.242.147,8443,latency_failed,HTTP Error 503: Service Unavailable,64.186.242.147:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.147:8443
-bestcf_pages_dev_tiancheng_sg_txt,91.192.81.154,2053,latency_too_high,1745ms > 800ms,91.192.81.154:2053#天诚优选1 | 坡县狮城 | SG | 91.192.81.154:2053
-bestcf_pages_dev_tiancheng_all_txt,61.72.208.162,18011,latency_failed,HTTP Error 504: Gateway Timeout,61.72.208.162:18011#天诚优选1 | 泡菜欧巴 | KR | 61.72.208.162:18011
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:27:332:7753:5b80:84dc:cb2f,443,latency_too_high,828ms > 800ms,2606:4700:27:332:7753:5b80:84dc:cb2f
+bestcf_pages_dev_tiancheng_all_txt,92.243.74.4,8443,latency_too_high,923ms > 800ms,92.243.74.4:8443#天诚优选1 | 坡县狮城 | SG | 92.243.74.4:8443
+tiancheng2,77.93.90.231,443,latency_too_high,2263ms > 800ms,77.93.90.231:443#天诚优选2 | 坡县狮城 | SG | 77.93.90.231:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,96.126.130.217,443,latency_too_high,894ms > 800ms,96.126.130.217:443#JP [优选高速 98.02ms 10.6Mbps]
+bestcf_pages_dev_vvhan_ipv6_txt,2400:cb00:2049::659f:5909,443,latency_too_high,896ms > 800ms,[2400:cb00:2049::659f:5909]:443#vvHan优选 | 电信 | SIN | 2400:cb00:2049::659f:5909
+bestcf_pages_dev_vvhan_ipv6_txt,2400:cb00:2049::64d5:2e68,443,latency_too_high,1253ms > 800ms,[2400:cb00:2049::64d5:2e68]:443#vvHan优选 | 电信 | SIN | 2400:cb00:2049::64d5:2e68
 tiancheng2,64.186.227.25,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.227.25:8443#天诚优选2 | 大漂亮国 | US | 64.186.227.25:8443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,98.70.26.236,443,latency_too_high,1426ms > 800ms,98.70.26.236:443#IN [优选高速 170.41ms 9.19Mbps]
 tiancheng2,64.186.227.27,443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.227.27:443#天诚优选2 | 大漂亮国 | US | 64.186.227.27:443
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:1e:3c83:1dbb:a90e:a3fe:e595,443,latency_too_high,1253ms > 800ms,[2606:4700:1e:3c83:1dbb:a90e:a3fe:e595]:443#NiREvil优选 | 移动 | Default | 1ms | 346mbps
 tiancheng2,64.186.227.44,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.227.44:8443#天诚优选2 | 大漂亮国 | US | 64.186.227.44:8443
-tiancheng2,64.186.234.108,443,latency_failed,HTTP Error 503: Service Unavailable,64.186.234.108:443#天诚优选2 | 大漂亮国 | US | 64.186.234.108:443
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:27:3ee:460f:b290:328e:2592,443,latency_too_high,1230ms > 800ms,2606:4700:27:3ee:460f:b290:328e:2592
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:0:f0:7701:a303:693b:8c5c,443,latency_too_high,1252ms > 800ms,2606:4700:0:f0:7701:a303:693b:8c5c
 tiancheng2,64.186.236.235,443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.236.235:443#天诚优选2 | 大漂亮国 | US | 64.186.236.235:443
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:4408::5a97:9340,443,latency_too_high,1221ms > 800ms,[2606:4700:4408::5a97:9340]:443#vvHan优选 | 电信 | SIN | 2606:4700:4408::5a97:9340
-moistr,2606:4700:90d5::444e:d15a,2096,latency_too_high,1224ms > 800ms,[2606:4700:90d5::444e:d15a]:2096#MoistR优选 | 移动 IPV6 02 | [2606:4700:90d5::444e:d15a]:2096
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8dd7:325e:caf9:cfe1:67d6:a4bc,443,latency_too_high,1401ms > 800ms,[2606:4700:8dd7:325e:caf9:cfe1:67d6:a4bc]:443#NiREvil优选 | 移动 | Default | 4ms | 524mbps
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8de4:613:6c12:e3b:6e55:3075,443,latency_too_high,1375ms > 800ms,[2606:4700:8de4:613:6c12:e3b:6e55:3075]:443#NiREvil优选 | 移动 | Default | 1ms | 571mbps
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8deb:3862:dd0a:715b:f362:4586,443,latency_too_high,1373ms > 800ms,[2606:4700:8deb:3862:dd0a:715b:f362:4586]:443#NiREvil优选 | 移动 | Default | 1ms | 324mbps
-cfyes_ipv6,2606:4700:964e:f293:b2e4:a146:288d:b20b,443,latency_too_high,1388ms > 800ms,[2606:4700:964e:f293:b2e4:a146:288d:b20b]:443#CFYes优选 | 移动 | [2606:4700:964e:f293:b2e4:a146:288d:b20b]
+cfyes_ipv6,2606:4700:4700:64ac:185d:67d5:156e:f88b,443,latency_too_high,1225ms > 800ms,[2606:4700:4700:64ac:185d:67d5:156e:f88b]:443#CFYes优选 | 移动 | [2606:4700:4700:64ac:185d:67d5:156e:f88b]
+tiancheng2,64.186.242.138,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.242.138:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.138:8443
 tiancheng2,65.52.160.128,8443,latency_failed,HTTP Error 504: Gateway Timeout,65.52.160.128:8443#天诚优选2 | 港岛古惑 | HK | 65.52.160.128:8443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.231.228,443,latency_failed,HTTP Error 504: Gateway Timeout,68.183.231.228:443#SG [优选高速 109.79ms 15.15Mbps]
-domain_ai_vps789,api.gzcrtw.com,443,latency_too_high,905ms > 800ms,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
-domain_asia,allot.com,443,latency_too_high,1029ms > 800ms,allot.com:443#亚洲域名 | 以色列Allot
-bestcf_pages_dev_vvhan_ipv6_txt,2a06:98c1:56::b775:457f,443,latency_too_high,1246ms > 800ms,[2a06:98c1:56::b775:457f]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:56::b775:457f
-moistr,2a06:98c1:56::38f8:4281,2096,latency_too_high,1233ms > 800ms,[2a06:98c1:56::38f8:4281]:2096#MoistR优选 | 电信 IPV6 02 | [2a06:98c1:56::38f8:4281]:2096
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.227.180,443,latency_failed,HTTP Error 504: Gateway Timeout,68.183.227.180:443#SG [优选高速 256.76ms 15.08Mbps]
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8dd7:325e:caf9:cfe1:67d6:a4bc,443,latency_too_high,1366ms > 800ms,[2606:4700:8dd7:325e:caf9:cfe1:67d6:a4bc]:443#NiREvil优选 | 移动 | Default | 4ms | 524mbps
+cfyes_ipv6,2606:4700:8ddf:4c58:256c:843a:f536:57f,443,latency_too_high,1368ms > 800ms,[2606:4700:8ddf:4c58:256c:843a:f536:57f]:443#CFYes优选 | 移动 | [2606:4700:8ddf:4c58:256c:843a:f536:57f]
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8de4:613:6c12:e3b:6e55:3075,443,latency_too_high,1369ms > 800ms,[2606:4700:8de4:613:6c12:e3b:6e55:3075]:443#NiREvil优选 | 移动 | Default | 1ms | 571mbps
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:8deb:3862:dd0a:715b:f362:4586,443,latency_too_high,1375ms > 800ms,[2606:4700:8deb:3862:dd0a:715b:f362:4586]:443#NiREvil优选 | 移动 | Default | 1ms | 324mbps
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:9768:93a1:638f:64a4:100a:acc5,443,latency_too_high,1622ms > 800ms,[2606:4700:9768:93a1:638f:64a4:100a:acc5]:443#vvHan优选 | 移动 | Default | 2606:4700:9768:93a1:638f:64a4:100a:acc5
 tiancheng2,8.210.29.68,443,latency_failed,HTTP Error 504: Gateway Timeout,8.210.29.68:443#天诚优选2 | 港岛古惑 | HK | 8.210.29.68:443
-vps789_top100,cdn.31514926.xyz,443,latency_failed,HTTP Error 503: Service Unavailable,cdn.31514926.xyz:443#VPS789优选 | cdn.31514926.xyz
-domain_fiatnorm_all,avg.cdn.djx-ybelove.pp.ua,443,latency_too_high,925ms > 800ms,avg.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 三网 BGP · 智能均衡，永远在线
-domain_ai_vps789,baka.fun,443,latency_too_high,912ms > 800ms,baka.fun:443#AI优选 | baka.fun
-domain_all,cdn.jsdelivr.net,443,latency_failed,HTTP Error 503: Service Unavailable,cdn.jsdelivr.net:443#更多选择 | jsDelivr
-domain_ircf_all,apt.ircf.space,443,latency_too_high,1309ms > 800ms,apt.ircf.space:443#IRCF优选 | Aptel | apt.ircf.space
-bestcf_pages_dev_tiancheng_mini_txt,8.223.63.150,443,latency_failed,HTTP Error 504: Gateway Timeout,8.223.63.150:443#天诚优选1 | 港岛古惑 | HK | 8.223.63.150:443
-domain_ircf_all,cf.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,cf.ircf.space:443#IRCF优选 | Universal CF | cf.ircf.space
-vps789_top100,blog.raindew.576555.xyz,443,latency_too_high,999ms > 800ms,blog.raindew.576555.xyz:443#VPS789优选 | blog.raindew.576555.xyz
-vps789_top100,auto.dolby.dpdns.org,443,latency_too_high,1248ms > 800ms,auto.dolby.dpdns.org:443#VPS789优选 | auto.dolby.dpdns.org
-domain_ai_vps789,cfsaas.080112.xyz,443,latency_failed,HTTP Error 503: Service Unavailable,cfsaas.080112.xyz:443#AI优选 | cfsaas.080112.xyz
-bestcf_pages_dev_tiancheng_all_txt,84.32.44.80,443,latency_failed,HTTP Error 504: Gateway Timeout,84.32.44.80:443#天诚优选1 | 大漂亮国 | US | 84.32.44.80:443
+bestcf_pages_dev_vvhan_ipv6_txt,2a06:98c1:3105::c631:97d7,443,latency_too_high,1228ms > 800ms,[2a06:98c1:3105::c631:97d7]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:3105::c631:97d7
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:9b01:6646:a84d:f22d:e3bc:91ce,443,latency_too_high,1756ms > 800ms,[2606:4700:9b01:6646:a84d:f22d:e3bc:91ce]:443#NiREvil优选 | 移动 | Default | 3ms | 603mbps
+bestcf_pages_dev_tiancheng_all_txt,8.218.36.133,9010,latency_failed,HTTP Error 504: Gateway Timeout,8.218.36.133:9010#天诚优选1 | 港岛古惑 | HK | 8.218.36.133:9010
+xinyitang3,8.219.195.31,443,latency_failed,HTTP Error 504: Gateway Timeout,8.219.195.31:443#Mia优选 | 小日子 JP | 8.219.195.31:443
+xinyitang3,8.222.185.236,443,latency_failed,HTTP Error 504: Gateway Timeout,8.222.185.236:443#Mia优选 | 新加坡 SG | 8.222.185.236:443
+cf_junzhen_qzz_io_best_ips_txt,8.222.193.153,443,latency_failed,HTTP Error 504: Gateway Timeout,8.222.193.153:443#JP [高速 by Jz 16M]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c6d4:4130:7992:df42:f04c,443,latency_too_high,1232ms > 800ms,[2a06:98c1:3121:c6d4:4130:7992:df42:f04c]:443#Uouin-be5ab4
+bestcf_pages_dev_tiancheng_all_txt,8.223.63.150,443,latency_failed,HTTP Error 504: Gateway Timeout,8.223.63.150:443#天诚优选1 | 港岛古惑 | HK | 8.223.63.150:443
+domain_ai_vps789,api.gzcrtw.com,443,latency_too_high,821ms > 800ms,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,82.40.42.119,443,latency_failed,HTTP Error 504: Gateway Timeout,82.40.42.119:443#JP [优选高速 110.14ms 10.65Mbps]
 tiancheng2,83.229.121.78,8443,latency_failed,HTTP Error 504: Gateway Timeout,83.229.121.78:8443#天诚优选2 | 港岛古惑 | HK | 83.229.121.78:8443
-domain_ai_vps789,cdn.091224.xyz,443,latency_too_high,821ms > 800ms,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
-vps789_top100,cfip.1323123.xyz,443,latency_failed,HTTP Error 503: Service Unavailable,cfip.1323123.xyz:443#VPS789优选 | cfip.1323123.xyz
-domain_ai_vps789,cdn.204910.best,443,latency_too_high,938ms > 800ms,cdn.204910.best:443#AI优选 | cdn.204910.best
-domain_ai_vps789,cloudflare.cnae.top,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cnae.top:443#AI优选 | cloudflare.cnae.top
+bestcf_pages_dev_tiancheng_all_txt,84.32.44.80,443,latency_failed,HTTP Error 504: Gateway Timeout,84.32.44.80:443#天诚优选1 | 大漂亮国 | US | 84.32.44.80:443
+domain_asia,allot.com,443,latency_too_high,1021ms > 800ms,allot.com:443#亚洲域名 | 以色列Allot
+domain_ircf_all,ast.ircf.space,443,latency_too_high,859ms > 800ms,ast.ircf.space:443#IRCF优选 | Asiatech | ast.ircf.space
+domain_asia,advantech.com,443,latency_too_high,1321ms > 800ms,advantech.com:443#亚洲域名 | 中国台湾研华
+domain_fiatnorm_all,avg.cdn.djx-ybelove.pp.ua,443,latency_too_high,836ms > 800ms,avg.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 三网 BGP · 智能均衡，永远在线
+vps789_top100,a.lma.de5.net,443,latency_too_high,1460ms > 800ms,a.lma.de5.net:443#VPS789优选 | a.lma.de5.net
+bestcf_pages_dev_tiancheng_all_txt,91.192.81.154,2053,latency_failed,HTTP Error 504: Gateway Timeout,91.192.81.154:2053#天诚优选1 | 坡县狮城 | SG | 91.192.81.154:2053
 tiancheng2,91.213.189.55,443,latency_failed,HTTP Error 504: Gateway Timeout,91.213.189.55:443#天诚优选2 | 港岛古惑 | HK | 91.213.189.55:443
+domain_ai_vps789,cdn.2020111.xyz,443,latency_failed,HTTP Error 503: Service Unavailable,cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
+vps789_top100,auto.dolby.dpdns.org,443,latency_too_high,978ms > 800ms,auto.dolby.dpdns.org:443#VPS789优选 | auto.dolby.dpdns.org
+vps789_top100,autz.org,443,latency_too_high,1000ms > 800ms,autz.org:443#VPS789优选 | autz.org
+domain_ai_vps789,cdn.262832.xyz,443,latency_failed,HTTP Error 503: Service Unavailable,cdn.262832.xyz:443#AI优选 | cdn.262832.xyz
+domain_ircf_all,cf.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,cf.ircf.space:443#IRCF优选 | Universal CF | cf.ircf.space
 tiancheng2,91.213.189.55,8443,latency_failed,HTTP Error 504: Gateway Timeout,91.213.189.55:8443#天诚优选2 | 港岛古惑 | HK | 91.213.189.55:8443
-domain_wuya_all,bp.hhhhh.eu.org,443,latency_too_high,1305ms > 800ms,bp.hhhhh.eu.org:443#乌鸦优选 | bp | bp.hhhhh.eu.org
-domain_all,cm.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cm.cloudflare.byoip.top:443#按运营商 | 移动Byoip
+domain_ai_vps789,cdn.091224.xyz,443,latency_too_high,812ms > 800ms,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
+domain_ircf_all,atc.ircf.space,443,latency_too_high,1331ms > 800ms,atc.ircf.space:443#IRCF优选 | Asre Telecom | atc.ircf.space
 luoli,92.38.190.44,443,latency_failed,HTTP Error 504: Gateway Timeout,92.38.190.44:443#洛璃优选 | 俄罗斯 RU | 92.38.190.44:443
-domain_ai_vps789,cdn.2020111.xyz,443,latency_too_high,1272ms > 800ms,cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
-domain_all,ct.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,ct.cloudflare.byoip.top:443#按运营商 | 电信Byoip
+domain_ai_vps789,cdn.204910.best,443,latency_too_high,973ms > 800ms,cdn.204910.best:443#AI优选 | cdn.204910.best
+domain_all,cdn.jsdelivr.net,443,latency_too_high,850ms > 800ms,cdn.jsdelivr.net:443#更多选择 | jsDelivr
+domain_ai_vps789,cloudflare.cnae.top,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cnae.top:443#AI优选 | cloudflare.cnae.top
+domain_ai_vps789,cdn.cf.3666888.xyz,443,latency_too_high,1007ms > 800ms,cdn.cf.3666888.xyz:443#AI优选 | cdn.cf.3666888.xyz
+domain_asia,camperandnicholsons.com,443,latency_too_high,1311ms > 800ms,camperandnicholsons.com:443#亚洲域名 | 新加坡游艇
+vps789_top100,cdn.31514926.xyz,443,latency_too_high,1159ms > 800ms,cdn.31514926.xyz:443#VPS789优选 | cdn.31514926.xyz
+domain_ai_vps789,cloudflare.cfgo.cc,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cfgo.cc:443#AI优选 | cloudflare.cfgo.cc
+vps789_top100,cf.nyanya.moe,443,latency_too_high,820ms > 800ms,cf.nyanya.moe:443#VPS789优选 | cf.nyanya.moe
+domain_all,cm.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cm.cloudflare.byoip.top:443#按运营商 | 移动Byoip
+vps789_top100,cf.te.lezi.chat,443,latency_too_high,1044ms > 800ms,cf.te.lezi.chat:443#VPS789优选 | cf.te.lezi.chat
 domain_all,cu.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cu.cloudflare.byoip.top:443#按运营商 | 联通Byoip
-vps789_top100,cf.affection.dpdns.org,443,latency_too_high,1034ms > 800ms,cf.affection.dpdns.org:443#VPS789优选 | cf.affection.dpdns.org
-domain_ai_vps789,cf.cf.3666888.xyz,443,latency_too_high,1310ms > 800ms,cf.cf.3666888.xyz:443#AI优选 | cf.cf.3666888.xyz
-domain_mini,cloudflare-eth.com,443,latency_too_high,1253ms > 800ms,cloudflare-eth.com:443#官方域名 | Web3
-vps789_top100,china.mfa.gov.ua,443,latency_too_high,1319ms > 800ms,china.mfa.gov.ua:443#VPS789优选 | china.mfa.gov.ua
-domain_asia,crocs.com.vn,443,latency_too_high,969ms > 800ms,crocs.com.vn:443#亚洲域名 | 越南卡骆驰
-vps789_top100,cmcc.vvvv.ee,443,latency_too_high,1074ms > 800ms,cmcc.vvvv.ee:443#VPS789优选 | cmcc.vvvv.ee
-domain_asia,converse.co.jp,443,latency_too_high,1127ms > 800ms,converse.co.jp:443#亚洲域名 | 日本匡威
-domain_all,decathlon.com,443,latency_too_high,953ms > 800ms,decathlon.com:443#企业域名 | 迪卡侬
-domain_asia,decathlon.qa,443,latency_too_high,966ms > 800ms,decathlon.qa:443#亚洲域名 | 卡塔尔迪卡侬
-vps789_top100,gitlab.com,443,latency_failed,HTTP Error 503: Service Unavailable,gitlab.com:443#VPS789优选 | gitlab.com
+vps789_top100,cf.0sm.com,443,latency_too_high,1260ms > 800ms,cf.0sm.com:443#VPS789优选 | cf.0sm.com
+domain_all,ct.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,ct.cloudflare.byoip.top:443#按运营商 | 电信Byoip
+domain_fiatnorm_all,cdn.djx-ybelove.pp.ua,443,latency_too_high,1487ms > 800ms,cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | GeoIP 默认路由 · 贴心的兜底保护
+domain_ai_vps789,cf1s.cf.3666888.xyz,443,latency_too_high,1304ms > 800ms,cf1s.cf.3666888.xyz:443#AI优选 | cf1s.cf.3666888.xyz
+vps789_top100,cfip-cm.stoeaves.us.ci,443,latency_too_high,1298ms > 800ms,cfip-cm.stoeaves.us.ci:443#VPS789优选 | cfip-cm.stoeaves.us.ci
+vps789_top100,cfip-cu.stoeaves.us.ci,443,latency_too_high,1311ms > 800ms,cfip-cu.stoeaves.us.ci:443#VPS789优选 | cfip-cu.stoeaves.us.ci
+domain_ai_vps789,cfvip.cf.3666888.xyz,443,latency_too_high,1339ms > 800ms,cfvip.cf.3666888.xyz:443#AI优选 | cfvip.cf.3666888.xyz
+domain_asia,citysuper.com.hk,443,latency_too_high,1219ms > 800ms,citysuper.com.hk:443#亚洲域名 | 中国香港CitySuper
+domain_all,cloudflare-ech.com,443,latency_too_high,1262ms > 800ms,cloudflare-ech.com:443#官方域名 | ECH
+domain_ai_vps789,cloudflare-ip.mofashi.ltd,443,latency_too_high,1266ms > 800ms,cloudflare-ip.mofashi.ltd:443#AI优选 | cloudflare-ip.mofashi.ltd
+domain_ai_vps789,cloudflare.468123.xyz,443,latency_too_high,1251ms > 800ms,cloudflare.468123.xyz:443#AI优选 | cloudflare.468123.xyz
+vps789_top100,cmcc.vvvv.ee,443,latency_too_high,1103ms > 800ms,cmcc.vvvv.ee:443#VPS789优选 | cmcc.vvvv.ee
+domain_wuya_all,cm.2.hhhhh.eu.org,443,latency_too_high,1290ms > 800ms,cm.2.hhhhh.eu.org:443#乌鸦优选 | cm2 | cm.2.hhhhh.eu.org
+domain_asia,converse.co.jp,443,latency_too_high,1116ms > 800ms,converse.co.jp:443#亚洲域名 | 日本匡威
+domain_all,ct.877774.xyz,443,latency_too_high,1240ms > 800ms,ct.877774.xyz:443#按运营商 | 电信QMS
 domain_ircf_all,ipv6.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,ipv6.ircf.space:443#IRCF优选 | Universal IPv6 | ipv6.ircf.space
-domain_asia,drivewealth.com,443,latency_too_high,1159ms > 800ms,drivewealth.com:443#亚洲域名 | 新加坡金融
-domain_ai_vps789,eii.at,443,latency_too_high,1014ms > 800ms,eii.at:443#AI优选 | eii.at
 domain_ai_vps789,kniu.cc,443,latency_failed,HTTP Error 503: Service Unavailable,kniu.cc:443#AI优选 | kniu.cc
-vps789_top100,f.lma.de5.net,443,latency_too_high,1198ms > 800ms,f.lma.de5.net:443#VPS789优选 | f.lma.de5.net
-domain_wuya_all,dx.5.hhhhh.eu.org,443,latency_too_high,1344ms > 800ms,dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
-domain_all,emerson.com,443,latency_too_high,1366ms > 800ms,emerson.com:443#更多选择 | 艾默生
-vps789_top100,doro.lol,443,latency_too_high,1665ms > 800ms,doro.lol:443#VPS789优选 | doro.lol
-domain_ircf_all,fnp.ircf.space,443,latency_too_high,1325ms > 800ms,fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
-vps789_top100,my.dnshe.com,443,latency_failed,HTTP Error 503: Service Unavailable,my.dnshe.com:443#VPS789优选 | my.dnshe.com
-domain_all,homecare.stryker.com,443,latency_too_high,1011ms > 800ms,homecare.stryker.com:443#更多选择 | 史赛克
-moistr,fw8je9.cf.3666888.xyz,2096,latency_too_high,1388ms > 800ms,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
-domain_ai_vps789,fw8je9.cf.3666888.xyz,443,latency_too_high,1339ms > 800ms,fw8je9.cf.3666888.xyz:443#AI优选 | fw8je9.cf.3666888.xyz
-vps789_top100,form.assaabloy.com,443,latency_too_high,1592ms > 800ms,form.assaabloy.com:443#VPS789优选 | form.assaabloy.com
-domain_ai_vps789,hfqek.cf.3666888.xyz,443,latency_too_high,1454ms > 800ms,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
+domain_ai_vps789,eii.at,443,latency_too_high,975ms > 800ms,eii.at:443#AI优选 | eii.at
+domain_asia,doosan.com,443,latency_too_high,1366ms > 800ms,doosan.com:443#亚洲域名 | 韩国斗山
+domain_ai_vps789,hfqek.cf.3666888.xyz,443,latency_too_high,803ms > 800ms,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
+domain_asia,deepin.org,443,latency_too_high,1598ms > 800ms,deepin.org:443#亚洲域名 | 中国深度系统
+domain_ai_vps789,hk.cf.3666888.xyz,443,latency_too_high,1046ms > 800ms,hk.cf.3666888.xyz:443#AI优选 | hk.cf.3666888.xyz
+domain_all,homecare.stryker.com,443,latency_too_high,1250ms > 800ms,homecare.stryker.com:443#更多选择 | 史赛克
+vps789_top100,img.imgdd.com,443,latency_too_high,1309ms > 800ms,img.imgdd.com:443#VPS789优选 | img.imgdd.com
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:4f::fa09:9393,443,latency_failed,HTTP Error 504: Gateway Timeout,[2a06:98c1:4f::fa09:9393]:443#WeTestV6-c26296
+domain_asia,locknlock.vn,443,latency_too_high,967ms > 800ms,locknlock.vn:443#亚洲域名 | 越南乐扣乐扣
 domain_ircf_all,mtn.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,mtn.ircf.space:443#IRCF优选 | Irancell | mtn.ircf.space
-bestcf_pages_dev_vvhan_ipv6_txt,2a06:98c1:4f::b313:309a,443,latency_failed,HTTP Error 504: Gateway Timeout,[2a06:98c1:4f::b313:309a]:443#vvHan优选 | 移动 | HKG | 2a06:98c1:4f::b313:309a
-vps789_top100,jquery.com,443,latency_too_high,1304ms > 800ms,jquery.com:443#VPS789优选 | jquery.com
-domain_asia,locknlock.vn,443,latency_too_high,1127ms > 800ms,locknlock.vn:443#亚洲域名 | 越南乐扣乐扣
-vps789_top100,play.mc.js.cool,443,latency_too_high,1003ms > 800ms,play.mc.js.cool:443#VPS789优选 | play.mc.js.cool
-domain_wuya_all,qms.hhhhh.eu.org,443,latency_too_high,824ms > 800ms,qms.hhhhh.eu.org:443#乌鸦优选 | qms | qms.hhhhh.eu.org
+domain_asia,ir.yuntongxun.com,443,latency_too_high,1363ms > 800ms,ir.yuntongxun.com:443#亚洲域名 | 中国容联
+domain_all,mycareer.verizon.com,443,latency_too_high,914ms > 800ms,mycareer.verizon.com:443#更多选择 | Verizon
+domain_wuya_all,lt.1.hhhhh.eu.org,443,latency_too_high,1302ms > 800ms,lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
+domain_asia,leyun.cloud,443,latency_too_high,1582ms > 800ms,leyun.cloud:443#亚洲域名 | 中国台湾乐云
+domain_asia,pfizer.com.hk,443,latency_too_high,815ms > 800ms,pfizer.com.hk:443#亚洲域名 | 中国香港辉瑞
+domain_ai_vps789,markmonitor.com,443,latency_too_high,1374ms > 800ms,markmonitor.com:443#AI优选 | markmonitor.com
+vps789_top100,nas.chinwa.eu.cc,443,latency_too_high,1160ms > 800ms,nas.chinwa.eu.cc:443#VPS789优选 | nas.chinwa.eu.cc
+domain_ai_vps789,qocu.cf.3666888.xyz,443,latency_too_high,821ms > 800ms,qocu.cf.3666888.xyz:443#AI优选 | qocu.cf.3666888.xyz
 domain_asia,shoppes.marinabaysands.com,443,latency_failed,HTTP Error 503: Service Unavailable,shoppes.marinabaysands.com:443#亚洲域名 | 新加坡金沙
-domain_ircf_all,rtl.ircf.space,443,latency_too_high,947ms > 800ms,rtl.ircf.space:443#IRCF优选 | RighTel | rtl.ircf.space
-domain_ircf_all,psm.ircf.space,443,latency_too_high,1286ms > 800ms,psm.ircf.space:443#IRCF优选 | Pishgaman | psm.ircf.space
-domain_mini,pages.dev,443,latency_too_high,1408ms > 800ms,pages.dev:443#官方域名 | Pages
-domain_ircf_all,ts.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,ts.ircf.space:443#IRCF优选 | Universal TS | ts.ircf.space
+domain_asia,shop.glico.com,443,latency_too_high,811ms > 800ms,shop.glico.com:443#亚洲域名 | 日本格力高
+domain_wuya_all,qms.hhhhh.eu.org,443,latency_too_high,1312ms > 800ms,qms.hhhhh.eu.org:443#乌鸦优选 | qms | qms.hhhhh.eu.org
 vps789_top100,snipaste5.speedip.eu.org,443,latency_failed,HTTP Error 503: Service Unavailable,snipaste5.speedip.eu.org:443#VPS789优选 | snipaste5.speedip.eu.org
-domain_asia,sasa.com,443,latency_too_high,992ms > 800ms,sasa.com:443#亚洲域名 | 中国香港莎莎
+domain_ircf_all,shm.ircf.space,443,latency_too_high,971ms > 800ms,shm.ircf.space:443#IRCF优选 | Shatel Mobile | shm.ircf.space
+domain_ircf_all,rsp.ircf.space,443,latency_too_high,1324ms > 800ms,rsp.ircf.space:443#IRCF优选 | Respina | rsp.ircf.space
+vps789_top100,stackoverflow.com,443,latency_failed,HTTP Error 503: Service Unavailable,stackoverflow.com:443#VPS789优选 | stackoverflow.com
+domain_ircf_all,ts.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,ts.ircf.space:443#IRCF优选 | Universal TS | ts.ircf.space
 domain_ircf_all,udp.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,udp.ircf.space:443#IRCF优选 | Universal UDP | udp.ircf.space
-vps789_top100,nas.chinwa.eu.cc,443,latency_too_high,1940ms > 800ms,nas.chinwa.eu.cc:443#VPS789优选 | nas.chinwa.eu.cc
-domain_all,shopify.com,443,latency_too_high,911ms > 800ms,shopify.com:443#企业域名 | Shopify
-domain_ircf_all,shm.ircf.space,443,latency_too_high,1040ms > 800ms,shm.ircf.space:443#IRCF优选 | Shatel Mobile | shm.ircf.space
-domain_asia,ralphlauren.com.sg,443,latency_too_high,1494ms > 800ms,ralphlauren.com.sg:443#亚洲域名 | 新加坡拉夫劳伦
-domain_ircf_all,sht.ircf.space,443,latency_too_high,943ms > 800ms,sht.ircf.space:443#IRCF优选 | Shatel | sht.ircf.space
-domain_asia,store.sony.com.sg,443,latency_too_high,842ms > 800ms,store.sony.com.sg:443#亚洲域名 | 新加坡索尼
-vps789_top100,seo.07yue.com,443,latency_too_high,1604ms > 800ms,seo.07yue.com:443#VPS789优选 | seo.07yue.com
-domain_asia,ubuntu.com.cn,443,latency_too_high,918ms > 800ms,ubuntu.com.cn:443#亚洲域名 | 中国乌班图
-domain_all,static.cloudflareinsights.com,443,latency_too_high,1244ms > 800ms,static.cloudflareinsights.com:443#官方域名 | Analytics
-domain_asia,tomleemusic.com.hk,443,latency_too_high,1115ms > 800ms,tomleemusic.com.hk:443#亚洲域名 | 中国香港通利
-domain_all,visit.honeywell.com,443,latency_too_high,835ms > 800ms,visit.honeywell.com:443#更多选择 | 霍尼韦尔
-domain_wuya_all,sy.2.hhhhh.eu.org,443,latency_too_high,1296ms > 800ms,sy.2.hhhhh.eu.org:443#乌鸦优选 | shopify2 | sy.2.hhhhh.eu.org
-vps789_top100,www.bangbenjiaju.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.bangbenjiaju.com:443#VPS789优选 | www.bangbenjiaju.com
-domain_ai_vps789,www.cdzxdz.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.cdzxdz.com:443#AI优选 | www.cdzxdz.com
-domain_asia,www.aeon.com.hk,443,latency_too_high,827ms > 800ms,www.aeon.com.hk:443#亚洲域名 | 中国香港永旺
-vps789_top100,www.adbcardpay.xyz,443,latency_too_high,865ms > 800ms,www.adbcardpay.xyz:443#VPS789优选 | www.adbcardpay.xyz
-vps789_top100,webn.cc,443,latency_too_high,1339ms > 800ms,webn.cc:443#VPS789优选 | webn.cc
+domain_ircf_all,sbn.ircf.space,443,latency_too_high,1293ms > 800ms,sbn.ircf.space:443#IRCF优选 | Sabanet | sbn.ircf.space
+domain_all,skk.moe,443,latency_too_high,1262ms > 800ms,skk.moe:443#大佬维护 | Sukka
+domain_asia,crocs.com.vn,443,latency_failed,HTTP Error 504: Gateway Timeout,crocs.com.vn:443#亚洲域名 | 越南卡骆驰
+domain_asia,sasa.com,443,latency_too_high,2012ms > 800ms,sasa.com:443#亚洲域名 | 中国香港莎莎
+domain_all,store.ubi.com,443,latency_too_high,1294ms > 800ms,store.ubi.com:443#企业域名 | 育碧商城
+domain_asia,decathlon.qa,443,latency_failed,HTTP Error 504: Gateway Timeout,decathlon.qa:443#亚洲域名 | 卡塔尔迪卡侬
+domain_asia,tomleemusic.com.hk,443,latency_too_high,1093ms > 800ms,tomleemusic.com.hk:443#亚洲域名 | 中国香港通利
+domain_asia,drivewealth.com,443,latency_failed,HTTP Error 504: Gateway Timeout,drivewealth.com:443#亚洲域名 | 新加坡金融
 domain_wuya_all,dx.1.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.1.hhhhh.eu.org:443#乌鸦优选 | 电信1 | dx.1.hhhhh.eu.org
 domain_wuya_all,dx.2.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.2.hhhhh.eu.org:443#乌鸦优选 | 电信2 | dx.2.hhhhh.eu.org
+domain_all,visit.honeywell.com,443,latency_too_high,870ms > 800ms,visit.honeywell.com:443#更多选择 | 霍尼韦尔
 domain_wuya_all,dx.3.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.3.hhhhh.eu.org:443#乌鸦优选 | 电信3 | dx.3.hhhhh.eu.org
-domain_mini,www.allianz.com,443,latency_too_high,847ms > 800ms,www.allianz.com:443#企业域名 | 安联集团
-domain_wuya_all,wto.1.hhhhh.eu.org,443,latency_too_high,1311ms > 800ms,wto.1.hhhhh.eu.org:443#乌鸦优选 | wto1 | wto.1.hhhhh.eu.org
-domain_asia,www.allianz.com.my,443,latency_too_high,871ms > 800ms,www.allianz.com.my:443#亚洲域名 | 大马安联
-domain_wuya_all,wto.3.hhhhh.eu.org,443,latency_too_high,1338ms > 800ms,wto.3.hhhhh.eu.org:443#乌鸦优选 | wto3 | wto.3.hhhhh.eu.org
-domain_asia,www.bathandbodyworks.co.th,443,latency_too_high,866ms > 800ms,www.bathandbodyworks.co.th:443#亚洲域名 | 泰国BBW
-vps789_top100,stores.staples.com,443,latency_too_high,2050ms > 800ms,stores.staples.com:443#VPS789优选 | stores.staples.com
-domain_asia,www.bumrungrad.com,443,latency_too_high,801ms > 800ms,www.bumrungrad.com:443#亚洲域名 | 泰国康民
-domain_asia,www.allianz.co.th,443,latency_too_high,1066ms > 800ms,www.allianz.co.th:443#亚洲域名 | 泰国安联
-domain_ai_vps789,www.mlkj888.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.mlkj888.com:443#AI优选 | www.mlkj888.com
-domain_asia,www.dbs.com,443,latency_too_high,936ms > 800ms,www.dbs.com:443#亚洲域名 | 新加坡星展
-domain_ai_vps789,www.giannidelprete.it,443,latency_too_high,878ms > 800ms,www.giannidelprete.it:443#AI优选 | www.giannidelprete.it
-domain_all,www.epicgames.com,443,latency_too_high,1015ms > 800ms,www.epicgames.com:443#更多选择 | Epicgames
-vps789_top100,www.gov.il,443,latency_too_high,943ms > 800ms,www.gov.il:443#VPS789优选 | www.gov.il
-domain_ircf_all,ipv4.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,ipv4.ircf.space:443#IRCF优选 | Universal IPv4 | ipv4.ircf.space
-domain_all,www.broadcom.com,443,latency_too_high,1534ms > 800ms,www.broadcom.com:443#更多选择 | 博通
-domain_asia,www.kia.com,443,latency_too_high,858ms > 800ms,www.kia.com:443#亚洲域名 | 韩国起亚
-domain_asia,www.mlb-korea.com,443,latency_too_high,812ms > 800ms,www.mlb-korea.com:443#亚洲域名 | 韩国MLB
-domain_asia,www.mizuno.com,443,latency_too_high,891ms > 800ms,www.mizuno.com:443#亚洲域名 | 日本美津浓
-domain_ai_vps789,www.fastsoso.cn,443,latency_too_high,1272ms > 800ms,www.fastsoso.cn:443#AI优选 | www.fastsoso.cn
-domain_asia,www.hyundai.com,443,latency_too_high,1164ms > 800ms,www.hyundai.com:443#亚洲域名 | 韩国现代
+domain_wuya_all,dx.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.hhhhh.eu.org:443#乌鸦优选 | 电信 | dx.hhhhh.eu.org
+vps789_top100,www.bangbenjiaju.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.bangbenjiaju.com:443#VPS789优选 | www.bangbenjiaju.com
+domain_ai_vps789,www.5h.com,443,latency_too_high,1053ms > 800ms,www.5h.com:443#AI优选 | www.5h.com
 vps789_top100,laitemi.com,443,latency_failed,HTTP Error 504: Gateway Timeout,laitemi.com:443#VPS789优选 | laitemi.com
-domain_asia,www.allianz.co.id,443,latency_too_high,2013ms > 800ms,www.allianz.co.id:443#亚洲域名 | 印尼安联
-domain_asia,www.lacoste.qa,443,latency_too_high,1085ms > 800ms,www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
-domain_asia,www.kohler.co.id,443,latency_too_high,1129ms > 800ms,www.kohler.co.id:443#亚洲域名 | 印尼科勒
-domain_asia,www.mplus.org.hk,443,latency_too_high,993ms > 800ms,www.mplus.org.hk:443#亚洲域名 | 香港M+博物馆
-domain_asia,www.nokair.com,443,latency_too_high,949ms > 800ms,www.nokair.com:443#亚洲域名 | 泰国皇雀航空
-domain_ai_vps789,www.nexusmods.com,443,latency_too_high,1218ms > 800ms,www.nexusmods.com:443#AI优选 | www.nexusmods.com
+domain_asia,www.allianz.co.id,443,latency_too_high,1250ms > 800ms,www.allianz.co.id:443#亚洲域名 | 印尼安联
+domain_all,www.cookiebot.com,443,latency_too_high,910ms > 800ms,www.cookiebot.com:443#更多选择 | Cookiebot
+domain_asia,www.allianz.co.th,443,latency_too_high,1226ms > 800ms,www.allianz.co.th:443#亚洲域名 | 泰国安联
+domain_asia,www.airpremia.com,443,latency_too_high,1374ms > 800ms,www.airpremia.com:443#亚洲域名 | 韩国航空会社
+domain_ai_vps789,www.mlkj888.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.mlkj888.com:443#AI优选 | www.mlkj888.com
+domain_all,www.asda.com,443,latency_too_high,1352ms > 800ms,www.asda.com:443#更多选择 | 阿斯达
+domain_all,www.bluehost.com,443,latency_too_high,1296ms > 800ms,www.bluehost.com:443#企业域名 | BlueHost
+domain_asia,www.allianz.com.my,443,latency_too_high,1441ms > 800ms,www.allianz.com.my:443#亚洲域名 | 大马安联
+domain_asia,www.buy123.com.tw,443,latency_too_high,1323ms > 800ms,www.buy123.com.tw:443#亚洲域名 | 中国台湾帮客
 domain_ircf_all,mbt.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,mbt.ircf.space:443#IRCF优选 | Mobinnet | mbt.ircf.space
-domain_ai_vps789,www.jimdo.com,443,latency_too_high,1664ms > 800ms,www.jimdo.com:443#AI优选 | www.jimdo.com
-domain_ai_vps789,yg7.ygkkk.dpdns.org,443,latency_failed,HTTP Error 503: Service Unavailable,yg7.ygkkk.dpdns.org:443#AI优选 | yg7.ygkkk.dpdns.org
+domain_all,www.jimdo.com,443,latency_too_high,860ms > 800ms,www.jimdo.com:443#企业域名 | Jimdo
+vps789_top100,my.dnshe.com,443,latency_failed,HTTP Error 504: Gateway Timeout,my.dnshe.com:443#VPS789优选 | my.dnshe.com
+domain_all,www.emerson.com,443,latency_too_high,1414ms > 800ms,www.emerson.com:443#更多选择 | 艾默生
+vps789_top100,qualitytraining.zeiss.com,443,latency_failed,HTTP Error 503: Service Unavailable,qualitytraining.zeiss.com:443#VPS789优选 | qualitytraining.zeiss.com
 domain_wuya_all,openai.1.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,openai.1.hhhhh.eu.org:443#乌鸦优选 | openai1 | openai.1.hhhhh.eu.org
+domain_wuya_all,openai.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,openai.hhhhh.eu.org:443#乌鸦优选 | openai | openai.hhhhh.eu.org
+domain_asia,www.kohler.co.id,443,latency_too_high,1318ms > 800ms,www.kohler.co.id:443#亚洲域名 | 印尼科勒
+domain_asia,www.nokair.com,443,latency_too_high,810ms > 800ms,www.nokair.com:443#亚洲域名 | 泰国皇雀航空
+domain_asia,www.kia.com,443,latency_too_high,1584ms > 800ms,www.kia.com:443#亚洲域名 | 韩国起亚
+domain_all,www.mskcc.org,443,latency_too_high,1076ms > 800ms,www.mskcc.org:443#更多选择 | MSKCC
+domain_all,www.ox.ac.uk,443,latency_too_high,903ms > 800ms,www.ox.ac.uk:443#教育域名 | 牛津大学
+domain_ai_vps789,www.mc.js.cool,443,latency_too_high,1544ms > 800ms,www.mc.js.cool:443#AI优选 | www.mc.js.cool
+domain_ircf_all,rtl.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,rtl.ircf.space:443#IRCF优选 | RighTel | rtl.ircf.space
+domain_ai_vps789,www.giannidelprete.it,443,latency_too_high,2018ms > 800ms,www.giannidelprete.it:443#AI优选 | www.giannidelprete.it
+domain_asia,www.mlb-korea.com,443,latency_too_high,1514ms > 800ms,www.mlb-korea.com:443#亚洲域名 | 韩国MLB
+domain_asia,www.toysrus.co.th,443,latency_too_high,827ms > 800ms,www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
+domain_asia,www.razer.com,443,latency_too_high,1118ms > 800ms,www.razer.com:443#亚洲域名 | 新加坡雷蛇
+domain_asia,www.hyundai.com,443,latency_too_high,2146ms > 800ms,www.hyundai.com:443#亚洲域名 | 韩国现代
 domain_ygkkk_all,yg13.ygkkk.dpdns.org,443,latency_failed,HTTP Error 503: Service Unavailable,yg13.ygkkk.dpdns.org:443#甬哥优选 | yg13.ygkkk.dpdns.org
-domain_asia,www.toysrus.co.th,443,latency_too_high,889ms > 800ms,www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
+domain_asia,www.nike.qa,443,latency_too_high,1625ms > 800ms,www.nike.qa:443#亚洲域名 | 卡塔尔耐克
 domain_ai_vps789,yyurl.cc,443,latency_failed,HTTP Error 503: Service Unavailable,yyurl.cc:443#AI优选 | yyurl.cc
-domain_asia,www.samsungbiologics.com,443,latency_too_high,1165ms > 800ms,www.samsungbiologics.com:443#亚洲域名 | 韩国三星生物
-domain_all,www.researchgate.net,443,latency_too_high,1255ms > 800ms,www.researchgate.net:443#教育域名 | ResearchGate
-domain_ai_vps789,ys2046.cv,443,latency_failed,HTTP Error 503: Service Unavailable,ys2046.cv:443#AI优选 | ys2046.cv
-domain_ai_vps789,www.leics.police.uk,443,latency_too_high,2081ms > 800ms,www.leics.police.uk:443#AI优选 | www.leics.police.uk
-domain_ai_vps789,yg11.ygkkk.dpdns.org,443,latency_too_high,814ms > 800ms,yg11.ygkkk.dpdns.org:443#AI优选 | yg11.ygkkk.dpdns.org
-domain_all,www.visa.cn,443,latency_too_high,1256ms > 800ms,www.visa.cn:443#企业域名 | VISA中国
-domain_ygkkk_all,yg12.ygkkk.dpdns.org,443,latency_too_high,862ms > 800ms,yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
-domain_ygkkk_all,yg2.ygkkk.dpdns.org,443,latency_too_high,858ms > 800ms,yg2.ygkkk.dpdns.org:443#甬哥优选 | yg2.ygkkk.dpdns.org
-domain_asia,www.nike.qa,443,latency_too_high,2119ms > 800ms,www.nike.qa:443#亚洲域名 | 卡塔尔耐克
-domain_all,www.zendesk.com,443,latency_too_high,1524ms > 800ms,www.zendesk.com:443#更多选择 | Zendesk
-domain_wuya_all,yd.5.hhhhh.eu.org,443,latency_too_high,1307ms > 800ms,yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
+domain_ircf_all,sht.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,sht.ircf.space:443#IRCF优选 | Shatel | sht.ircf.space
 domain_ircf_all,smt.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,smt.ircf.space:443#IRCF优选 | Samantel | smt.ircf.space
-domain_ygkkk_all,yg10.ygkkk.dpdns.org,443,latency_too_high,2674ms > 800ms,yg10.ygkkk.dpdns.org:443#甬哥优选 | yg10.ygkkk.dpdns.org
+domain_ai_vps789,ys2046.cv,443,latency_failed,HTTP Error 503: Service Unavailable,ys2046.cv:443#AI优选 | ys2046.cv
+domain_ai_vps789,www.leics.police.uk,443,latency_too_high,2351ms > 800ms,www.leics.police.uk:443#AI优选 | www.leics.police.uk
+domain_ygkkk_all,yg10.ygkkk.dpdns.org,443,latency_too_high,910ms > 800ms,yg10.ygkkk.dpdns.org:443#甬哥优选 | yg10.ygkkk.dpdns.org
+vps789_top100,www.visa.com,443,latency_too_high,1286ms > 800ms,www.visa.com:443#VPS789优选 | www.visa.com
+domain_asia,www.victoriassecretbeauty.co.th,443,latency_too_high,1459ms > 800ms,www.victoriassecretbeauty.co.th:443#亚洲域名 | 泰国维密
+domain_ygkkk_all,yg4.ygkkk.dpdns.org,443,latency_too_high,839ms > 800ms,yg4.ygkkk.dpdns.org:443#甬哥优选 | yg4.ygkkk.dpdns.org
+domain_ygkkk_all,yg9.ygkkk.dpdns.org,443,latency_too_high,827ms > 800ms,yg9.ygkkk.dpdns.org:443#甬哥优选 | yg9.ygkkk.dpdns.org
+domain_ai_vps789,zeas.top,443,latency_too_high,1318ms > 800ms,zeas.top:443#AI优选 | zeas.top
+domain_all,www.decathlon.com,443,latency_too_high,4368ms > 800ms,www.decathlon.com:443#企业域名 | 迪卡侬
+domain_asia,www.lacoste.qa,443,latency_too_high,3895ms > 800ms,www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
+domain_asia,www.samsungbiologics.com,443,latency_failed,HTTP Error 504: Gateway Timeout,www.samsungbiologics.com:443#亚洲域名 | 韩国三星生物
+domain_all,www.tpg.com,443,latency_failed,HTTP Error 504: Gateway Timeout,www.tpg.com:443#金融域名 | TPG
 domain_ai_vps789,y508.com,443,latency_failed,HTTP Error 504: Gateway Timeout,y508.com:443#AI优选 | y508.com
-domain_ygkkk_all,yg4.ygkkk.dpdns.org,443,latency_failed,HTTP Error 504: Gateway Timeout,yg4.ygkkk.dpdns.org:443#甬哥优选 | yg4.ygkkk.dpdns.org
-domain_ai_vps789,cdn.262832.xyz,443,service_check_failed,service_score=0 < 2,cdn.262832.xyz:443#AI优选 | cdn.262832.xyz
-tiancheng2,153.121.45.101,443,region_unknown,exit country unavailable,153.121.45.101:443#天诚优选2 | 小日本子 | JP | 153.121.45.101:443
-junzhen_bj,91.200.243.32,443,region_unknown,exit country unavailable,91.200.243.32:443#JP [高速 by Jz 26M]
-junzhen_bj,13.231.33.243,443,region_unknown,exit country unavailable,13.231.33.243:443#JP [高速 by Jz 27M]
-domain_wuya_all,openai.hhhhh.eu.org,443,service_check_failed,service_score=0 < 2,openai.hhhhh.eu.org:443#乌鸦优选 | openai | openai.hhhhh.eu.org
-domain_ai_vps789,cnllm.com,443,service_check_failed,service_score=0 < 2,cnllm.com:443#AI优选 | cnllm.com
-tiancheng2,43.156.181.203,443,service_check_failed,service_score=1 < 2,43.156.181.203:443#天诚优选2 | 坡县狮城 | SG | 43.156.181.203:443
+junzhen_bj,13.231.33.243,443,region_unknown,exit country unavailable,13.231.33.243:443#JP [高速 by Jz 26M]
+xinyitang3,103.251.89.251,443,service_check_failed,service_score=1 < 2,103.251.89.251:443#Mia优选 | 中国香港 HK | 103.251.89.251:443
+moistr,3.112.132.156,443,service_check_failed,service_score=0 < 2,3.112.132.156:443#MoistR优选 | 小日子 JP | 3.112.132.156:443
+moistr,149.104.5.234,443,service_check_failed,service_score=0 < 2,149.104.5.234:443#MoistR优选 | 中国香港 HK | 149.104.5.234:443
