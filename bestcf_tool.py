@@ -75,7 +75,8 @@ DEFAULT_GEO_CACHE_NAME = "bestcf_geo_cache.json"
 DEFAULT_SOURCE_DENYLIST_NAME = "bestcf_source_denylist.txt"
 DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
-GEO_CACHE_VERSION = 1
+GEO_CACHE_VERSION = 2
+DEFAULT_GEO_POLICY_VERSION = "ping0_primary_ipwhois_fallback_v1"
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
 DEFAULT_SOURCE_PRUNE_MIN_LINES = 5
@@ -110,7 +111,7 @@ GEO_PROVIDER_URLS = {
     "ipwhois": "https://ipwho.is/",
     "ip_api": "http://ip-api.com/json/?fields=status,countryCode,query",
 }
-DEFAULT_GEO_PROVIDERS_DAILY = ["ipwhois", "ping0", "cloudflare"]
+DEFAULT_GEO_PROVIDERS_DAILY = ["ping0", "ipwhois"]
 DEFAULT_GEO_PROVIDERS_ALL = ["ipinfo", "ip_sb", "cloudflare", "ping0", "ipapi", "ipwhois", "ip_api"]
 SOURCE_SKIP_MARKERS = (
     "/CIDR/",
@@ -240,6 +241,9 @@ class TestResult:
     exit_region: str = "未知"
     cf_colo: str | None = None
     geo_evidence: str = ""
+    geo_policy: str = DEFAULT_GEO_POLICY_VERSION
+    geo_selected_provider: str = ""
+    geo_fallback_used: bool = False
     geo_cache_status: str = ""
     service_score: int = 0
     google_ok: bool | None = None
@@ -247,6 +251,31 @@ class TestResult:
     gpt_ok: bool | None = None
     service_error: str = ""
     selection_stage: str = ""
+
+
+@dataclasses.dataclass(slots=True)
+class GeoDecision:
+    country_code: str | None
+    region: str
+    exit_ip: str | None
+    cf_colo: str | None
+    evidence: str
+    policy: str = DEFAULT_GEO_POLICY_VERSION
+    selected_provider: str = ""
+    fallback_used: bool = False
+
+
+def geo_result_fields(geo: GeoDecision) -> dict[str, Any]:
+    return {
+        "exit_ip": geo.exit_ip,
+        "exit_country_code": geo.country_code,
+        "exit_region": geo.region,
+        "cf_colo": geo.cf_colo,
+        "geo_evidence": geo.evidence,
+        "geo_policy": geo.policy,
+        "geo_selected_provider": geo.selected_provider,
+        "geo_fallback_used": geo.fallback_used,
+    }
 
 
 def format_endpoint(host: str, port: int) -> str:
@@ -493,6 +522,8 @@ def load_geo_cache(path: Path) -> dict[str, Any]:
         return {"version": GEO_CACHE_VERSION, "entries": {}}
     if not isinstance(data, dict):
         return {"version": GEO_CACHE_VERSION, "entries": {}}
+    if data.get("version") != GEO_CACHE_VERSION:
+        return {"version": GEO_CACHE_VERSION, "entries": {}}
     entries = data.get("entries")
     if not isinstance(entries, dict):
         entries = {}
@@ -524,6 +555,8 @@ def geo_cache_lookup(candidate: Candidate, args: argparse.Namespace, now: float)
         return "expired", None
     if entry.get("providers") != args.geo_providers_resolved:
         return "provider_mismatch", None
+    if entry.get("policy") != DEFAULT_GEO_POLICY_VERSION:
+        return "policy_mismatch", None
     if not entry.get("exit_country_code"):
         return "miss", None
     return "hit", entry
@@ -539,6 +572,9 @@ def geo_cache_update(candidate: Candidate, result: TestResult, args: argparse.Na
         "exit_region": result.exit_region,
         "cf_colo": result.cf_colo or "",
         "geo_evidence": result.geo_evidence,
+        "policy": result.geo_policy,
+        "selected_provider": result.geo_selected_provider,
+        "fallback_used": bool(result.geo_fallback_used),
         "providers": list(args.geo_providers_resolved),
         "checked_at": now,
         "expires_at": now + args.geo_cache_ttl_hours * 3600,
@@ -561,6 +597,9 @@ def test_result_from_geo_cache(candidate: Candidate, delay: float, entry: dict[s
         exit_region=str(entry.get("exit_region") or country_name(code)),
         cf_colo=str(entry.get("cf_colo") or "") or None,
         geo_evidence=str(entry.get("geo_evidence") or ""),
+        geo_policy=str(entry.get("policy") or DEFAULT_GEO_POLICY_VERSION),
+        geo_selected_provider=str(entry.get("selected_provider") or ""),
+        geo_fallback_used=bool(entry.get("fallback_used") or False),
         geo_cache_status=cache_status,
     )
 
@@ -1071,6 +1110,39 @@ def parse_candidates(rows: list[tuple[str, str]], sources: dict[str, str] | None
     return parsed, failures, source_stats
 
 
+def source_quality_score(source: str, source_cache: dict[str, Any]) -> float:
+    entries = source_cache.get("sources") if isinstance(source_cache, dict) else None
+    if not isinstance(entries, dict):
+        return 0.0
+    entry = entries.get(source)
+    if not isinstance(entry, dict):
+        return 0.0
+    valid_ratio = float(entry.get("valid_ratio") or 0.0)
+    invalid_ratio = float(entry.get("invalid_ratio") or 0.0)
+    unique_selected = float(entry.get("unique_selected") or 0.0)
+    invalid_streak = float(entry.get("invalid_streak") or 0.0)
+    fetch_failed = str(entry.get("last_status") or "") == "source_fetch_failed"
+    score = valid_ratio * 100.0
+    score += min(unique_selected, 100.0) * 0.4
+    score -= invalid_ratio * 80.0
+    score -= invalid_streak * 20.0
+    if fetch_failed:
+        score -= 50.0
+    return score
+
+
+def rank_candidates_by_source_quality(candidates: list[Candidate], source_cache: dict[str, Any]) -> list[Candidate]:
+    return sorted(
+        candidates,
+        key=lambda item: (
+            -source_quality_score(item.source, source_cache),
+            item.declared_speed is None,
+            -(item.declared_speed or 0),
+            item.endpoint,
+        ),
+    )
+
+
 def load_template(path: Path, template_name: str | None = None) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as handle:
         config = yaml.safe_load(handle)
@@ -1382,26 +1454,58 @@ def select_geo_result(
     return None, "未知", exit_ip, colo, evidence
 
 
-def detect_geo(proxy: str, timeout: int, providers: list[str]) -> tuple[str | None, str, str | None, str | None, str]:
+def geo_decision_from_results(
+    results: list[tuple[str, str | None, str | None, str | None]],
+    provider_order: list[str],
+    policy: str,
+    selected_provider: str = "",
+    fallback_used: bool = False,
+) -> GeoDecision:
+    code, region, exit_ip, colo, evidence = select_geo_result(results, provider_order)
+    if not selected_provider and code:
+        for name, result_code, _ip, _colo in results:
+            if result_code == code:
+                selected_provider = name
+                break
+    return GeoDecision(
+        country_code=code,
+        region=region,
+        exit_ip=exit_ip,
+        cf_colo=colo,
+        evidence=evidence,
+        policy=policy,
+        selected_provider=selected_provider,
+        fallback_used=fallback_used,
+    )
+
+
+def detect_geo(proxy: str, timeout: int, providers: list[str]) -> GeoDecision:
     providers = [provider for provider in providers if provider in GEO_PROVIDER_URLS]
     if not providers:
         providers = list(DEFAULT_GEO_PROVIDERS_DAILY)
 
     if providers == DEFAULT_GEO_PROVIDERS_DAILY:
-        first_stage = providers[:2]
-        results = run_geo_probes_parallel(proxy, timeout, first_stage)
-        codes = [code for _name, code, _ip, _colo in results if code]
-        if len(set(codes)) <= 1 and codes:
-            return select_geo_result(results, providers)
-        if len(codes) == 1:
-            return select_geo_result(results, providers)
-        remaining = providers[2:]
-        if remaining:
-            results.extend(run_geo_probes_parallel(proxy, timeout, remaining))
-        return select_geo_result(results, providers)
+        primary = geo_probe(proxy, timeout, "ping0", GEO_PROVIDER_URLS["ping0"])
+        if primary[1]:
+            return geo_decision_from_results(
+                [primary],
+                providers,
+                policy=DEFAULT_GEO_POLICY_VERSION,
+                selected_provider="ping0",
+                fallback_used=False,
+            )
+        fallback = geo_probe(proxy, timeout, "ipwhois", GEO_PROVIDER_URLS["ipwhois"])
+        selected_provider = "ipwhois" if fallback[1] else ""
+        return geo_decision_from_results(
+            [primary, fallback],
+            providers,
+            policy=DEFAULT_GEO_POLICY_VERSION,
+            selected_provider=selected_provider,
+            fallback_used=True,
+        )
 
     results = run_geo_probes_parallel(proxy, timeout, providers)
-    return select_geo_result(results, providers)
+    return geo_decision_from_results(results, providers, policy="provider_vote_v1")
 
 
 def measure_speed_once(proxy: str, url: str, timeout: int) -> tuple[float | None, float | None, int, str | None]:
@@ -1490,7 +1594,7 @@ def test_candidate(
         if not wait_port(mixed_port, timeout=args.start_timeout):
             return TestResult(candidate, False, "mihomo_start_failed", "mixed port not ready")
         proxy = f"http://127.0.0.1:{mixed_port}"
-        code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+        geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
         speed, latency, speed_status, error = measure_speed(
             proxy,
             args.speed_urls,
@@ -1504,11 +1608,14 @@ def test_candidate(
                 speed_status,
                 error or "speed is empty",
                 latency_ms=latency,
-                exit_ip=exit_ip,
-                exit_country_code=code,
-                exit_region=region,
-                cf_colo=colo,
-                geo_evidence=geo_evidence,
+                exit_ip=geo.exit_ip,
+                exit_country_code=geo.country_code,
+                exit_region=geo.region,
+                cf_colo=geo.cf_colo,
+                geo_evidence=geo.evidence,
+                geo_policy=geo.policy,
+                geo_selected_provider=geo.selected_provider,
+                geo_fallback_used=geo.fallback_used,
             )
         if speed < args.min_speed:
             return TestResult(
@@ -1518,11 +1625,14 @@ def test_candidate(
                 f"{speed:.2f}MB/s < {args.min_speed:.2f}MB/s",
                 measured_speed=speed,
                 latency_ms=latency,
-                exit_ip=exit_ip,
-                exit_country_code=code,
-                exit_region=region,
-                cf_colo=colo,
-                geo_evidence=geo_evidence,
+                exit_ip=geo.exit_ip,
+                exit_country_code=geo.country_code,
+                exit_region=geo.region,
+                cf_colo=geo.cf_colo,
+                geo_evidence=geo.evidence,
+                geo_policy=geo.policy,
+                geo_selected_provider=geo.selected_provider,
+                geo_fallback_used=geo.fallback_used,
             )
         return TestResult(
             candidate,
@@ -1530,11 +1640,14 @@ def test_candidate(
             speed_status,
             measured_speed=speed,
             latency_ms=latency,
-            exit_ip=exit_ip,
-            exit_country_code=code,
-            exit_region=region,
-            cf_colo=colo,
-            geo_evidence=geo_evidence,
+            exit_ip=geo.exit_ip,
+            exit_country_code=geo.country_code,
+            exit_region=geo.region,
+            cf_colo=geo.cf_colo,
+            geo_evidence=geo.evidence,
+            geo_policy=geo.policy,
+            geo_selected_provider=geo.selected_provider,
+            geo_fallback_used=geo.fallback_used,
         )
     except Exception as exc:
         return TestResult(candidate, False, "exception", str(exc))
@@ -2009,6 +2122,9 @@ def write_results(
                 "exit_region_name",
                 "cf_colo",
                 "geo_evidence",
+                "geo_policy",
+                "geo_selected_provider",
+                "geo_fallback_used",
                 "geo_cache_status",
                 "is_cloudflare",
                 "service_score",
@@ -2040,6 +2156,9 @@ def write_results(
                     "exit_region_name": result.exit_region,
                     "cf_colo": result.cf_colo or "",
                     "geo_evidence": result.geo_evidence,
+                    "geo_policy": result.geo_policy,
+                    "geo_selected_provider": result.geo_selected_provider,
+                    "geo_fallback_used": result.geo_fallback_used,
                     "geo_cache_status": result.geo_cache_status,
                     "is_cloudflare": item.is_cloudflare,
                     "service_score": result.service_score,
@@ -2363,7 +2482,8 @@ def test_speed_geo_chunk(
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
-            code, region, exit_ip, colo, geo_evidence = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+            geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+            code = geo.country_code
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
                     TestResult(
@@ -2372,11 +2492,7 @@ def test_speed_geo_chunk(
                         "region_not_preferred",
                         f"{code} not in {','.join(sorted(args.preferred_countries))}",
                         latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2388,11 +2504,7 @@ def test_speed_geo_chunk(
                         "region_unknown",
                         "exit country unavailable",
                         latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2410,11 +2522,7 @@ def test_speed_geo_chunk(
                         speed_status,
                         error or "speed is empty",
                         latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2427,11 +2535,7 @@ def test_speed_geo_chunk(
                         f"{speed:.2f}MB/s < {args.min_speed:.2f}MB/s",
                         measured_speed=speed,
                         latency_ms=delay or speed_latency,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2442,11 +2546,7 @@ def test_speed_geo_chunk(
                     speed_status,
                     measured_speed=speed,
                     latency_ms=delay or speed_latency,
-                    exit_ip=exit_ip,
-                    exit_country_code=code,
-                    exit_region=region,
-                    cf_colo=colo,
-                    geo_evidence=geo_evidence,
+                    **geo_result_fields(geo),
                 )
             )
     except Exception as exc:
@@ -2496,19 +2596,25 @@ def test_geo_chunk(
             cache_status, cache_entry = geo_cache_lookup(candidate, args, time.time())
             if cache_entry:
                 cached = test_result_from_geo_cache(candidate, delay, cache_entry, cache_status)
-                code = cached.exit_country_code
-                region = cached.exit_region
-                exit_ip = cached.exit_ip
-                colo = cached.cf_colo
-                geo_evidence = cached.geo_evidence
+                geo = GeoDecision(
+                    country_code=cached.exit_country_code,
+                    region=cached.exit_region,
+                    exit_ip=cached.exit_ip,
+                    cf_colo=cached.cf_colo,
+                    evidence=cached.geo_evidence,
+                    policy=cached.geo_policy,
+                    selected_provider=cached.geo_selected_provider,
+                    fallback_used=cached.geo_fallback_used,
+                )
                 geo_cache_status = cache_status
             else:
-                code, region, exit_ip, colo, geo_evidence = detect_geo(
+                geo = detect_geo(
                     proxy,
                     timeout=args.timeout,
                     providers=args.geo_providers_resolved,
                 )
                 geo_cache_status = cache_status
+            code = geo.country_code
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
                     TestResult(
@@ -2517,12 +2623,8 @@ def test_geo_chunk(
                         "region_not_preferred",
                         f"{code} not in {','.join(sorted(args.preferred_countries))}",
                         latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
                         geo_cache_status=geo_cache_status,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2534,12 +2636,8 @@ def test_geo_chunk(
                         "region_unknown",
                         "exit country unavailable",
                         latency_ms=delay,
-                        exit_ip=exit_ip,
-                        exit_country_code=code,
-                        exit_region=region,
-                        cf_colo=colo,
-                        geo_evidence=geo_evidence,
                         geo_cache_status=geo_cache_status,
+                        **geo_result_fields(geo),
                     )
                 )
                 continue
@@ -2551,17 +2649,13 @@ def test_geo_chunk(
                     "service_check_failed",
                     f"service_score={service_score} < {args.min_service_score}",
                     latency_ms=delay,
-                    exit_ip=exit_ip,
-                    exit_country_code=code,
-                    exit_region=region,
-                    cf_colo=colo,
-                    geo_evidence=geo_evidence,
                     geo_cache_status=geo_cache_status,
                     service_score=service_score,
                     google_ok=google_ok,
                     youtube_ok=youtube_ok,
                     gpt_ok=gpt_ok,
                     service_error=service_error,
+                    **geo_result_fields(geo),
                 )
                 geo_cache_update(candidate, result, args, time.time())
                 results.append(result)
@@ -2571,17 +2665,13 @@ def test_geo_chunk(
                 True,
                 "geo_only" if geo_cache_status != "hit" else "geo_cached",
                 latency_ms=delay,
-                exit_ip=exit_ip,
-                exit_country_code=code,
-                exit_region=region,
-                cf_colo=colo,
-                geo_evidence=geo_evidence,
                 geo_cache_status=geo_cache_status,
                 service_score=service_score,
                 google_ok=google_ok,
                 youtube_ok=youtube_ok,
                 gpt_ok=gpt_ok,
                 service_error=service_error,
+                **geo_result_fields(geo),
             )
             geo_cache_update(candidate, result, args, time.time())
             results.append(result)
@@ -2761,6 +2851,29 @@ def parse_geo_providers(text: str) -> list[str]:
             raise ValueError(f"invalid geo provider: {provider}; valid: daily,all,{valid}")
         providers.append(provider)
     return providers or list(DEFAULT_GEO_PROVIDERS_DAILY)
+
+
+def validate_final_output(path: Path, min_lines: int = 10, min_regions: int = 1) -> tuple[bool, str]:
+    if not path.exists() or path.stat().st_size <= 0:
+        return False, f"final output is empty or missing: {path}"
+    lines = [line.strip() for line in path.read_text(encoding="utf-8", errors="replace").splitlines() if line.strip()]
+    if len(lines) < min_lines:
+        return False, f"final output has too few lines: {len(lines)} < {min_lines}"
+    invalid: list[str] = []
+    regions: set[str] = set()
+    for line in lines:
+        candidate = parse_candidate("validate", line)
+        if candidate is None:
+            invalid.append(line)
+            continue
+        if candidate.declared_region:
+            regions.add(str(candidate.declared_region).upper())
+    if invalid:
+        sample = invalid[0][:160]
+        return False, f"final output contains invalid endpoint lines: {len(invalid)}; first={sample}"
+    if min_regions > 1 and len(regions) < min_regions:
+        return False, f"final output has too few declared regions: {len(regions)} < {min_regions}"
+    return True, f"final output valid: lines={len(lines)} declared_regions={len(regions)}"
 
 
 def profile_defaults(profile: str) -> dict[str, Any]:
@@ -3293,6 +3406,20 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "validate-output":
+        validate_parser = argparse.ArgumentParser(description="Validate generated bestcf_final.txt")
+        validate_parser.add_argument("path", help="path to bestcf_final.txt")
+        validate_parser.add_argument("--min-lines", type=int, default=10, help="minimum non-empty lines")
+        validate_parser.add_argument("--min-regions", type=int, default=1, help="minimum declared regions in final lines")
+        validate_args = validate_parser.parse_args(argv[1:])
+        ok, message = validate_final_output(
+            Path(validate_args.path),
+            min_lines=max(1, validate_args.min_lines),
+            min_regions=max(1, validate_args.min_regions),
+        )
+        print(message, flush=True)
+        return 0 if ok else 1
     timer = StageTimer()
     args = build_arg_parser().parse_args(argv)
     apply_profile_defaults(args)
@@ -3369,6 +3496,7 @@ def main(argv: list[str] | None = None) -> int:
     source_failures = denied_source_failures + skipped_cached_failures + fetch_failures
     write_raw(workdir, rows)
     candidates, parse_failures, source_stats = parse_candidates(rows, active_sources)
+    candidates = rank_candidates_by_source_quality(candidates, source_cache)
     write_parsed(workdir, candidates)
     newly_denied: set[str] = set()
     if not args.no_auto_prune_sources and not args.refresh_sources:

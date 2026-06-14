@@ -90,7 +90,7 @@ https://test1-45b.pages.dev/sub?token=...
 
 ## 稳定定时更新
 
-GitHub Actions 会按 `.github/workflows/update.yml` 定时尝试云端更新；如果云端生成结果为空或过少，workflow 会保留现有 `public/` 文件，不覆盖有效结果。
+GitHub Actions 会按 `.github/workflows/update.yml` 每 6 小时尝试云端更新，也可手动触发；如果云端生成结果未通过 `bestcf_tool.py validate-output` 校验，workflow 会保留现有 `public/` 文件，不覆盖有效结果。
 
 稳定更新建议使用本机 Windows 定时任务：
 
@@ -99,7 +99,7 @@ cd C:\Users\sundewang\bestcf-auto
 .\scripts\register-windows-task.ps1
 ```
 
-本机任务每 6 小时运行：
+本机任务每 6 小时运行，作为更贴近本地网络质量的主更新路径：
 
 ```text
 scripts/update-local-and-push.ps1

@@ -2,6 +2,8 @@ name: Update BestCF
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "15 */6 * * *"
 
 permissions:
   contents: write
@@ -77,15 +79,11 @@ jobs:
       - name: Validate generated result
         run: |
           echo "VALID_RESULT=false" >> "$GITHUB_ENV"
-          if [ ! -s bestcf_work/bestcf_final.txt ]; then
-            echo "Generated bestcf_final.txt is empty; keeping previous public files."
+          if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final.txt --min-lines 10 --min-regions 1; then
+            echo "Generated bestcf_final.txt failed validation; keeping previous public files."
             exit 0
           fi
           line_count="$(wc -l < bestcf_work/bestcf_final.txt)"
-          if [ "$line_count" -lt 10 ]; then
-            echo "Generated bestcf_final.txt has too few lines: $line_count"
-            exit 0
-          fi
           echo "Generated bestcf_final.txt lines: $line_count"
           echo "VALID_RESULT=true" >> "$GITHUB_ENV"
 

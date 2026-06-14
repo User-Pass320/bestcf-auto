@@ -20,14 +20,12 @@ python .\bestcf_tool.py `
     --mihomo $mihomo `
     --output .\public\bestcf_final.txt
 
-if (-not (Test-Path -LiteralPath ".\public\bestcf_final.txt")) {
-    throw "public\bestcf_final.txt was not generated."
+python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1
+if ($LASTEXITCODE -ne 0) {
+    throw "Generated bestcf_final.txt failed validation."
 }
 
 $lineCount = (Get-Content -LiteralPath ".\public\bestcf_final.txt" | Measure-Object -Line).Lines
-if ($lineCount -lt 10) {
-    throw "Generated bestcf_final.txt has too few lines: $lineCount"
-}
 
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_tested.csv" -Destination ".\public\bestcf_tested.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_failed.csv" -Destination ".\public\bestcf_failed.csv" -Force -ErrorAction SilentlyContinue
