@@ -1,14 +1,4 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-CN,CN,206.237.9.241,443,206.237.9.241:443,junzhen_bj,358,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,206.237.9.241:443#HK [高速 by Jz 30M]
-CN,CN,47.242.145.136,8001,47.242.145.136:8001,bestcf_pages_dev_tiancheng_all_txt,378,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,expired,geo_only,,47.242.145.136:8001#天诚优选1 | 港岛古惑 | HK | 47.242.145.136:8001
-CN,CN,104.17.100.89,443,104.17.100.89:443,wetest,447,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,104.17.100.89:443#微测优选 | 移动 | HKG | 104.17.100.89
-CN,CN,104.17.182.214,443,104.17.182.214:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,450,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,104.17.182.214:443#US-45a5b6
-CN,CN,162.159.19.165,443,162.159.19.165:443,gslege,452,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,162.159.19.165:443#Gslege优选 | 【测速 Nodes】13.79MB/s | 162.159.19.165
-CN,CN,2606:4700:9b09::cde7:a16a,443,[2606:4700:9b09::cde7:a16a]:443,bestcf_pages_dev_vvhan_ipv6_txt,459,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2606:4700:9b09::cde7:a16a]:443#vvHan优选 | 移动 | HKG | 2606:4700:9b09::cde7:a16a
-CN,CN,2606:4700:3004:ec45:4721:a1dc:f143:6ecd,443,[2606:4700:3004:ec45:4721:a1dc:f143:6ecd]:443,bestcf_pages_dev_vvhan_ipv6_txt,502,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,[2606:4700:3004:ec45:4721:a1dc:f143:6ecd]:443#vvHan优选 | 移动 | Default | 2606:4700:3004:ec45:4721:a1dc:f143:6ecd
-CN,CN,172.64.53.252,443,172.64.53.252:443,gslege,516,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,172.64.53.252:443#Gslege优选 | 【测速 Nodes】77.36MB/s | 172.64.53.252
-CN,CN,cfip-avg.stoeaves.us.ci,443,cfip-avg.stoeaves.us.ci:443,vps789_top100,518,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,cfip-avg.stoeaves.us.ci:443#VPS789优选 | cfip-avg.stoeaves.us.ci
-CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,525,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
-CN,CN,104.18.11.130,443,104.18.11.130:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,572,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,104.18.11.130
-CN,CN,172.64.53.114,443,172.64.53.114:443,uouin,591,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,miss,geo_only,,172.64.53.114:443#麒麟优选 | 多线 | 172.64.53.114 | 60.66ms | 0.66mb/s
-IN,印度,23.27.53.164,443,23.27.53.164:443,xinyitang3,433,BOM,ipwhois:IN;ping0:MY;cloudflare:IN,miss,geo_only,,23.27.53.164:443#Mia优选 | 马来西亚 MY | 23.27.53.164:443
+CN,CN,104.17.182.214,443,104.17.182.214:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,457,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,104.17.182.214:443#US-45a5b6
+CN,CN,47.242.145.136,8001,47.242.145.136:8001,bestcf_pages_dev_tiancheng_all_txt,486,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,47.242.145.136:8001#天诚优选1 | 港岛古惑 | HK | 47.242.145.136:8001
+CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,543,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
