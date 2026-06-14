@@ -1,4 +1,1 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-CN,CN,104.17.182.214,443,104.17.182.214:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,457,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,104.17.182.214:443#US-45a5b6
-CN,CN,47.242.145.136,8001,47.242.145.136:8001,bestcf_pages_dev_tiancheng_all_txt,486,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,47.242.145.136:8001#天诚优选1 | 港岛古惑 | HK | 47.242.145.136:8001
-CN,CN,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,543,SIN,ipwhois:CN;ping0:HK;cloudflare:SG,hit,geo_cached,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
