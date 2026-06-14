@@ -101,6 +101,18 @@ class DeclaredSchedulerTests(unittest.TestCase):
 
         self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"], args), "HINT_JP")
 
+    def test_declared_bucket_does_not_promote_common_geo_hint(self):
+        candidate = tool.Candidate(source="src", raw="1.2.3.4:443", host="1.2.3.4", port=443)
+        args = Namespace(
+            geo_hint_cache_enabled=True,
+            geo_hint_cache={"hosts": {"1.2.3.4": {"countries": {"HK": 2}, "total": 2}}, "prefixes": {}},
+            geo_hint_min_count=1,
+            geo_hint_min_confidence=0.67,
+        )
+
+        self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"], args), "UNKNOWN")
+        self.assertNotIn("HINT_HK", tool.declared_geo_bucket_order(["JP", "SG", "US", "HK"]))
+
     def test_declared_bucket_keeps_declaration_before_geo_hint(self):
         candidate = tool.Candidate(source="src", raw="1.2.3.4:443#SG", host="1.2.3.4", port=443)
         args = Namespace(
@@ -173,6 +185,44 @@ class DeclaredSchedulerTests(unittest.TestCase):
 
         self.assertEqual([item[1].host for item in batch], ["2.2.2.2"])
         self.assertEqual(len(buckets["UNKNOWN"]), 1)
+
+    def test_run_geo_batch_reuses_geo_cache_without_live_worker(self):
+        candidate = tool.Candidate(source="src", raw="1.2.3.4:443", host="1.2.3.4", port=443)
+        args = Namespace(
+            geo_cache_enabled=True,
+            geo_cache={
+                "entries": {
+                    candidate.endpoint: {
+                        "endpoint": candidate.endpoint,
+                        "exit_ip": "203.0.113.1",
+                        "exit_country_code": "JP",
+                        "exit_region": "日本",
+                        "cf_colo": "NRT",
+                        "geo_evidence": "cached",
+                        "policy": tool.DEFAULT_GEO_POLICY_VERSION,
+                        "selected_provider": "ping0",
+                        "fallback_used": False,
+                        "providers": list(tool.DEFAULT_GEO_PROVIDERS_DAILY),
+                        "expires_at": 9999999999,
+                    }
+                }
+            },
+            geo_providers_resolved=list(tool.DEFAULT_GEO_PROVIDERS_DAILY),
+            geo_hint_cache_enabled=False,
+            allow_other_regions=True,
+            preferred_countries={"JP", "SG", "US", "HK"},
+            geo_concurrency=1,
+            timings={},
+        )
+
+        with mock.patch.object(tool, "test_geo_chunk", side_effect=AssertionError("live worker called")):
+            results = tool.run_geo_batch([("p1", candidate, 123)], {}, args, "declared")
+
+        self.assertEqual(len(results), 1)
+        self.assertTrue(results[0].ok)
+        self.assertEqual(results[0].status, "geo_cached")
+        self.assertEqual(results[0].exit_country_code, "JP")
+        self.assertEqual(results[0].selection_stage, "declared")
 
 
 class ValidateOutputTests(unittest.TestCase):

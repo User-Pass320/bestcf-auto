@@ -102,6 +102,7 @@ DEFAULT_SPEED_URLS = [
 BESTCF_INDEX_URL = "https://bestcf.pages.dev/"
 PREFERRED_COUNTRY_ORDER = ["JP", "SG", "US", "HK", "KR", "TW"]
 PREFERRED_COUNTRY_CODES = set(PREFERRED_COUNTRY_ORDER)
+GEO_HINT_PROMOTE_COUNTRY_ORDER = ["JP", "KR", "TW", "US"]
 PREFERRED_REGION_NAMES = {"香港", "日本", "新加坡", "美国", "韩国", "台湾"}
 DEFAULT_LATENCY_URL = "https://www.gstatic.com/generate_204"
 GEO_PROVIDER_URLS = {
@@ -3262,7 +3263,8 @@ def declared_bucket(candidate: Candidate, preferred_order: list[str], args: argp
             return code
     if args is not None:
         hint_country, _hint_source = candidate_geo_hint(candidate, args)
-        if hint_country in set(preferred_order):
+        promoted_hints = set(GEO_HINT_PROMOTE_COUNTRY_ORDER) & set(preferred_order)
+        if hint_country in promoted_hints:
             return f"HINT_{hint_country}"
     if candidate.declared_region:
         return "OTHER"
@@ -3274,11 +3276,10 @@ def declared_bucket_country(bucket_name: str) -> str:
 
 
 def declared_geo_bucket_order(preferred_order: list[str]) -> list[str]:
-    scarce_order = [code for code in ["JP", "KR", "TW", "US"] if code in preferred_order]
+    scarce_order = [code for code in GEO_HINT_PROMOTE_COUNTRY_ORDER if code in preferred_order]
     remaining = [code for code in preferred_order if code not in scarce_order]
     ordered = scarce_order + [f"HINT_{code}" for code in scarce_order]
     ordered.extend(remaining)
-    ordered.extend(f"HINT_{code}" for code in remaining)
     ordered.extend(["UNKNOWN", "OTHER"])
     return ordered
 
@@ -3397,8 +3398,35 @@ def run_geo_batch(
     if not items:
         return []
     stage_started = time.monotonic()
-    geo_chunks = split_evenly(items, args.geo_concurrency)
+    live_items: list[tuple[str, Candidate, int]] = []
     geo_results: list[TestResult] = []
+    for _proxy_name, candidate, delay in items:
+        cache_status, cache_entry = geo_cache_lookup(candidate, args, time.time())
+        if not cache_entry:
+            live_items.append((_proxy_name, candidate, delay))
+            continue
+        result = test_result_from_geo_cache(candidate, float(delay), cache_entry, cache_status)
+        result = dataclasses.replace(result, selection_stage=stage, **geo_hint_fields(candidate, args))
+        code = (result.exit_country_code or "").upper()
+        if not args.allow_other_regions and code and code not in args.preferred_countries:
+            result = dataclasses.replace(
+                result,
+                ok=False,
+                status="region_not_preferred",
+                error=f"{code} not in {','.join(sorted(args.preferred_countries))}",
+            )
+        geo_results.append(result)
+    cached_count = len(geo_results)
+    if cached_count:
+        print(f"[geo-{stage}-cache] hit={cached_count}; live={len(live_items)}", flush=True)
+    if not live_items:
+        elapsed = time.monotonic() - stage_started
+        key = f"geo_{stage}_test"
+        args.timings[key] = args.timings.get(key, 0.0) + elapsed
+        args.timings["geo_test"] = args.timings.get("geo_test", 0.0) + elapsed
+        return geo_results
+
+    geo_chunks = split_evenly(live_items, args.geo_concurrency)
     with ThreadPoolExecutor(max_workers=args.geo_concurrency) as pool:
         futures = [
             pool.submit(test_geo_chunk, chunk, template_proxy, worker_id, args)
@@ -3406,13 +3434,13 @@ def run_geo_batch(
             if chunk
         ]
         done = 0
-        total = len(items)
+        total = len(live_items)
         for future in as_completed(futures):
             chunk_results = [dataclasses.replace(result, selection_stage=stage) for result in future.result()]
             geo_results.extend(chunk_results)
             done += len(chunk_results)
             ok_count = sum(1 for result in geo_results if result.ok)
-            print(f"[geo-{stage} {done}/{total}] preferred={ok_count}", flush=True)
+            print(f"[geo-{stage} {done}/{total}] cached={cached_count} preferred={ok_count}", flush=True)
     elapsed = time.monotonic() - stage_started
     key = f"geo_{stage}_test"
     args.timings[key] = args.timings.get(key, 0.0) + elapsed
