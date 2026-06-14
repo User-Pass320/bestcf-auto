@@ -1,2 +1,2 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-ID,印度尼西亚,43.218.77.16,443,43.218.77.16:443,luoli,477,,ping0:ID,hit,geo_cached,,43.218.77.16:443#洛璃优选 | 印尼 ID | 43.218.77.16:443
+MY,马来西亚,23.27.53.164,443,23.27.53.164:443,xinyitang3,462,,ping0:MY,miss,geo_only,,23.27.53.164:443#Mia优选 | 马来西亚 MY | 23.27.53.164:443
