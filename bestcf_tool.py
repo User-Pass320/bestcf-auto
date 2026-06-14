@@ -72,10 +72,12 @@ DEFAULT_MIHOMO = Path(r"E:\v2rayN-windows-64\bin\mihomo\mihomo.exe")
 DEFAULT_WORKDIR = Path(r"C:\Users\sundewang\bestcf_work")
 DEFAULT_SOURCE_CACHE_NAME = "bestcf_source_cache.json"
 DEFAULT_GEO_CACHE_NAME = "bestcf_geo_cache.json"
+DEFAULT_GEO_HINT_CACHE_NAME = "bestcf_geo_hint_cache.json"
 DEFAULT_SOURCE_DENYLIST_NAME = "bestcf_source_denylist.txt"
 DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
 GEO_CACHE_VERSION = 2
+GEO_HINT_CACHE_VERSION = 1
 DEFAULT_GEO_POLICY_VERSION = "ping0_primary_ipwhois_fallback_v1"
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
@@ -244,6 +246,8 @@ class TestResult:
     geo_policy: str = DEFAULT_GEO_POLICY_VERSION
     geo_selected_provider: str = ""
     geo_fallback_used: bool = False
+    geo_hint_country: str = ""
+    geo_hint_source: str = ""
     geo_cache_status: str = ""
     service_score: int = 0
     google_ok: bool | None = None
@@ -276,6 +280,11 @@ def geo_result_fields(geo: GeoDecision) -> dict[str, Any]:
         "geo_selected_provider": geo.selected_provider,
         "geo_fallback_used": geo.fallback_used,
     }
+
+
+def geo_hint_fields(candidate: Candidate, args: argparse.Namespace) -> dict[str, str]:
+    country, source = candidate_geo_hint(candidate, args)
+    return {"geo_hint_country": country, "geo_hint_source": source}
 
 
 def format_endpoint(host: str, port: int) -> str:
@@ -539,6 +548,130 @@ def save_geo_cache(path: Path, cache: dict[str, Any]) -> None:
         json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
         handle.write("\n")
     os.replace(tmp_path, path)
+
+
+def ip_prefix_for_hint(host: str) -> str | None:
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return None
+    if ip.version == 4:
+        network = ipaddress.ip_network(f"{ip}/24", strict=False)
+    else:
+        network = ipaddress.ip_network(f"{ip}/48", strict=False)
+    return str(network)
+
+
+def empty_geo_hint_cache() -> dict[str, Any]:
+    return {"version": GEO_HINT_CACHE_VERSION, "hosts": {}, "prefixes": {}}
+
+
+def load_geo_hint_cache(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return empty_geo_hint_cache()
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (OSError, json.JSONDecodeError):
+        return empty_geo_hint_cache()
+    if not isinstance(data, dict) or data.get("version") != GEO_HINT_CACHE_VERSION:
+        return empty_geo_hint_cache()
+    if not isinstance(data.get("hosts"), dict):
+        data["hosts"] = {}
+    if not isinstance(data.get("prefixes"), dict):
+        data["prefixes"] = {}
+    return data
+
+
+def save_geo_hint_cache(path: Path, cache: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    cache["version"] = GEO_HINT_CACHE_VERSION
+    cache["updated_at"] = time.time()
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with tmp_path.open("w", encoding="utf-8") as handle:
+        json.dump(cache, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+    os.replace(tmp_path, path)
+
+
+def update_geo_hint_counter(container: dict[str, Any], key: str, code: str, now: float) -> None:
+    entry = container.setdefault(key, {"countries": {}, "total": 0})
+    if not isinstance(entry, dict):
+        container[key] = {"countries": {code: 1}, "total": 1, "updated_at": now}
+        return
+    countries = entry.setdefault("countries", {})
+    if not isinstance(countries, dict):
+        countries = {}
+        entry["countries"] = countries
+    countries[code] = int(countries.get(code) or 0) + 1
+    entry["total"] = int(entry.get("total") or 0) + 1
+    entry["updated_at"] = now
+
+
+def geo_hint_cache_update(candidate: Candidate, result: TestResult, args: argparse.Namespace, now: float) -> None:
+    code = (result.exit_country_code or "").upper()
+    if not code or not getattr(args, "geo_hint_cache_enabled", True):
+        return
+    cache = getattr(args, "geo_hint_cache", None)
+    if not isinstance(cache, dict):
+        return
+
+    def update() -> None:
+        hosts = cache.setdefault("hosts", {})
+        prefixes = cache.setdefault("prefixes", {})
+        if isinstance(hosts, dict):
+            update_geo_hint_counter(hosts, candidate.host.lower(), code, now)
+        prefix = ip_prefix_for_hint(candidate.host)
+        if prefix and isinstance(prefixes, dict):
+            update_geo_hint_counter(prefixes, prefix, code, now)
+
+    lock = getattr(args, "geo_hint_cache_lock", None)
+    if lock is None:
+        update()
+    else:
+        with lock:
+            update()
+
+
+def best_geo_hint_from_entry(entry: Any, min_count: int, min_confidence: float) -> tuple[str, str] | None:
+    if not isinstance(entry, dict):
+        return None
+    countries = entry.get("countries")
+    if not isinstance(countries, dict) or not countries:
+        return None
+    counts = {str(code).upper(): int(count or 0) for code, count in countries.items() if int(count or 0) > 0}
+    if not counts:
+        return None
+    code, count = max(counts.items(), key=lambda item: (item[1], item[0]))
+    total = sum(counts.values())
+    if count < min_count or total <= 0:
+        return None
+    confidence = count / total
+    if confidence < min_confidence:
+        return None
+    return code, f"{count}/{total}"
+
+
+def candidate_geo_hint(candidate: Candidate, args: argparse.Namespace) -> tuple[str, str]:
+    if not getattr(args, "geo_hint_cache_enabled", True):
+        return "", ""
+    cache = getattr(args, "geo_hint_cache", {})
+    min_count = max(1, int(getattr(args, "geo_hint_min_count", 1)))
+    min_confidence = max(0.0, min(1.0, float(getattr(args, "geo_hint_min_confidence", 0.67))))
+    hosts = cache.get("hosts") if isinstance(cache, dict) else None
+    if isinstance(hosts, dict):
+        result = best_geo_hint_from_entry(hosts.get(candidate.host.lower()), min_count, min_confidence)
+        if result:
+            code, evidence = result
+            return code, f"host:{evidence}"
+    prefix = ip_prefix_for_hint(candidate.host)
+    prefixes = cache.get("prefixes") if isinstance(cache, dict) else None
+    if prefix and isinstance(prefixes, dict):
+        result = best_geo_hint_from_entry(prefixes.get(prefix), min_count, min_confidence)
+        if result:
+            code, evidence = result
+            return code, f"prefix:{prefix}:{evidence}"
+    return "", ""
 
 
 def geo_cache_lookup(candidate: Candidate, args: argparse.Namespace, now: float) -> tuple[str, dict[str, Any] | None]:
@@ -1595,6 +1728,7 @@ def test_candidate(
             return TestResult(candidate, False, "mihomo_start_failed", "mixed port not ready")
         proxy = f"http://127.0.0.1:{mixed_port}"
         geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+        hint = geo_hint_fields(candidate, args)
         speed, latency, speed_status, error = measure_speed(
             proxy,
             args.speed_urls,
@@ -1602,53 +1736,41 @@ def test_candidate(
             min_download_bytes=args.min_download_bytes,
         )
         if speed is None:
-            return TestResult(
+            result = TestResult(
                 candidate,
                 False,
                 speed_status,
                 error or "speed is empty",
                 latency_ms=latency,
-                exit_ip=geo.exit_ip,
-                exit_country_code=geo.country_code,
-                exit_region=geo.region,
-                cf_colo=geo.cf_colo,
-                geo_evidence=geo.evidence,
-                geo_policy=geo.policy,
-                geo_selected_provider=geo.selected_provider,
-                geo_fallback_used=geo.fallback_used,
+                **geo_result_fields(geo),
+                **hint,
             )
+            geo_hint_cache_update(candidate, result, args, time.time())
+            return result
         if speed < args.min_speed:
-            return TestResult(
+            result = TestResult(
                 candidate,
                 False,
                 "below_min_speed",
                 f"{speed:.2f}MB/s < {args.min_speed:.2f}MB/s",
                 measured_speed=speed,
                 latency_ms=latency,
-                exit_ip=geo.exit_ip,
-                exit_country_code=geo.country_code,
-                exit_region=geo.region,
-                cf_colo=geo.cf_colo,
-                geo_evidence=geo.evidence,
-                geo_policy=geo.policy,
-                geo_selected_provider=geo.selected_provider,
-                geo_fallback_used=geo.fallback_used,
+                **geo_result_fields(geo),
+                **hint,
             )
-        return TestResult(
+            geo_hint_cache_update(candidate, result, args, time.time())
+            return result
+        result = TestResult(
             candidate,
             True,
             speed_status,
             measured_speed=speed,
             latency_ms=latency,
-            exit_ip=geo.exit_ip,
-            exit_country_code=geo.country_code,
-            exit_region=geo.region,
-            cf_colo=geo.cf_colo,
-            geo_evidence=geo.evidence,
-            geo_policy=geo.policy,
-            geo_selected_provider=geo.selected_provider,
-            geo_fallback_used=geo.fallback_used,
+            **geo_result_fields(geo),
+            **hint,
         )
+        geo_hint_cache_update(candidate, result, args, time.time())
+        return result
     except Exception as exc:
         return TestResult(candidate, False, "exception", str(exc))
     finally:
@@ -2126,6 +2248,8 @@ def write_results(
                 "geo_selected_provider",
                 "geo_fallback_used",
                 "geo_cache_status",
+                "geo_hint_country",
+                "geo_hint_source",
                 "is_cloudflare",
                 "service_score",
                 "google_ok",
@@ -2160,6 +2284,8 @@ def write_results(
                     "geo_selected_provider": result.geo_selected_provider,
                     "geo_fallback_used": result.geo_fallback_used,
                     "geo_cache_status": result.geo_cache_status,
+                    "geo_hint_country": result.geo_hint_country,
+                    "geo_hint_source": result.geo_hint_source,
                     "is_cloudflare": item.is_cloudflare,
                     "service_score": result.service_score,
                     "google_ok": result.google_ok if result.google_ok is not None else "",
@@ -2483,6 +2609,7 @@ def test_speed_geo_chunk(
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
             geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+            hint = geo_hint_fields(candidate, args)
             code = geo.country_code
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
                 results.append(
@@ -2493,8 +2620,10 @@ def test_speed_geo_chunk(
                         f"{code} not in {','.join(sorted(args.preferred_countries))}",
                         latency_ms=delay,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
+                geo_hint_cache_update(candidate, results[-1], args, time.time())
                 continue
             if not args.allow_unknown_region and not code:
                 results.append(
@@ -2505,6 +2634,7 @@ def test_speed_geo_chunk(
                         "exit country unavailable",
                         latency_ms=delay,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
                 continue
@@ -2523,8 +2653,10 @@ def test_speed_geo_chunk(
                         error or "speed is empty",
                         latency_ms=delay,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
+                geo_hint_cache_update(candidate, results[-1], args, time.time())
                 continue
             if speed < args.min_speed:
                 results.append(
@@ -2536,19 +2668,22 @@ def test_speed_geo_chunk(
                         measured_speed=speed,
                         latency_ms=delay or speed_latency,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
+                geo_hint_cache_update(candidate, results[-1], args, time.time())
                 continue
-            results.append(
-                TestResult(
-                    candidate,
-                    True,
-                    speed_status,
-                    measured_speed=speed,
-                    latency_ms=delay or speed_latency,
-                    **geo_result_fields(geo),
-                )
+            result = TestResult(
+                candidate,
+                True,
+                speed_status,
+                measured_speed=speed,
+                latency_ms=delay or speed_latency,
+                **geo_result_fields(geo),
+                **hint,
             )
+            geo_hint_cache_update(candidate, result, args, time.time())
+            results.append(result)
     except Exception as exc:
         for candidate in candidates:
             results.append(TestResult(candidate, False, "exception", str(exc), latency_ms=float(delay_map.get(candidate.key, 0))))
@@ -2588,6 +2723,7 @@ def test_geo_chunk(
             return [TestResult(candidate, False, "mihomo_start_failed", "mixed port not ready") for candidate in candidates]
         proxy = f"http://127.0.0.1:{mixed_port}"
         for proxy_name, candidate in name_map.items():
+            hint = geo_hint_fields(candidate, args)
             delay = float(delay_map.get(candidate.key, 0))
             switch_error = select_proxy(controller_port, proxy_name, timeout=args.timeout)
             if switch_error:
@@ -2625,8 +2761,11 @@ def test_geo_chunk(
                         latency_ms=delay,
                         geo_cache_status=geo_cache_status,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
+                if code:
+                    geo_hint_cache_update(candidate, results[-1], args, time.time())
                 continue
             if not args.allow_unknown_region and not code:
                 results.append(
@@ -2638,6 +2777,7 @@ def test_geo_chunk(
                         latency_ms=delay,
                         geo_cache_status=geo_cache_status,
                         **geo_result_fields(geo),
+                        **hint,
                     )
                 )
                 continue
@@ -2656,8 +2796,10 @@ def test_geo_chunk(
                     gpt_ok=gpt_ok,
                     service_error=service_error,
                     **geo_result_fields(geo),
+                    **hint,
                 )
                 geo_cache_update(candidate, result, args, time.time())
+                geo_hint_cache_update(candidate, result, args, time.time())
                 results.append(result)
                 continue
             result = TestResult(
@@ -2672,8 +2814,10 @@ def test_geo_chunk(
                 gpt_ok=gpt_ok,
                 service_error=service_error,
                 **geo_result_fields(geo),
+                **hint,
             )
             geo_cache_update(candidate, result, args, time.time())
+            geo_hint_cache_update(candidate, result, args, time.time())
             results.append(result)
     except Exception as exc:
         for candidate in candidates:
@@ -2961,6 +3105,8 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_country_hard_cap_multiplier": 3.0,
             "geo_cap_countries": "HK,SG",
             "geo_unknown_other_sample_limit": 75,
+            "geo_hint_min_count": 1,
+            "geo_hint_min_confidence": 0.67,
             "preferred_country_min": "JP:10,SG:15,HK:15,US:5,KR:2,TW:2",
             "geo_concurrency": 8,
             "speed_limit": 0,
@@ -2993,6 +3139,8 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_country_hard_cap_multiplier": 3.0,
             "geo_cap_countries": "HK,SG",
             "geo_unknown_other_sample_limit": 75,
+            "geo_hint_min_count": 1,
+            "geo_hint_min_confidence": 0.67,
             "preferred_country_min": "JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
             "geo_concurrency": 8,
             "speed_limit": 0,
@@ -3025,6 +3173,8 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_country_hard_cap_multiplier": 3.0,
             "geo_cap_countries": "HK,SG",
             "geo_unknown_other_sample_limit": 100,
+            "geo_hint_min_count": 1,
+            "geo_hint_min_confidence": 0.67,
             "preferred_country_min": "JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
             "geo_concurrency": 4,
             "speed_limit": 100,
@@ -3063,6 +3213,8 @@ def apply_profile_defaults(args: argparse.Namespace) -> None:
         "geo_country_hard_cap_multiplier",
         "geo_cap_countries",
         "geo_unknown_other_sample_limit",
+        "geo_hint_min_count",
+        "geo_hint_min_confidence",
         "preferred_country_min",
         "geo_concurrency",
         "speed_limit",
@@ -3104,24 +3256,43 @@ def candidate_mentions_country(candidate: Candidate, code: str) -> bool:
     return any(re.search(rf"(?<![A-Z]){re.escape(alias)}(?![A-Z])", text) for alias in aliases)
 
 
-def declared_bucket(candidate: Candidate, preferred_order: list[str]) -> str:
+def declared_bucket(candidate: Candidate, preferred_order: list[str], args: argparse.Namespace | None = None) -> str:
     for code in preferred_order:
         if candidate_mentions_country(candidate, code):
             return code
+    if args is not None:
+        hint_country, _hint_source = candidate_geo_hint(candidate, args)
+        if hint_country in set(preferred_order):
+            return f"HINT_{hint_country}"
     if candidate.declared_region:
         return "OTHER"
     return "UNKNOWN"
 
 
+def declared_bucket_country(bucket_name: str) -> str:
+    return bucket_name[5:] if bucket_name.startswith("HINT_") else bucket_name
+
+
+def declared_geo_bucket_order(preferred_order: list[str]) -> list[str]:
+    scarce_order = [code for code in ["JP", "KR", "TW", "US"] if code in preferred_order]
+    remaining = [code for code in preferred_order if code not in scarce_order]
+    ordered = scarce_order + [f"HINT_{code}" for code in scarce_order]
+    ordered.extend(remaining)
+    ordered.extend(f"HINT_{code}" for code in remaining)
+    ordered.extend(["UNKNOWN", "OTHER"])
+    return ordered
+
+
 def build_declared_buckets(
     eligible: list[tuple[str, Candidate, int]],
     preferred_order: list[str],
+    args: argparse.Namespace | None = None,
 ) -> dict[str, list[tuple[str, Candidate, int]]]:
-    buckets: dict[str, list[tuple[str, Candidate, int]]] = {code: [] for code in preferred_order}
+    buckets: dict[str, list[tuple[str, Candidate, int]]] = {code: [] for code in declared_geo_bucket_order(preferred_order)}
     buckets["UNKNOWN"] = []
     buckets["OTHER"] = []
     for item in eligible:
-        buckets.setdefault(declared_bucket(item[1], preferred_order), []).append(item)
+        buckets.setdefault(declared_bucket(item[1], preferred_order, args), []).append(item)
     return buckets
 
 
@@ -3154,8 +3325,9 @@ def pop_declared_geo_batch(
             items = buckets.get(bucket_name) or []
             if not items:
                 continue
-            if bucket_name in suppress_codes:
-                count = true_counts.get(bucket_name, 0)
+            bucket_country = declared_bucket_country(bucket_name)
+            if bucket_country in suppress_codes:
+                count = true_counts.get(bucket_country, 0)
                 if hard_limit > 0 and count >= hard_limit:
                     continue
                 if soft_limit > 0 and count >= soft_limit:
@@ -3171,7 +3343,8 @@ def pop_declared_geo_batch(
             items = buckets.get(bucket_name) or []
             if not items:
                 continue
-            if hard_limit > 0 and true_counts.get(bucket_name, 0) >= hard_limit:
+            bucket_country = declared_bucket_country(bucket_name)
+            if hard_limit > 0 and true_counts.get(bucket_country, 0) >= hard_limit:
                 continue
             batch.append(items.pop(0))
             progressed = True
@@ -3264,8 +3437,8 @@ def run_declared_round_robin_geo_tests(
     template_proxy: dict[str, Any],
     args: argparse.Namespace,
 ) -> list[TestResult]:
-    buckets = build_declared_buckets(eligible, args.preferred_country_order)
-    bucket_order = list(args.preferred_country_order) + ["UNKNOWN", "OTHER"]
+    buckets = build_declared_buckets(eligible, args.preferred_country_order, args)
+    bucket_order = declared_geo_bucket_order(args.preferred_country_order)
     print(f"Geo declared buckets: {declared_bucket_counts(buckets)}", flush=True)
 
     geo_results: list[TestResult] = []
@@ -3316,7 +3489,11 @@ def run_declared_round_robin_geo_tests(
             break
         before = len(preferred_geo)
         before_counts = dict(true_counts)
-        unknown_other_tested += sum(1 for _proxy_name, candidate, _delay in batch if declared_bucket(candidate, args.preferred_country_order) in {"UNKNOWN", "OTHER"})
+        unknown_other_tested += sum(
+            1
+            for _proxy_name, candidate, _delay in batch
+            if declared_bucket(candidate, args.preferred_country_order, args) in {"UNKNOWN", "OTHER"}
+        )
         batch_results = run_geo_batch(batch, template_proxy, args, "declared")
         geo_tested += len(batch)
         geo_results.extend(batch_results)
@@ -3527,6 +3704,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--geo-cache-ttl-hours", type=float, default=12.0, help="hours before geo cache entries expire")
     parser.add_argument("--no-geo-cache", dest="geo_cache_enabled", action="store_false", help="disable geo cache read/write")
     parser.set_defaults(geo_cache_enabled=True)
+    parser.add_argument("--geo-hint-cache", default=None, help="geo hint cache path for declared scheduler")
+    parser.add_argument("--no-geo-hint-cache", dest="geo_hint_cache_enabled", action="store_false", help="disable geo hint cache read/write")
+    parser.set_defaults(geo_hint_cache_enabled=True)
+    parser.add_argument("--geo-hint-min-count", type=int, default=None, help="minimum observations before a geo hint is trusted")
+    parser.add_argument("--geo-hint-min-confidence", type=float, default=None, help="minimum top-country ratio before a geo hint is trusted")
     parser.add_argument("--time-budget", type=float, default=None, help="target end-to-end runtime budget in seconds; 0 disables")
     parser.add_argument("--time-safety-margin", type=float, default=None, help="seconds reserved before time budget for speed/write cleanup")
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
@@ -3695,6 +3877,8 @@ def main(argv: list[str] | None = None) -> int:
     args.geo_country_soft_cap_multiplier = max(0.0, float(args.geo_country_soft_cap_multiplier))
     args.geo_country_hard_cap_multiplier = max(0.0, float(args.geo_country_hard_cap_multiplier))
     args.geo_unknown_other_sample_limit = max(0, int(args.geo_unknown_other_sample_limit))
+    args.geo_hint_min_count = max(1, int(args.geo_hint_min_count))
+    args.geo_hint_min_confidence = max(0.0, min(1.0, float(args.geo_hint_min_confidence)))
     args.geo_cap_countries_resolved = {
         item.strip().upper()
         for item in str(args.geo_cap_countries or "").split(",")
@@ -3714,6 +3898,9 @@ def main(argv: list[str] | None = None) -> int:
     args.geo_cache_path = Path(args.geo_cache) if args.geo_cache else workdir / DEFAULT_GEO_CACHE_NAME
     args.geo_cache = load_geo_cache(args.geo_cache_path) if args.geo_cache_enabled else {"version": GEO_CACHE_VERSION, "entries": {}}
     args.geo_cache_lock = threading.Lock()
+    args.geo_hint_cache_path = Path(args.geo_hint_cache) if args.geo_hint_cache else workdir / DEFAULT_GEO_HINT_CACHE_NAME
+    args.geo_hint_cache = load_geo_hint_cache(args.geo_hint_cache_path) if args.geo_hint_cache_enabled else empty_geo_hint_cache()
+    args.geo_hint_cache_lock = threading.Lock()
     if not args.keep_workers:
         clean_workers(workdir)
     timer.mark("setup")
@@ -3847,6 +4034,8 @@ def main(argv: list[str] | None = None) -> int:
         final = Path(args.output)
     if args.geo_cache_enabled:
         save_geo_cache(args.geo_cache_path, args.geo_cache)
+    if args.geo_hint_cache_enabled:
+        save_geo_hint_cache(args.geo_hint_cache_path, args.geo_hint_cache)
     args.timings["write_results"] = time.monotonic() - stage_started
     print(f"Final output: {final}", flush=True)
     print(f"Successful: {sum(1 for result in results if result.ok)}; failed: {sum(1 for result in results if not result.ok)}", flush=True)

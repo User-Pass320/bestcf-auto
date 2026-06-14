@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+from argparse import Namespace
 from pathlib import Path
 from unittest import mock
 
@@ -88,6 +89,45 @@ class DeclaredSchedulerTests(unittest.TestCase):
     def test_declared_bucket_prefers_country_mentions(self):
         candidate = tool.Candidate(source="src", raw="1.1.1.1:443#美国 US", host="1.1.1.1", port=443)
         self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"]), "US")
+
+    def test_declared_bucket_uses_geo_hint_when_declaration_unknown(self):
+        candidate = tool.Candidate(source="src", raw="1.2.3.4:443", host="1.2.3.4", port=443)
+        args = Namespace(
+            geo_hint_cache_enabled=True,
+            geo_hint_cache={"hosts": {"1.2.3.4": {"countries": {"JP": 2}, "total": 2}}, "prefixes": {}},
+            geo_hint_min_count=1,
+            geo_hint_min_confidence=0.67,
+        )
+
+        self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"], args), "HINT_JP")
+
+    def test_declared_bucket_keeps_declaration_before_geo_hint(self):
+        candidate = tool.Candidate(source="src", raw="1.2.3.4:443#SG", host="1.2.3.4", port=443)
+        args = Namespace(
+            geo_hint_cache_enabled=True,
+            geo_hint_cache={"hosts": {"1.2.3.4": {"countries": {"JP": 2}, "total": 2}}, "prefixes": {}},
+            geo_hint_min_count=1,
+            geo_hint_min_confidence=0.67,
+        )
+
+        self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"], args), "SG")
+
+    def test_ip_prefix_for_hint_uses_ipv4_24(self):
+        self.assertEqual(tool.ip_prefix_for_hint("1.2.3.4"), "1.2.3.0/24")
+
+    def test_candidate_geo_hint_uses_prefix_when_host_missing(self):
+        candidate = tool.Candidate(source="src", raw="1.2.3.4:443", host="1.2.3.4", port=443)
+        args = Namespace(
+            geo_hint_cache_enabled=True,
+            geo_hint_cache={"hosts": {}, "prefixes": {"1.2.3.0/24": {"countries": {"KR": 3}, "total": 3}}},
+            geo_hint_min_count=2,
+            geo_hint_min_confidence=0.67,
+        )
+
+        country, source = tool.candidate_geo_hint(candidate, args)
+
+        self.assertEqual(country, "KR")
+        self.assertTrue(source.startswith("prefix:1.2.3.0/24:"))
 
     def test_pop_declared_geo_batch_defers_soft_capped_bucket(self):
         hk = tool.Candidate(source="src", raw="1.1.1.1:443#HK", host="1.1.1.1", port=443)
