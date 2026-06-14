@@ -84,6 +84,57 @@ class SourceQualityTests(unittest.TestCase):
         self.assertEqual(ranked[0].source, "high")
 
 
+class DeclaredSchedulerTests(unittest.TestCase):
+    def test_declared_bucket_prefers_country_mentions(self):
+        candidate = tool.Candidate(source="src", raw="1.1.1.1:443#美国 US", host="1.1.1.1", port=443)
+        self.assertEqual(tool.declared_bucket(candidate, ["JP", "SG", "US", "HK"]), "US")
+
+    def test_pop_declared_geo_batch_defers_soft_capped_bucket(self):
+        hk = tool.Candidate(source="src", raw="1.1.1.1:443#HK", host="1.1.1.1", port=443)
+        jp = tool.Candidate(source="src", raw="2.2.2.2:443#JP", host="2.2.2.2", port=443)
+        buckets = {
+            "HK": [("p1", hk, 10)],
+            "JP": [("p2", jp, 20)],
+            "UNKNOWN": [],
+            "OTHER": [],
+        }
+
+        batch = tool.pop_declared_geo_batch(
+            buckets,
+            ["HK", "JP", "UNKNOWN", "OTHER"],
+            batch_size=1,
+            true_counts={"HK": 100},
+            soft_limit=100,
+            hard_limit=150,
+            suppress_codes={"HK"},
+        )
+
+        self.assertEqual(batch[0][1].host, "2.2.2.2")
+        self.assertEqual(len(buckets["HK"]), 1)
+
+    def test_pop_declared_geo_batch_respects_active_order(self):
+        unknown = tool.Candidate(source="src", raw="1.1.1.1:443", host="1.1.1.1", port=443)
+        jp = tool.Candidate(source="src", raw="2.2.2.2:443#JP", host="2.2.2.2", port=443)
+        buckets = {
+            "JP": [("p2", jp, 20)],
+            "UNKNOWN": [("p1", unknown, 10)],
+            "OTHER": [],
+        }
+
+        batch = tool.pop_declared_geo_batch(
+            buckets,
+            ["JP"],
+            batch_size=2,
+            true_counts={},
+            soft_limit=0,
+            hard_limit=0,
+            suppress_codes=set(),
+        )
+
+        self.assertEqual([item[1].host for item in batch], ["2.2.2.2"])
+        self.assertEqual(len(buckets["UNKNOWN"]), 1)
+
+
 class ValidateOutputTests(unittest.TestCase):
     def test_validate_rejects_invalid_lines(self):
         with tempfile.TemporaryDirectory() as tmp:

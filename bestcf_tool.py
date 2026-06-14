@@ -2799,6 +2799,68 @@ def budgeted_speed_sample_limit(args: argparse.Namespace, selected_count: int) -
     return min(selected_count, affordable_waves * worker_count)
 
 
+def finish_geo_results_with_speed(
+    geo_results: list[TestResult],
+    latency_failures: list[TestResult],
+    template_proxy: dict[str, Any],
+    args: argparse.Namespace,
+    geo_tested: int,
+    refill_stop_reason: str,
+    skipped_latency_pool: list[tuple[str, Candidate, int]],
+) -> list[TestResult]:
+    preferred_geo_all = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
+    preferred_geo = preferred_geo_all
+    latency_failures.extend(
+        TestResult(
+            candidate,
+            False,
+            "latency_pool_skipped",
+            refill_stop_reason or "not selected for geo",
+            latency_ms=float(delay),
+        )
+        for _proxy_name, candidate, delay in skipped_latency_pool
+    )
+    print(f"Geo tested: {geo_tested}; stop reason: {refill_stop_reason}", flush=True)
+    print(f"Preferred geo selected: {len(preferred_geo)} / {len(preferred_geo_all)}", flush=True)
+    speed_keys = select_speed_sample(preferred_geo, args.speed_bands_parsed, args.speed_limit)
+    speed_selected = [result for result in preferred_geo if result.candidate.key in speed_keys]
+    geo_only = [result for result in preferred_geo if result.candidate.key not in speed_keys]
+    speed_budget_limit = budgeted_speed_sample_limit(args, len(speed_selected))
+    if speed_budget_limit < len(speed_selected):
+        skipped_speed = speed_selected[speed_budget_limit:]
+        speed_selected = speed_selected[:speed_budget_limit]
+        geo_only.extend(
+            dataclasses.replace(result, ok=True, status="geo_only", error="speed skipped by time budget")
+            for result in skipped_speed
+        )
+        print(
+            f"Speed sample reduced by time budget: {len(skipped_speed)} skipped; "
+            f"remaining_budget={speed_budget_remaining(args):.1f}s",
+            flush=True,
+        )
+    print(f"Selected for speed: {len(speed_selected)}; geo-only: {len(geo_only)}", flush=True)
+
+    stage_started = time.monotonic()
+    speed_chunks = split_evenly(speed_selected, args.speed_concurrency)
+    speed_results: list[TestResult] = []
+    with ThreadPoolExecutor(max_workers=args.speed_concurrency) as pool:
+        futures = [
+            pool.submit(test_speed_chunk_from_geo, chunk, template_proxy, worker_id, args)
+            for worker_id, chunk in enumerate(speed_chunks)
+            if chunk
+        ]
+        done = 0
+        total = len(speed_selected)
+        for future in as_completed(futures):
+            chunk_results = future.result()
+            speed_results.extend(chunk_results)
+            done += len(chunk_results)
+            speed_count = sum(1 for result in speed_results if result.measured_speed is not None)
+            print(f"[speed {done}/{total}] speed_ok={speed_count}", flush=True)
+    args.timings["speed_test"] = time.monotonic() - stage_started
+    return latency_failures + [result for result in geo_results if not result.ok] + geo_only + speed_results
+
+
 def parse_speed_bands(text: str) -> list[tuple[int, int]]:
     bands: list[tuple[int, int]] = []
     for part in text.split(","):
@@ -2894,6 +2956,11 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_refill_batch_size": 50,
             "geo_refill_min_batch_size": 20,
             "geo_refill_max_tested": 300,
+            "geo_scheduler": "declared-round-robin",
+            "geo_country_soft_cap_multiplier": 2.0,
+            "geo_country_hard_cap_multiplier": 3.0,
+            "geo_cap_countries": "HK,SG",
+            "geo_unknown_other_sample_limit": 75,
             "preferred_country_min": "JP:10,SG:15,HK:15,US:5,KR:2,TW:2",
             "geo_concurrency": 8,
             "speed_limit": 0,
@@ -2921,6 +2988,11 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_refill_batch_size": 75,
             "geo_refill_min_batch_size": 20,
             "geo_refill_max_tested": 0,
+            "geo_scheduler": "declared-round-robin",
+            "geo_country_soft_cap_multiplier": 2.0,
+            "geo_country_hard_cap_multiplier": 3.0,
+            "geo_cap_countries": "HK,SG",
+            "geo_unknown_other_sample_limit": 75,
             "preferred_country_min": "JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
             "geo_concurrency": 8,
             "speed_limit": 0,
@@ -2948,6 +3020,11 @@ def profile_defaults(profile: str) -> dict[str, Any]:
             "geo_refill_batch_size": 100,
             "geo_refill_min_batch_size": 1,
             "geo_refill_max_tested": 0,
+            "geo_scheduler": "declared-round-robin",
+            "geo_country_soft_cap_multiplier": 2.0,
+            "geo_country_hard_cap_multiplier": 3.0,
+            "geo_cap_countries": "HK,SG",
+            "geo_unknown_other_sample_limit": 100,
             "preferred_country_min": "JP:20,SG:30,HK:30,US:10,KR:3,TW:3",
             "geo_concurrency": 4,
             "speed_limit": 100,
@@ -2981,6 +3058,11 @@ def apply_profile_defaults(args: argparse.Namespace) -> None:
         "geo_refill_batch_size",
         "geo_refill_min_batch_size",
         "geo_refill_max_tested",
+        "geo_scheduler",
+        "geo_country_soft_cap_multiplier",
+        "geo_country_hard_cap_multiplier",
+        "geo_cap_countries",
+        "geo_unknown_other_sample_limit",
         "preferred_country_min",
         "geo_concurrency",
         "speed_limit",
@@ -3020,6 +3102,90 @@ def candidate_mentions_country(candidate: Candidate, code: str) -> bool:
     if re.search(rf"(?<![A-Z]){re.escape(code)}(?![A-Z])", text):
         return True
     return any(re.search(rf"(?<![A-Z]){re.escape(alias)}(?![A-Z])", text) for alias in aliases)
+
+
+def declared_bucket(candidate: Candidate, preferred_order: list[str]) -> str:
+    for code in preferred_order:
+        if candidate_mentions_country(candidate, code):
+            return code
+    if candidate.declared_region:
+        return "OTHER"
+    return "UNKNOWN"
+
+
+def build_declared_buckets(
+    eligible: list[tuple[str, Candidate, int]],
+    preferred_order: list[str],
+) -> dict[str, list[tuple[str, Candidate, int]]]:
+    buckets: dict[str, list[tuple[str, Candidate, int]]] = {code: [] for code in preferred_order}
+    buckets["UNKNOWN"] = []
+    buckets["OTHER"] = []
+    for item in eligible:
+        buckets.setdefault(declared_bucket(item[1], preferred_order), []).append(item)
+    return buckets
+
+
+def declared_bucket_counts(buckets: dict[str, list[tuple[str, Candidate, int]]]) -> str:
+    parts = [f"{name}:{len(items)}" for name, items in buckets.items() if items]
+    return " ".join(parts) or "empty"
+
+
+def pop_declared_geo_batch(
+    buckets: dict[str, list[tuple[str, Candidate, int]]],
+    order: list[str],
+    batch_size: int,
+    true_counts: dict[str, int],
+    soft_limit: int,
+    hard_limit: int,
+    suppress_codes: set[str],
+) -> list[tuple[str, Candidate, int]]:
+    if batch_size <= 0:
+        return []
+    batch: list[tuple[str, Candidate, int]] = []
+    active_order = list(order)
+    if not active_order:
+        return []
+    while len(batch) < batch_size:
+        progressed = False
+        deferred_soft: list[str] = []
+        for bucket_name in active_order:
+            if len(batch) >= batch_size:
+                break
+            items = buckets.get(bucket_name) or []
+            if not items:
+                continue
+            if bucket_name in suppress_codes:
+                count = true_counts.get(bucket_name, 0)
+                if hard_limit > 0 and count >= hard_limit:
+                    continue
+                if soft_limit > 0 and count >= soft_limit:
+                    deferred_soft.append(bucket_name)
+                    continue
+            batch.append(items.pop(0))
+            progressed = True
+        if len(batch) >= batch_size:
+            break
+        for bucket_name in deferred_soft:
+            if len(batch) >= batch_size:
+                break
+            items = buckets.get(bucket_name) or []
+            if not items:
+                continue
+            if hard_limit > 0 and true_counts.get(bucket_name, 0) >= hard_limit:
+                continue
+            batch.append(items.pop(0))
+            progressed = True
+        if not progressed:
+            break
+    return batch
+
+
+def remaining_declared_candidates(buckets: dict[str, list[tuple[str, Candidate, int]]]) -> list[tuple[str, Candidate, int]]:
+    remaining: list[tuple[str, Candidate, int]] = []
+    for items in buckets.values():
+        remaining.extend(items)
+    remaining.sort(key=lambda item: (item[2], item[1].endpoint))
+    return remaining
 
 
 def take_country_targeted_candidates(
@@ -3092,6 +3258,99 @@ def adaptive_refill_batch_size(args: argparse.Namespace, geo_tested: int) -> int
     return min(args.geo_refill_batch_size, int(remaining_budget / avg_geo_cost))
 
 
+def run_declared_round_robin_geo_tests(
+    eligible: list[tuple[str, Candidate, int]],
+    latency_failures: list[TestResult],
+    template_proxy: dict[str, Any],
+    args: argparse.Namespace,
+) -> list[TestResult]:
+    buckets = build_declared_buckets(eligible, args.preferred_country_order)
+    bucket_order = list(args.preferred_country_order) + ["UNKNOWN", "OTHER"]
+    print(f"Geo declared buckets: {declared_bucket_counts(buckets)}", flush=True)
+
+    geo_results: list[TestResult] = []
+    geo_tested = 0
+    unknown_other_tested = 0
+    refill_stop_reason = ""
+    max_geo_tested = args.geo_refill_max_tested
+    target_total = args.latency_pool_limit
+    soft_limit = int(args.country_max * args.geo_country_soft_cap_multiplier) if args.country_max > 0 else 0
+    hard_limit = int(args.country_max * args.geo_country_hard_cap_multiplier) if args.country_max > 0 else 0
+    if hard_limit and soft_limit and hard_limit < soft_limit:
+        hard_limit = soft_limit
+
+    while any(buckets.values()):
+        preferred_geo = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
+        true_counts = preferred_counts(preferred_geo)
+        if target_total > 0 and len(preferred_geo) >= target_total:
+            refill_stop_reason = f"target reached {len(preferred_geo)}/{target_total}"
+            break
+        if max_geo_tested > 0 and geo_tested >= max_geo_tested:
+            refill_stop_reason = f"geo_refill_max_tested reached {geo_tested}/{max_geo_tested}"
+            break
+        batch_size = adaptive_refill_batch_size(args, geo_tested)
+        if batch_size < args.geo_refill_min_batch_size:
+            refill_stop_reason = (
+                f"time budget reserved; batch_size={batch_size}; "
+                f"remaining_budget={refill_budget_remaining(args):.1f}s"
+            )
+            break
+        if max_geo_tested > 0:
+            batch_size = min(batch_size, max_geo_tested - geo_tested)
+        batch_size = min(batch_size, args.geo_refill_batch_size)
+        if args.geo_unknown_other_sample_limit > 0 and unknown_other_tested >= args.geo_unknown_other_sample_limit:
+            active_order = [code for code in bucket_order if code not in {"UNKNOWN", "OTHER"}]
+        else:
+            active_order = bucket_order
+        batch = pop_declared_geo_batch(
+            buckets,
+            active_order,
+            batch_size,
+            true_counts,
+            soft_limit,
+            hard_limit,
+            args.geo_cap_countries_resolved,
+        )
+        if not batch:
+            refill_stop_reason = "declared buckets exhausted or capped"
+            break
+        before = len(preferred_geo)
+        before_counts = dict(true_counts)
+        unknown_other_tested += sum(1 for _proxy_name, candidate, _delay in batch if declared_bucket(candidate, args.preferred_country_order) in {"UNKNOWN", "OTHER"})
+        batch_results = run_geo_batch(batch, template_proxy, args, "declared")
+        geo_tested += len(batch)
+        geo_results.extend(batch_results)
+        preferred_geo = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
+        true_counts = preferred_counts(preferred_geo)
+        count_delta = ";".join(
+            f"{code}:{true_counts.get(code, 0) - before_counts.get(code, 0)}"
+            for code in args.preferred_country_order
+            if true_counts.get(code, 0) - before_counts.get(code, 0)
+        ) or "none"
+        print(
+            f"[geo-declared-summary] tested={geo_tested}; batch={len(batch)}; "
+            f"preferred_added={len(preferred_geo) - before}; country_added={count_delta}; "
+            f"counts={dict(true_counts)}; remaining={sum(len(items) for items in buckets.values())}; "
+            f"unknown_other_tested={unknown_other_tested}/{args.geo_unknown_other_sample_limit or 'inf'}; "
+            f"remaining_budget={refill_budget_remaining(args):.1f}s",
+            flush=True,
+        )
+    else:
+        refill_stop_reason = "latency candidates exhausted"
+
+    skipped_latency_pool = remaining_declared_candidates(buckets)
+    args.timings.setdefault("geo_country_refill_test", 0.0)
+    return finish_geo_results_with_speed(
+        geo_results,
+        latency_failures,
+        template_proxy,
+        args,
+        geo_tested,
+        refill_stop_reason,
+        skipped_latency_pool,
+    )
+
+
 def run_latency_first_tests(
     candidates: list[Candidate],
     template_proxy: dict[str, Any],
@@ -3101,6 +3360,9 @@ def run_latency_first_tests(
     eligible, latency_failures = run_latency_tests(candidates, template_proxy, args)
     args.timings["latency_test"] = time.monotonic() - stage_started
     print(f"Latency passed: {len(eligible)} / {len(candidates)}", flush=True)
+
+    if args.geo_scheduler == "declared-round-robin":
+        return run_declared_round_robin_geo_tests(eligible, latency_failures, template_proxy, args)
 
     initial_limit = len(eligible) if args.geo_initial_limit <= 0 else min(args.geo_initial_limit, len(eligible))
     cursor = initial_limit
@@ -3223,58 +3485,16 @@ def run_latency_first_tests(
 
     if not country_refill_started:
         args.timings.setdefault("geo_country_refill_test", 0.0)
-    preferred_geo_all = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
-    preferred_geo = preferred_geo_all
     skipped_latency_pool = eligible[cursor:]
-    latency_failures.extend(
-        TestResult(
-            candidate,
-            False,
-            "latency_pool_skipped",
-            refill_stop_reason or "not selected for geo",
-            latency_ms=float(delay),
-        )
-        for _proxy_name, candidate, delay in skipped_latency_pool
+    return finish_geo_results_with_speed(
+        geo_results,
+        latency_failures,
+        template_proxy,
+        args,
+        geo_tested,
+        refill_stop_reason,
+        skipped_latency_pool,
     )
-    print(f"Geo tested: {geo_tested}; stop reason: {refill_stop_reason}", flush=True)
-    print(f"Preferred geo selected: {len(preferred_geo)} / {len(preferred_geo_all)}", flush=True)
-    speed_keys = select_speed_sample(preferred_geo, args.speed_bands_parsed, args.speed_limit)
-    speed_selected = [result for result in preferred_geo if result.candidate.key in speed_keys]
-    geo_only = [result for result in preferred_geo if result.candidate.key not in speed_keys]
-    speed_budget_limit = budgeted_speed_sample_limit(args, len(speed_selected))
-    if speed_budget_limit < len(speed_selected):
-        skipped_speed = speed_selected[speed_budget_limit:]
-        speed_selected = speed_selected[:speed_budget_limit]
-        geo_only.extend(
-            dataclasses.replace(result, ok=True, status="geo_only", error="speed skipped by time budget")
-            for result in skipped_speed
-        )
-        print(
-            f"Speed sample reduced by time budget: {len(skipped_speed)} skipped; "
-            f"remaining_budget={speed_budget_remaining(args):.1f}s",
-            flush=True,
-        )
-    print(f"Selected for speed: {len(speed_selected)}; geo-only: {len(geo_only)}", flush=True)
-
-    stage_started = time.monotonic()
-    speed_chunks = split_evenly(speed_selected, args.speed_concurrency)
-    speed_results: list[TestResult] = []
-    with ThreadPoolExecutor(max_workers=args.speed_concurrency) as pool:
-        futures = [
-            pool.submit(test_speed_chunk_from_geo, chunk, template_proxy, worker_id, args)
-            for worker_id, chunk in enumerate(speed_chunks)
-            if chunk
-        ]
-        done = 0
-        total = len(speed_selected)
-        for future in as_completed(futures):
-            chunk_results = future.result()
-            speed_results.extend(chunk_results)
-            done += len(chunk_results)
-            speed_count = sum(1 for result in speed_results if result.measured_speed is not None)
-            print(f"[speed {done}/{total}] speed_ok={speed_count}", flush=True)
-    args.timings["speed_test"] = time.monotonic() - stage_started
-    return latency_failures + [result for result in geo_results if not result.ok] + geo_only + speed_results
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -3317,6 +3537,35 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--geo-refill-batch-size", type=int, default=None, help="candidate count per geo refill batch")
     parser.add_argument("--geo-refill-min-batch-size", type=int, default=None, help="stop refill when time budget allows fewer than this batch size")
     parser.add_argument("--geo-refill-max-tested", type=int, default=None, help="maximum geo-tested latency candidates including initial batch; 0 disables")
+    parser.add_argument(
+        "--geo-scheduler",
+        choices=["latency", "declared-round-robin"],
+        default=None,
+        help="geo test scheduling strategy after latency test",
+    )
+    parser.add_argument(
+        "--geo-country-soft-cap-multiplier",
+        type=float,
+        default=None,
+        help="soft cap for high-volume true exit countries as country_max multiplier",
+    )
+    parser.add_argument(
+        "--geo-country-hard-cap-multiplier",
+        type=float,
+        default=None,
+        help="hard cap for high-volume true exit countries as country_max multiplier",
+    )
+    parser.add_argument(
+        "--geo-cap-countries",
+        default=None,
+        help="comma-separated true exit country codes controlled by geo soft/hard caps",
+    )
+    parser.add_argument(
+        "--geo-unknown-other-sample-limit",
+        type=int,
+        default=None,
+        help="maximum UNKNOWN/OTHER declared candidates sampled by declared-round-robin scheduler; 0 disables this cap",
+    )
     parser.add_argument("--latency-concurrency", type=int, default=32, help="parallel Mihomo delay API calls")
     parser.add_argument("--geo-concurrency", type=int, default=None, help="parallel geo workers after latency pool selection")
     parser.add_argument("--speed-limit", type=int, default=None, help="maximum number of candidates selected for speed test; 0 disables speed test")
@@ -3443,6 +3692,14 @@ def main(argv: list[str] | None = None) -> int:
     args.geo_refill_batch_size = max(1, int(args.geo_refill_batch_size))
     args.geo_refill_min_batch_size = max(1, int(args.geo_refill_min_batch_size))
     args.geo_refill_max_tested = max(0, int(args.geo_refill_max_tested))
+    args.geo_country_soft_cap_multiplier = max(0.0, float(args.geo_country_soft_cap_multiplier))
+    args.geo_country_hard_cap_multiplier = max(0.0, float(args.geo_country_hard_cap_multiplier))
+    args.geo_unknown_other_sample_limit = max(0, int(args.geo_unknown_other_sample_limit))
+    args.geo_cap_countries_resolved = {
+        item.strip().upper()
+        for item in str(args.geo_cap_countries or "").split(",")
+        if item.strip()
+    }
     args.preferred_country_min = parse_country_min(args.preferred_country_min)
     args.timings = timer.timings
     args.run_started_at = timer.started_at
