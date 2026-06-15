@@ -1,2 +1,1 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-ID,印度尼西亚,43.218.77.16,443,43.218.77.16:443,luoli,508,,ping0:ID,expired,geo_only,,43.218.77.16:443#洛璃优选 | 印尼 ID | 43.218.77.16:443
