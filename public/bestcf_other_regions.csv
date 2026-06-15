@@ -1,2 +1,1 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-MY,马来西亚,23.27.53.164,443,23.27.53.164:443,xinyitang3,462,,ping0:MY,miss,geo_only,,23.27.53.164:443#Mia优选 | 马来西亚 MY | 23.27.53.164:443
