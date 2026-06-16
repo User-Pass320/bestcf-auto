@@ -1,2 +1,2 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-MY,马来西亚,202.61.75.46,443,202.61.75.46:443,cf_junzhen_qzz_io_best_ips_txt,792,,ping0:MY,miss,geo_only,,202.61.75.46:443#MY [高速 by Jz 18M]
+MY,马来西亚,202.61.75.46,443,202.61.75.46:443,junzhen_bj,463,,ping0:MY,hit,geo_cached,,202.61.75.46:443#MY [高速 by Jz 16M]
