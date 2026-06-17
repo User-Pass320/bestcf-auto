@@ -2,725 +2,705 @@
 domain_senflare_all,,,parse_failed,,ctcc.cloudflare.seeck.cn#Senflare优选 | 电信 | ctcc.cloudflare.seeck.cn
 domain_senflare_all,,,parse_failed,,cmcc.cloudflare.seeck.cn#Senflare优选 | 移动 | cmcc.cloudflare.seeck.cn
 domain_senflare_all,,,parse_failed,,cucc.cloudflare.seeck.cn#Senflare优选 | 联通 | cucc.cloudflare.seeck.cn
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,,,parse_failed,,ipv4.list.updated.at#Upd20260617_20:17
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,,,parse_failed,,ipv6.list.updated.at#Upd20260617_20:17
-domain_ai_vps789,101yaoye.com,443,latency_failed,HTTP Error 503: Service Unavailable,101yaoye.com:443#AI优选 | 101yaoye.com
-uouin,162.159.44.209,443,latency_too_high,818ms > 800ms,162.159.44.209:443#麒麟优选 | 电信 | 162.159.44.209 | 52.06ms | 60.03mb/s
-domain_ai_vps789,01-cctv.com,443,latency_failed,HTTP Error 503: Service Unavailable,01-cctv.com:443#AI优选 | 01-cctv.com
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,,,parse_failed,,ipv4.list.updated.at#Upd20260618_06:01
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,,,parse_failed,,ipv6.list.updated.at#Upd20260618_06:01
 domain_ai_vps789,01-qq.com,443,latency_failed,HTTP Error 503: Service Unavailable,01-qq.com:443#AI优选 | 01-qq.com
-uouin,162.159.44.210,443,latency_too_high,809ms > 800ms,162.159.44.210:443#麒麟优选 | 多线 | 162.159.44.210 | 52.06ms | 0.13mb/s
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,103.136.146.98,443,latency_too_high,892ms > 800ms,103.136.146.98:443#AU [优选高速 356.29ms 8.75Mbps]
-domain_ai_vps789,1.cf.3666888.xyz,443,latency_too_high,961ms > 800ms,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
-domain_ai_vps789,10.cf.3666888.xyz,443,latency_too_high,1091ms > 800ms,10.cf.3666888.xyz:443#AI优选 | 10.cf.3666888.xyz
-bestcf_pages_dev_tiancheng_all_txt,103.75.118.144,2053,latency_too_high,1021ms > 800ms,103.75.118.144:2053#天诚优选1 | 小日本子 | JP | 103.75.118.144:2053
-gslege_us,103.31.4.6,443,latency_too_high,1465ms > 800ms,103.31.4.6:443#Gslege优选 | us 【美国】 US | 103.31.4.6
-gslege_us,103.31.4.2,443,latency_too_high,1552ms > 800ms,103.31.4.2:443#Gslege优选 | us 【美国】 US | 103.31.4.2
-gslege_us,103.31.4.5,443,latency_too_high,1490ms > 800ms,103.31.4.5:443#Gslege优选 | us 【美国】 US | 103.31.4.5
-gslege_us,103.31.4.4,443,latency_too_high,1552ms > 800ms,103.31.4.4:443#Gslege优选 | us 【美国】 US | 103.31.4.4
-bestcf_pages_dev_entryip_50_txt,103.31.4.1,443,latency_too_high,1573ms > 800ms,103.31.4.1:443#103.31.4.1 | 亚太骨干段，全国三网连通表现稳健
-gslege_us,103.31.4.8,443,latency_too_high,1468ms > 800ms,103.31.4.8:443#Gslege优选 | us 【美国】 US | 103.31.4.8
-gslege_us,103.31.4.7,443,latency_too_high,1518ms > 800ms,103.31.4.7:443#Gslege优选 | us 【美国】 US | 103.31.4.7
-bestcf_pages_dev_gslege_DE_txt,104.21.0.9,443,latency_too_high,1134ms > 800ms,104.21.0.9:443#Gslege优选 | de 【德国】 DE | 104.21.0.9
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.21.29.116,443,latency_too_high,1078ms > 800ms,104.21.29.116
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.21.28.29,443,latency_too_high,1175ms > 800ms,104.21.28.29
-wetest,104.21.91.186,443,latency_too_high,1060ms > 800ms,104.21.91.186:443#微测优选 | 移动 | HKG | 104.21.91.186
-moistr,103.30.76.85,444,latency_failed,HTTP Error 504: Gateway Timeout,103.30.76.85:444#MoistR优选 | 中国香港 HK | 103.30.76.85:444
-bestcf_pages_dev_entryip_50_txt,103.22.200.1,443,latency_failed,HTTP Error 504: Gateway Timeout,103.22.200.1:443#103.22.200.1 | 东南亚号段，跨太平洋拥堵时的补充
-bestcf_pages_dev_vvhan_ipv4_txt,104.21.88.157,443,latency_too_high,1841ms > 800ms,104.21.88.157:443#vvHan优选 | 移动 | HKG | 104.21.88.157
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.31.16.158,443,latency_too_high,983ms > 800ms,104.31.16.158:443#US-dd6bb4
+domain_ai_vps789,101yaoye.com,443,latency_failed,HTTP Error 503: Service Unavailable,101yaoye.com:443#AI优选 | 101yaoye.com
+domain_ai_vps789,01-cctv.com,443,latency_failed,HTTP Error 503: Service Unavailable,01-cctv.com:443#AI优选 | 01-cctv.com
+gslege_us,103.31.4.6,443,latency_too_high,1388ms > 800ms,103.31.4.6:443#Gslege优选 | us 【美国】 US | 103.31.4.6
+bestcf_pages_dev_entryip_50_txt,103.31.4.1,443,latency_too_high,1434ms > 800ms,103.31.4.1:443#103.31.4.1 | 亚太骨干段，全国三网连通表现稳健
+gslege_us,103.31.4.5,443,latency_too_high,1417ms > 800ms,103.31.4.5:443#Gslege优选 | us 【美国】 US | 103.31.4.5
+gslege_us,103.31.4.7,443,latency_too_high,1450ms > 800ms,103.31.4.7:443#Gslege优选 | us 【美国】 US | 103.31.4.7
+gslege_us,103.31.4.4,443,latency_too_high,1486ms > 800ms,103.31.4.4:443#Gslege优选 | us 【美国】 US | 103.31.4.4
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,103.181.177.88,443,latency_too_high,1670ms > 800ms,103.181.177.88:443#IN [优选高速 343.55ms 9.08Mbps]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,104.31.16.158,443,latency_too_high,882ms > 800ms,104.31.16.158:443#US-1f2897
 moistr,13.229.62.44,443,latency_failed,HTTP Error 503: Service Unavailable,13.229.62.44:443#MoistR优选 | 新加坡 SG | 13.229.62.44:443
 moistr,13.229.72.71,443,latency_failed,HTTP Error 503: Service Unavailable,13.229.72.71:443#MoistR优选 | 新加坡 SG | 13.229.72.71:443
-bestcf_pages_dev_tiancheng_all_txt,116.44.53.251,12211,latency_too_high,989ms > 800ms,116.44.53.251:12211#天诚优选1 | 泡菜欧巴 | KR | 116.44.53.251:12211
-cf_junzhen_qzz_io_best_ips_txt,123.111.169.70,2053,latency_too_high,915ms > 800ms,123.111.169.70:2053#KR [高速 by Jz 22M]
-bestcf_pages_dev_tiancheng_all_txt,121.161.176.187,12460,latency_too_high,954ms > 800ms,121.161.176.187:12460#天诚优选1 | 泡菜欧巴 | KR | 121.161.176.187:12460
-luoli,123.111.169.70,443,latency_too_high,877ms > 800ms,123.111.169.70:443#洛璃优选 | 韩国 KR | 123.111.169.70:443
+moistr,103.30.76.85,444,latency_failed,HTTP Error 504: Gateway Timeout,103.30.76.85:444#MoistR优选 | 中国香港 HK | 103.30.76.85:444
+bestcf_pages_dev_entryip_50_txt,103.22.200.1,443,latency_failed,HTTP Error 504: Gateway Timeout,103.22.200.1:443#103.22.200.1 | 东南亚号段，跨太平洋拥堵时的补充
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,125.7.24.251,443,latency_too_high,978ms > 800ms,125.7.24.251:443#AU [优选高速 418.67ms 8.13Mbps]
+tiancheng2,126.220.82.161,443,latency_too_high,1041ms > 800ms,126.220.82.161:443#天诚优选2 | 小日本子 | JP | 126.220.82.161:443
 tiancheng2,151.242.164.122,443,latency_failed,HTTP Error 503: Service Unavailable,151.242.164.122:443#天诚优选2 | 小日本子 | JP | 151.242.164.122:443
-bestcf_pages_dev_tiancheng_all_txt,138.2.39.24,443,latency_too_high,981ms > 800ms,138.2.39.24:443#天诚优选1 | 小日本子 | JP | 138.2.39.24:443
-tiancheng2,154.17.225.54,443,latency_too_high,1010ms > 800ms,154.17.225.54:443#天诚优选2 | 大漂亮国 | US | 154.17.225.54:443
-bestcf_pages_dev_tiancheng_all_txt,154.17.234.78,7071,latency_too_high,1029ms > 800ms,154.17.234.78:7071#天诚优选1 | 战争贩子 | US | 154.17.234.78:7071
-bestcf_pages_dev_tiancheng_all_txt,154.17.10.113,12266,latency_too_high,1530ms > 800ms,154.17.10.113:12266#天诚优选1 | 战争贩子 | US | 154.17.10.113:12266
-bestcf_pages_dev_tiancheng_all_txt,140.83.54.126,34237,latency_too_high,2237ms > 800ms,140.83.54.126:34237#天诚优选1 | 小日本子 | JP | 140.83.54.126:34237
-tiancheng2,152.42.194.191,443,latency_too_high,1832ms > 800ms,152.42.194.191:443#天诚优选2 | 坡县狮城 | SG | 152.42.194.191:443
-tiancheng2,152.42.199.134,443,latency_too_high,1774ms > 800ms,152.42.199.134:443#天诚优选2 | 坡县狮城 | SG | 152.42.199.134:443
-luoli,123.111.169.70,8443,latency_too_high,2883ms > 800ms,123.111.169.70:8443#洛璃优选 | 韩国 KR | 123.111.169.70:8443
-bestcf_pages_dev_entryip_50_txt,104.22.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.22.0.1:443#104.22.0.1 | 重载站点专用，连接承载与吞吐能力强
+tiancheng2,143.42.66.91,443,latency_failed,HTTP Error 503: Service Unavailable,143.42.66.91:443#天诚优选2 | 坡县狮城 | SG | 143.42.66.91:443
+bestcf_pages_dev_tiancheng_all_txt,138.2.39.24,443,latency_too_high,979ms > 800ms,138.2.39.24:443#天诚优选1 | 小日本子 | JP | 138.2.39.24:443
+bestcf_pages_dev_tiancheng_mini_txt,140.83.54.126,34237,latency_too_high,987ms > 800ms,140.83.54.126:34237#天诚优选1 | 小日本子 | JP | 140.83.54.126:34237
+bestcf_pages_dev_tiancheng_sg_txt,140.245.51.172,52295,latency_too_high,1242ms > 800ms,140.245.51.172:52295#天诚优选1 | 印加坡县 | SG | 140.245.51.172:52295
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,147.78.0.186,8443,latency_too_high,1269ms > 800ms,147.78.0.186:8443#AE [优选高速 180.99ms 8.81Mbps]
+moistr,140.245.42.30,443,latency_failed,HTTP Error 503: Service Unavailable,140.245.42.30:443#MoistR优选 | 新加坡 SG | 140.245.42.30:443
+tiancheng2,139.162.62.195,443,latency_too_high,1720ms > 800ms,139.162.62.195:443#天诚优选2 | 坡县狮城 | SG | 139.162.62.195:443
+tiancheng2,143.198.85.69,443,latency_too_high,1768ms > 800ms,143.198.85.69:443#天诚优选2 | 坡县狮城 | SG | 143.198.85.69:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,129.154.251.13,443,latency_too_high,2291ms > 800ms,129.154.251.13:443#IN [优选高速 399.13ms 9.65Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.184.105,443,latency_too_high,2018ms > 800ms,143.110.184.105:443#IN [优选高速 334.16ms 10.43Mbps]
+tiancheng2,150.109.11.223,443,latency_too_high,1650ms > 800ms,150.109.11.223:443#天诚优选2 | 坡县狮城 | SG | 150.109.11.223:443
+tiancheng2,151.242.125.226,443,latency_too_high,1617ms > 800ms,151.242.125.226:443#天诚优选2 | 港岛古惑 | HK | 151.242.125.226:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,139.84.221.153,8443,latency_too_high,2373ms > 800ms,139.84.221.153:8443#IN [优选高速 822.24ms 9.86Mbps]
+cf_junzhen_qzz_io_best_ips_txt,149.28.129.157,2053,latency_too_high,1865ms > 800ms,149.28.129.157:2053#SG [高速 by Jz 17M]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.42.161.156,443,latency_too_high,1815ms > 800ms,152.42.161.156:443#SG [优选高速 238.56ms 11.28Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,143.110.247.61,2053,latency_too_high,2407ms > 800ms,143.110.247.61:2053#IN [优选高速 329.28ms 10.58Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.42.196.47,443,latency_too_high,1761ms > 800ms,152.42.196.47:443#SG [优选高速 238.0ms 9.0Mbps]
+tiancheng2,152.42.194.191,443,latency_too_high,1807ms > 800ms,152.42.194.191:443#天诚优选2 | 坡县狮城 | SG | 152.42.194.191:443
+bestcf_pages_dev_tiancheng_all_txt,154.17.10.113,12266,latency_too_high,979ms > 800ms,154.17.10.113:12266#天诚优选1 | 战争贩子 | US | 154.17.10.113:12266
+tiancheng2,152.42.199.134,443,latency_too_high,1780ms > 800ms,152.42.199.134:443#天诚优选2 | 坡县狮城 | SG | 152.42.199.134:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.42.217.192,443,latency_too_high,1786ms > 800ms,152.42.217.192:443#SG [优选高速 241.71ms 11.52Mbps]
 bestcf_pages_dev_entryip_50_txt,104.23.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.23.0.1:443#104.23.0.1 | 清洗中心，协议转发逻辑严密且对等
-tiancheng2,147.79.20.149,8443,latency_too_high,2687ms > 800ms,147.79.20.149:8443#天诚优选2 | 小日本子 | JP | 147.79.20.149:8443
-bestcf_pages_dev_tiancheng_all_txt,154.17.27.169,8080,latency_too_high,996ms > 800ms,154.17.27.169:8080#天诚优选1 | 战争贩子 | US | 154.17.27.169:8080
-tiancheng2,154.17.3.148,443,latency_too_high,992ms > 800ms,154.17.3.148:443#天诚优选2 | 大漂亮国 | US | 154.17.3.148:443
+bestcf_pages_dev_entryip_50_txt,104.22.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.22.0.1:443#104.22.0.1 | 重载站点专用，连接承载与吞吐能力强
+bestcf_pages_dev_tiancheng_all_txt,154.17.234.78,7071,latency_too_high,1038ms > 800ms,154.17.234.78:7071#天诚优选1 | 战争贩子 | US | 154.17.234.78:7071
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.42.246.237,443,latency_too_high,1855ms > 800ms,152.42.246.237:443#SG [优选高速 239.77ms 10.08Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,152.70.253.84,8443,latency_too_high,1707ms > 800ms,152.70.253.84:8443#KR [优选高速 369.03ms 9.99Mbps]
+bestcf_pages_dev_tiancheng_all_txt,154.17.27.169,8080,latency_too_high,959ms > 800ms,154.17.27.169:8080#天诚优选1 | 战争贩子 | US | 154.17.27.169:8080
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,151.241.129.141,443,latency_too_high,2652ms > 800ms,151.241.129.141:443#JP [优选高速 199.15ms 13.79Mbps]
 bestcf_pages_dev_entryip_50_txt,104.28.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.28.0.1:443#104.28.0.1 | 托管应用口，处理高频动态数据响应
 bestcf_pages_dev_entryip_50_txt,104.29.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,104.29.0.1:443#104.29.0.1 | 定制化网段，接入资源足，性能稳定
-tiancheng2,154.26.176.148,8443,latency_too_high,1001ms > 800ms,154.26.176.148:8443#天诚优选2 | 大漂亮国 | US | 154.26.176.148:8443
-moistr,154.21.95.165,443,latency_too_high,1454ms > 800ms,154.21.95.165:443#MoistR优选 | 美国 US | 154.21.95.165:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,109.107.137.212,443,latency_failed,HTTP Error 504: Gateway Timeout,109.107.137.212:443#JP [优选高速 144.08ms 9.34Mbps]
-bestcf_pages_dev_tiancheng_all_txt,154.26.184.219,443,latency_too_high,973ms > 800ms,154.26.184.219:443#天诚优选1 | 战争贩子 | US | 154.26.184.219:443
-tiancheng2,126.220.82.161,443,latency_failed,HTTP Error 504: Gateway Timeout,126.220.82.161:443#天诚优选2 | 小日本子 | JP | 126.220.82.161:443
+tiancheng2,154.26.176.148,8443,latency_too_high,982ms > 800ms,154.26.176.148:8443#天诚优选2 | 大漂亮国 | US | 154.26.176.148:8443
+bestcf_pages_dev_tiancheng_mini_txt,154.26.184.219,443,latency_too_high,979ms > 800ms,154.26.184.219:443#天诚优选1 | 战争贩子 | US | 154.26.184.219:443
+tiancheng2,154.26.186.47,443,latency_too_high,956ms > 800ms,154.26.186.47:443#天诚优选2 | 大漂亮国 | US | 154.26.186.47:443
+tiancheng2,154.17.225.54,443,latency_too_high,2156ms > 800ms,154.17.225.54:443#天诚优选2 | 大漂亮国 | US | 154.17.225.54:443
+tiancheng2,115.163.106.137,443,latency_failed,HTTP Error 504: Gateway Timeout,115.163.106.137:443#天诚优选2 | 小日本子 | JP | 115.163.106.137:443
 tiancheng2,129.150.48.17,443,latency_failed,HTTP Error 504: Gateway Timeout,129.150.48.17:443#天诚优选2 | 坡县狮城 | SG | 129.150.48.17:443
+xinyitang3,159.138.138.87,443,latency_too_high,988ms > 800ms,159.138.138.87:443#Mia优选 | 06-18 06:02 | BestCF.pages.dev
 moistr,13.193.76.207,443,latency_failed,HTTP Error 504: Gateway Timeout,13.193.76.207:443#MoistR优选 | 小日子 JP | 13.193.76.207:443
 tiancheng2,131.143.251.121,443,latency_failed,HTTP Error 504: Gateway Timeout,131.143.251.121:443#天诚优选2 | 大漂亮国 | US | 131.143.251.121:443
+tiancheng2,141.11.43.124,443,latency_too_high,4838ms > 800ms,141.11.43.124:443#天诚优选2 | 坡县狮城 | SG | 141.11.43.124:443
 tiancheng2,139.162.16.236,2053,latency_failed,HTTP Error 504: Gateway Timeout,139.162.16.236:2053#天诚优选2 | 坡县狮城 | SG | 139.162.16.236:2053
-tiancheng2,139.162.62.195,443,latency_failed,HTTP Error 504: Gateway Timeout,139.162.62.195:443#天诚优选2 | 坡县狮城 | SG | 139.162.62.195:443
 tiancheng2,140.235.37.58,443,latency_failed,HTTP Error 504: Gateway Timeout,140.235.37.58:443#天诚优选2 | 小日本子 | JP | 140.235.37.58:443
-moistr,140.245.42.30,443,latency_failed,HTTP Error 504: Gateway Timeout,140.245.42.30:443#MoistR优选 | 新加坡 SG | 140.245.42.30:443
-bestcf_pages_dev_tiancheng_all_txt,140.245.51.172,52295,latency_failed,HTTP Error 504: Gateway Timeout,140.245.51.172:52295#天诚优选1 | 印加坡县 | SG | 140.245.51.172:52295
 bestcf_pages_dev_entryip_50_txt,141.101.64.1,443,latency_failed,HTTP Error 504: Gateway Timeout,141.101.64.1:443#141.101.64.1 | 全球通用口，骨干网原始带宽储备大
-tiancheng2,141.11.43.124,443,latency_failed,HTTP Error 504: Gateway Timeout,141.11.43.124:443#天诚优选2 | 坡县狮城 | SG | 141.11.43.124:443
-tiancheng2,154.26.186.47,443,latency_too_high,1099ms > 800ms,154.26.186.47:443#天诚优选2 | 大漂亮国 | US | 154.26.186.47:443
-tiancheng2,143.198.85.69,443,latency_failed,HTTP Error 504: Gateway Timeout,143.198.85.69:443#天诚优选2 | 坡县狮城 | SG | 143.198.85.69:443
 tiancheng2,143.20.204.5,443,latency_failed,HTTP Error 504: Gateway Timeout,143.20.204.5:443#天诚优选2 | 港岛古惑 | HK | 143.20.204.5:443
-tiancheng2,143.42.66.91,443,latency_failed,HTTP Error 504: Gateway Timeout,143.42.66.91:443#天诚优选2 | 坡县狮城 | SG | 143.42.66.91:443
-tiancheng2,150.109.11.223,443,latency_failed,HTTP Error 504: Gateway Timeout,150.109.11.223:443#天诚优选2 | 坡县狮城 | SG | 150.109.11.223:443
+tiancheng2,157.245.198.117,443,latency_too_high,1766ms > 800ms,157.245.198.117:443#天诚优选2 | 坡县狮城 | SG | 157.245.198.117:443
+xinyitang3,161.248.31.198,443,latency_too_high,1491ms > 800ms,161.248.31.198:443#Mia优选 | 越南 VN | 161.248.31.198:443
+tiancheng2,159.223.78.76,443,latency_too_high,1736ms > 800ms,159.223.78.76:443#天诚优选2 | 坡县狮城 | SG | 159.223.78.76:443
 tiancheng2,151.241.131.13,8443,latency_failed,HTTP Error 504: Gateway Timeout,151.241.131.13:8443#天诚优选2 | 小日本子 | JP | 151.241.131.13:8443
-tiancheng2,151.242.125.226,443,latency_failed,HTTP Error 504: Gateway Timeout,151.242.125.226:443#天诚优选2 | 港岛古惑 | HK | 151.242.125.226:443
-tiancheng2,153.121.45.101,443,latency_failed,HTTP Error 504: Gateway Timeout,153.121.45.101:443#天诚优选2 | 小日本子 | JP | 153.121.45.101:443
+xinyitang3,161.248.31.35,443,latency_too_high,1409ms > 800ms,161.248.31.35:443#Mia优选 | 越南 VN | 161.248.31.35:443
+tiancheng2,154.17.3.148,443,latency_too_high,3540ms > 800ms,154.17.3.148:443#天诚优选2 | 大漂亮国 | US | 154.17.3.148:443
+tiancheng2,156.231.113.204,443,latency_too_high,3051ms > 800ms,156.231.113.204:443#天诚优选2 | 小日本子 | JP | 156.231.113.204:443
 tiancheng2,154.17.20.161,443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.20.161:443#天诚优选2 | 大漂亮国 | US | 154.17.20.161:443
-xinyitang3,159.138.138.87,443,latency_too_high,936ms > 800ms,159.138.138.87:443#Mia优选 | 中国香港 HK | 159.138.138.87:443
-luoli,161.248.31.35,443,latency_too_high,1565ms > 800ms,161.248.31.35:443#洛璃优选 | 越南 VN | 161.248.31.35:443
 tiancheng2,154.17.25.156,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.25.156:8443#天诚优选2 | 大漂亮国 | US | 154.17.25.156:8443
-bestcf_pages_dev_tiancheng_all_txt,155.248.181.189,443,latency_too_high,2581ms > 800ms,155.248.181.189:443#天诚优选1 | 小日本子 | JP | 155.248.181.189:443
 tiancheng2,154.17.3.204,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.17.3.204:8443#天诚优选2 | 大漂亮国 | US | 154.17.3.204:8443
 tiancheng2,154.19.187.181,443,latency_failed,HTTP Error 504: Gateway Timeout,154.19.187.181:443#天诚优选2 | 小日本子 | JP | 154.19.187.181:443
 tiancheng2,154.19.187.181,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.19.187.181:8443#天诚优选2 | 小日本子 | JP | 154.19.187.181:8443
 tiancheng2,154.21.89.103,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.21.89.103:8443#天诚优选2 | 大漂亮国 | US | 154.21.89.103:8443
-tiancheng2,159.223.78.76,443,latency_too_high,2648ms > 800ms,159.223.78.76:443#天诚优选2 | 坡县狮城 | SG | 159.223.78.76:443
 moistr,154.21.90.125,12345,latency_failed,HTTP Error 504: Gateway Timeout,154.21.90.125:12345#MoistR优选 | 美国 US | 154.21.90.125:12345
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,162.159.38.243,443,latency_too_high,822ms > 800ms,162.159.38.243:443#US-081c51
-gshtwy_wetest_v4,162.159.237.82,8443,latency_too_high,1301ms > 800ms,162.159.237.82:8443#联通-SJC-8443-WS-TLS
-wetest,162.159.237.82,443,latency_too_high,1319ms > 800ms,162.159.237.82:443#微测优选 | 联通 | SJC | 162.159.237.82
-gshtwy_wetest_v4,162.159.237.82,2096,latency_too_high,1306ms > 800ms,162.159.237.82:2096#联通-SJC-2096-WS-TLS
-bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,162.159.38.96,443,latency_too_high,816ms > 800ms,162.159.38.96
+tiancheng2,172.104.53.25,443,latency_failed,HTTP Error 503: Service Unavailable,172.104.53.25:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.25:443
+moistr,154.21.95.165,443,latency_failed,HTTP Error 504: Gateway Timeout,154.21.95.165:443#MoistR优选 | 美国 US | 154.21.95.165:443
 tiancheng2,154.21.95.34,443,latency_failed,HTTP Error 504: Gateway Timeout,154.21.95.34:443#天诚优选2 | 大漂亮国 | US | 154.21.95.34:443
 tiancheng2,154.26.183.210,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.183.210:8443#天诚优选2 | 大漂亮国 | US | 154.26.183.210:8443
-gshtwy_wetest_v4,162.159.4.162,2053,latency_too_high,948ms > 800ms,162.159.4.162:2053#电信-SIN-2053-WS-TLS
 tiancheng2,154.26.184.229,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.184.229:8443#天诚优选2 | 大漂亮国 | US | 154.26.184.229:8443
-tiancheng2,166.88.97.209,443,latency_too_high,948ms > 800ms,166.88.97.209:443#天诚优选2 | 小日本子 | JP | 166.88.97.209:443
-tiancheng2,157.245.198.117,443,latency_too_high,4328ms > 800ms,157.245.198.117:443#天诚优选2 | 坡县狮城 | SG | 157.245.198.117:443
-moistr,156.231.115.163,443,latency_too_high,4338ms > 800ms,156.231.115.163:443#MoistR优选 | 小日子 JP | 156.231.115.163:443
-tiancheng2,156.231.113.204,443,latency_too_high,4508ms > 800ms,156.231.113.204:443#天诚优选2 | 小日本子 | JP | 156.231.113.204:443
 tiancheng2,154.26.187.44,8443,latency_failed,HTTP Error 504: Gateway Timeout,154.26.187.44:8443#天诚优选2 | 大漂亮国 | US | 154.26.187.44:8443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.145.202,443,latency_too_high,992ms > 800ms,172.64.145.202:443#US-f04506
-tiancheng2,158.51.110.61,8443,latency_failed,HTTP Error 504: Gateway Timeout,158.51.110.61:8443#天诚优选2 | 小日本子 | JP | 158.51.110.61:8443
+bestcf_pages_dev_tiancheng_sg_txt,168.138.189.91,443,latency_too_high,1233ms > 800ms,168.138.189.91:443#天诚优选1 | 印加坡县 | SG | 168.138.189.91:443
 bestcf_pages_dev_entryip_50_txt,172.65.0.1,443,latency_failed,HTTP Error 503: Service Unavailable,172.65.0.1:443#172.65.0.1 | 实时通信段，针对协议转发抖动优化
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,163.61.74.121,443,latency_too_high,1384ms > 800ms,163.61.74.121:443#VN [优选高速 1412.6ms 12.57Mbps]
+moistr,156.231.115.163,443,latency_failed,HTTP Error 504: Gateway Timeout,156.231.115.163:443#MoistR优选 | 小日子 JP | 156.231.115.163:443
+tiancheng2,158.51.110.61,8443,latency_failed,HTTP Error 504: Gateway Timeout,158.51.110.61:8443#天诚优选2 | 小日本子 | JP | 158.51.110.61:8443
+tiancheng2,167.71.221.62,443,latency_too_high,1727ms > 800ms,167.71.221.62:443#天诚优选2 | 坡县狮城 | SG | 167.71.221.62:443
+tiancheng2,165.245.178.114,443,latency_too_high,1827ms > 800ms,165.245.178.114:443#天诚优选2 | 坡县狮城 | SG | 165.245.178.114:443
+tiancheng2,167.172.87.155,443,latency_too_high,1797ms > 800ms,167.172.87.155:443#天诚优选2 | 坡县狮城 | SG | 167.172.87.155:443
+moistr,18.139.162.187,443,latency_failed,HTTP Error 503: Service Unavailable,18.139.162.187:443#MoistR优选 | 新加坡 SG | 18.139.162.187:443
 bestcf_pages_dev_entryip_50_txt,162.158.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,162.158.0.1:443#162.158.0.1 | 泛分发网段，覆盖全球各大ISP中心
 bestcf_pages_dev_entryip_50_txt,162.158.10.1,443,latency_failed,HTTP Error 504: Gateway Timeout,162.158.10.1:443#162.158.10.1 | 中转加速点，针对长途链路握手优化
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.91.69,443,latency_too_high,1004ms > 800ms,172.64.91.69:443#US-df0fa5
-bestcf_pages_dev_vvhan_ipv4_txt,172.64.79.69,443,latency_too_high,1236ms > 800ms,172.64.79.69:443#vvHan优选 | 联通 | SJC | 172.64.79.69
-moistr,18.139.162.187,443,latency_failed,HTTP Error 503: Service Unavailable,18.139.162.187:443#MoistR优选 | 新加坡 SG | 18.139.162.187:443
-tiancheng2,165.245.178.114,443,latency_too_high,2874ms > 800ms,165.245.178.114:443#天诚优选2 | 坡县狮城 | SG | 165.245.178.114:443
-bestcf_pages_dev_tiancheng_all_txt,168.138.189.91,443,latency_too_high,3027ms > 800ms,168.138.189.91:443#天诚优选1 | 印加坡县 | SG | 168.138.189.91:443
-tiancheng2,167.71.221.62,443,latency_too_high,3037ms > 800ms,167.71.221.62:443#天诚优选2 | 坡县狮城 | SG | 167.71.221.62:443
-gshtwy_wetest_v4,162.159.237.82,2087,latency_too_high,4675ms > 800ms,162.159.237.82:2087#联通-SJC-2087-WS-TLS
-gshtwy_wetest_v4,162.159.237.82,2053,latency_failed,HTTP Error 504: Gateway Timeout,162.159.237.82:2053#联通-SJC-2053-WS-TLS
-cf_junzhen_qzz_io_best_ips_txt,163.61.74.121,443,latency_too_high,3557ms > 800ms,163.61.74.121:443#VN [高速 by Jz 18M]
-bestcf_pages_dev_gslege_NL_txt,188.114.96.2,443,latency_too_high,831ms > 800ms,188.114.96.2:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.2
-bestcf_pages_dev_tiancheng_all_txt,183.105.245.31,10909,latency_too_high,1180ms > 800ms,183.105.245.31:10909#天诚优选1 | 泡菜欧巴 | KR | 183.105.245.31:10909
-bestcf_pages_dev_gslege_NL_txt,188.114.96.3,443,latency_too_high,1036ms > 800ms,188.114.96.3:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.3
-bestcf_pages_dev_gslege_NL_txt,188.114.96.7,443,latency_too_high,973ms > 800ms,188.114.96.7:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.7
-bestcf_pages_dev_gslege_NL_txt,188.114.96.4,443,latency_too_high,1113ms > 800ms,188.114.96.4:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.4
-bestcf_pages_dev_tiancheng_all_txt,175.213.181.45,12488,latency_too_high,1959ms > 800ms,175.213.181.45:12488#天诚优选1 | 泡菜欧巴 | KR | 175.213.181.45:12488
-bestcf_pages_dev_entryip_50_txt,188.114.97.1,443,latency_too_high,1127ms > 800ms,188.114.97.1:443#188.114.97.1 | 业务优选段，UDP/TCP通行率均衡
-tiancheng2,167.172.87.155,443,latency_too_high,4778ms > 800ms,167.172.87.155:443#天诚优选2 | 坡县狮城 | SG | 167.172.87.155:443
+bestcf_pages_dev_tiancheng_all_txt,183.105.245.31,10909,latency_too_high,804ms > 800ms,183.105.245.31:10909#天诚优选1 | 泡菜欧巴 | KR | 183.105.245.31:10909
+tiancheng2,172.236.154.50,443,latency_too_high,2849ms > 800ms,172.236.154.50:443#天诚优选2 | 坡县狮城 | SG | 172.236.154.50:443
+tiancheng2,178.128.19.168,443,latency_too_high,1703ms > 800ms,178.128.19.168:443#天诚优选2 | 坡县狮城 | SG | 178.128.19.168:443
+tiancheng2,178.128.97.53,443,latency_too_high,1734ms > 800ms,178.128.97.53:443#天诚优选2 | 坡县狮城 | SG | 178.128.97.53:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,193.177.221.29,443,latency_too_high,900ms > 800ms,193.177.221.29:443#AU [优选高速 520.16ms 8.2Mbps]
+luoli,185.248.184.201,2053,latency_too_high,1983ms > 800ms,185.248.184.201:2053#洛璃优选 | 中国台湾 TW | 185.248.184.201:2053
+tiancheng2,188.166.234.172,443,latency_too_high,1774ms > 800ms,188.166.234.172:443#天诚优选2 | 坡县狮城 | SG | 188.166.234.172:443
+tiancheng2,188.166.245.164,443,latency_too_high,1812ms > 800ms,188.166.245.164:443#天诚优选2 | 坡县狮城 | SG | 188.166.245.164:443
+luoli,188.239.9.91,443,latency_too_high,1846ms > 800ms,188.239.9.91:443#洛璃优选 | 新加坡 SG | 188.239.9.91:443
+luoli,188.253.6.249,443,latency_too_high,1775ms > 800ms,188.253.6.249:443#洛璃优选 | 中国台湾 TW | 188.253.6.249:443
+tiancheng2,172.104.53.198,443,latency_too_high,4374ms > 800ms,172.104.53.198:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.198:443
+tiancheng2,192.124.176.70,443,latency_too_high,1787ms > 800ms,192.124.176.70:443#天诚优选2 | 坡县狮城 | SG | 192.124.176.70:443
+tiancheng2,194.87.10.77,443,latency_too_high,1790ms > 800ms,194.87.10.77:443#天诚优选2 | 坡县狮城 | SG | 194.87.10.77:443
 moistr,163.53.246.183,443,latency_failed,HTTP Error 504: Gateway Timeout,163.53.246.183:443#MoistR优选 | 中国香港 HK | 163.53.246.183:443
-tiancheng2,172.104.53.198,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.53.198:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.198:443
-tiancheng2,178.128.97.53,443,latency_too_high,2830ms > 800ms,178.128.97.53:443#天诚优选2 | 坡县狮城 | SG | 178.128.97.53:443
-tiancheng2,172.104.53.25,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.53.25:443#天诚优选2 | 坡县狮城 | SG | 172.104.53.25:443
 tiancheng2,172.104.97.39,443,latency_failed,HTTP Error 504: Gateway Timeout,172.104.97.39:443#天诚优选2 | 小日本子 | JP | 172.104.97.39:443
-tiancheng2,172.236.154.50,443,latency_failed,HTTP Error 504: Gateway Timeout,172.236.154.50:443#天诚优选2 | 坡县狮城 | SG | 172.236.154.50:443
 bestcf_pages_dev_entryip_50_txt,172.64.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.0.1:443#172.64.0.1 | 边缘处理点，负载策略松，接入响应快
-tiancheng2,188.166.245.164,443,latency_too_high,1867ms > 800ms,188.166.245.164:443#天诚优选2 | 坡县狮城 | SG | 188.166.245.164:443
-tiancheng2,194.87.10.77,443,latency_too_high,1851ms > 800ms,194.87.10.77:443#天诚优选2 | 坡县狮城 | SG | 194.87.10.77:443
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.82.114,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.82.114:443#US-187f010
-tiancheng2,178.128.19.168,443,latency_too_high,4170ms > 800ms,178.128.19.168:443#天诚优选2 | 坡县狮城 | SG | 178.128.19.168:443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,172.64.82.114,443,latency_failed,HTTP Error 504: Gateway Timeout,172.64.82.114:443#US-1af2c9
 bestcf_pages_dev_entryip_50_txt,172.67.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.67.0.1:443#172.67.0.1 | Anycast入口，针对中国骨干网深度优化
-tiancheng2,188.166.234.172,443,latency_too_high,2816ms > 800ms,188.166.234.172:443#天诚优选2 | 坡县狮城 | SG | 188.166.234.172:443
+luoli,207.148.119.176,8443,latency_too_high,1265ms > 800ms,207.148.119.176:8443#洛璃优选 | 新加坡 SG | 207.148.119.176:8443
+tiancheng2,219.76.13.167,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.167:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.167:443
 bestcf_pages_dev_entryip_50_txt,172.68.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.68.0.1:443#172.68.0.1 | 区域中转，针对特定ISP线路差异化通告
 bestcf_pages_dev_entryip_50_txt,172.69.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.69.0.1:443#172.69.0.1 | 流量汇聚网，特征复杂，利于协议混淆
 bestcf_pages_dev_entryip_50_txt,172.70.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.70.0.1:443#172.70.0.1 | 基础设施段，极高在线率，长连接极稳
-bestcf_pages_dev_tiancheng_all_txt,211.230.86.254,12323,latency_too_high,962ms > 800ms,211.230.86.254:12323#天诚优选1 | 泡菜欧巴 | KR | 211.230.86.254:12323
 bestcf_pages_dev_entryip_50_txt,172.71.0.1,443,latency_failed,HTTP Error 504: Gateway Timeout,172.71.0.1:443#172.71.0.1 | 后端跳板，承载多种非标准加密流量
 bestcf_pages_dev_entryip_50_txt,173.245.48.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.48.1:443#173.245.48.1 | 基础任播段，路由稳定，适合长效优选
-bestcf_pages_dev_entryip_50_txt,173.245.52.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.52.1:443#173.245.52.1 | 配套业务段，特征贴近标准网页流量
-bestcf_pages_dev_entryip_50_txt,173.245.56.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.56.1:443#173.245.56.1 | 安全加速点，支持底层协议硬件加速
-tiancheng2,219.76.13.166,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.166:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.166:443
-tiancheng2,219.76.13.180,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.180:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.180:443
-tiancheng2,23.151.104.198,443,latency_failed,HTTP Error 503: Service Unavailable,23.151.104.198:443#天诚优选2 | 小日本子 | JP | 23.151.104.198:443
-tiancheng2,219.76.13.181,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.181:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.181:443
-bestcf_pages_dev_tiancheng_all_txt,206.237.17.52,443,latency_too_high,1523ms > 800ms,206.237.17.52:443#天诚优选1 | 港岛古惑 | HK | 206.237.17.52:443
-bestcf_pages_dev_tiancheng_all_txt,217.142.227.105,20071,latency_too_high,1042ms > 800ms,217.142.227.105:20071#天诚优选1 | 小日本子 | JP | 217.142.227.105:20071
-tiancheng2,219.76.13.167,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.167:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.167:443
 tiancheng2,219.76.13.177,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.177:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.177:443
+bestcf_pages_dev_tiancheng_sg_txt,213.35.100.31,47112,latency_too_high,1255ms > 800ms,213.35.100.31:47112#天诚优选1 | 印加坡县 | SG | 213.35.100.31:47112
+bestcf_pages_dev_entryip_50_txt,173.245.56.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.56.1:443#173.245.56.1 | 安全加速点，支持底层协议硬件加速
+bestcf_pages_dev_entryip_50_txt,173.245.52.1,443,latency_failed,HTTP Error 504: Gateway Timeout,173.245.52.1:443#173.245.52.1 | 配套业务段，特征贴近标准网页流量
+tiancheng2,219.76.13.180,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.180:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.180:443
 tiancheng2,18.138.34.221,443,latency_failed,HTTP Error 504: Gateway Timeout,18.138.34.221:443#天诚优选2 | 坡县狮城 | SG | 18.138.34.221:443
+bestcf_pages_dev_tiancheng_all_txt,217.142.227.105,20071,latency_too_high,960ms > 800ms,217.142.227.105:20071#天诚优选1 | 小日本子 | JP | 217.142.227.105:20071
+bestcf_pages_dev_tiancheng_mini_txt,219.76.13.169,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.169:443#天诚优选1 | 港岛古惑 | HK | 219.76.13.169:443
 tiancheng2,185.81.28.39,443,latency_failed,HTTP Error 504: Gateway Timeout,185.81.28.39:443#天诚优选2 | 坡县狮城 | SG | 185.81.28.39:443
-tiancheng2,23.141.52.169,443,latency_too_high,913ms > 800ms,23.141.52.169:443#天诚优选2 | 港岛古惑 | HK | 23.141.52.169:443
-luoli,211.49.57.179,443,latency_too_high,1684ms > 800ms,211.49.57.179:443#洛璃优选 | 韩国 KR | 211.49.57.179:443
-tiancheng2,219.76.13.169,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.169:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.169:443
-bestcf_pages_dev_tiancheng_all_txt,27.50.48.50,2053,latency_too_high,1166ms > 800ms,27.50.48.50:2053#天诚优选1 | 印加坡县 | SG | 27.50.48.50:2053
-bestcf_pages_dev_tiancheng_all_txt,213.35.100.31,47112,latency_too_high,2241ms > 800ms,213.35.100.31:47112#天诚优选1 | 印加坡县 | SG | 213.35.100.31:47112
-bestcf_pages_dev_tiancheng_all_txt,3.0.50.69,443,latency_too_high,1199ms > 800ms,3.0.50.69:443#天诚优选1 | 印加坡县 | SG | 3.0.50.69:443
-xinyitang3,35.201.155.121,443,latency_too_high,1286ms > 800ms,35.201.155.121:443#Mia优选 | 中国台湾 TW | 35.201.155.121:443
-tiancheng2,23.175.201.2,8443,latency_too_high,1871ms > 800ms,23.175.201.2:8443#天诚优选2 | 港岛古惑 | HK | 23.175.201.2:8443
+tiancheng2,23.151.104.198,443,latency_failed,HTTP Error 503: Service Unavailable,23.151.104.198:443#天诚优选2 | 小日本子 | JP | 23.151.104.198:443
+cf_junzhen_qzz_io_best_ips_txt,213.210.4.19,443,latency_too_high,1648ms > 800ms,213.210.4.19:443#TW [高速 by Jz 12M]
+cf_junzhen_qzz_io_best_ips_txt,4.194.113.191,443,latency_failed,HTTP Error 503: Service Unavailable,4.194.113.191:443#SG [高速 by Jz 18M]
+bestcf_pages_dev_tiancheng_sg_txt,27.50.48.255,8443,latency_too_high,854ms > 800ms,27.50.48.255:8443#天诚优选1 | 印加坡县 | SG | 27.50.48.255:8443
+tiancheng2,38.207.130.231,8443,latency_failed,HTTP Error 503: Service Unavailable,38.207.130.231:8443#天诚优选2 | 小日本子 | JP | 38.207.130.231:8443
 bestcf_pages_dev_entryip_50_txt,190.93.240.1,443,latency_failed,HTTP Error 504: Gateway Timeout,190.93.240.1:443#190.93.240.1 | 跨区域端点，规避常规黑洞及路由封锁
-tiancheng2,38.207.130.136,443,latency_too_high,1086ms > 800ms,38.207.130.136:443#天诚优选2 | 小日本子 | JP | 38.207.130.136:443
-bestcf_pages_dev_tiancheng_all_txt,38.207.171.30,443,latency_too_high,1048ms > 800ms,38.207.171.30:443#天诚优选1 | 战争贩子 | US | 38.207.171.30:443
-bestcf_pages_dev_tiancheng_all_txt,38.244.31.27,443,latency_too_high,1017ms > 800ms,38.244.31.27:443#天诚优选1 | 战争贩子 | US | 38.244.31.27:443
-tiancheng2,192.124.176.70,443,latency_failed,HTTP Error 504: Gateway Timeout,192.124.176.70:443#天诚优选2 | 坡县狮城 | SG | 192.124.176.70:443
-bestcf_pages_dev_tiancheng_all_txt,27.50.48.255,8443,latency_too_high,1794ms > 800ms,27.50.48.255:8443#天诚优选1 | 印加坡县 | SG | 27.50.48.255:8443
-luoli,211.49.57.175,443,latency_too_high,3068ms > 800ms,211.49.57.175:443#洛璃优选 | 韩国 KR | 211.49.57.175:443
+bestcf_pages_dev_tiancheng_sg_txt,27.50.48.50,2053,latency_too_high,937ms > 800ms,27.50.48.50:2053#天诚优选1 | 印加坡县 | SG | 27.50.48.50:2053
+tiancheng2,38.47.126.215,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.126.215:443#天诚优选2 | 小日本子 | JP | 38.47.126.215:443
 moistr,43.161.254.188,10086,latency_failed,HTTP Error 503: Service Unavailable,43.161.254.188:10086#MoistR优选 | 中国香港 HK | 43.161.254.188:10086
-tiancheng2,195.245.229.66,8443,latency_failed,HTTP Error 504: Gateway Timeout,195.245.229.66:8443#天诚优选2 | 小日本子 | JP | 195.245.229.66:8443
 tiancheng2,195.245.241.135,443,latency_failed,HTTP Error 504: Gateway Timeout,195.245.241.135:443#天诚优选2 | 小日本子 | JP | 195.245.241.135:443
 bestcf_pages_dev_entryip_50_txt,197.234.240.1,443,latency_failed,HTTP Error 504: Gateway Timeout,197.234.240.1:443#197.234.240.1 | 辅助业务段，流量密度低，适应力强
 bestcf_pages_dev_entryip_50_txt,198.41.128.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.128.1:443#198.41.128.1 | 核心解析入口，CF架构中最高权重级
+bestcf_pages_dev_tiancheng_all_txt,38.207.171.30,443,latency_too_high,971ms > 800ms,38.207.171.30:443#天诚优选1 | 战争贩子 | US | 38.207.171.30:443
+bestcf_pages_dev_tiancheng_all_txt,38.244.31.27,443,latency_too_high,986ms > 800ms,38.244.31.27:443#天诚优选1 | 战争贩子 | US | 38.244.31.27:443
 luoli,43.200.87.5,443,latency_failed,HTTP Error 503: Service Unavailable,43.200.87.5:443#洛璃优选 | 韩国 KR | 43.200.87.5:443
+tiancheng2,23.175.201.2,8443,latency_too_high,1696ms > 800ms,23.175.201.2:8443#天诚优选2 | 港岛古惑 | HK | 23.175.201.2:8443
 bestcf_pages_dev_entryip_50_txt,198.41.129.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.129.1:443#198.41.129.1 | 业务子网段，适合大规模全域优选
-tiancheng2,38.207.130.231,8443,latency_failed,HTTP Error 503: Service Unavailable,38.207.130.231:8443#天诚优选2 | 小日本子 | JP | 38.207.130.231:8443
 bestcf_pages_dev_entryip_50_txt,198.41.130.1,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.130.1:443#198.41.130.1 | 认证服务段，深度检测通过表现平稳
-domain_ai_vps789,4.cf.3666888.xyz,443,latency_too_high,937ms > 800ms,4.cf.3666888.xyz:443#AI优选 | 4.cf.3666888.xyz
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.194.162,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.194.162:443#US-093d29
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.208.15,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.208.15:443#US-5846f5
-tiancheng2,45.221.112.81,443,latency_failed,HTTP Error 503: Service Unavailable,45.221.112.81:443#天诚优选2 | 港岛古惑 | HK | 45.221.112.81:443
-tiancheng2,38.147.187.14,443,latency_failed,HTTP Error 503: Service Unavailable,38.147.187.14:443#天诚优选2 | 港岛古惑 | HK | 38.147.187.14:443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.194.162,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.194.162:443#US-158b97
+bestcf_pages_dev_tiancheng_all_txt,43.153.105.7,443,latency_too_high,975ms > 800ms,43.153.105.7:443#天诚优选1 | 战争贩子 | US | 43.153.105.7:443
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,198.41.208.15,443,latency_failed,HTTP Error 504: Gateway Timeout,198.41.208.15:443#US-9be513
 bestcf_pages_dev_entryip_50_txt,45.64.64.1,443,latency_failed,HTTP Error 503: Service Unavailable,45.64.64.1:443#45.64.64.1 | 亚洲优化段，地理位置近，物理时延低
-bestcf_pages_dev_tiancheng_all_txt,43.134.174.114,443,latency_failed,HTTP Error 503: Service Unavailable,43.134.174.114:443#天诚优选1 | 印加坡县 | SG | 43.134.174.114:443
-cf_junzhen_qzz_io_best_ips_txt,4.194.113.191,443,latency_too_high,1632ms > 800ms,4.194.113.191:443#SG [高速 by Jz 16M]
-cf_junzhen_qzz_io_best_ips_txt,43.156.116.194,443,latency_failed,HTTP Error 503: Service Unavailable,43.156.116.194:443#SG [高速 by Jz 13M]
-moistr,45.12.90.137,443,latency_too_high,917ms > 800ms,45.12.90.137:443#MoistR优选 | 美国 US | 45.12.90.137:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,43.133.237.158,8443,latency_too_high,1604ms > 800ms,43.133.237.158:8443#KR [优选高速 341.78ms 9.76Mbps]
-tiancheng2,43.156.181.203,443,latency_too_high,1499ms > 800ms,43.156.181.203:443#天诚优选2 | 坡县狮城 | SG | 43.156.181.203:443
-bestcf_pages_dev_tiancheng_all_txt,43.162.119.244,443,latency_too_high,1691ms > 800ms,43.162.119.244:443#天诚优选1 | 战争贩子 | US | 43.162.119.244:443
+bestcf_pages_dev_tiancheng_mini_txt,43.162.119.244,443,latency_too_high,1025ms > 800ms,43.162.119.244:443#天诚优选1 | 战争贩子 | US | 43.162.119.244:443
+tiancheng2,219.76.13.183,443,latency_failed,HTTP Error 503: Service Unavailable,219.76.13.183:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.183:443
+tiancheng2,219.76.13.181,443,latency_too_high,2849ms > 800ms,219.76.13.181:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.181:443
+tiancheng2,38.147.187.14,443,latency_failed,HTTP Error 503: Service Unavailable,38.147.187.14:443#天诚优选2 | 港岛古惑 | HK | 38.147.187.14:443
+moistr,43.165.128.152,49152,latency_too_high,1325ms > 800ms,43.165.128.152:49152#MoistR优选 | 小日子 JP | 43.165.128.152:49152
+tiancheng2,38.47.126.125,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.126.125:443#天诚优选2 | 小日本子 | JP | 38.47.126.125:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,45.136.254.175,443,latency_too_high,1495ms > 800ms,45.136.254.175:443#TH [优选高速 601.43ms 11.7Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,45.150.128.159,443,latency_too_high,1504ms > 800ms,45.150.128.159:443#TH [优选高速 535.44ms 11.01Mbps]
+luoli,43.160.195.223,443,latency_too_high,2039ms > 800ms,43.160.195.223:443#洛璃优选 | 新加坡 SG | 43.160.195.223:443
 luoli,202.144.194.170,443,latency_failed,HTTP Error 504: Gateway Timeout,202.144.194.170:443#洛璃优选 | 小日子 JP | 202.144.194.170:443
 moistr,202.181.25.180,443,latency_failed,HTTP Error 504: Gateway Timeout,202.181.25.180:443#MoistR优选 | 中国香港 HK | 202.181.25.180:443
-bestcf_pages_dev_tiancheng_all_txt,43.153.105.7,443,latency_too_high,2174ms > 800ms,43.153.105.7:443#天诚优选1 | 战争贩子 | US | 43.153.105.7:443
-moistr,5.181.219.212,443,latency_failed,HTTP Error 503: Service Unavailable,5.181.219.212:443#MoistR优选 | 美国 US | 5.181.219.212:443
-tiancheng2,38.47.126.215,443,latency_failed,HTTP Error 503: Service Unavailable,38.47.126.215:443#天诚优选2 | 小日本子 | JP | 38.47.126.215:443
-tiancheng2,216.23.86.110,8443,latency_failed,HTTP Error 504: Gateway Timeout,216.23.86.110:8443#天诚优选2 | 小日本子 | JP | 216.23.86.110:8443
-domain_ai_vps789,5.cf.3666888.xyz,443,latency_too_high,860ms > 800ms,5.cf.3666888.xyz:443#AI优选 | 5.cf.3666888.xyz
-tiancheng2,219.76.13.183,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.183:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.183:443
-cf_junzhen_qzz_io_best_ips_txt,52.66.200.252,443,latency_too_high,949ms > 800ms,52.66.200.252:443#IN [高速 by Jz 12M]
+tiancheng2,45.95.212.117,443,latency_too_high,1417ms > 800ms,45.95.212.117:443#天诚优选2 | 小日本子 | JP | 45.95.212.117:443
+cf_junzhen_qzz_io_best_ips_txt,47.250.81.46,2087,latency_too_high,1138ms > 800ms,47.250.81.46:2087#MY [高速 by Jz 12M]
+tiancheng2,43.247.135.211,8443,latency_too_high,2148ms > 800ms,43.247.135.211:8443#天诚优选2 | 港岛古惑 | HK | 43.247.135.211:8443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,45.91.134.91,2053,latency_too_high,1638ms > 800ms,45.91.134.91:2053#TH [优选高速 482.61ms 11.5Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,209.38.23.235,443,latency_failed,HTTP Error 504: Gateway Timeout,209.38.23.235:443#AU [优选高速 424.71ms 8.4Mbps]
+moistr,45.142.126.157,443,latency_failed,HTTP Error 503: Service Unavailable,45.142.126.157:443#MoistR优选 | 小日子 JP | 45.142.126.157:443
 tiancheng2,64.186.227.83,443,latency_failed,HTTP Error 503: Service Unavailable,64.186.227.83:443#天诚优选2 | 大漂亮国 | US | 64.186.227.83:443
-domain_ai_vps789,6.cf.3666888.xyz,443,latency_too_high,820ms > 800ms,6.cf.3666888.xyz:443#AI优选 | 6.cf.3666888.xyz
-moistr,43.165.128.152,49152,latency_too_high,3055ms > 800ms,43.165.128.152:49152#MoistR优选 | 小日子 JP | 43.165.128.152:49152
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.225.13,8443,latency_too_high,1098ms > 800ms,64.186.225.13:8443#US [优选高速 164.89ms 8.86Mbps]
-tiancheng2,45.143.233.162,8443,latency_too_high,3070ms > 800ms,45.143.233.162:8443#天诚优选2 | 小日本子 | JP | 45.143.233.162:8443
+tiancheng2,216.23.86.110,8443,latency_failed,HTTP Error 504: Gateway Timeout,216.23.86.110:8443#天诚优选2 | 小日本子 | JP | 216.23.86.110:8443
+tiancheng2,38.207.130.136,443,latency_too_high,3675ms > 800ms,38.207.130.136:443#天诚优选2 | 小日本子 | JP | 38.207.130.136:443
+tiancheng2,219.76.13.166,443,latency_failed,HTTP Error 504: Gateway Timeout,219.76.13.166:443#天诚优选2 | 港岛古惑 | HK | 219.76.13.166:443
+tiancheng2,64.186.227.27,443,latency_too_high,972ms > 800ms,64.186.227.27:443#天诚优选2 | 大漂亮国 | US | 64.186.227.27:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.229.220,443,latency_too_high,988ms > 800ms,64.186.229.220:443#US [优选高速 191.97ms 8.82Mbps]
+tiancheng2,64.186.233.224,443,latency_too_high,930ms > 800ms,64.186.233.224:443#天诚优选2 | 大漂亮国 | US | 64.186.233.224:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.231.35,443,latency_too_high,957ms > 800ms,64.186.231.35:443#US [优选高速 188.88ms 8.06Mbps]
+tiancheng2,64.186.239.202,443,latency_too_high,984ms > 800ms,64.186.239.202:443#天诚优选2 | 大漂亮国 | US | 64.186.239.202:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.240.152,443,latency_too_high,943ms > 800ms,64.186.240.152:443#US [优选高速 199.68ms 8.25Mbps]
 tiancheng2,38.162.115.250,2053,latency_failed,HTTP Error 504: Gateway Timeout,38.162.115.250:2053#天诚优选2 | 大漂亮国 | US | 38.162.115.250:2053
-tiancheng2,64.186.227.27,443,latency_too_high,1072ms > 800ms,64.186.227.27:443#天诚优选2 | 大漂亮国 | US | 64.186.227.27:443
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.231.35,443,latency_too_high,1050ms > 800ms,64.186.231.35:443#US [优选高速 190.73ms 9.21Mbps]
-raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.186.229.220,443,latency_too_high,1120ms > 800ms,64.186.229.220:443#US [优选高速 180.69ms 8.94Mbps]
+tiancheng2,64.186.242.138,8443,latency_too_high,1037ms > 800ms,64.186.242.138:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.138:8443
 moistr,38.207.188.26,443,latency_failed,HTTP Error 504: Gateway Timeout,38.207.188.26:443#MoistR优选 | 美国 US | 38.207.188.26:443
 bestcf_pages_dev_tiancheng_all_txt,38.207.190.214,7777,latency_failed,HTTP Error 504: Gateway Timeout,38.207.190.214:7777#天诚优选1 | 战争贩子 | US | 38.207.190.214:7777
 moistr,38.47.102.2,443,latency_failed,HTTP Error 504: Gateway Timeout,38.47.102.2:443#MoistR优选 | 中国香港 HK | 38.47.102.2:443
-tiancheng2,64.186.233.224,443,latency_too_high,1018ms > 800ms,64.186.233.224:443#天诚优选2 | 大漂亮国 | US | 64.186.233.224:443
-tiancheng2,38.47.126.125,443,latency_failed,HTTP Error 504: Gateway Timeout,38.47.126.125:443#天诚优选2 | 小日本子 | JP | 38.47.126.125:443
 tiancheng2,4.155.83.212,443,latency_failed,HTTP Error 504: Gateway Timeout,4.155.83.212:443#天诚优选2 | 大漂亮国 | US | 4.155.83.212:443
-tiancheng2,64.186.239.202,443,latency_too_high,1075ms > 800ms,64.186.239.202:443#天诚优选2 | 大漂亮国 | US | 64.186.239.202:443
-tiancheng2,43.133.61.219,443,latency_failed,HTTP Error 504: Gateway Timeout,43.133.61.219:443#天诚优选2 | 坡县狮城 | SG | 43.133.61.219:443
-tiancheng2,43.160.195.223,443,latency_failed,HTTP Error 504: Gateway Timeout,43.160.195.223:443#天诚优选2 | 坡县狮城 | SG | 43.160.195.223:443
+bestcf_pages_dev_tiancheng_hk_txt,47.57.181.17,443,latency_too_high,3537ms > 800ms,47.57.181.17:443#天诚优选1 | 港岛古惑 | HK | 47.57.181.17:443
 luoli,43.168.16.112,443,latency_failed,HTTP Error 504: Gateway Timeout,43.168.16.112:443#洛璃优选 | 中国香港 HK | 43.168.16.112:443
-tiancheng2,43.247.135.211,8443,latency_failed,HTTP Error 504: Gateway Timeout,43.247.135.211:8443#天诚优选2 | 港岛古惑 | HK | 43.247.135.211:8443
-tiancheng2,45.95.212.117,443,latency_too_high,4306ms > 800ms,45.95.212.117:443#天诚优选2 | 小日本子 | JP | 45.95.212.117:443
-tiancheng2,43.254.164.50,8443,latency_failed,HTTP Error 504: Gateway Timeout,43.254.164.50:8443#天诚优选2 | 港岛古惑 | HK | 43.254.164.50:8443
-xinyitang3,68.64.182.79,443,latency_too_high,1041ms > 800ms,68.64.182.79:443#Mia优选 | 中国香港 HK | 68.64.182.79:443
-xinyitang3,68.64.178.42,443,latency_too_high,1384ms > 800ms,68.64.178.42:443#Mia优选 | 中国香港 HK | 68.64.178.42:443
+moistr,5.181.219.212,443,latency_failed,HTTP Error 503: Service Unavailable,5.181.219.212:443#MoistR优选 | 美国 US | 5.181.219.212:443
+tiancheng2,43.254.164.50,8443,latency_too_high,4904ms > 800ms,43.254.164.50:8443#天诚优选2 | 港岛古惑 | HK | 43.254.164.50:8443
+moistr,45.12.90.137,443,latency_failed,HTTP Error 504: Gateway Timeout,45.12.90.137:443#MoistR优选 | 美国 US | 45.12.90.137:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.225.227,443,latency_too_high,1742ms > 800ms,68.183.225.227:443#SG [优选高速 100.48ms 11.8Mbps]
 tiancheng2,45.136.14.61,2053,latency_failed,HTTP Error 504: Gateway Timeout,45.136.14.61:2053#天诚优选2 | 港岛古惑 | HK | 45.136.14.61:2053
-moistr,45.142.126.157,443,latency_failed,HTTP Error 504: Gateway Timeout,45.142.126.157:443#MoistR优选 | 小日子 JP | 45.142.126.157:443
-tiancheng2,64.186.242.138,8443,latency_too_high,1517ms > 800ms,64.186.242.138:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.138:8443
-bestcf_pages_dev_tiancheng_all_txt,75.2.79.84,443,latency_too_high,1189ms > 800ms,75.2.79.84:443#天诚优选1 | 战争贩子 | US | 75.2.79.84:443
+tiancheng2,45.221.112.81,443,latency_failed,HTTP Error 504: Gateway Timeout,45.221.112.81:443#天诚优选2 | 港岛古惑 | HK | 45.221.112.81:443
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,64.227.174.213,2053,latency_too_high,2135ms > 800ms,64.227.174.213:2053#IN [优选高速 132.74ms 11.76Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.230.164,443,latency_too_high,1760ms > 800ms,68.183.230.164:443#SG [优选高速 236.47ms 9.02Mbps]
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,68.183.231.228,443,latency_too_high,1762ms > 800ms,68.183.231.228:443#SG [优选高速 93.07ms 15.54Mbps]
 tiancheng2,47.239.231.121,443,latency_failed,HTTP Error 504: Gateway Timeout,47.239.231.121:443#天诚优选2 | 港岛古惑 | HK | 47.239.231.121:443
-domain_ai_vps789,8.cf.3666888.xyz,443,latency_too_high,838ms > 800ms,8.cf.3666888.xyz:443#AI优选 | 8.cf.3666888.xyz
-tiancheng2,47.57.181.17,443,latency_too_high,4834ms > 800ms,47.57.181.17:443#天诚优选2 | 大漂亮国 | US | 47.57.181.17:443
+bestcf_pages_dev_tiancheng_mini_txt,75.2.79.84,443,latency_too_high,1458ms > 800ms,75.2.79.84:443#天诚优选1 | 战争贩子 | US | 75.2.79.84:443
+bestcf_pages_dev_tiancheng_mini_txt,82.152.90.213,8080,latency_too_high,1105ms > 800ms,82.152.90.213:8080#天诚优选1 | 宝岛正妹 | TW | 82.152.90.213:8080
+luoli,8.219.155.125,443,latency_too_high,1388ms > 800ms,8.219.155.125:443#洛璃优选 | 小日子 JP | 8.219.155.125:443
 tiancheng2,91.213.189.55,8443,latency_failed,HTTP Error 503: Service Unavailable,91.213.189.55:8443#天诚优选2 | 港岛古惑 | HK | 91.213.189.55:8443
 tiancheng2,47.79.38.36,443,latency_failed,HTTP Error 504: Gateway Timeout,47.79.38.36:443#天诚优选2 | 小日本子 | JP | 47.79.38.36:443
 tiancheng2,47.79.94.192,443,latency_failed,HTTP Error 504: Gateway Timeout,47.79.94.192:443#天诚优选2 | 小日本子 | JP | 47.79.94.192:443
-bestcf_pages_dev_tiancheng_all_txt,8.216.121.234,51922,latency_too_high,1612ms > 800ms,8.216.121.234:51922#天诚优选1 | 小日本子 | JP | 8.216.121.234:51922
-tiancheng2,47.83.14.42,8443,latency_failed,HTTP Error 504: Gateway Timeout,47.83.14.42:8443#天诚优选2 | 港岛古惑 | HK | 47.83.14.42:8443
-bestcf_pages_dev_tiancheng_all_txt,8.218.36.133,9010,latency_too_high,1509ms > 800ms,8.218.36.133:9010#天诚优选1 | 港岛古惑 | HK | 8.218.36.133:9010
+raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,8.222.193.153,443,latency_too_high,1423ms > 800ms,8.222.193.153:443#JP [优选高速 107.33ms 12.74Mbps]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:bc87:f762:1790:33a8:14df,443,latency_too_high,986ms > 800ms,[2606:4700:0:bc87:f762:1790:33a8:14df]:443#IPDBv6-e8f1c4
 tiancheng2,52.196.133.194,443,latency_failed,HTTP Error 504: Gateway Timeout,52.196.133.194:443#天诚优选2 | 小日本子 | JP | 52.196.133.194:443
+tiancheng2,91.213.189.55,443,latency_failed,HTTP Error 503: Service Unavailable,91.213.189.55:443#天诚优选2 | 港岛古惑 | HK | 91.213.189.55:443
 tiancheng2,54.238.157.207,443,latency_failed,HTTP Error 504: Gateway Timeout,54.238.157.207:443#天诚优选2 | 小日本子 | JP | 54.238.157.207:443
 tiancheng2,64.186.227.25,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.227.25:8443#天诚优选2 | 大漂亮国 | US | 64.186.227.25:8443
 tiancheng2,64.186.227.44,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.227.44:8443#天诚优选2 | 大漂亮国 | US | 64.186.227.44:8443
+tiancheng2,77.93.90.231,443,latency_too_high,2911ms > 800ms,77.93.90.231:443#天诚优选2 | 坡县狮城 | SG | 77.93.90.231:443
 tiancheng2,64.186.231.175,443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.231.175:443#天诚优选2 | 大漂亮国 | US | 64.186.231.175:443
-moistr,2606:4700:9ad1::c1e2:45b7,2096,latency_too_high,837ms > 800ms,[2606:4700:9ad1::c1e2:45b7]:2096#MoistR优选 | 移动 IPV6 01 | [2606:4700:9ad1::c1e2:45b7]:2096
 tiancheng2,64.186.234.108,443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.234.108:443#天诚优选2 | 大漂亮国 | US | 64.186.234.108:443
 tiancheng2,64.186.236.184,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.236.184:8443#天诚优选2 | 大漂亮国 | US | 64.186.236.184:8443
-cfyes_ipv6,2606:4700:839d:5d46:be75:fb1f:97b9:d4f8,443,latency_too_high,1490ms > 800ms,[2606:4700:839d:5d46:be75:fb1f:97b9:d4f8]:443#CFYes优选 | 移动 | [2606:4700:839d:5d46:be75:fb1f:97b9:d4f8]
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:8ddc:e00a:72ff:bb5c:5063:799e,443,latency_too_high,1389ms > 800ms,[2606:4700:8ddc:e00a:72ff:bb5c:5063:799e]:443#vvHan优选 | 移动 | Default | 2606:4700:8ddc:e00a:72ff:bb5c:5063:799e
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:8d70:d8c4:ea51:4583:65b:b228,443,latency_too_high,1423ms > 800ms,[2606:4700:8d70:d8c4:ea51:4583:65b:b228]:443#vvHan优选 | 移动 | Default | 2606:4700:8d70:d8c4:ea51:4583:65b:b228
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:8d70:d9aa:d2e7:6504:b7a1:be52,443,latency_too_high,1409ms > 800ms,[2606:4700:8d70:d9aa:d2e7:6504:b7a1:be52]:443#vvHan优选 | 移动 | Default | 2606:4700:8d70:d9aa:d2e7:6504:b7a1:be52
 tiancheng2,64.186.236.235,443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.236.235:443#天诚优选2 | 大漂亮国 | US | 64.186.236.235:443
 tiancheng2,64.186.237.92,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.237.92:8443#天诚优选2 | 大漂亮国 | US | 64.186.237.92:8443
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:8ddc:fdf8:d195:cf5d:3cc5:542f,443,latency_too_high,1404ms > 800ms,[2606:4700:8ddc:fdf8:d195:cf5d:3cc5:542f]:443#vvHan优选 | 移动 | Default | 2606:4700:8ddc:fdf8:d195:cf5d:3cc5:542f
 tiancheng2,64.186.238.108,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.238.108:8443#天诚优选2 | 大漂亮国 | US | 64.186.238.108:8443
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:83ba:60cd:ec39:565a:ee59:3523,443,latency_too_high,1597ms > 800ms,[2606:4700:83ba:60cd:ec39:565a:ee59:3523]:443#NiREvil优选 | 移动 | Default | 148ms | 499mbps
-cfyes_ipv6,2606:4700:91bd:4a22:d5e:d8f0:c3a1:c9ef,443,latency_too_high,1418ms > 800ms,[2606:4700:91bd:4a22:d5e:d8f0:c3a1:c9ef]:443#CFYes优选 | 移动 | [2606:4700:91bd:4a22:d5e:d8f0:c3a1:c9ef]
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:83ba:88a6:ea41:e810:8e57:53e4,443,latency_too_high,1605ms > 800ms,[2606:4700:83ba:88a6:ea41:e810:8e57:53e4]:443#NiREvil优选 | 移动 | Default | 155ms | 417mbps
-xinyitang3,8.219.155.125,443,latency_too_high,3725ms > 800ms,8.219.155.125:443#Mia优选 | 新加坡 SG | 8.219.155.125:443
-tiancheng2,65.52.160.128,8443,latency_failed,HTTP Error 504: Gateway Timeout,65.52.160.128:8443#天诚优选2 | 港岛古惑 | HK | 65.52.160.128:8443
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:90cd:282f:dc4b:eb26:f97d:2abc,443,latency_too_high,1380ms > 800ms,[2606:4700:90cd:282f:dc4b:eb26:f97d:2abc]:443#vvHan优选 | 移动 | Default | 2606:4700:90cd:282f:dc4b:eb26:f97d:2abc
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:8dee:2d82:b7ea:dd52:21ba:3936,443,latency_too_high,1468ms > 800ms,[2606:4700:8dee:2d82:b7ea:dd52:21ba:3936]:443#vvHan优选 | 移动 | Default | 2606:4700:8dee:2d82:b7ea:dd52:21ba:3936
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:6556:9070:522:f676,443,latency_too_high,874ms > 800ms,2606:4700:a8:af22:6556:9070:522:f676
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:90cd:af17:976d:4bbf:88a3:c905,443,latency_too_high,1382ms > 800ms,[2606:4700:90cd:af17:976d:4bbf:88a3:c905]:443#vvHan优选 | 移动 | Default | 2606:4700:90cd:af17:976d:4bbf:88a3:c905
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:83ba:60cd:ec39:565a:ee59:3523,443,latency_too_high,1626ms > 800ms,[2606:4700:83ba:60cd:ec39:565a:ee59:3523]:443#NiREvil优选 | 移动 | Default | 148ms | 499mbps
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:83ba:88a6:ea41:e810:8e57:53e4,443,latency_too_high,1653ms > 800ms,[2606:4700:83ba:88a6:ea41:e810:8e57:53e4]:443#NiREvil优选 | 移动 | Default | 155ms | 417mbps
+cf_junzhen_qzz_io_best_ips_txt,92.38.190.44,443,latency_too_high,2661ms > 800ms,92.38.190.44:443#RU [高速 by Jz 16M]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:0:efde:82d1:8124:3fed,443,latency_too_high,872ms > 800ms,[2a06:98c1:3121:0:efde:82d1:8124:3fed]:443#Uouin-ec1960
 tiancheng2,64.186.242.147,8443,latency_failed,HTTP Error 504: Gateway Timeout,64.186.242.147:8443#天诚优选2 | 大漂亮国 | US | 64.186.242.147:8443
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700::a5:ce85:5b38,443,latency_too_high,1052ms > 800ms,2606:4700::a5:ce85:5b38
-luoli,8.219.195.31,443,latency_too_high,3841ms > 800ms,8.219.195.31:443#洛璃优选 | 小日子 JP | 8.219.195.31:443
-bestcf_pages_dev_vps789_top50_txt,a.lma.de5.net,443,latency_too_high,899ms > 800ms,a.lma.de5.net:443#VPS789优选 | a.lma.de5.net
-domain_ai_vps789,api.gzcrtw.com,443,latency_too_high,884ms > 800ms,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
-domain_all,cdn.jsdelivr.net,443,latency_failed,HTTP Error 503: Service Unavailable,cdn.jsdelivr.net:443#更多选择 | jsDelivr
-domain_fiatnorm_all,avg.cdn.djx-ybelove.pp.ua,443,latency_too_high,921ms > 800ms,avg.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 三网 BGP · 智能均衡，永远在线
-domain_ai_vps789,bbs.alipansou.com,443,latency_too_high,824ms > 800ms,bbs.alipansou.com:443#AI优选 | bbs.alipansou.com
-domain_ai_vps789,baka.fun,443,latency_too_high,973ms > 800ms,baka.fun:443#AI优选 | baka.fun
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3120:c39b:f77:4fc1:b18b:c12,443,latency_too_high,1010ms > 800ms,[2a06:98c1:3120:c39b:f77:4fc1:b18b:c12]:443#Uouin-aa49f0
+tiancheng2,65.52.160.128,8443,latency_failed,HTTP Error 504: Gateway Timeout,65.52.160.128:8443#天诚优选2 | 港岛古惑 | HK | 65.52.160.128:8443
 domain_ircf_all,cf.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,cf.ircf.space:443#IRCF优选 | Universal CF | cf.ircf.space
-tiancheng2,77.93.90.231,443,latency_failed,HTTP Error 504: Gateway Timeout,77.93.90.231:443#天诚优选2 | 坡县狮城 | SG | 77.93.90.231:443
-domain_fiatnorm_all,bestcf.cdn.djx-ybelove.pp.ua,443,latency_too_high,930ms > 800ms,bestcf.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | Wildcard · 泛解析无惧网络污染
-xinyitang3,8.222.185.236,443,latency_too_high,4709ms > 800ms,8.222.185.236:443#Mia优选 | 新加坡 SG | 8.222.185.236:443
-domain_ai_vps789,cdn.204910.best,443,latency_too_high,811ms > 800ms,cdn.204910.best:443#AI优选 | cdn.204910.best
-domain_ai_vps789,cloudflare.cnae.top,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cnae.top:443#AI优选 | cloudflare.cnae.top
-domain_ai_vps789,cdn.091224.xyz,443,latency_too_high,1014ms > 800ms,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
-bestcf_pages_dev_tiancheng_all_txt,82.152.90.213,8080,latency_failed,HTTP Error 504: Gateway Timeout,82.152.90.213:8080#天诚优选1 | 宝岛正妹 | TW | 82.152.90.213:8080
-domain_ai_vps789,cf-cname.xingpingcn.top,443,latency_too_high,813ms > 800ms,cf-cname.xingpingcn.top:443#AI优选 | cf-cname.xingpingcn.top
-vps789_top100,cf-ip-node.vov.moe,443,latency_too_high,868ms > 800ms,cf-ip-node.vov.moe:443#VPS789优选 | cf-ip-node.vov.moe
+domain_ai_vps789,baka.fun,443,latency_too_high,810ms > 800ms,baka.fun:443#AI优选 | baka.fun
+domain_fiatnorm_all,bestcf.cdn.djx-ybelove.pp.ua,443,latency_too_high,829ms > 800ms,bestcf.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | Wildcard · 泛解析无惧网络污染
+domain_ai_vps789,cloudflare.cfgo.cc,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cfgo.cc:443#AI优选 | cloudflare.cfgo.cc
 domain_all,cm.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cm.cloudflare.byoip.top:443#按运营商 | 移动Byoip
-tiancheng2,91.213.189.55,443,latency_failed,HTTP Error 504: Gateway Timeout,91.213.189.55:443#天诚优选2 | 港岛古惑 | HK | 91.213.189.55:443
-domain_all,cu.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cu.cloudflare.byoip.top:443#按运营商 | 联通Byoip
-domain_ai_vps789,cfvip.cf.3666888.xyz,443,latency_too_high,825ms > 800ms,cfvip.cf.3666888.xyz:443#AI优选 | cfvip.cf.3666888.xyz
+domain_ai_vps789,cloudflare.cnae.top,443,latency_failed,HTTP Error 503: Service Unavailable,cloudflare.cnae.top:443#AI优选 | cloudflare.cnae.top
 domain_all,ct.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,ct.cloudflare.byoip.top:443#按运营商 | 电信Byoip
-domain_ircf_all,ast.ircf.space,443,latency_too_high,2087ms > 800ms,ast.ircf.space:443#IRCF优选 | Asiatech | ast.ircf.space
-domain_ai_vps789,cloudflare-ip.mofashi.ltd,443,latency_too_high,876ms > 800ms,cloudflare-ip.mofashi.ltd:443#AI优选 | cloudflare-ip.mofashi.ltd
-domain_asia,citysuper.com.hk,443,latency_too_high,1599ms > 800ms,citysuper.com.hk:443#亚洲域名 | 中国香港CitySuper
-domain_asia,deepin.org,443,latency_too_high,858ms > 800ms,deepin.org:443#亚洲域名 | 中国深度系统
+domain_all,cu.cloudflare.byoip.top,443,latency_failed,HTTP Error 503: Service Unavailable,cu.cloudflare.byoip.top:443#按运营商 | 联通Byoip
+vps789_top100,cf-ip-node.vov.moe,443,latency_too_high,1176ms > 800ms,cf-ip-node.vov.moe:443#VPS789优选 | cf-ip-node.vov.moe
+domain_asia,citysuper.com.hk,443,latency_too_high,975ms > 800ms,citysuper.com.hk:443#亚洲域名 | 中国香港CitySuper
+domain_ai_vps789,cloudflare-ip.mofashi.ltd,443,latency_too_high,1086ms > 800ms,cloudflare-ip.mofashi.ltd:443#AI优选 | cloudflare-ip.mofashi.ltd
+domain_asia,converse.co.jp,443,latency_too_high,884ms > 800ms,converse.co.jp:443#亚洲域名 | 日本匡威
+domain_asia,crocs.com.vn,443,latency_too_high,915ms > 800ms,crocs.com.vn:443#亚洲域名 | 越南卡骆驰
 domain_ircf_all,ipv6.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,ipv6.ircf.space:443#IRCF优选 | Universal IPv6 | ipv6.ircf.space
-domain_ai_vps789,eii.at,443,latency_too_high,869ms > 800ms,eii.at:443#AI优选 | eii.at
-bestcf_pages_dev_vps789_top50_txt,kuaidianlian.com.cn,443,latency_failed,HTTP Error 503: Service Unavailable,kuaidianlian.com.cn:443#VPS789优选 | kuaidianlian.com.cn
-domain_ai_vps789,kniu.cc,443,latency_failed,HTTP Error 503: Service Unavailable,kniu.cc:443#AI优选 | kniu.cc
-bestcf_pages_dev_vps789_top50_txt,cmcc.vvvv.ee,443,latency_too_high,1584ms > 800ms,cmcc.vvvv.ee:443#VPS789优选 | cmcc.vvvv.ee
-domain_asia,crocs.com.vn,443,latency_too_high,1713ms > 800ms,crocs.com.vn:443#亚洲域名 | 越南卡骆驰
-domain_asia,converse.co.jp,443,latency_too_high,1975ms > 800ms,converse.co.jp:443#亚洲域名 | 日本匡威
-bestcf_pages_dev_vps789_top50_txt,imooo.de,443,latency_too_high,1097ms > 800ms,imooo.de:443#VPS789优选 | imooo.de
-domain_asia,leyun.cloud,443,latency_too_high,960ms > 800ms,leyun.cloud:443#亚洲域名 | 中国台湾乐云
+domain_asia,decathlon.qa,443,latency_too_high,899ms > 800ms,decathlon.qa:443#亚洲域名 | 卡塔尔迪卡侬
+vps789_top100,kuaidianlian.com.cn,443,latency_failed,HTTP Error 503: Service Unavailable,kuaidianlian.com.cn:443#VPS789优选 | kuaidianlian.com.cn
+vps789_top100,my.dnshe.com,443,latency_failed,HTTP Error 503: Service Unavailable,my.dnshe.com:443#VPS789优选 | my.dnshe.com
+domain_all,homecare.stryker.com,443,latency_too_high,896ms > 800ms,homecare.stryker.com:443#更多选择 | 史赛克
 domain_ircf_all,mtn.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,mtn.ircf.space:443#IRCF优选 | Irancell | mtn.ircf.space
-domain_asia,decathlon.qa,443,latency_too_high,2215ms > 800ms,decathlon.qa:443#亚洲域名 | 卡塔尔迪卡侬
-domain_asia,locknlock.vn,443,latency_too_high,1215ms > 800ms,locknlock.vn:443#亚洲域名 | 越南乐扣乐扣
-bestcf_pages_dev_vps789_top50_txt,play.mc.js.cool,443,latency_too_high,826ms > 800ms,play.mc.js.cool:443#VPS789优选 | play.mc.js.cool
-domain_asia,pfizer.com.hk,443,latency_too_high,904ms > 800ms,pfizer.com.hk:443#亚洲域名 | 中国香港辉瑞
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:4f::e70:4b73,443,latency_failed,HTTP Error 504: Gateway Timeout,[2a06:98c1:4f::e70:4b73]:443#WeTestV6-11df96
-domain_ai_vps789,qocu.cf.3666888.xyz,443,latency_too_high,882ms > 800ms,qocu.cf.3666888.xyz:443#AI优选 | qocu.cf.3666888.xyz
+domain_ircf_all,mbt.ircf.space,443,latency_too_high,950ms > 800ms,mbt.ircf.space:443#IRCF优选 | Mobinnet | mbt.ircf.space
 domain_asia,shoppes.marinabaysands.com,443,latency_failed,HTTP Error 503: Service Unavailable,shoppes.marinabaysands.com:443#亚洲域名 | 新加坡金沙
-domain_all,serviceshub.samsclub.com,443,latency_too_high,819ms > 800ms,serviceshub.samsclub.com:443#企业域名 | 山姆会员
-bestcf_pages_dev_vps789_top50_txt,snipaste5.speedip.eu.org,443,latency_failed,HTTP Error 503: Service Unavailable,snipaste5.speedip.eu.org:443#VPS789优选 | snipaste5.speedip.eu.org
-domain_all,homecare.stryker.com,443,latency_too_high,2486ms > 800ms,homecare.stryker.com:443#更多选择 | 史赛克
+vps789_top100,snipaste5.speedip.eu.org,443,latency_failed,HTTP Error 503: Service Unavailable,snipaste5.speedip.eu.org:443#VPS789优选 | snipaste5.speedip.eu.org
 domain_ircf_all,ts.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,ts.ircf.space:443#IRCF优选 | Universal TS | ts.ircf.space
+vps789_top100,op.chinwa.eu.cc,443,latency_too_high,1211ms > 800ms,op.chinwa.eu.cc:443#VPS789优选 | op.chinwa.eu.cc
+domain_all,ringcentral.com,443,latency_too_high,956ms > 800ms,ringcentral.com:443#更多选择 | RingCentral
 domain_ircf_all,udp.ircf.space,443,latency_failed,HTTP Error 503: Service Unavailable,udp.ircf.space:443#IRCF优选 | Universal UDP | udp.ircf.space
-domain_ircf_all,rtl.ircf.space,443,latency_too_high,1413ms > 800ms,rtl.ircf.space:443#IRCF优选 | RighTel | rtl.ircf.space
-domain_ircf_all,shm.ircf.space,443,latency_too_high,1282ms > 800ms,shm.ircf.space:443#IRCF优选 | Shatel Mobile | shm.ircf.space
-domain_ircf_all,mbt.ircf.space,443,latency_too_high,2493ms > 800ms,mbt.ircf.space:443#IRCF优选 | Mobinnet | mbt.ircf.space
-domain_all,ringcentral.com,443,latency_too_high,1714ms > 800ms,ringcentral.com:443#更多选择 | RingCentral
-domain_ai_vps789,uac.cf.3666888.xyz,443,latency_too_high,820ms > 800ms,uac.cf.3666888.xyz:443#AI优选 | uac.cf.3666888.xyz
-domain_ai_vps789,test.509666.xyz,443,latency_too_high,951ms > 800ms,test.509666.xyz:443#AI优选 | test.509666.xyz
-domain_asia,sasa.com,443,latency_too_high,2071ms > 800ms,sasa.com:443#亚洲域名 | 中国香港莎莎
-vps789_top100,www.bangbenjiaju.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.bangbenjiaju.com:443#VPS789优选 | www.bangbenjiaju.com
-domain_ai_vps789,www.cdzxdz.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.cdzxdz.com:443#AI优选 | www.cdzxdz.com
-bestcf_pages_dev_vps789_top50_txt,www.6i5.com,443,latency_too_high,823ms > 800ms,www.6i5.com:443#VPS789优选 | www.6i5.com
-domain_ai_vps789,www.5h.com,443,latency_too_high,897ms > 800ms,www.5h.com:443#AI优选 | www.5h.com
-domain_ai_vps789,www.5199dy.com,443,latency_too_high,1065ms > 800ms,www.5199dy.com:443#AI优选 | www.5199dy.com
-domain_asia,www.airasia.com,443,latency_too_high,839ms > 800ms,www.airasia.com:443#亚洲域名 | 大马亚航
-domain_asia,www.aeon.com.hk,443,latency_too_high,888ms > 800ms,www.aeon.com.hk:443#亚洲域名 | 中国香港永旺
-domain_all,visit.honeywell.com,443,latency_too_high,1420ms > 800ms,visit.honeywell.com:443#更多选择 | 霍尼韦尔
-domain_asia,www.airpremia.com,443,latency_too_high,957ms > 800ms,www.airpremia.com:443#亚洲域名 | 韩国航空会社
-domain_asia,store.sony.com.sg,443,latency_too_high,2110ms > 800ms,store.sony.com.sg:443#亚洲域名 | 新加坡索尼
-domain_asia,www.bumrungrad.com,443,latency_too_high,804ms > 800ms,www.bumrungrad.com:443#亚洲域名 | 泰国康民
+domain_ircf_all,rtl.ircf.space,443,latency_too_high,958ms > 800ms,rtl.ircf.space:443#IRCF优选 | RighTel | rtl.ircf.space
+domain_asia,sasa.com,443,latency_too_high,895ms > 800ms,sasa.com:443#亚洲域名 | 中国香港莎莎
+domain_ircf_all,shm.ircf.space,443,latency_too_high,909ms > 800ms,shm.ircf.space:443#IRCF优选 | Shatel Mobile | shm.ircf.space
+domain_all,shopify.com,443,latency_too_high,879ms > 800ms,shopify.com:443#企业域名 | Shopify
+domain_ircf_all,smt.ircf.space,443,latency_too_high,892ms > 800ms,smt.ircf.space:443#IRCF优选 | Samantel | smt.ircf.space
+domain_ircf_all,sht.ircf.space,443,latency_too_high,953ms > 800ms,sht.ircf.space:443#IRCF优选 | Shatel | sht.ircf.space
+domain_ai_vps789,test.509666.xyz,443,latency_too_high,841ms > 800ms,test.509666.xyz:443#AI优选 | test.509666.xyz
+bestcf_pages_dev_vps789_top10_txt,www.bangbenjiaju.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.bangbenjiaju.com:443#VPS789优选 | www.bangbenjiaju.com
+domain_all,visit.honeywell.com,443,latency_too_high,846ms > 800ms,visit.honeywell.com:443#更多选择 | 霍尼韦尔
+domain_asia,tomleemusic.com.hk,443,latency_too_high,1096ms > 800ms,tomleemusic.com.hk:443#亚洲域名 | 中国香港通利
+domain_ai_vps789,www.5h.com,443,latency_too_high,1025ms > 800ms,www.5h.com:443#AI优选 | www.5h.com
+domain_all,www.decathlon.com,443,latency_too_high,933ms > 800ms,www.decathlon.com:443#企业域名 | 迪卡侬
+domain_asia,www.kingpower.com,443,latency_too_high,837ms > 800ms,www.kingpower.com:443#亚洲域名 | 泰国皇权免税
+vps789_top100,www.galgamex.net,443,latency_too_high,1053ms > 800ms,www.galgamex.net:443#VPS789优选 | www.galgamex.net
+domain_all,www.markmonitor.com,443,latency_too_high,891ms > 800ms,www.markmonitor.com:443#更多选择 | MarkMonitor
+domain_ai_vps789,www.giannidelprete.it,443,latency_too_high,1063ms > 800ms,www.giannidelprete.it:443#AI优选 | www.giannidelprete.it
+domain_asia,www.bathandbodyworks.co.th,443,latency_too_high,1427ms > 800ms,www.bathandbodyworks.co.th:443#亚洲域名 | 泰国BBW
+domain_ai_vps789,www.jimdo.com,443,latency_too_high,1008ms > 800ms,www.jimdo.com:443#AI优选 | www.jimdo.com
+domain_asia,www.lacoste.qa,443,latency_too_high,1015ms > 800ms,www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
+domain_asia,www.kia.com,443,latency_too_high,1078ms > 800ms,www.kia.com:443#亚洲域名 | 韩国起亚
+domain_asia,www.hyundai.com,443,latency_too_high,1097ms > 800ms,www.hyundai.com:443#亚洲域名 | 韩国现代
+domain_asia,www.minorhotels.com,443,latency_too_high,913ms > 800ms,www.minorhotels.com:443#亚洲域名 | 泰国美诺酒店
+domain_asia,www.kohler.co.id,443,latency_too_high,1195ms > 800ms,www.kohler.co.id:443#亚洲域名 | 印尼科勒
+domain_all,www.nestle.com,443,latency_too_high,846ms > 800ms,www.nestle.com:443#更多选择 | 雀巢
+domain_all,www.mskcc.org,443,latency_too_high,913ms > 800ms,www.mskcc.org:443#更多选择 | MSKCC
+domain_ai_vps789,www.leics.police.uk,443,latency_too_high,1260ms > 800ms,www.leics.police.uk:443#AI优选 | www.leics.police.uk
+domain_asia,www.allianz.co.id,443,latency_too_high,1942ms > 800ms,www.allianz.co.id:443#亚洲域名 | 印尼安联
 domain_wuya_all,dx.1.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.1.hhhhh.eu.org:443#乌鸦优选 | 电信1 | dx.1.hhhhh.eu.org
-domain_wuya_all,dx.2.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.2.hhhhh.eu.org:443#乌鸦优选 | 电信2 | dx.2.hhhhh.eu.org
-domain_asia,www.bathandbodyworks.co.th,443,latency_too_high,938ms > 800ms,www.bathandbodyworks.co.th:443#亚洲域名 | 泰国BBW
+domain_asia,www.nokair.com,443,latency_too_high,1062ms > 800ms,www.nokair.com:443#亚洲域名 | 泰国皇雀航空
 domain_wuya_all,dx.3.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.3.hhhhh.eu.org:443#乌鸦优选 | 电信3 | dx.3.hhhhh.eu.org
-domain_wuya_all,dx.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.hhhhh.eu.org:443#乌鸦优选 | 电信 | dx.hhhhh.eu.org
-domain_asia,www.aeon.info,443,latency_too_high,1293ms > 800ms,www.aeon.info:443#亚洲域名 | 中国香港永旺
-domain_ai_vps789,www.mlkj888.com,443,latency_failed,HTTP Error 503: Service Unavailable,www.mlkj888.com:443#AI优选 | www.mlkj888.com
-domain_all,www.allianz.com,443,latency_too_high,1279ms > 800ms,www.allianz.com:443#企业域名 | 安联集团
-domain_asia,www.allianz.co.th,443,latency_too_high,1313ms > 800ms,www.allianz.co.th:443#亚洲域名 | 泰国安联
-domain_asia,www.allianz.com.my,443,latency_too_high,1388ms > 800ms,www.allianz.com.my:443#亚洲域名 | 大马安联
-domain_asia,www.allianz.co.id,443,latency_too_high,1450ms > 800ms,www.allianz.co.id:443#亚洲域名 | 印尼安联
-vps789_top100,www.galgamex.net,443,latency_too_high,929ms > 800ms,www.galgamex.net:443#VPS789优选 | www.galgamex.net
-domain_asia,tomleemusic.com.hk,443,latency_too_high,2457ms > 800ms,tomleemusic.com.hk:443#亚洲域名 | 中国香港通利
-domain_ai_vps789,www.giannidelprete.it,443,latency_too_high,1005ms > 800ms,www.giannidelprete.it:443#AI优选 | www.giannidelprete.it
-domain_asia,www.kia.com,443,latency_too_high,976ms > 800ms,www.kia.com:443#亚洲域名 | 韩国起亚
-domain_asia,www.mplus.org.hk,443,latency_too_high,815ms > 800ms,www.mplus.org.hk:443#亚洲域名 | 香港M+博物馆
-domain_asia,www.hyundai.com,443,latency_too_high,1301ms > 800ms,www.hyundai.com:443#亚洲域名 | 韩国现代
-domain_all,www.nestle.com,443,latency_too_high,869ms > 800ms,www.nestle.com:443#更多选择 | 雀巢
-domain_ircf_all,sht.ircf.space,443,latency_too_high,3559ms > 800ms,sht.ircf.space:443#IRCF优选 | Shatel | sht.ircf.space
-domain_asia,www.razer.com,443,latency_too_high,849ms > 800ms,www.razer.com:443#亚洲域名 | 新加坡雷蛇
-domain_ai_vps789,www.leics.police.uk,443,latency_too_high,1317ms > 800ms,www.leics.police.uk:443#AI优选 | www.leics.police.uk
-domain_asia,www.nestle.com.cn,443,latency_too_high,1126ms > 800ms,www.nestle.com.cn:443#亚洲域名 | 中国雀巢
-domain_all,www.mskcc.org,443,latency_too_high,1278ms > 800ms,www.mskcc.org:443#更多选择 | MSKCC
-domain_all,www.ox.ac.uk,443,latency_too_high,1090ms > 800ms,www.ox.ac.uk:443#教育域名 | 牛津大学
-domain_wuya_all,openai.1.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,openai.1.hhhhh.eu.org:443#乌鸦优选 | openai1 | openai.1.hhhhh.eu.org
-domain_asia,www.nokair.com,443,latency_too_high,1250ms > 800ms,www.nokair.com:443#亚洲域名 | 泰国皇雀航空
-domain_asia,www.kohler.co.id,443,latency_too_high,1631ms > 800ms,www.kohler.co.id:443#亚洲域名 | 印尼科勒
-domain_asia,www.nike.qa,443,latency_too_high,1395ms > 800ms,www.nike.qa:443#亚洲域名 | 卡塔尔耐克
-domain_asia,www.lacoste.qa,443,latency_too_high,1775ms > 800ms,www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
+domain_wuya_all,dx.2.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,dx.2.hhhhh.eu.org:443#乌鸦优选 | 电信2 | dx.2.hhhhh.eu.org
+domain_asia,www.razer.com,443,latency_too_high,802ms > 800ms,www.razer.com:443#亚洲域名 | 新加坡雷蛇
+domain_ai_vps789,y508.com,443,latency_failed,HTTP Error 503: Service Unavailable,y508.com:443#AI优选 | y508.com
+domain_all,www.ox.ac.uk,443,latency_too_high,1141ms > 800ms,www.ox.ac.uk:443#教育域名 | 牛津大学
+domain_asia,www.nike.qa,443,latency_too_high,1436ms > 800ms,www.nike.qa:443#亚洲域名 | 卡塔尔耐克
+domain_asia,www.toysrus.co.th,443,latency_too_high,964ms > 800ms,www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
 domain_ygkkk_all,yg13.ygkkk.dpdns.org,443,latency_failed,HTTP Error 503: Service Unavailable,yg13.ygkkk.dpdns.org:443#甬哥优选 | yg13.ygkkk.dpdns.org
 domain_ai_vps789,yyurl.cc,443,latency_failed,HTTP Error 503: Service Unavailable,yyurl.cc:443#AI优选 | yyurl.cc
-domain_asia,www.victoriassecretbeauty.co.th,443,latency_too_high,839ms > 800ms,www.victoriassecretbeauty.co.th:443#亚洲域名 | 泰国维密
-domain_all,www.decathlon.com,443,latency_too_high,2593ms > 800ms,www.decathlon.com:443#企业域名 | 迪卡侬
-domain_all,www.zendesk.com,443,latency_too_high,934ms > 800ms,www.zendesk.com:443#更多选择 | Zendesk
-domain_ai_vps789,yg7.ygkkk.dpdns.org,443,latency_failed,HTTP Error 503: Service Unavailable,yg7.ygkkk.dpdns.org:443#AI优选 | yg7.ygkkk.dpdns.org
-domain_ai_vps789,y508.com,443,latency_failed,HTTP Error 503: Service Unavailable,y508.com:443#AI优选 | y508.com
+domain_asia,www.samsungbiologics.com,443,latency_too_high,1229ms > 800ms,www.samsungbiologics.com:443#亚洲域名 | 韩国三星生物
 domain_ai_vps789,ys2046.cv,443,latency_failed,HTTP Error 503: Service Unavailable,ys2046.cv:443#AI优选 | ys2046.cv
-domain_all,shopify.com,443,latency_failed,HTTP Error 504: Gateway Timeout,shopify.com:443#企业域名 | Shopify
-domain_ai_vps789,yg9.ygkkk.dpdns.org,443,latency_too_high,804ms > 800ms,yg9.ygkkk.dpdns.org:443#AI优选 | yg9.ygkkk.dpdns.org
-domain_ygkkk_all,yg6.ygkkk.dpdns.org,443,latency_too_high,919ms > 800ms,yg6.ygkkk.dpdns.org:443#甬哥优选 | yg6.ygkkk.dpdns.org
-domain_ygkkk_all,yg3.ygkkk.dpdns.org,443,latency_too_high,976ms > 800ms,yg3.ygkkk.dpdns.org:443#甬哥优选 | yg3.ygkkk.dpdns.org
-domain_ygkkk_all,yg10.ygkkk.dpdns.org,443,latency_too_high,1140ms > 800ms,yg10.ygkkk.dpdns.org:443#甬哥优选 | yg10.ygkkk.dpdns.org
-domain_ircf_all,smt.ircf.space,443,latency_failed,HTTP Error 504: Gateway Timeout,smt.ircf.space:443#IRCF优选 | Samantel | smt.ircf.space
-domain_ygkkk_all,yg4.ygkkk.dpdns.org,443,latency_too_high,1018ms > 800ms,yg4.ygkkk.dpdns.org:443#甬哥优选 | yg4.ygkkk.dpdns.org
-domain_ai_vps789,youxuan.cf.636949.xyz,443,latency_too_high,919ms > 800ms,youxuan.cf.636949.xyz:443#AI优选 | youxuan.cf.636949.xyz
-domain_ygkkk_all,yg8.ygkkk.dpdns.org,443,latency_too_high,1048ms > 800ms,yg8.ygkkk.dpdns.org:443#甬哥优选 | yg8.ygkkk.dpdns.org
-domain_asia,www.toysrus.co.th,443,latency_too_high,2176ms > 800ms,www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
-domain_all,www.tpg.com,443,latency_too_high,2720ms > 800ms,www.tpg.com:443#金融域名 | TPG
-domain_asia,www.samsungbiologics.com,443,latency_too_high,3549ms > 800ms,www.samsungbiologics.com:443#亚洲域名 | 韩国三星生物
-moistr,2a06:98c1:56::38f8:4281,2096,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:56::38f8:4281]:2096#MoistR优选 | 电信 IPV6 02 | [2a06:98c1:56::38f8:4281]:2096
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:b423:5638:3fa7:7b63:df74,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:0:b423:5638:3fa7:7b63:df74]:443#IPDBv6-faf0a8
-domain_all,cloudflare-ech.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare-ech.com:443#官方域名 | ECH
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.167.89,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.167.89
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,172.64.159.49,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.159.49
-moistr,104.18.42.243,8443,latency_pool_skipped,declared buckets exhausted or capped,104.18.42.243:8443#MoistR优选 | 移动优选 01 | 104.18.42.243:8443
-bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:3010:8caf:8d19:54b7:d72:91da,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3010:8caf:8d19:54b7:d72:91da]:443#NiREvil优选 | 移动 | Default | 1ms | 520mbps
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:9b00::77aa:385d,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9b00::77aa:385d]:443#WeTestV6-d64fd8
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.21.36,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.21.36
-cfyes_ipv4,104.19.44.131,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.44.131:443#CFYes优选 | 电信 | 104.19.44.131
-bestcf_pages_dev_entryip_50_txt,162.159.193.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
-wetest,162.159.198.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.198.1:443#WeTest优选| 06-18 00:01 | BestCF.pages.dev
-domain_all,www.doordash.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.doordash.com:443#更多选择 | DoorDash
-domain_ai_vps789,www.nexusmods.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.nexusmods.com:443#AI优选 | www.nexusmods.com
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.169.229,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.169.229
-domain_all,cmcc.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cmcc.877774.xyz:443#按运营商 | 移动QMS
-bestcf_pages_dev_entryip_50_txt,108.162.194.1,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
-bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,104.18.35.16,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.35.16
-domain_ai_vps789,www.mc.js.cool,443,latency_pool_skipped,declared buckets exhausted or capped,www.mc.js.cool:443#AI优选 | www.mc.js.cool
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.108.25,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.108.25
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.160.137,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.160.137
-domain_all,cu.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cu.877774.xyz:443#按运营商 | 联通QMS
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,172.66.44.33,443,latency_pool_skipped,declared buckets exhausted or capped,172.66.44.33
-domain_all,www.wto.org,443,latency_pool_skipped,declared buckets exhausted or capped,www.wto.org:443#更多选择 | WTO
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.17.150.154,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.150.154
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,172.67.66.117,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.66.117
-domain_ai_vps789,cloudflare.468123.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.468123.xyz:443#AI优选 | cloudflare.468123.xyz
-domain_fiatnorm_all,ct.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,ct.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 电信 (CT) · CN2 GIA 高端直连
-domain_all,www.markmonitor.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.markmonitor.com:443#更多选择 | MarkMonitor
-domain_fiatnorm_all,cu.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,cu.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 联通 (CU) · 双线护航，全速满跑
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.17.148.136,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.148.136
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.43.17,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.43.17
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.49.164,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.49.164
-bestcf_pages_dev_entryip_50_txt,162.159.195.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.195.1:443#162.159.195.1 | 备用业务入口，路由宣告极其精准
-moistr,172.64.151.254,2096,latency_pool_skipped,declared buckets exhausted or capped,172.64.151.254:2096#MoistR优选 | 电信优选 03 | 172.64.151.254:2096
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,172.64.154.13,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.154.13
-domain_ai_vps789,gh-proxy.com,443,latency_pool_skipped,declared buckets exhausted or capped,gh-proxy.com:443#AI优选 | gh-proxy.com
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.35.159,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.35.159
-bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.156.58,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.156.58
-bestcf_pages_dev_entryip_50_txt,162.159.192.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
-domain_all,cf.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.877774.xyz:443#大佬维护 | QMS
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.19.39.51,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.39.51
-domain_ai_vps789,cdn.7zz.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.7zz.cn:443#AI优选 | cdn.7zz.cn
-moistr,172.64.145.94,2096,latency_pool_skipped,declared buckets exhausted or capped,172.64.145.94:2096#MoistR优选 | 移动优选 03 | 172.64.145.94:2096
-domain_ai_vps789,www.vastnovel.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.vastnovel.com:443#AI优选 | www.vastnovel.com
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.146.252,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.146.252
-domain_fiatnorm_all,cm.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,cm.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 移动 (CM) · 低延迟专线，告别卡顿
-bestcf_pages_dev_entryip_50_txt,104.20.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.0.1:443#104.20.0.1 | 高防入口，承载HTTPS高强度混淆流量
-bestcf_pages_dev_entryip_50_txt,104.25.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.25.0.1:443#104.25.0.1 | 缓存加速段，国内跨网流媒体分发利器
-domain_ai_vps789,staticdelivery.nexusmods.com,443,latency_pool_skipped,declared buckets exhausted or capped,staticdelivery.nexusmods.com:443#AI优选 | staticdelivery.nexusmods.com
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.17.107.181,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.107.181
-bestcf_pages_dev_entryip_50_txt,104.16.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.0.1:443#104.16.0.1 | 核心业务主网，全国三网优先级最高
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.47.172,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.47.172
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.168.98,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.168.98
-bestcf_pages_dev_nirevil_ipv4_txt,198.41.222.65,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.222.65:443#NiREvil优选 | 电信 | 198.41.222.65 | Default | 78ms | 250mbps
-cfyes_ipv4,198.41.222.62,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.222.62:443#CFYes优选 | 电信 | 198.41.222.62
-bestcf_pages_dev_entryip_50_txt,104.24.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.24.0.1:443#▼ Cloudflare Anycast Entry IP TOP50 | 2026.4
-domain_qms_all,asia.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,asia.877774.xyz:443#秋名山优选 | 亚洲 | asia.877774.xyz
-bestcf_pages_dev_nirevil_ipv4_txt,198.41.208.32,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.32:443#NiREvil优选 | 移动 | 198.41.208.32 | Default | 55ms | 260mbps
-domain_all,store.ubi.com,443,latency_pool_skipped,declared buckets exhausted or capped,store.ubi.com:443#企业域名 | 育碧商城
-domain_ai_vps789,freeyx.cloudflare88.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,freeyx.cloudflare88.eu.org:443#AI优选 | freeyx.cloudflare88.eu.org
-domain_all,www.broadcom.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.broadcom.com:443#更多选择 | 博通
-uouin,162.159.21.213,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.21.213:443#麒麟优选 | 多线 | 162.159.21.213 | 67.15ms | 0.13mb/s
-uouin,104.17.190.180,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.190.180:443#麒麟优选 | 移动 | 104.17.190.180 | 65.77ms | 0.12mb/s
-cfyes_ipv4,198.41.208.78,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.78:443#CFYes优选 | 移动 | 198.41.208.78
-domain_qms_all,na.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,na.877774.xyz:443#秋名山优选 | 美洲 | na.877774.xyz
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.16.243.231,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.243.231
-uouin,172.67.64.234,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.64.234:443#麒麟优选 | 联通 | 172.67.64.234 | 124.37ms | 0.12mb/s
-cfyes_ipv4,198.41.209.162,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.209.162:443#CFYes优选 | 移动 | 198.41.209.162
-bestcf_pages_dev_entryip_50_txt,104.19.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.0.1:443#104.19.0.1 | 动态加速段，低延迟跨境数据传输首选
-cfyes_ipv4,198.41.211.168,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.211.168:443#CFYes优选 | 电信 | 198.41.211.168
-uouin,104.26.9.129,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.9.129:443#麒麟优选 | 联通 | 104.26.9.129 | 125.54ms | 0.18mb/s
-cfyes_ipv4,104.19.165.16,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.165.16:443#CFYes优选 | 电信 | 104.19.165.16
-uouin,104.26.12.141,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.12.141:443#麒麟优选 | 联通 | 104.26.12.141 | 124.81ms | 0.14mb/s
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.18.87.158,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.87.158
-domain_all,cloudflare.dev,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.dev:443#官方域名 | Developers
-bestcf_pages_dev_entryip_50_txt,190.93.244.1,443,latency_pool_skipped,declared buckets exhausted or capped,190.93.244.1:443#190.93.244.1 | 链路冗余段，提供差异化出口路径选择
-domain_all,r2.dev,443,latency_pool_skipped,declared buckets exhausted or capped,r2.dev:443#官方域名 | R2
-domain_ai_vps789,yg11.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg11.ygkkk.dpdns.org:443#AI优选 | yg11.ygkkk.dpdns.org
-domain_ai_vps789,cf.mubaiovo.top,443,latency_pool_skipped,declared buckets exhausted or capped,cf.mubaiovo.top:443#AI优选 | cf.mubaiovo.top
-uouin,104.17.56.174,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.56.174:443#麒麟优选 | 移动 | 104.17.56.174 | 51.39ms | 0.19mb/s
-domain_all,sage.com,443,latency_pool_skipped,declared buckets exhausted or capped,sage.com:443#更多选择 | Sage
-domain_all,www.speedtest.net,443,latency_pool_skipped,declared buckets exhausted or capped,www.speedtest.net:443#更多选择 | Ookla
-uouin,172.64.145.239,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.145.239:443#麒麟优选 | 移动 | 172.64.145.239 | 62.97ms | 0.11mb/s
-xinyitang3,68.64.183.46,443,latency_pool_skipped,declared buckets exhausted or capped,68.64.183.46:443#Mia优选 | 06-18 00:02 | BestCF.pages.dev
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.16.155.152,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.155.152
-domain_wuya_all,cm.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.hhhhh.eu.org:443#乌鸦优选 | cm | cm.hhhhh.eu.org
-domain_ai_vps789,fw8je9.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,fw8je9.cf.3666888.xyz:443#AI优选 | fw8je9.cf.3666888.xyz
-domain_ai_vps789,www.sloomb.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.sloomb.com:443#AI优选 | www.sloomb.com
-uouin,104.20.18.245,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.18.245:443#麒麟优选 | 联通 | 104.20.18.245 | 125.68ms | 0.18mb/s
-domain_ygkkk_all,yg2.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg2.ygkkk.dpdns.org:443#甬哥优选 | yg2.ygkkk.dpdns.org
-bestcf_pages_dev_entryip_50_txt,141.101.115.1,443,latency_pool_skipped,declared buckets exhausted or capped,141.101.115.1:443#141.101.115.1 | 跨境优化段，路径短，适合海外资源
-domain_wuya_all,lt.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.hhhhh.eu.org:443#乌鸦优选 | 联通 | lt.hhhhh.eu.org
-domain_all,polestar.com,443,latency_pool_skipped,declared buckets exhausted or capped,polestar.com:443#更多选择 | 极星汽车
-domain_wuya_all,yd.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.3.hhhhh.eu.org:443#乌鸦优选 | 移动3 | yd.3.hhhhh.eu.org
-bestcf_pages_dev_entryip_50_txt,141.101.120.1,443,latency_pool_skipped,declared buckets exhausted or capped,141.101.120.1:443#141.101.120.1 | 边缘端点，部分地区具备超额带宽
-domain_all,cloudflare-eth.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare-eth.com:443#官方域名 | Web3
-domain_wuya_all,bp.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.3.hhhhh.eu.org:443#乌鸦优选 | bp3 | bp.3.hhhhh.eu.org
-domain_wuya_all,cm.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
-domain_ai_vps789,yg5.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg5.ygkkk.dpdns.org:443#AI优选 | yg5.ygkkk.dpdns.org
-domain_wuya_all,lt.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.2.hhhhh.eu.org:443#乌鸦优选 | 联通2 | lt.2.hhhhh.eu.org
-domain_all,www.visa.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.visa.cn:443#金融域名 | VISA中国
-domain_wuya_all,yd.5.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
-moistr,fw8je9.cf.3666888.xyz,2096,latency_pool_skipped,declared buckets exhausted or capped,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
-domain_ircf_all,ztl.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ztl.ircf.space:443#IRCF优选 | Zitel | ztl.ircf.space
-uouin,172.64.52.143,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.143:443#麒麟优选 | 多线 | 172.64.52.143 | 55.66ms | 0.44mb/s
-domain_wuya_all,lt.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.3.hhhhh.eu.org:443#乌鸦优选 | 联通3 | lt.3.hhhhh.eu.org
-domain_ircf_all,ask.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ask.ircf.space:443#IRCF优选 | ASK | ask.ircf.space
-domain_ircf_all,dbn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,dbn.ircf.space:443#IRCF优选 | DidehbanNet | dbn.ircf.space
-domain_ai_vps789,cf.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.cf.3666888.xyz:443#AI优选 | cf.cf.3666888.xyz
-domain_all,www.glassdoor.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.glassdoor.com:443#企业域名 | Glassdoor
-domain_ai_vps789,hfqek.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
-domain_ai_vps789,cmcc.cc.cd,443,latency_pool_skipped,declared buckets exhausted or capped,cmcc.cc.cd:443#AI优选 | cmcc.cc.cd
+domain_all,www.tpg.com,443,latency_too_high,1214ms > 800ms,www.tpg.com:443#金融域名 | TPG
+domain_asia,www.victoriassecretbeauty.co.th,443,latency_too_high,1190ms > 800ms,www.victoriassecretbeauty.co.th:443#亚洲域名 | 泰国维密
+domain_all,www.wilshire.com,443,latency_too_high,1116ms > 800ms,www.wilshire.com:443#金融域名 | Wilshire
+domain_ygkkk_all,yg3.ygkkk.dpdns.org,443,latency_too_high,883ms > 800ms,yg3.ygkkk.dpdns.org:443#甬哥优选 | yg3.ygkkk.dpdns.org
+domain_ai_vps789,youxuan.cf.636949.xyz,443,latency_too_high,906ms > 800ms,youxuan.cf.636949.xyz:443#AI优选 | youxuan.cf.636949.xyz
+domain_wuya_all,openai.1.hhhhh.eu.org,443,latency_failed,HTTP Error 504: Gateway Timeout,openai.1.hhhhh.eu.org:443#乌鸦优选 | openai1 | openai.1.hhhhh.eu.org
+domain_all,openai.com,443,latency_failed,HTTP Error 504: Gateway Timeout,openai.com:443#企业域名 | OpenAI
+domain_ygkkk_all,yg10.ygkkk.dpdns.org,443,latency_failed,HTTP Error 504: Gateway Timeout,yg10.ygkkk.dpdns.org:443#甬哥优选 | yg10.ygkkk.dpdns.org
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.17.62.254,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.62.254
+cfyes_ipv4,104.18.159.199,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.159.199:443#CFYes优选 | 电信 | 104.18.159.199
 bestcf_pages_dev_entryip_50_txt,104.27.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.27.0.1:443#104.27.0.1 | 综合边缘节点，兼顾延迟表现与带宽
-domain_all,pages.dev,443,latency_pool_skipped,declared buckets exhausted or capped,pages.dev:443#官方域名 | Pages
-domain_wuya_all,yd.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
-uouin,172.64.157.230,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.157.230:443#麒麟优选 | 电信 | 172.64.157.230 | 47.24ms | 0.37mb/s
-uouin,104.20.28.188,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.28.188:443#麒麟优选 | 联通 | 104.20.28.188 | 126.05ms | 0.35mb/s
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:0:ef18:6ab0:b648:d756,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443#Uouin-e408510
-uouin,172.64.148.193,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.148.193:443#麒麟优选 | 电信 | 172.64.148.193 | 47.18ms | 0.36mb/s
-domain_ai_vps789,dongbanghong.com,443,latency_pool_skipped,declared buckets exhausted or capped,dongbanghong.com:443#AI优选 | dongbanghong.com
-vps789_top100,redis.io,443,latency_pool_skipped,declared buckets exhausted or capped,redis.io:443#VPS789优选 | redis.io
-uouin,104.19.42.167,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.42.167:443#麒麟优选 | 移动 | 104.19.42.167 | 52.24ms | 0.14mb/s
-uouin,104.17.163.41,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.163.41:443#麒麟优选 | 移动 | 104.17.163.41 | 71.37ms | 0.20mb/s
-gslege,162.159.21.75,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.21.75:443#Gslege优选 | 【测速 Nodes】0.37MB/s | 162.159.21.75
-uouin,162.159.8.244,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.8.244:443#麒麟优选 | 多线 | 162.159.8.244 | 66.65ms | 0.21mb/s
-domain_wuya_all,qms.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.2.hhhhh.eu.org:443#乌鸦优选 | qms2 | qms.2.hhhhh.eu.org
-domain_ygkkk_all,yg12.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.189.148,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.189.148
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.18.2.197,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.2.197
-uouin,108.162.198.25,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.198.25:443#麒麟优选 | 多线 | 108.162.198.25 | 40.62ms | 14.05mb/s
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:0:a36a:4aa4:75d9:9f75,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:0:a36a:4aa4:75d9:9f75]:443#CMLiussv6-59cd88
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:5a::afe6:150b,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:5a::afe6:150b]:443#WeTestV6-8b3b05
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::423d:4cd4:b1be:6c3f,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::423d:4cd4:b1be:6c3f]:443#IPDBv6-db5873
-domain_wuya_all,wto.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.hhhhh.eu.org:443#乌鸦优选 | wto | wto.hhhhh.eu.org
-uouin,104.16.157.191,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.157.191:443#麒麟优选 | 移动 | 104.16.157.191 | 59.46ms | 0.13mb/s
-gslege,172.64.53.31,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.53.31:443#Gslege优选 | 【测速 Nodes】58.39MB/s | 172.64.53.31
-domain_ai_vps789,cfsaas.080112.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cfsaas.080112.xyz:443#AI优选 | cfsaas.080112.xyz
-domain_ircf_all,prs.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,prs.ircf.space:443#IRCF优选 | Pars Online | prs.ircf.space
-uouin,172.67.71.135,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.71.135:443#麒麟优选 | 联通 | 172.67.71.135 | 124.07ms | 0.19mb/s
-uouin,104.20.19.103,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.19.103:443#麒麟优选 | 联通 | 104.20.19.103 | 127.09ms | 0.44mb/s
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.20.60.156,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.60.156
-domain_ircf_all,arx.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,arx.ircf.space:443#IRCF优选 | Arax | arx.ircf.space
-domain_all,auctions.ihg.com.cn,443,latency_pool_skipped,declared buckets exhausted or capped,auctions.ihg.com.cn:443#更多选择 | 洲际酒店
-domain_wuya_all,bp.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.hhhhh.eu.org:443#乌鸦优选 | bp | bp.hhhhh.eu.org
-domain_ai_vps789,cdn.2158.cc,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.2158.cc:443#AI优选 | cdn.2158.cc
-domain_ai_vps789,dnew.cc,443,latency_pool_skipped,declared buckets exhausted or capped,dnew.cc:443#AI优选 | dnew.cc
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:6ed4:e1ed:36:8916:dace,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:6ed4:e1ed:36:8916:dace]:443#CMLiussv6-c85d69
-uouin,162.159.17.28,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.17.28:443#麒麟优选 | 电信 | 162.159.17.28 | 47.36ms | 0.53mb/s
-uouin,172.64.53.161,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.53.161:443#麒麟优选 | 多线 | 172.64.53.161 | 67.72ms | 14.07mb/s
-moistr,2606:4700:8397::15a3:8989,2096,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:8397::15a3:8989]:2096#MoistR优选 | 移动 IPV6 03 | [2606:4700:8397::15a3:8989]:2096
-domain_all,nexusmods.com,443,latency_pool_skipped,declared buckets exhausted or capped,nexusmods.com:443#企业域名 | NexusMods
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.17.145.169,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.145.169
-domain_ircf_all,rsp.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,rsp.ircf.space:443#IRCF优选 | Respina | rsp.ircf.space
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c677:c614:1f96:d4bf:a723,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443#Uouin-3e6c38
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443#Uouin-0a6fc1
-domain_ircf_all,mkh.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,mkh.ircf.space:443#IRCF优选 | TCI | mkh.ircf.space
-uouin,104.18.36.73,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.36.73:443#麒麟优选 | 电信 | 104.18.36.73 | 47.26ms | 2.73mb/s
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:b423:5692:cc28:d0f3:89e9,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:0:b423:5692:cc28:d0f3:89e9]:443#IPDBv6-aff8e2
-domain_all,bluehost.com,443,latency_pool_skipped,declared buckets exhausted or capped,bluehost.com:443#企业域名 | BlueHost
-domain_ircf_all,ptk.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ptk.ircf.space:443#IRCF优选 | Petyak | ptk.ircf.space
-domain_all,openai.com,443,latency_pool_skipped,declared buckets exhausted or capped,openai.com:443#企业域名 | OpenAI
-bestcf_pages_dev_nirevil_ipv4_txt,104.18.15.110,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.15.110:443#NiREvil优选 | 电信 | 104.18.15.110 | Default | 133ms | 275mbps
-domain_ai_vps789,cdn.2020111.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.17.222.41,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.222.41
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.98.42,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.98.42
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3120:c39b:7522:c680:d288:d13c,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3120:c39b:7522:c680:d288:d13c]:443#Uouin-2fe3f3
-domain_wuya_all,openai.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,openai.2.hhhhh.eu.org:443#乌鸦优选 | openai2 | openai.2.hhhhh.eu.org
-domain_asia,qnb.com,443,latency_pool_skipped,declared buckets exhausted or capped,qnb.com:443#亚洲域名 | 卡塔尔国家银行
-cfyes_ipv6,2606:4700:9c61:fd6b:7693:c348:8e54:bd,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9c61:fd6b:7693:c348:8e54:bd]:443#CFYes优选 | 移动 | [2606:4700:9c61:fd6b:7693:c348:8e54:bd]
-domain_ircf_all,apt.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,apt.ircf.space:443#IRCF优选 | Aptel | apt.ircf.space
-domain_all,skk.moe,443,latency_pool_skipped,declared buckets exhausted or capped,skk.moe:443#大佬维护 | Sukka
-domain_ircf_all,ipv4.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ipv4.ircf.space:443#IRCF优选 | Universal IPv4 | ipv4.ircf.space
-domain_wuya_all,qms.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.1.hhhhh.eu.org:443#乌鸦优选 | qms1 | qms.1.hhhhh.eu.org
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::423d:fe3b:80f3:d3c4,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::423d:fe3b:80f3:d3c4]:443#IPDBv6-459aa6
-domain_all,www.emerson.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.emerson.com:443#更多选择 | 艾默生
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:ef:3f32:a9c6:39c4:9ae3,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:ef:3f32:a9c6:39c4:9ae3]:443#CMLiussv6-9c54b4
-domain_ai_vps789,keji.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,keji.cf.3666888.xyz:443#AI优选 | keji.cf.3666888.xyz
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.42.128,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.42.128
-cfyes_ipv6,2606:4700:9a63:5aec:317e:7bd7:3545:eadb,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9a63:5aec:317e:7bd7:3545:eadb]:443#CFYes优选 | 移动 | [2606:4700:9a63:5aec:317e:7bd7:3545:eadb]
-domain_all,cf.090227.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.090227.xyz:443#大佬维护 | CMLiu
-domain_ircf_all,mci.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,mci.ircf.space:443#IRCF优选 | MCI | mci.ircf.space
-uouin,172.64.159.50,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.159.50:443#麒麟优选 | 多线 | 172.64.159.50 | 67.15ms | 0.21mb/s
-domain_asia,70mai.store,443,latency_pool_skipped,declared buckets exhausted or capped,70mai.store:443#亚洲域名 | 中国70迈
-domain_all,static.cloudflareinsights.com,443,latency_pool_skipped,declared buckets exhausted or capped,static.cloudflareinsights.com:443#官方域名 | Analytics
-raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::b42b:cf94:d873:a7e1,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::b42b:cf94:d873:a7e1]:443#IPDBv6-2983d10
-domain_ai_vps789,cf.godns.cc,443,latency_pool_skipped,declared buckets exhausted or capped,cf.godns.cc:443#AI优选 | cf.godns.cc
-bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:9a61:457c:f973:8075:f699:1c7f,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9a61:457c:f973:8075:f699:1c7f]:443#vvHan优选 | 移动 | Default | 2606:4700:9a61:457c:f973:8075:f699:1c7f
-domain_ai_vps789,www.sage.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.sage.com:443#AI优选 | www.sage.com
-domain_all,cdnjs.com,443,latency_pool_skipped,declared buckets exhausted or capped,cdnjs.com:443#官方域名 | CDNJS
-domain_wuya_all,openai.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,openai.hhhhh.eu.org:443#乌鸦优选 | openai | openai.hhhhh.eu.org
-gslege,172.64.52.108,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.108:443#Gslege优选 | 【测速 Nodes】78.36MB/s | 172.64.52.108
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.150.163,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.150.163
-moistr,104.17.102.95,8443,latency_pool_skipped,declared buckets exhausted or capped,104.17.102.95:8443#MoistR优选 | 06-13 17:04 | BestCF.pages.dev
-moistr,104.18.47.140,2096,latency_pool_skipped,declared buckets exhausted or capped,104.18.47.140:2096#MoistR优选 | 移动优选 02 | 104.18.47.140:2096
-bestcf_pages_dev_entryip_50_txt,108.162.193.1,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.193.1:443#108.162.193.1 | 高权重中转，流量杂乱，隐蔽性极佳
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:0:f3:277d:13bc:5730:bb34,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:0:f3:277d:13bc:5730:bb34
-domain_wuya_all,wto.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.2.hhhhh.eu.org:443#乌鸦优选 | wto2 | wto.2.hhhhh.eu.org
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.39.226,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.39.226
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.46.139,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.46.139
-bestcf_pages_dev_nirevil_ipv4_txt,104.19.182.140,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.182.140:443#NiREvil优选 | 电信 | 104.19.182.140 | Default | 134ms | 245mbps
-bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.52.219,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.219
+moistr,172.64.151.254,2096,latency_pool_skipped,declared buckets exhausted or capped,172.64.151.254:2096#MoistR优选 | 电信优选 03 | 172.64.151.254:2096
+uouin,104.16.147.205,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.147.205:443#麒麟优选 | 移动 | 104.16.147.205 | 49.83ms | 15.16mb/s
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.123.159,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.123.159
+cfyes_ipv4,104.17.199.187,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.199.187:443#CFYes优选 | 电信 | 104.17.199.187
+cfyes_ipv4,104.18.71.226,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.71.226:443#CFYes优选 | 电信 | 104.18.71.226
+bestcf_pages_dev_entryip_50_txt,104.19.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.0.1:443#104.19.0.1 | 动态加速段，低延迟跨境数据传输首选
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.19.55.123,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.55.123
+cfyes_ipv6,2606:4700:9ad7:d183:fe8b:66c1:6afb:87a0,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9ad7:d183:fe8b:66c1:6afb:87a0]:443#CFYes优选 | 移动 | [2606:4700:9ad7:d183:fe8b:66c1:6afb:87a0]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::799f:6a0f:b624,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::799f:6a0f:b624]:443#IPDBv6-b75eb0
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::87a6:2293:ae47:744a,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::87a6:2293:ae47:744a]:443#IPDBv6-132286
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3120:c39b:7522:c680:d288:d13c,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3120:c39b:7522:c680:d288:d13c]:443#Uouin-c27706
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.17.54.44,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.54.44
+moistr,172.64.145.94,2096,latency_pool_skipped,declared buckets exhausted or capped,172.64.145.94:2096#MoistR优选 | 移动优选 03 | 172.64.145.94:2096
 bestcf_pages_dev_entryip_50_txt,172.66.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,172.66.0.1:443#172.66.0.1 | 主干网优化段，物理跳数少，握手快
-domain_wuya_all,sy.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.1.hhhhh.eu.org:443#乌鸦优选 | shopify1 | sy.1.hhhhh.eu.org
-bestcf_pages_dev_entryip_50_txt,104.21.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.0.1:443#104.21.0.1 | 全球负载网，三网通告择路兼容性强
-gslege,108.162.192.126,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.192.126:443#Gslege优选 | 【测速 Nodes】0.69MB/s | 108.162.192.126
-domain_ai_vps789,www.jimdo.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.jimdo.com:443#AI优选 | www.jimdo.com
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:bc87:e669:9a:59c4:e578,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:0:bc87:e669:9a:59c4:e578]:443#IPDBv6-d44399
+moistr,2a06:98c1:56::38f8:4281,2096,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:56::38f8:4281]:2096#MoistR优选 | 电信 IPV6 02 | [2a06:98c1:56::38f8:4281]:2096
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:6ed4:ffdf:f2ba:820b:ed5c,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:6ed4:ffdf:f2ba:820b:ed5c]:443#CMLiussv6-4ba169
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443#Uouin-d3d9e8
+bestcf_pages_dev_entryip_50_txt,104.16.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.0.1:443#104.16.0.1 | 核心业务主网，全国三网优先级最高
 bestcf_pages_dev_nirevil_ipv4_txt,104.16.90.212,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.90.212:443#NiREvil优选 | 电信 | 104.16.90.212 | Default | 142ms | 290mbps
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.127.220,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.127.220
-domain_ai_vps789,cdn.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.cf.3666888.xyz:443#AI优选 | cdn.cf.3666888.xyz
-gshtwy_wetest_v4,104.21.87.182,8443,latency_pool_skipped,declared buckets exhausted or capped,104.21.87.182:8443#移动-HKG-8443-WS-TLS
-bestcf_pages_dev_entryip_50_txt,188.114.96.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.1:443#188.114.96.1 | 高吞吐号段，适合大流量及视频业务
-domain_ircf_all,fnp.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.22.169,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.22.169
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.44.206,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.44.206
-domain_senflare_all,cloudflare.seeck.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.seeck.cn:443#Senflare优选 | 三网 | cloudflare.seeck.cn
-domain_wuya_all,lt.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.4.hhhhh.eu.org:443#乌鸦优选 | 联通4 | lt.4.hhhhh.eu.org
-domain_all,www.asda.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.asda.com:443#企业域名 | 阿斯达
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.39.150,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.39.150
-domain_wuya_all,lt.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
-domain_wuya_all,yd.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.1.hhhhh.eu.org:443#乌鸦优选 | 移动1 | yd.1.hhhhh.eu.org
-uouin,172.64.154.31,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.154.31:443#麒麟优选 | 电信 | 172.64.154.31 | 46.59ms | 0.51mb/s
-domain_asia,ubuntu.com.cn,443,latency_pool_skipped,declared buckets exhausted or capped,ubuntu.com.cn:443#亚洲域名 | 中国乌班图
-gshtwy_wetest_v4,104.21.87.182,2096,latency_pool_skipped,declared buckets exhausted or capped,104.21.87.182:2096#移动-HKG-2096-WS-TLS
-domain_ai_vps789,cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.3666888.xyz:443#AI优选 | cf.3666888.xyz
-domain_all,cloudflare.182682.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.182682.xyz:443#大佬维护 | WeTest
-raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.157.75,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.157.75
-gshtwy_wetest_v4,104.18.34.248,2087,latency_pool_skipped,declared buckets exhausted or capped,104.18.34.248:2087#移动-HKG-2087-WS-TLS
-raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.44.8,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.44.8
-vps789_top100,prompt.gzcrtw.com,443,latency_pool_skipped,declared buckets exhausted or capped,prompt.gzcrtw.com:443#VPS789优选 | prompt.gzcrtw.com
-gshtwy_wetest_v4,104.21.91.186,2096,latency_pool_skipped,declared buckets exhausted or capped,104.21.91.186:2096#移动-HKG-2096-WS-TLS
-domain_ai_vps789,cdns.doon.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cdns.doon.eu.org:443#AI优选 | cdns.doon.eu.org
-bestcf_pages_dev_entryip_50_txt,188.114.98.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.98.1:443#188.114.98.1 | 业务分流段，规避号段集中式QoS限速
-bestcf_pages_dev_nirevil_ipv4_txt,198.41.208.106,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.106:443#NiREvil优选 | 移动 | 198.41.208.106 | Default | 68ms | 260mbps
-uouin,104.17.220.126,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.220.126:443#麒麟优选 | 移动 | 104.17.220.126 | 61.50ms | 0.11mb/s
-gshtwy_wetest_v4,104.21.87.182,2053,latency_pool_skipped,declared buckets exhausted or capped,104.21.87.182:2053#移动-HKG-2053-WS-TLS
-domain_ai_vps789,www.mfyx.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.mfyx.cn:443#AI优选 | www.mfyx.cn
-domain_ai_vps789,123.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,123.cf.3666888.xyz:443#AI优选 | 123.cf.3666888.xyz
-domain_ai_vps789,11.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,11.cf.3666888.xyz:443#AI优选 | 11.cf.3666888.xyz
-domain_asia,jobsdb.com,443,latency_pool_skipped,declared buckets exhausted or capped,jobsdb.com:443#亚洲域名 | 中国香港JobsDB
-domain_wuya_all,wto.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.3.hhhhh.eu.org:443#乌鸦优选 | wto3 | wto.3.hhhhh.eu.org
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.17.147.10,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.147.10
-bestcf_pages_dev_vvhan_ipv4_txt,104.21.88.118,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.88.118:443#vvHan优选 | 移动 | HKG | 104.21.88.118
-domain_wuya_all,sy.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.2.hhhhh.eu.org:443#乌鸦优选 | shopify2 | sy.2.hhhhh.eu.org
-uouin,104.20.30.35,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.30.35:443#麒麟优选 | 联通 | 104.20.30.35 | 123.97ms | 0.17mb/s
-domain_ai_vps789,cdn.262832.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.262832.xyz:443#AI优选 | cdn.262832.xyz
-domain_all,cookiebot.com,443,latency_pool_skipped,declared buckets exhausted or capped,cookiebot.com:443#企业域名 | Cookiebot
-domain_all,engage.cloudflareclient.com,443,latency_pool_skipped,declared buckets exhausted or capped,engage.cloudflareclient.com:443#官方入口 | WireGuard
-domain_asia,www.ooredoo.qa,443,latency_pool_skipped,declared buckets exhausted or capped,www.ooredoo.qa:443#亚洲域名 | 卡塔尔电信
-bestcf_pages_dev_entryip_50_txt,188.114.99.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.99.1:443#188.114.99.1 | 备用业务段，主段受限时的首选冗余
-domain_asia,news.cathaypacific.com,443,latency_pool_skipped,declared buckets exhausted or capped,news.cathaypacific.com:443#亚洲域名 | 香港国泰航空
-gshtwy_wetest_v4,104.18.34.248,8443,latency_pool_skipped,declared buckets exhausted or capped,104.18.34.248:8443#移动-HKG-8443-WS-TLS
-cfyes_ipv4,198.41.208.181,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.181:443#CFYes优选 | 移动 | 198.41.208.181
-domain_ai_vps789,cloudflare.rainyfall.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.rainyfall.com:443#AI优选 | cloudflare.rainyfall.com
-gshtwy_wetest_v4,104.21.91.186,8443,latency_pool_skipped,declared buckets exhausted or capped,104.21.91.186:8443#移动-HKG-8443-WS-TLS
-domain_ircf_all,afn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,afn.ircf.space:443#IRCF优选 | Afranet | afn.ircf.space
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.16.157.133,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.157.133
-gslege,108.162.198.117,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.198.117:443#Gslege优选 | 【测速 Nodes】78.21MB/s | 108.162.198.117
-domain_all,onetrust.com,443,latency_pool_skipped,declared buckets exhausted or capped,onetrust.com:443#更多选择 | OneTrust
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.16.254.46,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.254.46
-domain_wuya_all,visasg.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,visasg.hhhhh.eu.org:443#乌鸦优选 | visasg | visasg.hhhhh.eu.org
-domain_asia,www.caritas.org.hk,443,latency_pool_skipped,declared buckets exhausted or capped,www.caritas.org.hk:443#亚洲域名 | 中国香港明爱
-domain_all,cf.tencentapp.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cf.tencentapp.cn:443#大佬维护 | KTFF
-domain_wuya_all,cm.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.3.hhhhh.eu.org:443#乌鸦优选 | cm3 | cm.3.hhhhh.eu.org
-vps789_top100,store.epicgames.com,443,latency_pool_skipped,declared buckets exhausted or capped,store.epicgames.com:443#VPS789优选 | store.epicgames.com
-domain_ai_vps789,www.xiaoshuofen.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.xiaoshuofen.com:443#AI优选 | www.xiaoshuofen.com
-domain_asia,fossilchina.cn,443,latency_pool_skipped,declared buckets exhausted or capped,fossilchina.cn:443#亚洲域名 | 中国Fossil
-domain_wuya_all,sy.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.hhhhh.eu.org:443#乌鸦优选 | shopify | sy.hhhhh.eu.org
-uouin,104.19.58.230,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.58.230:443#麒麟优选 | 移动 | 104.19.58.230 | 52.49ms | 0.11mb/s
-domain_wuya_all,cm.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.2.hhhhh.eu.org:443#乌鸦优选 | cm2 | cm.2.hhhhh.eu.org
-bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.53.26,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.53.26
-domain_ai_vps789,9.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,9.cf.3666888.xyz:443#AI优选 | 9.cf.3666888.xyz
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.16.253.60,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.253.60
-domain_wuya_all,dx.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,dx.4.hhhhh.eu.org:443#乌鸦优选 | 电信4 | dx.4.hhhhh.eu.org
-domain_ai_vps789,3.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,3.cf.3666888.xyz:443#AI优选 | 3.cf.3666888.xyz
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.21.30.32,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.30.32
-gshtwy_wetest_v4,104.21.87.182,2087,latency_pool_skipped,declared buckets exhausted or capped,104.21.87.182:2087#移动-HKG-2087-WS-TLS
-domain_ai_vps789,cf1s.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf1s.cf.3666888.xyz:443#AI优选 | cf1s.cf.3666888.xyz
-vps789_top100,tajikistan.mfa.gov.ua,443,latency_pool_skipped,declared buckets exhausted or capped,tajikistan.mfa.gov.ua:443#VPS789优选 | tajikistan.mfa.gov.ua
-domain_ai_vps789,sanwang.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,sanwang.cf.3666888.xyz:443#AI优选 | sanwang.cf.3666888.xyz
-domain_all,jimdo.com,443,latency_pool_skipped,declared buckets exhausted or capped,jimdo.com:443#企业域名 | Jimdo
-cfyes_ipv4,172.67.160.101,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.160.101:443#CFYes优选 | 移动 | 172.67.160.101
-domain_ai_vps789,cfyx.qdqqd.com,443,latency_pool_skipped,declared buckets exhausted or capped,cfyx.qdqqd.com:443#AI优选 | cfyx.qdqqd.com
-domain_asia,www.hthkh.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.hthkh.com:443#亚洲域名 | 中国香港和记电讯
-moistr,162.159.40.181,2096,latency_pool_skipped,declared buckets exhausted or capped,162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
-domain_ircf_all,fnv.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,fnv.ircf.space:443#IRCF优选 | Fanava | fnv.ircf.space
-domain_wuya_all,yd.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.4.hhhhh.eu.org:443#乌鸦优选 | 移动4 | yd.4.hhhhh.eu.org
+raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.47.171,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.47.171
+bestcf_pages_dev_entryip_50_txt,108.162.194.1,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:52::df76:ddb5,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:52::df76:ddb5]:443#WeTestV6-19c144
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:57::79bf:b110,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:57::79bf:b110]:443#WeTestV6-e1bdc3
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:0:ef18:6ab0:b648:d756,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443#Uouin-9aa852
+raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.46.237,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.46.237
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.36.125,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.36.125
+bestcf_pages_dev_entryip_50_txt,162.159.192.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:ef:3f32:a9c6:39c4:9ae3,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:ef:3f32:a9c6:39c4:9ae3]:443#CMLiussv6-f067e5
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:8393::b012:e7a4,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:8393::b012:e7a4]:443#WeTestV6-15fb48
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::c1:abd7:e4f2:f87e,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::c1:abd7:e4f2:f87e]:443#IPDBv6-97faa5
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2400:cb00:2049::f68f:aa69,443,latency_pool_skipped,declared buckets exhausted or capped,[2400:cb00:2049::f68f:aa69]:443#WeTestV6-57ac110
 domain_fiatnorm_all,cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | GeoIP 默认路由 · 贴心的兜底保护
-domain_ai_vps789,adnjv.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,adnjv.cf.3666888.xyz:443#AI优选 | adnjv.cf.3666888.xyz
-domain_wuya_all,qms.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.3.hhhhh.eu.org:443#乌鸦优选 | qms3 | qms.3.hhhhh.eu.org
-domain_ai_vps789,vip.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,vip.cf.3666888.xyz:443#AI优选 | vip.cf.3666888.xyz
-domain_asia,ir.yuntongxun.com,443,latency_pool_skipped,declared buckets exhausted or capped,ir.yuntongxun.com:443#亚洲域名 | 中国容联
-domain_ai_vps789,2.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,2.cf.3666888.xyz:443#AI优选 | 2.cf.3666888.xyz
+domain_ai_vps789,cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.3666888.xyz:443#AI优选 | cf.3666888.xyz
+domain_ai_vps789,gh-proxy.com,443,latency_pool_skipped,declared buckets exhausted or capped,gh-proxy.com:443#AI优选 | gh-proxy.com
+cfyes_ipv4,198.41.209.162,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.209.162:443#CFYes优选 | 移动 | 198.41.209.162
+domain_wuya_all,openai.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,openai.hhhhh.eu.org:443#乌鸦优选 | openai | openai.hhhhh.eu.org
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.34.198,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.34.198
+cfyes_ipv6,2606:4700:440f:b6af:982d:56d1:3449:44d0,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:440f:b6af:982d:56d1:3449:44d0]:443#CFYes优选 | 移动 | [2606:4700:440f:b6af:982d:56d1:3449:44d0]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:57::fdb8:29c,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:57::fdb8:29c]:443#WeTestV6-7f3731
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:b7b8:c1b6:47a3:c53e,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:b7b8:c1b6:47a3:c53e
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:bc87:e669:5390:cbb9:8e83,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:0:bc87:e669:5390:cbb9:8e83]:443#IPDBv6-920e55
+cfyes_ipv6,2606:4700:9ad7:9b8f:6b6d:238:4104:29d3,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9ad7:9b8f:6b6d:238:4104:29d3]:443#CFYes优选 | 移动 | [2606:4700:9ad7:9b8f:6b6d:238:4104:29d3]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c6d4:4130:7992:df42:f04c,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:c6d4:4130:7992:df42:f04c]:443#Uouin-1d9784
 domain_asia,allot.com,443,latency_pool_skipped,declared buckets exhausted or capped,allot.com:443#亚洲域名 | 以色列Allot
-uouin,104.17.60.54,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.60.54:443#麒麟优选 | 移动 | 104.17.60.54 | 70.48ms | 0.18mb/s
-domain_wuya_all,1111111.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,1111111.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 1111111.hhhhh.eu.org
-domain_ircf_all,psm.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,psm.ircf.space:443#IRCF优选 | Pishgaman | psm.ircf.space
-wetest,104.21.87.182,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.87.182:443#微测优选 | 移动 | HKG | 104.21.87.182
-domain_ai_vps789,7.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,7.cf.3666888.xyz:443#AI优选 | 7.cf.3666888.xyz
-domain_ircf_all,ryn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ryn.ircf.space:443#IRCF优选 | Raynet | ryn.ircf.space
-domain_wuya_all,qms.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.hhhhh.eu.org:443#乌鸦优选 | qms | qms.hhhhh.eu.org
-domain_ircf_all,hwb.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,hwb.ircf.space:443#IRCF优选 | Hi-Web | hwb.ircf.space
-gshtwy_wetest_v4,104.21.91.186,2087,latency_pool_skipped,declared buckets exhausted or capped,104.21.91.186:2087#移动-HKG-2087-WS-TLS
-domain_wuya_all,dx.5.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
-bestcf_pages_dev_vps789_top50_txt,eteaf.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
-domain_all,digitalocean.com,443,latency_pool_skipped,declared buckets exhausted or capped,digitalocean.com:443#更多选择 | DigitalOcean
-domain_qms_all,eur.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,eur.877774.xyz:443#秋名山优选 | 欧洲 | eur.877774.xyz
-bestcf_pages_dev_vps789_top50_txt,www.xflash.vip,443,latency_pool_skipped,declared buckets exhausted or capped,www.xflash.vip:443#VPS789优选 | www.xflash.vip
-domain_ai_vps789,cloudflare.idc.rocks,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.idc.rocks:443#AI优选 | cloudflare.idc.rocks
-domain_asia,starbucks.qa,443,latency_pool_skipped,declared buckets exhausted or capped,starbucks.qa:443#亚洲域名 | 卡塔尔星巴克
-domain_wuya_all,yd.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.2.hhhhh.eu.org:443#乌鸦优选 | 移动2 | yd.2.hhhhh.eu.org
-uouin,104.26.0.81,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.0.81:443#麒麟优选 | 联通 | 104.26.0.81 | 124.83ms | 0.20mb/s
-moistr,cloudflare.idc.rocks,2096,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.idc.rocks:2096#MoistR优选 | 优选域名 02 | cloudflare.idc.rocks:2096
-uouin,162.159.42.178,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.42.178:443#麒麟优选 | 多线 | 162.159.42.178 | 67.50ms | 0.20mb/s
-raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.21.25.193,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.25.193
-domain_ai_vps789,youxuan.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,youxuan.cf.3666888.xyz:443#AI优选 | youxuan.cf.3666888.xyz
-raw_githubusercontent_com_hubbylei_bestcf_refs_heads_main_bestcf_txt,104.16.145.26,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.145.26
-gshtwy_wetest_v4,104.21.91.186,2053,latency_pool_skipped,declared buckets exhausted or capped,104.21.91.186:2053#移动-HKG-2053-WS-TLS
-uouin,172.64.34.240,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.34.240:443#麒麟优选 | 电信 | 172.64.34.240 | 46.78ms | 0.74mb/s
-uouin,172.67.69.32,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.69.32:443#麒麟优选 | 联通 | 172.67.69.32 | 124.18ms | 0.48mb/s
-domain_ai_vps789,avido.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,avido.cf.3666888.xyz:443#AI优选 | avido.cf.3666888.xyz
-domain_wuya_all,090.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,090.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 090.hhhhh.eu.org
-domain_all,www.wilshire.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.wilshire.com:443#金融域名 | Wilshire
-uouin,198.41.222.136,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.222.136:443#麒麟优选 | 电信 | 198.41.222.136 | 47.25ms | 0.50mb/s
-bestcf_pages_dev_vps789_top50_txt,cdn.555586.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.555586.xyz:443#VPS789优选 | cdn.555586.xyz
-domain_ai_vps789,cnllm.com,443,latency_pool_skipped,declared buckets exhausted or capped,cnllm.com:443#AI优选 | cnllm.com
-domain_ai_vps789,hk.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,hk.cf.3666888.xyz:443#AI优选 | hk.cf.3666888.xyz
-domain_wuya_all,bp.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.1.hhhhh.eu.org:443#乌鸦优选 | bp1 | bp.1.hhhhh.eu.org
-domain_all,www.affirm.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.affirm.com:443#更多选择 | Affirm
-domain_all,woodsbagot.com,443,latency_pool_skipped,declared buckets exhausted or capped,woodsbagot.com:443#更多选择 | 伍兹贝格
-uouin,172.64.52.141,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.141:443#麒麟优选 | 电信 | 172.64.52.141 | 51.93ms | 60.33mb/s
-domain_all,www.epicgames.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.epicgames.com:443#更多选择 | Epicgames
-domain_all,investor.apple.com,443,latency_pool_skipped,declared buckets exhausted or capped,investor.apple.com:443#更多选择 | Apple
-domain_ircf_all,sbn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,sbn.ircf.space:443#IRCF优选 | Sabanet | sbn.ircf.space
+domain_all,sage.com,443,latency_pool_skipped,declared buckets exhausted or capped,sage.com:443#更多选择 | Sage
+domain_ai_vps789,www.vastnovel.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.vastnovel.com:443#AI优选 | www.vastnovel.com
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.146.89,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.146.89
+domain_all,www.asda.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.asda.com:443#企业域名 | 阿斯达
+domain_all,www.doordash.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.doordash.com:443#更多选择 | DoorDash
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.62.174,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.62.174
+bestcf_pages_dev_entryip_50_txt,162.159.193.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.35.66,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.35.66
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:6ed4:e1ed:36:8916:dace,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:6ed4:e1ed:36:8916:dace]:443#CMLiussv6-b64e84
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:3055:64f:4628:309c:c6b8:7540,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3055:64f:4628:309c:c6b8:7540]:443#vvHan优选 | 移动 | Default | 2606:4700:3055:64f:4628:309c:c6b8:7540
+cfyes_ipv6,2606:4700:99e2:c665:76e8:ea21:671f:3c92,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:99e2:c665:76e8:ea21:671f:3c92]:443#CFYes优选 | 移动 | [2606:4700:99e2:c665:76e8:ea21:671f:3c92]
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:5d:1caa:56dd:a908:af7b,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443#Uouin-432e94
+domain_all,jimdo.com,443,latency_pool_skipped,declared buckets exhausted or capped,jimdo.com:443#企业域名 | Jimdo
+domain_wuya_all,lt.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.2.hhhhh.eu.org:443#乌鸦优选 | 联通2 | lt.2.hhhhh.eu.org
+domain_wuya_all,lt.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.hhhhh.eu.org:443#乌鸦优选 | 联通 | lt.hhhhh.eu.org
+domain_all,www.glassdoor.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.glassdoor.com:443#企业域名 | Glassdoor
+domain_fiatnorm_all,cu.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,cu.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 联通 (CU) · 双线护航，全速满跑
+domain_all,nexusmods.com,443,latency_pool_skipped,declared buckets exhausted or capped,nexusmods.com:443#企业域名 | NexusMods
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.53.76,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.53.76
+domain_fiatnorm_all,cm.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,cm.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 移动 (CM) · 低延迟专线，告别卡顿
+bestcf_pages_dev_vps789_top10_txt,prompt.gzcrtw.com,443,latency_pool_skipped,declared buckets exhausted or capped,prompt.gzcrtw.com:443#VPS789优选 | prompt.gzcrtw.com
+domain_all,cdnjs.com,443,latency_pool_skipped,declared buckets exhausted or capped,cdnjs.com:443#官方域名 | CDNJS
 vps789_top100,fk.hshwk.org,443,latency_pool_skipped,declared buckets exhausted or capped,fk.hshwk.org:443#VPS789优选 | fk.hshwk.org
-uouin,172.64.229.220,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.229.220:443#麒麟优选 | 多线 | 172.64.229.220 | 45.48ms | 3.41mb/s
-vps789_top100,edgeone.gh-proxy.org,443,latency_pool_skipped,declared buckets exhausted or capped,edgeone.gh-proxy.org:443#VPS789优选 | edgeone.gh-proxy.org
-domain_asia,52pojie.org,443,latency_pool_skipped,declared buckets exhausted or capped,52pojie.org:443#亚洲域名 | 吾爱破解
-domain_ircf_all,atc.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,atc.ircf.space:443#IRCF优选 | Asre Telecom | atc.ircf.space
-bestcf_pages_dev_vps789_top50_txt,cf.553314.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.553314.xyz:443#VPS789优选 | cf.553314.xyz
-vps789_top100,www.akasantech.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.akasantech.com:443#VPS789优选 | www.akasantech.com
-domain_ai_vps789,markmonitor.com,443,latency_pool_skipped,declared buckets exhausted or capped,markmonitor.com:443#AI优选 | markmonitor.com
+domain_wuya_all,lt.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.3.hhhhh.eu.org:443#乌鸦优选 | 联通3 | lt.3.hhhhh.eu.org
 domain_wuya_all,lt.5.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.5.hhhhh.eu.org:443#乌鸦优选 | 联通5 | lt.5.hhhhh.eu.org
-vps789_top100,cf.nyanya.moe,443,latency_pool_skipped,declared buckets exhausted or capped,cf.nyanya.moe:443#VPS789优选 | cf.nyanya.moe
-domain_all,www.udacity.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.udacity.com:443#教育域名 | Udacity
-domain_wuya_all,bp.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.2.hhhhh.eu.org:443#乌鸦优选 | bp2 | bp.2.hhhhh.eu.org
-domain_wuya_all,wto.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.1.hhhhh.eu.org:443#乌鸦优选 | wto1 | wto.1.hhhhh.eu.org
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.32.3,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.32.3
+bestcf_pages_dev_entryip_50_txt,103.21.244.1,443,latency_pool_skipped,declared buckets exhausted or capped,103.21.244.1:443#103.21.244.1 | 亚太入口，覆盖华南及港澳接入中心
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.38.61,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.38.61
+domain_ircf_all,prs.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,prs.ircf.space:443#IRCF优选 | Pars Online | prs.ircf.space
+domain_all,static.cloudflareinsights.com,443,latency_pool_skipped,declared buckets exhausted or capped,static.cloudflareinsights.com:443#官方域名 | Analytics
+domain_ircf_all,fnp.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
+domain_all,skk.moe,443,latency_pool_skipped,declared buckets exhausted or capped,skk.moe:443#大佬维护 | Sukka
+uouin,104.17.19.190,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.19.190:443#麒麟优选 | 移动 | 104.17.19.190 | 50.78ms | 11.93mb/s
+domain_ai_vps789,7.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,7.cf.3666888.xyz:443#AI优选 | 7.cf.3666888.xyz
+domain_wuya_all,openai.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,openai.2.hhhhh.eu.org:443#乌鸦优选 | openai2 | openai.2.hhhhh.eu.org
+uouin,108.162.198.132,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.198.132:443#麒麟优选 | 多线 | 108.162.198.132 | 46.46ms | 0.75mb/s
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::87a6:2293:f9e:fef3,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::87a6:2293:f9e:fef3]:443#IPDBv6-f296d4
+domain_all,auctions.ihg.com.cn,443,latency_pool_skipped,declared buckets exhausted or capped,auctions.ihg.com.cn:443#更多选择 | 洲际酒店
+domain_fiatnorm_all,avg.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,avg.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 三网 BGP · 智能均衡，永远在线
+uouin,104.18.44.22,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.44.22:443#麒麟优选 | 多线 | 104.18.44.22 | 67.64ms | 13.51mb/s
+uouin,162.159.41.160,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.41.160:443#麒麟优选 | 多线 | 162.159.41.160 | 66.15ms | 0.14mb/s
+domain_ai_vps789,markmonitor.com,443,latency_pool_skipped,declared buckets exhausted or capped,markmonitor.com:443#AI优选 | markmonitor.com
+uouin,104.17.53.243,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.53.243:443#麒麟优选 | 移动 | 104.17.53.243 | 51.12ms | 13.51mb/s
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:6ed4:e1ed:ae00:3c36:e683,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:6ed4:e1ed:ae00:3c36:e683]:443#CMLiussv6-3c25c1
+domain_ai_vps789,cnllm.com,443,latency_pool_skipped,declared buckets exhausted or capped,cnllm.com:443#AI优选 | cnllm.com
+domain_ircf_all,mkh.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,mkh.ircf.space:443#IRCF优选 | TCI | mkh.ircf.space
+domain_wuya_all,yd.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.3.hhhhh.eu.org:443#乌鸦优选 | 移动3 | yd.3.hhhhh.eu.org
+uouin,104.16.145.126,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.145.126:443#麒麟优选 | 移动 | 104.16.145.126 | 51.22ms | 14.07mb/s
+uouin,104.17.57.182,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.57.182:443#麒麟优选 | 移动 | 104.17.57.182 | 50.42ms | 14.82mb/s
+uouin,172.64.52.197,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.197:443#麒麟优选 | 多线 | 172.64.52.197 | 55.74ms | 14.78mb/s
+domain_all,cookiebot.com,443,latency_pool_skipped,declared buckets exhausted or capped,cookiebot.com:443#企业域名 | Cookiebot
+domain_fiatnorm_all,ct.cdn.djx-ybelove.pp.ua,443,latency_pool_skipped,declared buckets exhausted or capped,ct.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 电信 (CT) · CN2 GIA 高端直连
+domain_wuya_all,yd.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.2.hhhhh.eu.org:443#乌鸦优选 | 移动2 | yd.2.hhhhh.eu.org
+domain_ircf_all,apt.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,apt.ircf.space:443#IRCF优选 | Aptel | apt.ircf.space
+moistr,fw8je9.cf.3666888.xyz,2096,latency_pool_skipped,declared buckets exhausted or capped,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
+domain_ai_vps789,fw8je9.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,fw8je9.cf.3666888.xyz:443#AI优选 | fw8je9.cf.3666888.xyz
+domain_wuya_all,cm.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.hhhhh.eu.org:443#乌鸦优选 | cm | cm.hhhhh.eu.org
+uouin,104.17.18.168,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.18.168:443#麒麟优选 | 移动 | 104.17.18.168 | 50.77ms | 16.91mb/s
+uouin,104.26.5.44,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.5.44:443#麒麟优选 | 联通 | 104.26.5.44 | 64.49ms | 44.57mb/s
+domain_ircf_all,ask.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ask.ircf.space:443#IRCF优选 | ASK | ask.ircf.space
+domain_all,cmcc.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cmcc.877774.xyz:443#按运营商 | 移动QMS
+uouin,172.67.67.148,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.67.148:443#麒麟优选 | 联通 | 172.67.67.148 | 65.68ms | 25.23mb/s
+domain_qms_all,asia.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,asia.877774.xyz:443#秋名山优选 | 亚洲 | asia.877774.xyz
+domain_ai_vps789,cdn.2020111.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
+domain_all,onetrust.com,443,latency_pool_skipped,declared buckets exhausted or capped,onetrust.com:443#更多选择 | OneTrust
+domain_ircf_all,sbn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,sbn.ircf.space:443#IRCF优选 | Sabanet | sbn.ircf.space
+uouin,172.64.155.93,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.155.93:443#麒麟优选 | 电信 | 172.64.155.93 | 46.42ms | 65.78mb/s
+domain_ai_vps789,sanwang.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,sanwang.cf.3666888.xyz:443#AI优选 | sanwang.cf.3666888.xyz
+domain_ai_vps789,www.cdzxdz.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.cdzxdz.com:443#AI优选 | www.cdzxdz.com
+uouin,104.26.3.106,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.3.106:443#麒麟优选 | 联通 | 104.26.3.106 | 65.53ms | 47.11mb/s
+uouin,104.26.4.116,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.4.116:443#麒麟优选 | 联通 | 104.26.4.116 | 65.07ms | 51.94mb/s
+gslege,162.159.18.10,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.18.10:443#Gslege优选 | 【测速 Nodes】60.33MB/s | 162.159.18.10
+domain_asia,52pojie.org,443,latency_pool_skipped,declared buckets exhausted or capped,52pojie.org:443#亚洲域名 | 吾爱破解
+uouin,172.67.79.171,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.79.171:443#麒麟优选 | 联通 | 172.67.79.171 | 65.35ms | 51.58mb/s
+domain_all,cf.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.877774.xyz:443#大佬维护 | QMS
+domain_ircf_all,hwb.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,hwb.ircf.space:443#IRCF优选 | Hi-Web | hwb.ircf.space
+vps789_top100,play.mc.js.cool,443,latency_pool_skipped,declared buckets exhausted or capped,play.mc.js.cool:443#VPS789优选 | play.mc.js.cool
+uouin,104.19.146.199,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.146.199:443#麒麟优选 | 移动 | 104.19.146.199 | 51.08ms | 13.58mb/s
+uouin,104.26.2.87,443,latency_pool_skipped,declared buckets exhausted or capped,104.26.2.87:443#麒麟优选 | 联通 | 104.26.2.87 | 64.00ms | 46.85mb/s
+uouin,162.159.42.115,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.42.115:443#麒麟优选 | 电信 | 162.159.42.115 | 46.41ms | 66.56mb/s
 domain_all,mycareer.verizon.com,443,latency_pool_skipped,declared buckets exhausted or capped,mycareer.verizon.com:443#更多选择 | Verizon
+uouin,162.159.21.166,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.21.166:443#麒麟优选 | 电信 | 162.159.21.166 | 46.21ms | 65.77mb/s
+domain_all,investor.apple.com,443,latency_pool_skipped,declared buckets exhausted or capped,investor.apple.com:443#更多选择 | Apple
+domain_asia,www.airasia.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.airasia.com:443#亚洲域名 | 大马亚航
+uouin,104.20.31.194,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.31.194:443#麒麟优选 | 联通 | 104.20.31.194 | 64.89ms | 48.73mb/s
+domain_ai_vps789,www.mfyx.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.mfyx.cn:443#AI优选 | www.mfyx.cn
+uouin,104.18.37.42,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.37.42:443#麒麟优选 | 电信 | 104.18.37.42 | 46.30ms | 65.18mb/s
+uouin,172.64.154.176,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.154.176:443#麒麟优选 | 电信 | 172.64.154.176 | 46.45ms | 64.06mb/s
+domain_asia,fossilchina.cn,443,latency_pool_skipped,declared buckets exhausted or capped,fossilchina.cn:443#亚洲域名 | 中国Fossil
+uouin,162.159.12.122,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.12.122:443#麒麟优选 | 电信 | 162.159.12.122 | 46.20ms | 66.86mb/s
+uouin,104.18.43.109,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.43.109:443#麒麟优选 | 电信 | 104.18.43.109 | 46.38ms | 67.14mb/s
+uouin,172.64.155.24,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.155.24:443#麒麟优选 | 多线 | 172.64.155.24 | 67.68ms | 0.56mb/s
+gslege,172.64.52.211,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.211:443#Gslege优选 | 【测速 Nodes】77.35MB/s | 172.64.52.211
+domain_ai_vps789,cdns.doon.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cdns.doon.eu.org:443#AI优选 | cdns.doon.eu.org
+domain_all,www.epicgames.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.epicgames.com:443#更多选择 | Epicgames
+domain_wuya_all,sy.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.2.hhhhh.eu.org:443#乌鸦优选 | shopify2 | sy.2.hhhhh.eu.org
+domain_all,www.allianz.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.allianz.com:443#企业域名 | 安联集团
+domain_ai_vps789,cloudflare.rainyfall.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.rainyfall.com:443#AI优选 | cloudflare.rainyfall.com
+domain_wuya_all,cm.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
+domain_wuya_all,lt.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.4.hhhhh.eu.org:443#乌鸦优选 | 联通4 | lt.4.hhhhh.eu.org
+domain_ai_vps789,cf.mubaiovo.top,443,latency_pool_skipped,declared buckets exhausted or capped,cf.mubaiovo.top:443#AI优选 | cf.mubaiovo.top
+domain_ircf_all,psm.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,psm.ircf.space:443#IRCF优选 | Pishgaman | psm.ircf.space
+domain_wuya_all,sy.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.1.hhhhh.eu.org:443#乌鸦优选 | shopify1 | sy.1.hhhhh.eu.org
+domain_ircf_all,ptk.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ptk.ircf.space:443#IRCF优选 | Petyak | ptk.ircf.space
+domain_wuya_all,wto.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.hhhhh.eu.org:443#乌鸦优选 | wto | wto.hhhhh.eu.org
+domain_all,cf.090227.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.090227.xyz:443#大佬维护 | CMLiu
+domain_wuya_all,sy.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,sy.hhhhh.eu.org:443#乌鸦优选 | shopify | sy.hhhhh.eu.org
+domain_wuya_all,wto.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.2.hhhhh.eu.org:443#乌鸦优选 | wto2 | wto.2.hhhhh.eu.org
+gslege,108.162.198.182,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.198.182:443#Gslege优选 | 【测速 Nodes】78.38MB/s | 108.162.198.182
+domain_wuya_all,bp.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.3.hhhhh.eu.org:443#乌鸦优选 | bp3 | bp.3.hhhhh.eu.org
+domain_ircf_all,dbn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,dbn.ircf.space:443#IRCF优选 | DidehbanNet | dbn.ircf.space
+domain_ai_vps789,keji.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,keji.cf.3666888.xyz:443#AI优选 | keji.cf.3666888.xyz
+domain_wuya_all,visasg.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,visasg.hhhhh.eu.org:443#乌鸦优选 | visasg | visasg.hhhhh.eu.org
+domain_wuya_all,090.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,090.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 090.hhhhh.eu.org
+domain_ai_vps789,123.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,123.cf.3666888.xyz:443#AI优选 | 123.cf.3666888.xyz
+domain_ai_vps789,youxuan.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,youxuan.cf.3666888.xyz:443#AI优选 | youxuan.cf.3666888.xyz
+domain_all,www.wto.org,443,latency_pool_skipped,declared buckets exhausted or capped,www.wto.org:443#更多选择 | WTO
+domain_wuya_all,lt.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
+domain_wuya_all,qms.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.3.hhhhh.eu.org:443#乌鸦优选 | qms3 | qms.3.hhhhh.eu.org
+domain_ircf_all,fnv.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,fnv.ircf.space:443#IRCF优选 | Fanava | fnv.ircf.space
+gslege,172.64.53.129,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.53.129:443#Gslege优选 | 【测速 Nodes】78.29MB/s | 172.64.53.129
+domain_all,pages.dev,443,latency_pool_skipped,declared buckets exhausted or capped,pages.dev:443#官方域名 | Pages
+uouin,172.64.41.45,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.41.45:443#麒麟优选 | 电信 | 172.64.41.45 | 46.41ms | 66.79mb/s
+domain_ircf_all,rsp.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,rsp.ircf.space:443#IRCF优选 | Respina | rsp.ircf.space
+domain_all,polestar.com,443,latency_pool_skipped,declared buckets exhausted or capped,polestar.com:443#更多选择 | 极星汽车
+domain_ai_vps789,vip.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,vip.cf.3666888.xyz:443#AI优选 | vip.cf.3666888.xyz
+domain_all,www.visa.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.visa.cn:443#金融域名 | VISA中国
+vps789_top100,www.xflash.vip,443,latency_pool_skipped,declared buckets exhausted or capped,www.xflash.vip:443#VPS789优选 | www.xflash.vip
+domain_wuya_all,1111111.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,1111111.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 1111111.hhhhh.eu.org
+domain_ai_vps789,9.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,9.cf.3666888.xyz:443#AI优选 | 9.cf.3666888.xyz
 domain_ai_vps789,zeas.top,443,latency_pool_skipped,declared buckets exhausted or capped,zeas.top:443#AI优选 | zeas.top
-domain_ai_vps789,www.fastsoso.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.fastsoso.cn:443#AI优选 | www.fastsoso.cn
-domain_all,columbia.edu,443,latency_pool_skipped,declared buckets exhausted or capped,columbia.edu:443#教育域名 | 哥伦比亚
+domain_wuya_all,dx.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,dx.hhhhh.eu.org:443#乌鸦优选 | 电信 | dx.hhhhh.eu.org
+domain_ircf_all,ztl.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ztl.ircf.space:443#IRCF优选 | Zitel | ztl.ircf.space
+domain_all,r2.dev,443,latency_pool_skipped,declared buckets exhausted or capped,r2.dev:443#官方域名 | R2
+domain_ircf_all,ryn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ryn.ircf.space:443#IRCF优选 | Raynet | ryn.ircf.space
+domain_wuya_all,yd.5.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
+domain_asia,ubuntu.com.cn,443,latency_pool_skipped,declared buckets exhausted or capped,ubuntu.com.cn:443#亚洲域名 | 中国乌班图
+domain_wuya_all,yd.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.1.hhhhh.eu.org:443#乌鸦优选 | 移动1 | yd.1.hhhhh.eu.org
+domain_ai_vps789,www.sloomb.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.sloomb.com:443#AI优选 | www.sloomb.com
+domain_ai_vps789,cdn.7zz.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.7zz.cn:443#AI优选 | cdn.7zz.cn
+domain_wuya_all,dx.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,dx.4.hhhhh.eu.org:443#乌鸦优选 | 电信4 | dx.4.hhhhh.eu.org
+domain_ai_vps789,staticdelivery.nexusmods.com,443,latency_pool_skipped,declared buckets exhausted or capped,staticdelivery.nexusmods.com:443#AI优选 | staticdelivery.nexusmods.com
+bestcf_pages_dev_nirevil_ipv4_txt,198.41.208.32,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.32:443#NiREvil优选 | 移动 | 198.41.208.32 | Default | 55ms | 260mbps
+bestcf_pages_dev_entryip_50_txt,141.101.115.1,443,latency_pool_skipped,declared buckets exhausted or capped,141.101.115.1:443#141.101.115.1 | 跨境优化段，路径短，适合海外资源
+domain_ai_vps789,dnew.cc,443,latency_pool_skipped,declared buckets exhausted or capped,dnew.cc:443#AI优选 | dnew.cc
+cfyes_ipv4,198.41.208.181,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.181:443#CFYes优选 | 移动 | 198.41.208.181
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:3010:8caf:8d19:54b7:d72:91da,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3010:8caf:8d19:54b7:d72:91da]:443#NiREvil优选 | 移动 | Default | 1ms | 520mbps
+raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.40.200,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.40.200
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.220.224,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.220.224
+bestcf_pages_dev_nirevil_ipv4_txt,104.17.228.246,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.228.246:443#NiREvil优选 | 电信 | 104.17.228.246 | Default | 135ms | 215mbps
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,108.162.198.176,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.198.176
+bestcf_pages_dev_vvhan_ipv6_txt,2606:4700:99e3:6abd:5ed0:d57f:1375:2eff,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:99e3:6abd:5ed0:d57f:1375:2eff]:443#vvHan优选 | 移动 | Default | 2606:4700:99e3:6abd:5ed0:d57f:1375:2eff
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:b7b8:c1b6:bff7:3cdb,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:b7b8:c1b6:bff7:3cdb
+domain_ai_vps789,bbs.alipansou.com,443,latency_pool_skipped,declared buckets exhausted or capped,bbs.alipansou.com:443#AI优选 | bbs.alipansou.com
+moistr,162.159.40.181,2096,latency_pool_skipped,declared buckets exhausted or capped,162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.102.21,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.102.21
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:b715:5c9:46be:4ca4,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:b715:5c9:46be:4ca4
+bestcf_pages_dev_entryip_50_txt,104.25.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.25.0.1:443#104.25.0.1 | 缓存加速段，国内跨网流媒体分发利器
+domain_all,bestcf.030101.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,bestcf.030101.xyz:443#大佬维护 | MingYu
+domain_asia,qnb.com,443,latency_pool_skipped,declared buckets exhausted or capped,qnb.com:443#亚洲域名 | 卡塔尔国家银行
+domain_asia,starbucks.qa,443,latency_pool_skipped,declared buckets exhausted or capped,starbucks.qa:443#亚洲域名 | 卡塔尔星巴克
+wetest,104.19.47.29,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.47.29:443#微测优选 | 移动 | HKG | 104.19.47.29
+bestcf_pages_dev_entryip_50_txt,162.159.195.1,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.195.1:443#162.159.195.1 | 备用业务入口，路由宣告极其精准
+cfyes_ipv4,172.67.70.77,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.70.77:443#CFYes优选 | 移动 | 172.67.70.77
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c677:c614:7606:cec1:f722,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:c677:c614:7606:cec1:f722]:443#Uouin-74db09
+wetest,104.19.60.40,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.60.40:443#微测优选 | 移动 | HKG | 104.19.60.40
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700::c1:161e:6db9:360e,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700::c1:161e:6db9:360e]:443#IPDBv6-0ee246
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,104.19.47.150,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.47.150
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:3036:6ed4:ff6e:712c:4953:87a5,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3036:6ed4:ff6e:712c:4953:87a5]:443#CMLiussv6-3f85e6
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.221.189,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.221.189
+moistr,2606:4700:9ad1::c1e2:45b7,2096,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9ad1::c1e2:45b7]:2096#MoistR优选 | 移动 IPV6 01 | [2606:4700:9ad1::c1e2:45b7]:2096
+domain_ai_vps789,cloudflare.468123.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.468123.xyz:443#AI优选 | cloudflare.468123.xyz
+gshtwy_wetest_v4,104.19.47.29,2096,latency_pool_skipped,declared buckets exhausted or capped,104.19.47.29:2096#移动-HKG-2096-WS-TLS
+cfyes_ipv4,198.41.208.45,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.45:443#CFYes优选 | 移动 | 198.41.208.45
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:440e::4e0c:a40f,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:440e::4e0c:a40f]:443#WeTestV6-b4aa28
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:52::eef9:2eee,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:52::eef9:2eee]:443#WeTestV6-54f1f7
+moistr,2606:4700:54::2c87:cb79,2096,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:54::2c87:cb79]:2096#MoistR优选 | 电信 IPV6 03 | [2606:4700:54::2c87:cb79]:2096
+domain_all,store.ubi.com,443,latency_pool_skipped,declared buckets exhausted or capped,store.ubi.com:443#企业域名 | 育碧商城
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:3001:3dbf:f49c:8d76:a145:e3ad,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:3001:3dbf:f49c:8d76:a145:e3ad]:443#NiREvil优选 | 移动 | Default | 0ms | 318mbps
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:6556:90ef:fd0b:a5f9,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:6556:90ef:fd0b:a5f9
+gshtwy_wetest_v4,104.19.60.61,8443,latency_pool_skipped,declared buckets exhausted or capped,104.19.60.61:8443#移动-HKG-8443-WS-TLS
+cfyes_ipv6,2606:4700:9649:388:32fe:da47:6458:2206,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9649:388:32fe:da47:6458:2206]:443#CFYes优选 | 移动 | [2606:4700:9649:388:32fe:da47:6458:2206]
+domain_ai_vps789,qocu.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,qocu.cf.3666888.xyz:443#AI优选 | qocu.cf.3666888.xyz
+domain_asia,www.stheadline.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.stheadline.com:443#亚洲域名 | 香港星岛头条
+domain_asia,ir.yuntongxun.com,443,latency_pool_skipped,declared buckets exhausted or capped,ir.yuntongxun.com:443#亚洲域名 | 中国容联
+domain_all,www.affirm.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.affirm.com:443#更多选择 | Affirm
+raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.17.232.3,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.232.3
+bestcf_pages_dev_entryip_50_txt,141.101.120.1,443,latency_pool_skipped,declared buckets exhausted or capped,141.101.120.1:443#141.101.120.1 | 边缘端点，部分地区具备超额带宽
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:9ad8::6d69:55d7,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9ad8::6d69:55d7]:443#WeTestV6-327095
+domain_all,cu.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cu.877774.xyz:443#按运营商 | 联通QMS
+uouin,172.64.229.219,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.229.219:443#麒麟优选 | 多线 | 172.64.229.219 | 43.95ms | 0.38mb/s
+bestcf_pages_dev_entryip_50_txt,190.93.244.1,443,latency_pool_skipped,declared buckets exhausted or capped,190.93.244.1:443#190.93.244.1 | 链路冗余段，提供差异化出口路径选择
+bestcf_pages_dev_nirevil_ipv4_txt,104.18.15.110,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.15.110:443#NiREvil优选 | 电信 | 104.18.15.110 | Default | 133ms | 275mbps
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,172.64.52.86,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.52.86
+bestcf_pages_dev_entryip_50_txt,188.114.98.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.98.1:443#188.114.98.1 | 业务分流段，规避号段集中式QoS限速
+domain_ygkkk_all,yg12.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,172.64.155.94,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.155.94
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.17.127.147,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.127.147
+raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,104.18.33.198,443,latency_pool_skipped,declared buckets exhausted or capped,104.18.33.198
 domain_all,yg1.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg1.ygkkk.dpdns.org:443#大佬维护 | YGKKK
+domain_ai_vps789,cdn.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.cf.3666888.xyz:443#AI优选 | cdn.cf.3666888.xyz
+domain_ai_vps789,www.mc.js.cool,443,latency_pool_skipped,declared buckets exhausted or capped,www.mc.js.cool:443#AI优选 | www.mc.js.cool
+domain_ai_vps789,avido.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,avido.cf.3666888.xyz:443#AI优选 | avido.cf.3666888.xyz
+domain_ircf_all,atc.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,atc.ircf.space:443#IRCF优选 | Asre Telecom | atc.ircf.space
+domain_ai_vps789,www.fastsoso.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.fastsoso.cn:443#AI优选 | www.fastsoso.cn
+domain_ircf_all,mci.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,mci.ircf.space:443#IRCF优选 | MCI | mci.ircf.space
+domain_all,www.emerson.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.emerson.com:443#更多选择 | 艾默生
+domain_ai_vps789,adnjv.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,adnjv.cf.3666888.xyz:443#AI优选 | adnjv.cf.3666888.xyz
+domain_asia,foodpanda.hk,443,latency_pool_skipped,declared buckets exhausted or capped,foodpanda.hk:443#亚洲域名 | 香港富胖达
+uouin,104.19.156.239,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.156.239:443#麒麟优选 | 移动 | 104.19.156.239 | 50.71ms | 15.57mb/s
+moistr,2606:4700:4406::a677:399a,2096,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:4406::a677:399a]:2096#MoistR优选 | 电信 IPV6 01 | [2606:4700:4406::a677:399a]:2096
+bestcf_pages_dev_nirevil_ipv6_txt,2606:4700:9c63:d66f:644f:7d54:8ba5:db24,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:9c63:d66f:644f:7d54:8ba5:db24]:443#NiREvil优选 | 移动 | Default | 0ms | 426mbps
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:b715:d182:ac31:32f0,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:b715:d182:ac31:32f0
+domain_ai_vps789,cdn.2158.cc,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.2158.cc:443#AI优选 | cdn.2158.cc
+domain_all,columbia.edu,443,latency_pool_skipped,declared buckets exhausted or capped,columbia.edu:443#教育域名 | 哥伦比亚
+domain_ai_vps789,hfqek.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
+gslege,162.159.62.74,443,latency_pool_skipped,declared buckets exhausted or capped,162.159.62.74:443#Gslege优选 | 【测速 Nodes】66.77MB/s | 162.159.62.74
+domain_qms_all,na.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,na.877774.xyz:443#秋名山优选 | 美洲 | na.877774.xyz
+bestcf_pages_dev_nirevil_ipv4_txt,104.19.182.140,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.182.140:443#NiREvil优选 | 电信 | 104.19.182.140 | Default | 134ms | 245mbps
+bestcf_pages_dev_entryip_50_txt,104.21.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.0.1:443#104.21.0.1 | 全球负载网，三网通告择路兼容性强
+domain_ai_vps789,cdn.262832.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.262832.xyz:443#AI优选 | cdn.262832.xyz
+domain_ai_vps789,cmcc.cc.cd,443,latency_pool_skipped,declared buckets exhausted or capped,cmcc.cc.cd:443#AI优选 | cmcc.cc.cd
+domain_ygkkk_all,yg8.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg8.ygkkk.dpdns.org:443#甬哥优选 | yg8.ygkkk.dpdns.org
+wetest,104.19.60.61,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.60.61:443#微测优选 | 移动 | HKG | 104.19.60.61
+domain_all,cloudflare-ech.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare-ech.com:443#官方域名 | ECH
+domain_wuya_all,qms.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.1.hhhhh.eu.org:443#乌鸦优选 | qms1 | qms.1.hhhhh.eu.org
+uouin,104.17.49.209,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.49.209:443#麒麟优选 | 移动 | 104.17.49.209 | 50.23ms | 13.57mb/s
+bestcf_pages_dev_entryip_50_txt,104.24.0.1,443,latency_pool_skipped,declared buckets exhausted or capped,104.24.0.1:443#▼ Cloudflare Anycast Entry IP TOP50 | 2026.4
+gslege,172.64.157.139,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.157.139:443#Gslege优选 | 【测速 Nodes】65.44MB/s | 172.64.157.139
+bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,173.245.59.40,443,latency_pool_skipped,declared buckets exhausted or capped,173.245.59.40
+domain_asia,70mai.store,443,latency_pool_skipped,declared buckets exhausted or capped,70mai.store:443#亚洲域名 | 中国70迈
+domain_ai_vps789,kniu.cc,443,latency_pool_skipped,declared buckets exhausted or capped,kniu.cc:443#AI优选 | kniu.cc
+bestcf_pages_dev_vvhan_ipv4_txt,104.17.188.51,443,latency_pool_skipped,declared buckets exhausted or capped,104.17.188.51:443#vvHan优选 | 移动 | HKG | 104.17.188.51
+bestcf_pages_dev_entryip_50_txt,188.114.99.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.99.1:443#188.114.99.1 | 备用业务段，主段受限时的首选冗余
+domain_wuya_all,cm.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.3.hhhhh.eu.org:443#乌鸦优选 | cm3 | cm.3.hhhhh.eu.org
+domain_ai_vps789,freeyx.cloudflare88.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,freeyx.cloudflare88.eu.org:443#AI优选 | freeyx.cloudflare88.eu.org
+domain_all,www.zendesk.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.zendesk.com:443#更多选择 | Zendesk
+domain_ircf_all,arx.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,arx.ircf.space:443#IRCF优选 | Arax | arx.ircf.space
+domain_ai_vps789,cf-cname.xingpingcn.top,443,latency_pool_skipped,declared buckets exhausted or capped,cf-cname.xingpingcn.top:443#AI优选 | cf-cname.xingpingcn.top
+domain_all,www.udacity.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.udacity.com:443#教育域名 | Udacity
+uouin,104.16.150.146,443,latency_pool_skipped,declared buckets exhausted or capped,104.16.150.146:443#麒麟优选 | 移动 | 104.16.150.146 | 50.72ms | 15.04mb/s
+bestcf_pages_dev_entryip_50_txt,188.114.97.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.97.1:443#188.114.97.1 | 业务优选段，UDP/TCP通行率均衡
+domain_ai_vps789,6.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,6.cf.3666888.xyz:443#AI优选 | 6.cf.3666888.xyz
+uouin,104.20.24.221,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.24.221:443#麒麟优选 | 联通 | 104.20.24.221 | 63.13ms | 46.08mb/s
+domain_ircf_all,afn.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,afn.ircf.space:443#IRCF优选 | Afranet | afn.ircf.space
+domain_ai_vps789,cfsaas.080112.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cfsaas.080112.xyz:443#AI优选 | cfsaas.080112.xyz
+domain_ygkkk_all,yg5.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg5.ygkkk.dpdns.org:443#甬哥优选 | yg5.ygkkk.dpdns.org
+domain_ai_vps789,www.xiaoshuofen.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.xiaoshuofen.com:443#AI优选 | www.xiaoshuofen.com
+bestcf_pages_dev_gslege_DE_txt,104.21.0.5,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.0.5:443#Gslege优选 | de 【德国】 DE | 104.21.0.5
+domain_asia,pfizer.com.hk,443,latency_pool_skipped,declared buckets exhausted or capped,pfizer.com.hk:443#亚洲域名 | 中国香港辉瑞
+raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,104.19.35.155,443,latency_pool_skipped,declared buckets exhausted or capped,104.19.35.155
+domain_ai_vps789,www.sage.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.sage.com:443#AI优选 | www.sage.com
+domain_asia,www.allianz.com.my,443,latency_pool_skipped,declared buckets exhausted or capped,www.allianz.com.my:443#亚洲域名 | 大马安联
+uouin,108.162.195.132,443,latency_pool_skipped,declared buckets exhausted or capped,108.162.195.132:443#麒麟优选 | 电信 | 108.162.195.132 | 46.27ms | 66.11mb/s
+bestcf_pages_dev_gslege_NL_txt,188.114.96.4,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.4:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.4
+cfyes_ipv4,172.67.160.101,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.160.101:443#CFYes优选 | 移动 | 172.67.160.101
+uouin,172.67.75.144,443,latency_pool_skipped,declared buckets exhausted or capped,172.67.75.144:443#麒麟优选 | 联通 | 172.67.75.144 | 63.82ms | 49.85mb/s
+bestcf_pages_dev_gslege_DE_txt,104.21.0.9,443,latency_pool_skipped,declared buckets exhausted or capped,104.21.0.9:443#Gslege优选 | de 【德国】 DE | 104.21.0.9
+bestcf_pages_dev_gslege_NL_txt,188.114.96.7,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.7:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.7
+domain_asia,www.ooredoo.qa,443,latency_pool_skipped,declared buckets exhausted or capped,www.ooredoo.qa:443#亚洲域名 | 卡塔尔电信
+domain_ygkkk_all,yg4.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg4.ygkkk.dpdns.org:443#甬哥优选 | yg4.ygkkk.dpdns.org
+uouin,104.20.22.52,443,latency_pool_skipped,declared buckets exhausted or capped,104.20.22.52:443#麒麟优选 | 联通 | 104.20.22.52 | 62.51ms | 47.99mb/s
+domain_all,serviceshub.samsclub.com,443,latency_pool_skipped,declared buckets exhausted or capped,serviceshub.samsclub.com:443#企业域名 | 山姆会员
+domain_ygkkk_all,yg6.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg6.ygkkk.dpdns.org:443#甬哥优选 | yg6.ygkkk.dpdns.org
+domain_asia,news.cathaypacific.com,443,latency_pool_skipped,declared buckets exhausted or capped,news.cathaypacific.com:443#亚洲域名 | 香港国泰航空
+bestcf_pages_dev_gslege_NL_txt,188.114.96.9,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.9:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.9
+bestcf_pages_dev_gslege_NL_txt,188.114.96.1,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.1:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.1
+bestcf_pages_dev_gslege_NL_txt,188.114.96.8,443,latency_pool_skipped,declared buckets exhausted or capped,188.114.96.8:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.8
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c6d4:af96:6677:59bf:faec,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443#Uouin-dec5f3
+domain_asia,www.mplus.org.hk,443,latency_pool_skipped,declared buckets exhausted or capped,www.mplus.org.hk:443#亚洲域名 | 香港M+博物馆
+domain_all,cloudflare-eth.com,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare-eth.com:443#官方域名 | Web3
+domain_all,cloudflare.dev,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.dev:443#官方域名 | Developers
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,198.41.208.173,443,latency_pool_skipped,declared buckets exhausted or capped,198.41.208.173
+domain_qms_all,eur.877774.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,eur.877774.xyz:443#秋名山优选 | 欧洲 | eur.877774.xyz
+vps789_top100,cf.v8.longsays.com,443,latency_pool_skipped,declared buckets exhausted or capped,cf.v8.longsays.com:443#VPS789优选 | cf.v8.longsays.com
+domain_asia,yesstyle.com,443,latency_pool_skipped,declared buckets exhausted or capped,yesstyle.com:443#亚洲域名 | 中国香港YesStyle
+domain_ai_vps789,cfyx.qdqqd.com,443,latency_pool_skipped,declared buckets exhausted or capped,cfyx.qdqqd.com:443#AI优选 | cfyx.qdqqd.com
+domain_wuya_all,yd.4.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.4.hhhhh.eu.org:443#乌鸦优选 | 移动4 | yd.4.hhhhh.eu.org
+domain_ircf_all,ast.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ast.ircf.space:443#IRCF优选 | Asiatech | ast.ircf.space
+domain_all,cloudflare.182682.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.182682.xyz:443#大佬维护 | WeTest
+vps789_top100,www.akasantech.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.akasantech.com:443#VPS789优选 | www.akasantech.com
+domain_asia,jebsen.com,443,latency_pool_skipped,declared buckets exhausted or capped,jebsen.com:443#亚洲域名 | 中国香港捷成
+domain_wuya_all,cm.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,cm.2.hhhhh.eu.org:443#乌鸦优选 | cm2 | cm.2.hhhhh.eu.org
+domain_wuya_all,qms.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.2.hhhhh.eu.org:443#乌鸦优选 | qms2 | qms.2.hhhhh.eu.org
+domain_all,cdn.jsdelivr.net,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.jsdelivr.net:443#更多选择 | jsDelivr
+domain_ai_vps789,uac.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,uac.cf.3666888.xyz:443#AI优选 | uac.cf.3666888.xyz
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2606:4700:0:bc87:e669:5390:d287:eaeb,443,latency_pool_skipped,declared buckets exhausted or capped,[2606:4700:0:bc87:e669:5390:d287:eaeb]:443#IPDBv6-5c38310
+domain_wuya_all,bp.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.hhhhh.eu.org:443#乌鸦优选 | bp | bp.hhhhh.eu.org
+domain_ai_vps789,10.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,10.cf.3666888.xyz:443#AI优选 | 10.cf.3666888.xyz
+domain_all,digitalocean.com,443,latency_pool_skipped,declared buckets exhausted or capped,digitalocean.com:443#更多选择 | DigitalOcean
+domain_wuya_all,wto.3.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.3.hhhhh.eu.org:443#乌鸦优选 | wto3 | wto.3.hhhhh.eu.org
+domain_all,bluehost.com,443,latency_pool_skipped,declared buckets exhausted or capped,bluehost.com:443#企业域名 | BlueHost
+domain_wuya_all,dx.5.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
+domain_wuya_all,wto.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,wto.1.hhhhh.eu.org:443#乌鸦优选 | wto1 | wto.1.hhhhh.eu.org
+vps789_top100,eteaf.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
+domain_ai_vps789,cf.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.cf.3666888.xyz:443#AI优选 | cf.cf.3666888.xyz
+domain_all,cf.tencentapp.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cf.tencentapp.cn:443#大佬维护 | KTFF
+domain_wuya_all,qms.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,qms.hhhhh.eu.org:443#乌鸦优选 | qms | qms.hhhhh.eu.org
+domain_ai_vps789,cf.godns.cc,443,latency_pool_skipped,declared buckets exhausted or capped,cf.godns.cc:443#AI优选 | cf.godns.cc
+domain_all,woodsbagot.com,443,latency_pool_skipped,declared buckets exhausted or capped,woodsbagot.com:443#更多选择 | 伍兹贝格
+domain_wuya_all,yd.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
+domain_all,engage.cloudflareclient.com,443,latency_pool_skipped,declared buckets exhausted or capped,engage.cloudflareclient.com:443#官方入口 | WireGuard
+domain_ai_vps789,3.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,3.cf.3666888.xyz:443#AI优选 | 3.cf.3666888.xyz
+domain_wuya_all,bp.2.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.2.hhhhh.eu.org:443#乌鸦优选 | bp2 | bp.2.hhhhh.eu.org
+domain_ircf_all,ipv4.ircf.space,443,latency_pool_skipped,declared buckets exhausted or capped,ipv4.ircf.space:443#IRCF优选 | Universal IPv4 | ipv4.ircf.space
+domain_wuya_all,bp.1.hhhhh.eu.org,443,latency_pool_skipped,declared buckets exhausted or capped,bp.1.hhhhh.eu.org:443#乌鸦优选 | bp1 | bp.1.hhhhh.eu.org
+vps789_top100,cfgo.timelate.com,443,latency_pool_skipped,declared buckets exhausted or capped,cfgo.timelate.com:443#VPS789优选 | cfgo.timelate.com
+domain_all,www.speedtest.net,443,latency_pool_skipped,declared buckets exhausted or capped,www.speedtest.net:443#更多选择 | Ookla
+domain_ygkkk_all,yg11.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg11.ygkkk.dpdns.org:443#甬哥优选 | yg11.ygkkk.dpdns.org
+domain_ai_vps789,2.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,2.cf.3666888.xyz:443#AI优选 | 2.cf.3666888.xyz
+domain_ai_vps789,cf1s.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf1s.cf.3666888.xyz:443#AI优选 | cf1s.cf.3666888.xyz
+domain_ai_vps789,1.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
+domain_ai_vps789,cloudflare.idc.rocks,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.idc.rocks:443#AI优选 | cloudflare.idc.rocks
+moistr,cloudflare.idc.rocks,2096,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.idc.rocks:2096#MoistR优选 | 优选域名 02 | cloudflare.idc.rocks:2096
+raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,2606:4700:a8:af22:b715:ae82:795f:f9a2,443,latency_pool_skipped,declared buckets exhausted or capped,2606:4700:a8:af22:b715:ae82:795f:f9a2
+domain_ai_vps789,cfvip.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cfvip.cf.3666888.xyz:443#AI优选 | cfvip.cf.3666888.xyz
+domain_ai_vps789,www.swowd.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.swowd.com:443#AI优选 | www.swowd.com
+domain_ygkkk_all,yg7.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg7.ygkkk.dpdns.org:443#甬哥优选 | yg7.ygkkk.dpdns.org
+domain_all,www.transunion.hk,443,latency_pool_skipped,declared buckets exhausted or capped,www.transunion.hk:443#更多选择 | 香港环联
+domain_ai_vps789,www.mlkj888.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.mlkj888.com:443#AI优选 | www.mlkj888.com
+domain_ai_vps789,cdn.204910.best,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.204910.best:443#AI优选 | cdn.204910.best
+domain_asia,www.aeon.info,443,latency_pool_skipped,declared buckets exhausted or capped,www.aeon.info:443#亚洲域名 | 中国香港永旺
+domain_asia,www.aeon.com.hk,443,latency_pool_skipped,declared buckets exhausted or capped,www.aeon.com.hk:443#亚洲域名 | 中国香港永旺
+vps789_top100,edgeone.gh-proxy.org,443,latency_pool_skipped,declared buckets exhausted or capped,edgeone.gh-proxy.org:443#VPS789优选 | edgeone.gh-proxy.org
+domain_ai_vps789,api.gzcrtw.com,443,latency_pool_skipped,declared buckets exhausted or capped,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
+domain_senflare_all,cloudflare.seeck.cn,443,latency_pool_skipped,declared buckets exhausted or capped,cloudflare.seeck.cn:443#Senflare优选 | 三网 | cloudflare.seeck.cn
+domain_asia,batdongsan.com.vn,443,latency_pool_skipped,declared buckets exhausted or capped,batdongsan.com.vn:443#亚洲域名 | 越南房产网
+domain_all,www.broadcom.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.broadcom.com:443#更多选择 | 博通
+domain_ai_vps789,8.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,8.cf.3666888.xyz:443#AI优选 | 8.cf.3666888.xyz
+domain_asia,deepin.org,443,latency_pool_skipped,declared buckets exhausted or capped,deepin.org:443#亚洲域名 | 中国深度系统
+domain_ai_vps789,dongbanghong.com,443,latency_pool_skipped,declared buckets exhausted or capped,dongbanghong.com:443#AI优选 | dongbanghong.com
+raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,2a06:98c1:3121:c677:c614:1f96:d4bf:a723,443,latency_pool_skipped,declared buckets exhausted or capped,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443#Uouin-be05b8
+domain_ai_vps789,cdn.091224.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
+vps789_top100,china-mobile.cname.cloudflare.468123.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,china-mobile.cname.cloudflare.468123.xyz:443#VPS789优选 | china-mobile.cname.cloudflare.468123.xyz
+domain_ai_vps789,5.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,5.cf.3666888.xyz:443#AI优选 | 5.cf.3666888.xyz
+uouin,172.64.40.162,443,latency_pool_skipped,declared buckets exhausted or capped,172.64.40.162:443#麒麟优选 | 电信 | 172.64.40.162 | 46.41ms | 66.03mb/s
+domain_ai_vps789,11.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,11.cf.3666888.xyz:443#AI优选 | 11.cf.3666888.xyz
+vps789_top100,cmcc.vvvv.ee,443,latency_pool_skipped,declared buckets exhausted or capped,cmcc.vvvv.ee:443#VPS789优选 | cmcc.vvvv.ee
+domain_asia,www.nestle.com.cn,443,latency_pool_skipped,declared buckets exhausted or capped,www.nestle.com.cn:443#亚洲域名 | 中国雀巢
+bestcf_pages_dev_vps789_top10_txt,a.lma.de5.net,443,latency_pool_skipped,declared buckets exhausted or capped,a.lma.de5.net:443#VPS789优选 | a.lma.de5.net
+domain_ai_vps789,eii.at,443,latency_pool_skipped,declared buckets exhausted or capped,eii.at:443#AI优选 | eii.at
+domain_ygkkk_all,yg9.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg9.ygkkk.dpdns.org:443#甬哥优选 | yg9.ygkkk.dpdns.org
+domain_asia,jobsdb.com,443,latency_pool_skipped,declared buckets exhausted or capped,jobsdb.com:443#亚洲域名 | 中国香港JobsDB
+vps789_top100,store.epicgames.com,443,latency_pool_skipped,declared buckets exhausted or capped,store.epicgames.com:443#VPS789优选 | store.epicgames.com
+vps789_top100,isp.254301.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,isp.254301.xyz:443#VPS789优选 | isp.254301.xyz
+vps789_top100,cf.nyanya.moe,443,latency_pool_skipped,declared buckets exhausted or capped,cf.nyanya.moe:443#VPS789优选 | cf.nyanya.moe
+vps789_top100,cf.553314.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,cf.553314.xyz:443#VPS789优选 | cf.553314.xyz
+domain_ygkkk_all,yg2.ygkkk.dpdns.org,443,latency_pool_skipped,declared buckets exhausted or capped,yg2.ygkkk.dpdns.org:443#甬哥优选 | yg2.ygkkk.dpdns.org
+domain_ai_vps789,4.cf.3666888.xyz,443,latency_pool_skipped,declared buckets exhausted or capped,4.cf.3666888.xyz:443#AI优选 | 4.cf.3666888.xyz
+domain_ai_vps789,www.5199dy.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.5199dy.com:443#AI优选 | www.5199dy.com
+domain_asia,www.bumrungrad.com,443,latency_pool_skipped,declared buckets exhausted or capped,www.bumrungrad.com:443#亚洲域名 | 泰国康民
+tiancheng2,43.133.61.219,443,service_check_failed,service_score=0 < 2,43.133.61.219:443#天诚优选2 | 坡县狮城 | SG | 43.133.61.219:443
+bestcf_pages_dev_tiancheng_hk_txt,206.237.17.52,443,region_unknown,exit country unavailable,206.237.17.52:443#天诚优选1 | 港岛古惑 | HK | 206.237.17.52:443
+tiancheng2,47.83.14.42,8443,region_unknown,exit country unavailable,47.83.14.42:8443#天诚优选2 | 港岛古惑 | HK | 47.83.14.42:8443
