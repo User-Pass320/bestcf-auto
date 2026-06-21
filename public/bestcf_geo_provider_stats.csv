@@ -1,3 +1,3 @@
 ﻿provider,total_geo_results,covered_count,coverage_rate,agree_count,agree_rate,disagree_count,unknown_count,gb_count,provider_country_top,selected_country_top
-ping0,326,325,0.996933,325,1.000000,0,1,0,HK:286|SG:18|US:11|JP:5|KR:5,HK:286|SG:19|US:11|JP:5|KR:5
-ipwhois,326,1,0.003067,1,1.000000,0,325,0,SG:1,HK:286|SG:19|US:11|JP:5|KR:5
+ping0,438,436,0.995434,436,1.000000,0,2,0,HK:379|JP:30|KR:13|SG:10|TW:2|US:2,HK:379|JP:30|KR:13|SG:12|TW:2|US:2
+ipwhois,438,2,0.004566,2,1.000000,0,436,0,SG:2,HK:379|JP:30|KR:13|SG:12|TW:2|US:2
