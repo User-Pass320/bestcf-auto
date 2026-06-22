@@ -3,6 +3,17 @@ $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $projectRoot
 
+function Assert-NativeCommandSucceeded {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$CommandName
+    )
+
+    if ($LASTEXITCODE -ne 0) {
+        throw "$CommandName failed with exit code $LASTEXITCODE"
+    }
+}
+
 $mihomo = "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
 if (-not (Test-Path -LiteralPath $mihomo)) {
     throw "mihomo not found: $mihomo"
@@ -19,11 +30,10 @@ python .\bestcf_tool.py `
     --template .\template.yaml `
     --mihomo $mihomo `
     --output .\public\bestcf_final.txt
+Assert-NativeCommandSucceeded "bestcf_tool.py update"
 
 python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1
-if ($LASTEXITCODE -ne 0) {
-    throw "Generated bestcf_final.txt failed validation."
-}
+Assert-NativeCommandSucceeded "bestcf_tool.py validate-output"
 
 $lineCount = (Get-Content -LiteralPath ".\public\bestcf_final.txt" | Measure-Object -Line).Lines
 
@@ -43,6 +53,8 @@ if ($LASTEXITCODE -eq 0) {
 
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss K"
 git commit -m "Update BestCF results ($timestamp)"
+Assert-NativeCommandSucceeded "git commit"
 git push
+Assert-NativeCommandSucceeded "git push"
 
 Write-Host "BestCF local update pushed. Lines: $lineCount"
