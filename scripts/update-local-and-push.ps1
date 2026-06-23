@@ -3,6 +3,20 @@ $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $projectRoot
 
+$logDir = Join-Path $projectRoot "bestcf_work"
+New-Item -ItemType Directory -Force -Path $logDir | Out-Null
+$logPath = Join-Path $logDir "update-local-and-push.log"
+Start-Transcript -Path $logPath -Append | Out-Null
+
+trap {
+    Write-Error $_
+    try {
+        Stop-Transcript | Out-Null
+    } catch {
+    }
+    exit 1
+}
+
 function Assert-NativeCommandSucceeded {
     param(
         [Parameter(Mandatory = $true)]
@@ -48,13 +62,15 @@ git add public/
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {
     Write-Host "No public result changes to commit."
+    Stop-Transcript | Out-Null
     exit 0
 }
 
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss K"
 git commit -m "Update BestCF results ($timestamp)"
 Assert-NativeCommandSucceeded "git commit"
-git push
+git push --porcelain
 Assert-NativeCommandSucceeded "git push"
 
 Write-Host "BestCF local update pushed. Lines: $lineCount"
+Stop-Transcript | Out-Null
