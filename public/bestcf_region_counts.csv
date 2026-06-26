@@ -1,8 +1,6 @@
 ﻿exit_region_name,exit_country_code,eligible_count,selected_count,min_latency_ms,median_latency_ms
-印度尼西亚,ID,1,1,479,479
-台湾,TW,1,1,390,390
-马来西亚,MY,1,1,466,466
-韩国,KR,8,8,551,682
-新加坡,SG,20,20,393,633
-日本,JP,23,23,384,697
-香港,HK,324,50,309,480
+台湾,TW,1,1,696,696
+韩国,KR,6,6,544,637
+新加坡,SG,8,8,511,740
+日本,JP,10,10,421,672
+香港,HK,228,50,207,588
