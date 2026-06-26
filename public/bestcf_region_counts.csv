@@ -1,6 +1,5 @@
 ﻿exit_region_name,exit_country_code,eligible_count,selected_count,min_latency_ms,median_latency_ms
-台湾,TW,1,1,696,696
-韩国,KR,6,6,544,637
-新加坡,SG,8,8,511,740
-日本,JP,10,10,421,672
-香港,HK,228,50,207,588
+韩国,KR,4,4,673,708
+新加坡,SG,10,10,401,656
+日本,JP,24,24,372,702
+香港,HK,329,50,319,469
