@@ -1,1 +1,2 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
+MY,马来西亚,142.111.143.110,443,142.111.143.110:443,raw_githubusercontent_com_svip_s_cloudflare_ip_refs_heads_main_best_ips_txt,483,,ping0:MY,expired,geo_only,,142.111.143.110:443#MY [优选高速 823.01ms 10.36Mbps]
