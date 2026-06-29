@@ -107,6 +107,8 @@ scripts/update-local-and-push.ps1
 
 它会本地生成新的 `public/bestcf_final.txt`，校验至少 10 行，然后提交并推送到 GitHub。Cloudflare Pages 会自动重新部署 `public/`。
 
+本机更新默认禁用 `geo` 与 `geo hint` 缓存，并使用 `--geo-concurrency 16` 并发探测出口地理位置；最终地区以本轮实时 `https://ip.ping0.cc/geo` 探测结果为准，避免 Cloudflare Anycast 节点复用旧出口地区。
+
 默认 `balanced` 配置会限制每个出口国家最多 50 个节点，避免单个国家占满结果。非偏好国家会写入：
 
 ```text

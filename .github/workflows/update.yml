@@ -74,7 +74,10 @@ jobs:
             --profile balanced \
             --workdir ./bestcf_work \
             --template ./template.yaml \
-            --mihomo ./bin/mihomo
+            --mihomo ./bin/mihomo \
+            --no-geo-cache \
+            --no-geo-hint-cache \
+            --geo-concurrency 16
 
       - name: Validate generated result
         run: |

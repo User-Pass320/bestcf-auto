@@ -43,7 +43,10 @@ python .\bestcf_tool.py `
     --workdir .\bestcf_work `
     --template .\template.yaml `
     --mihomo $mihomo `
-    --output .\public\bestcf_final.txt
+    --output .\public\bestcf_final.txt `
+    --no-geo-cache `
+    --no-geo-hint-cache `
+    --geo-concurrency 16
 Assert-NativeCommandSucceeded "bestcf_tool.py update"
 
 python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1
