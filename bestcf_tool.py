@@ -14,6 +14,7 @@ import argparse
 import collections
 import csv
 import dataclasses
+import hashlib
 import http.client
 import ipaddress
 import json
@@ -277,6 +278,15 @@ class GeoDecision:
     policy: str = DEFAULT_GEO_POLICY_VERSION
     selected_provider: str = ""
     fallback_used: bool = False
+
+
+@dataclasses.dataclass(slots=True)
+class HkSuppressionDecision:
+    suppress: bool
+    bucket_key: str = ""
+    reason: str = ""
+    total: int = 0
+    hk: int = 0
 
 
 def geo_result_fields(geo: GeoDecision) -> dict[str, Any]:
@@ -573,6 +583,17 @@ def ip_prefix_for_hint(host: str) -> str | None:
     else:
         network = ipaddress.ip_network(f"{ip}/48", strict=False)
     return str(network)
+
+
+def ip_prefix_for_runtime_suppression(host: str, ipv4_bits: int = 16, ipv6_bits: int = 32) -> str | None:
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        return None
+    bits = int(ipv4_bits if ip.version == 4 else ipv6_bits)
+    max_bits = 32 if ip.version == 4 else 128
+    bits = max(0, min(max_bits, bits))
+    return str(ipaddress.ip_network(f"{ip}/{bits}", strict=False))
 
 
 def empty_geo_hint_cache() -> dict[str, Any]:
@@ -2779,6 +2800,10 @@ def test_geo_chunk(
         for proxy_name, candidate in name_map.items():
             hint = geo_hint_fields(candidate, args)
             delay = float(delay_map.get(candidate.key, 0))
+            decision, explore = worker_hk_suppression_decision(candidate, args)
+            if decision.suppress and not explore:
+                results.append(make_geo_quota_skipped_result(candidate, delay, decision, args))
+                continue
             switch_error = select_proxy(controller_port, proxy_name, timeout=args.timeout)
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
@@ -2819,6 +2844,7 @@ def test_geo_chunk(
                     )
                 )
                 if code:
+                    update_hk_runtime_suppression_stats(candidate, code, args)
                     geo_hint_cache_update(candidate, results[-1], args, time.time())
                 continue
             if not args.allow_unknown_region and not code:
@@ -2853,6 +2879,7 @@ def test_geo_chunk(
                     **hint,
                 )
                 geo_cache_update(candidate, result, args, time.time())
+                update_hk_runtime_suppression_stats(candidate, code, args)
                 geo_hint_cache_update(candidate, result, args, time.time())
                 results.append(result)
                 continue
@@ -2871,6 +2898,7 @@ def test_geo_chunk(
                 **hint,
             )
             geo_cache_update(candidate, result, args, time.time())
+            update_hk_runtime_suppression_stats(candidate, code, args)
             geo_hint_cache_update(candidate, result, args, time.time())
             results.append(result)
     except Exception as exc:
@@ -3455,6 +3483,197 @@ def refill_budget_remaining(args: argparse.Namespace) -> float:
     return args.time_budget - elapsed - max(0, args.time_safety_margin)
 
 
+def hk_suppression_bucket_keys(candidate: Candidate, args: argparse.Namespace) -> list[str]:
+    keys: list[str] = []
+    scope = str(getattr(args, "hk_suppress_bucket_scope", "source,prefix") or "").lower()
+    enabled = {part.strip().replace("-", "_") for part in scope.split(",") if part.strip()}
+    if "source" in enabled:
+        keys.append(f"source:{candidate.source}")
+    if "source_declared" in enabled or "source_decl" in enabled:
+        keys.append(f"source_declared:{candidate.source}|{candidate.declared_region or 'UNKNOWN'}")
+    if "prefix" in enabled:
+        prefix = ip_prefix_for_runtime_suppression(
+            candidate.host,
+            getattr(args, "hk_suppress_ipv4_prefix", 16),
+            getattr(args, "hk_suppress_ipv6_prefix", 32),
+        )
+        if prefix:
+            keys.append(f"prefix:{prefix}")
+    return keys
+
+
+def hk_bucket_is_confident(
+    counter: collections.Counter[str],
+    min_samples: int,
+    confidence: float,
+) -> tuple[bool, int, int]:
+    counts = {str(code).upper(): int(count) for code, count in counter.items() if int(count) > 0}
+    total = sum(counts.values())
+    hk = counts.get("HK", 0)
+    non_hk = total - hk
+    if total <= 0:
+        return False, total, hk
+    return (
+        total >= min_samples
+        and hk / total >= confidence
+        and non_hk == 0
+    ), total, hk
+
+
+def should_suppress_likely_hk(
+    candidate: Candidate,
+    bucket_stats: dict[str, collections.Counter[str]],
+    hk_count: int,
+    args: argparse.Namespace,
+) -> HkSuppressionDecision:
+    if not getattr(args, "hk_suppression", False):
+        return HkSuppressionDecision(False)
+    probe_cap = int(getattr(args, "hk_probe_cap", 0) or 0)
+    if probe_cap <= 0:
+        country_max = int(getattr(args, "country_max", 0) or 0)
+        multiplier = float(getattr(args, "hk_probe_cap_multiplier", 3.0) or 0.0)
+        probe_cap = int(country_max * multiplier) if country_max > 0 else 0
+    if probe_cap <= 0 or hk_count < probe_cap:
+        return HkSuppressionDecision(False)
+
+    min_samples = max(1, int(getattr(args, "hk_suppress_min_samples", 20)))
+    confidence = max(0.0, min(1.0, float(getattr(args, "hk_suppress_confidence", 0.98))))
+    for key in hk_suppression_bucket_keys(candidate, args):
+        confident, total, hk = hk_bucket_is_confident(bucket_stats.get(key, collections.Counter()), min_samples, confidence)
+        if confident:
+            return HkSuppressionDecision(
+                True,
+                bucket_key=key,
+                reason=f"likely HK bucket {key}: {hk}/{total} HK after HK probe cap {probe_cap}",
+                total=total,
+                hk=hk,
+            )
+    return HkSuppressionDecision(False)
+
+
+def stable_exploration_sample(endpoint: str, rate: float) -> bool:
+    rate = max(0.0, min(1.0, float(rate)))
+    if rate <= 0.0:
+        return False
+    if rate >= 1.0:
+        return True
+    digest = hashlib.sha1(endpoint.encode("utf-8", errors="replace")).digest()
+    value = int.from_bytes(digest[:8], "big") / float(2**64 - 1)
+    return value < rate
+
+
+def make_geo_quota_skipped_result(
+    candidate: Candidate,
+    delay: int | float,
+    decision: HkSuppressionDecision,
+    args: argparse.Namespace,
+) -> TestResult:
+    return TestResult(
+        candidate,
+        False,
+        "geo_quota_skipped",
+        decision.reason or "likely HK bucket suppressed after runtime quota",
+        latency_ms=float(delay),
+        exit_region="未知",
+        geo_cache_status="skipped",
+        selection_stage="quota_suppressed",
+        **geo_hint_fields(candidate, args),
+    )
+
+
+def update_hk_suppression_stats(
+    bucket_stats: dict[str, collections.Counter[str]],
+    result: TestResult,
+    args: argparse.Namespace,
+) -> None:
+    code = (result.exit_country_code or "").upper()
+    if not code:
+        return
+    for key in hk_suppression_bucket_keys(result.candidate, args):
+        bucket_stats.setdefault(key, collections.Counter())[code] += 1
+
+
+def update_hk_runtime_suppression_stats(candidate: Candidate, code: str | None, args: argparse.Namespace) -> None:
+    code = (code or "").upper()
+    if not code or not hk_runtime_suppression_enabled(args):
+        return
+    lock = getattr(args, "hk_runtime_lock", None)
+
+    def update() -> None:
+        stats = getattr(args, "hk_runtime_bucket_stats", None)
+        if not isinstance(stats, dict):
+            stats = {}
+            setattr(args, "hk_runtime_bucket_stats", stats)
+        for key in hk_suppression_bucket_keys(candidate, args):
+            stats.setdefault(key, collections.Counter())[code] += 1
+        if code == "HK":
+            setattr(args, "hk_runtime_hk_count", int(getattr(args, "hk_runtime_hk_count", 0) or 0) + 1)
+
+    if lock is None:
+        update()
+    else:
+        with lock:
+            update()
+
+
+def hk_probe_cap(args: argparse.Namespace) -> int:
+    cap = int(getattr(args, "hk_probe_cap", 0) or 0)
+    if cap > 0:
+        return cap
+    country_max = int(getattr(args, "country_max", 0) or 0)
+    multiplier = float(getattr(args, "hk_probe_cap_multiplier", 3.0) or 0.0)
+    return int(country_max * multiplier) if country_max > 0 else 0
+
+
+def hk_runtime_suppression_enabled(args: argparse.Namespace) -> bool:
+    return (
+        bool(getattr(args, "hk_suppression", False))
+        and getattr(args, "selection_mode", "preferred") == "all-regions"
+        and getattr(args, "hk_suppress_strategy", "iterative") == "worker"
+    )
+
+
+def init_hk_runtime_suppression(args: argparse.Namespace) -> None:
+    args.hk_runtime_bucket_stats = {}
+    args.hk_runtime_lock = threading.Lock()
+    args.hk_runtime_hk_count = 0
+    args.hk_runtime_quota_skipped = 0
+    args.hk_runtime_explored = 0
+    args.hk_runtime_suppress_logs = 0
+
+
+def worker_hk_suppression_decision(candidate: Candidate, args: argparse.Namespace) -> tuple[HkSuppressionDecision, bool]:
+    if not hk_runtime_suppression_enabled(args):
+        return HkSuppressionDecision(False), False
+    lock = getattr(args, "hk_runtime_lock", None)
+
+    def decide() -> tuple[HkSuppressionDecision, bool]:
+        stats = getattr(args, "hk_runtime_bucket_stats", {})
+        hk_count = int(getattr(args, "hk_runtime_hk_count", 0) or 0)
+        decision = should_suppress_likely_hk(candidate, stats, hk_count, args)
+        if not decision.suppress:
+            return decision, False
+        if stable_exploration_sample(candidate.endpoint, args.hk_suppress_explore_rate):
+            args.hk_runtime_explored = int(getattr(args, "hk_runtime_explored", 0) or 0) + 1
+            return decision, True
+        args.hk_runtime_quota_skipped = int(getattr(args, "hk_runtime_quota_skipped", 0) or 0) + 1
+        log_limit = int(getattr(args, "hk_suppress_log_limit", 12) or 0)
+        log_count = int(getattr(args, "hk_runtime_suppress_logs", 0) or 0)
+        if log_count < log_limit:
+            print(
+                f"[geo-quota] suppress bucket={decision.bucket_key} "
+                f"reason={decision.hk}/{decision.total} HK; endpoint={candidate.endpoint}",
+                flush=True,
+            )
+            args.hk_runtime_suppress_logs = log_count + 1
+        return decision, False
+
+    if lock is None:
+        return decide()
+    with lock:
+        return decide()
+
+
 def run_geo_batch(
     items: list[tuple[str, Candidate, int]],
     template_proxy: dict[str, Any],
@@ -3464,6 +3683,9 @@ def run_geo_batch(
     if not items:
         return []
     stage_started = time.monotonic()
+    worker_suppression = hk_runtime_suppression_enabled(args) and stage == "all_regions"
+    if worker_suppression:
+        init_hk_runtime_suppression(args)
     live_items: list[tuple[str, Candidate, int]] = []
     geo_results: list[TestResult] = []
     for _proxy_name, candidate, delay in items:
@@ -3482,6 +3704,8 @@ def run_geo_batch(
                 error=f"{code} not in {','.join(sorted(args.preferred_countries))}",
             )
         geo_results.append(result)
+        if result.exit_country_code:
+            update_hk_runtime_suppression_stats(candidate, result.exit_country_code, args)
     cached_count = len(geo_results)
     if cached_count:
         print(f"[geo-{stage}-cache] hit={cached_count}; live={len(live_items)}", flush=True)
@@ -3506,11 +3730,18 @@ def run_geo_batch(
             geo_results.extend(chunk_results)
             done += len(chunk_results)
             ok_count = sum(1 for result in geo_results if result.ok)
-            print(f"[geo-{stage} {done}/{total}] cached={cached_count} preferred={ok_count}", flush=True)
+            print(f"[geo-{stage} {done}/{total}] cached={cached_count} geo_ok={ok_count}", flush=True)
     elapsed = time.monotonic() - stage_started
     key = f"geo_{stage}_test"
     args.timings[key] = args.timings.get(key, 0.0) + elapsed
     args.timings["geo_test"] = args.timings.get("geo_test", 0.0) + elapsed
+    if worker_suppression:
+        print(
+            f"[geo-quota-worker-summary] hk={int(getattr(args, 'hk_runtime_hk_count', 0) or 0)}; "
+            f"skipped={int(getattr(args, 'hk_runtime_quota_skipped', 0) or 0)}; "
+            f"explored={int(getattr(args, 'hk_runtime_explored', 0) or 0)}",
+            flush=True,
+        )
     return geo_results
 
 
@@ -3622,6 +3853,114 @@ def run_declared_round_robin_geo_tests(
     )
 
 
+def run_all_regions_geo_tests_hk_two_phase(
+    eligible: list[tuple[str, Candidate, int]],
+    latency_failures: list[TestResult],
+    template_proxy: dict[str, Any],
+    args: argparse.Namespace,
+) -> list[TestResult]:
+    geo_results: list[TestResult] = []
+    bucket_stats: dict[str, collections.Counter[str]] = {}
+    geo_tested = 0
+    quota_skipped = 0
+    explored = 0
+    suppress_logs = 0
+    refill_stop_reason = "latency candidates exhausted"
+    cap = hk_probe_cap(args)
+    max_geo_tested = int(getattr(args, "geo_refill_max_tested", 0) or 0)
+
+    requested_probe_size = int(getattr(args, "hk_suppress_probe_batch_size", 0) or 0)
+    if requested_probe_size <= 0:
+        requested_probe_size = max(cap, int(getattr(args, "geo_refill_batch_size", 75) or 75))
+    probe_size = min(len(eligible), max(1, requested_probe_size))
+    if max_geo_tested > 0:
+        probe_size = min(probe_size, max_geo_tested)
+
+    probe_batch = eligible[:probe_size]
+    remaining = list(eligible[probe_size:])
+    if probe_batch:
+        probe_results = run_geo_batch(probe_batch, template_proxy, args, "all_regions")
+        geo_results.extend(probe_results)
+        geo_tested += len(probe_batch)
+        for result in probe_results:
+            update_hk_suppression_stats(bucket_stats, result, args)
+    ok_counts = preferred_counts([result for result in geo_results if result.ok])
+    print(
+        f"[geo-quota-probe] tested={geo_tested}; hk={ok_counts.get('HK', 0)}; "
+        f"non_hk={sum(count for code, count in ok_counts.items() if code != 'HK')}; "
+        f"remaining={len(remaining)}",
+        flush=True,
+    )
+
+    test_items: list[tuple[str, Candidate, int]] = []
+    skipped_latency_pool: list[tuple[str, Candidate, int]] = []
+    hk_count = ok_counts.get("HK", 0)
+    for item in remaining:
+        _proxy_name, candidate, delay = item
+        if max_geo_tested > 0 and geo_tested + len(test_items) >= max_geo_tested:
+            skipped_latency_pool.append(item)
+            continue
+        decision = should_suppress_likely_hk(candidate, bucket_stats, hk_count, args)
+        if decision.suppress:
+            if stable_exploration_sample(candidate.endpoint, args.hk_suppress_explore_rate):
+                explored += 1
+                test_items.append(item)
+            else:
+                quota_skipped += 1
+                geo_results.append(make_geo_quota_skipped_result(candidate, delay, decision, args))
+                if suppress_logs < int(getattr(args, "hk_suppress_log_limit", 12)):
+                    print(
+                        f"[geo-quota] suppress bucket={decision.bucket_key} "
+                        f"reason={decision.hk}/{decision.total} HK; endpoint={candidate.endpoint}",
+                        flush=True,
+                    )
+                    suppress_logs += 1
+            continue
+        test_items.append(item)
+
+    if skipped_latency_pool:
+        refill_stop_reason = f"geo_refill_max_tested reached {max_geo_tested}/{max_geo_tested}"
+        latency_failures.extend(
+            TestResult(
+                candidate,
+                False,
+                "latency_pool_skipped",
+                refill_stop_reason,
+                latency_ms=float(delay),
+            )
+            for _proxy_name, candidate, delay in skipped_latency_pool
+        )
+
+    print(
+        f"[geo-quota-plan] probe={len(probe_batch)}; live_remaining={len(test_items)}; "
+        f"skipped={quota_skipped}; explored={explored}; latency_skipped={len(skipped_latency_pool)}",
+        flush=True,
+    )
+    if test_items:
+        batch_results = run_geo_batch(test_items, template_proxy, args, "all_regions")
+        geo_results.extend(batch_results)
+        geo_tested += len(test_items)
+        for result in batch_results:
+            update_hk_suppression_stats(bucket_stats, result, args)
+    ok_counts = preferred_counts([result for result in geo_results if result.ok])
+    print(
+        f"[geo-quota-summary] tested={geo_tested}; hk={ok_counts.get('HK', 0)}; "
+        f"non_hk={sum(count for code, count in ok_counts.items() if code != 'HK')}; "
+        f"skipped={quota_skipped}; explored={explored}",
+        flush=True,
+    )
+    args.timings.setdefault("geo_country_refill_test", 0.0)
+    return finish_geo_results_with_speed(
+        geo_results,
+        latency_failures,
+        template_proxy,
+        args,
+        geo_tested,
+        refill_stop_reason,
+        [],
+    )
+
+
 def run_all_regions_geo_tests(
     eligible: list[tuple[str, Candidate, int]],
     latency_failures: list[TestResult],
@@ -3629,15 +3968,146 @@ def run_all_regions_geo_tests(
     args: argparse.Namespace,
 ) -> list[TestResult]:
     print(f"Geo all-regions selected: {len(eligible)}", flush=True)
-    geo_results = run_geo_batch(eligible, template_proxy, args, "all_regions")
+    if not getattr(args, "hk_suppression", False):
+        geo_results = run_geo_batch(eligible, template_proxy, args, "all_regions")
+        args.timings.setdefault("geo_country_refill_test", 0.0)
+        return finish_geo_results_with_speed(
+            geo_results,
+            latency_failures,
+            template_proxy,
+            args,
+            len(eligible),
+            "latency candidates exhausted",
+            [],
+        )
+
+    print(
+        "HK runtime suppression: "
+        f"strategy={getattr(args, 'hk_suppress_strategy', 'iterative')} "
+        f"enabled cap={hk_probe_cap(args)} min_samples={args.hk_suppress_min_samples} "
+        f"confidence={args.hk_suppress_confidence:.3f} explore_rate={args.hk_suppress_explore_rate:.3f} "
+        f"bucket_scope={args.hk_suppress_bucket_scope}",
+        flush=True,
+    )
+    if getattr(args, "hk_suppress_strategy", "iterative") == "two-phase":
+        return run_all_regions_geo_tests_hk_two_phase(eligible, latency_failures, template_proxy, args)
+    if getattr(args, "hk_suppress_strategy", "iterative") == "worker":
+        geo_results = run_geo_batch(eligible, template_proxy, args, "all_regions")
+        skipped = int(getattr(args, "hk_runtime_quota_skipped", 0) or 0)
+        args.timings.setdefault("geo_country_refill_test", 0.0)
+        return finish_geo_results_with_speed(
+            geo_results,
+            latency_failures,
+            template_proxy,
+            args,
+            max(0, len(eligible) - skipped),
+            "latency candidates exhausted",
+            [],
+        )
+
+    remaining: collections.deque[tuple[str, Candidate, int]] = collections.deque(eligible)
+    geo_results: list[TestResult] = []
+    bucket_stats: dict[str, collections.Counter[str]] = {}
+    geo_tested = 0
+    quota_skipped = 0
+    explored = 0
+    suppress_logs = 0
+    refill_stop_reason = "latency candidates exhausted"
+    last_suppressed_bucket = ""
+
+    while remaining:
+        max_geo_tested = int(getattr(args, "geo_refill_max_tested", 0) or 0)
+        if max_geo_tested > 0 and geo_tested >= max_geo_tested:
+            refill_stop_reason = f"geo_refill_max_tested reached {geo_tested}/{max_geo_tested}"
+            latency_failures.extend(
+                TestResult(
+                    candidate,
+                    False,
+                    "latency_pool_skipped",
+                    refill_stop_reason,
+                    latency_ms=float(delay),
+                )
+                for _proxy_name, candidate, delay in remaining
+            )
+            remaining.clear()
+            break
+
+        batch_size = adaptive_refill_batch_size(args, geo_tested)
+        if batch_size < args.geo_refill_min_batch_size:
+            refill_stop_reason = (
+                f"time budget reserved; batch_size={batch_size}; "
+                f"remaining_budget={refill_budget_remaining(args):.1f}s"
+            )
+            latency_failures.extend(
+                TestResult(
+                    candidate,
+                    False,
+                    "latency_pool_skipped",
+                    refill_stop_reason,
+                    latency_ms=float(delay),
+                )
+                for _proxy_name, candidate, delay in remaining
+            )
+            remaining.clear()
+            break
+        if max_geo_tested > 0:
+            batch_size = min(batch_size, max_geo_tested - geo_tested)
+        batch_size = min(batch_size, args.geo_refill_batch_size)
+
+        batch: list[tuple[str, Candidate, int]] = []
+        while remaining and len(batch) < batch_size:
+            item = remaining.popleft()
+            _proxy_name, candidate, delay = item
+            hk_count = sum(1 for result in geo_results if result.ok and (result.exit_country_code or "").upper() == "HK")
+            decision = should_suppress_likely_hk(candidate, bucket_stats, hk_count, args)
+            if decision.suppress:
+                if stable_exploration_sample(candidate.endpoint, args.hk_suppress_explore_rate):
+                    explored += 1
+                    batch.append(item)
+                else:
+                    quota_skipped += 1
+                    last_suppressed_bucket = decision.bucket_key
+                    geo_results.append(make_geo_quota_skipped_result(candidate, delay, decision, args))
+                    if suppress_logs < int(getattr(args, "hk_suppress_log_limit", 12)):
+                        print(
+                            f"[geo-quota] suppress bucket={decision.bucket_key} "
+                            f"reason={decision.hk}/{decision.total} HK; endpoint={candidate.endpoint}",
+                            flush=True,
+                        )
+                        suppress_logs += 1
+                continue
+            batch.append(item)
+
+        if not batch:
+            if remaining:
+                continue
+            break
+
+        before_ok = len([result for result in geo_results if result.ok and result.exit_country_code])
+        batch_results = run_geo_batch(batch, template_proxy, args, "all_regions")
+        geo_tested += len(batch)
+        geo_results.extend(batch_results)
+        for result in batch_results:
+            update_hk_suppression_stats(bucket_stats, result, args)
+        ok_counts = preferred_counts([result for result in geo_results if result.ok])
+        added_ok = len([result for result in geo_results if result.ok and result.exit_country_code]) - before_ok
+        print(
+            f"[geo-quota-summary] tested={geo_tested}; batch={len(batch)}; "
+            f"geo_ok_added={added_ok}; hk={ok_counts.get('HK', 0)}; "
+            f"non_hk={sum(count for code, count in ok_counts.items() if code != 'HK')}; "
+            f"skipped={quota_skipped}; explored={explored}; remaining={len(remaining)}; "
+            f"last_bucket={last_suppressed_bucket or '-'}",
+            flush=True,
+        )
+
     args.timings.setdefault("geo_country_refill_test", 0.0)
     return finish_geo_results_with_speed(
         geo_results,
         latency_failures,
         template_proxy,
         args,
-        len(eligible),
-        "latency candidates exhausted",
+        geo_tested,
+        refill_stop_reason,
         [],
     )
 
@@ -3871,6 +4341,44 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=None,
         help="maximum UNKNOWN/OTHER declared candidates sampled by declared-round-robin scheduler; 0 disables this cap",
     )
+    parser.add_argument(
+        "--hk-suppression",
+        dest="hk_suppression",
+        action="store_true",
+        help="enable runtime suppression for candidates from high-confidence HK buckets in all-regions mode",
+    )
+    parser.add_argument(
+        "--no-hk-suppression",
+        dest="hk_suppression",
+        action="store_false",
+        help="disable runtime HK bucket suppression",
+    )
+    parser.set_defaults(hk_suppression=False)
+    parser.add_argument("--hk-probe-cap", type=int, default=0, help="minimum observed HK geo successes before HK suppression may start; 0 uses country_max * multiplier")
+    parser.add_argument("--hk-probe-cap-multiplier", type=float, default=3.0, help="HK suppression probe cap multiplier when --hk-probe-cap is 0")
+    parser.add_argument("--hk-suppress-min-samples", type=int, default=10, help="minimum same-bucket observations before a bucket can be suppressed")
+    parser.add_argument("--hk-suppress-confidence", type=float, default=0.98, help="minimum HK ratio before a bucket can be suppressed")
+    parser.add_argument("--hk-suppress-explore-rate", type=float, default=0.05, help="deterministic exploration rate for suppressed candidates")
+    parser.add_argument(
+        "--hk-suppress-bucket-scope",
+        default="prefix",
+        help="comma-separated runtime bucket scopes: prefix,source,source_declared",
+    )
+    parser.add_argument(
+        "--hk-suppress-strategy",
+        choices=["worker", "iterative", "two-phase"],
+        default="worker",
+        help="HK suppression scheduler: in-worker runtime suppression, iterative batches, or one probe batch plus one filtered live batch",
+    )
+    parser.add_argument(
+        "--hk-suppress-probe-batch-size",
+        type=int,
+        default=300,
+        help="probe batch size used by --hk-suppress-strategy two-phase; 0 uses max(hk cap, geo refill batch size)",
+    )
+    parser.add_argument("--hk-suppress-ipv4-prefix", type=int, default=20, help="IPv4 prefix length used by runtime HK prefix buckets")
+    parser.add_argument("--hk-suppress-ipv6-prefix", type=int, default=40, help="IPv6 prefix length used by runtime HK prefix buckets")
+    parser.add_argument("--hk-suppress-log-limit", type=int, default=12, help="maximum per-run HK suppression detail log lines")
     parser.add_argument("--latency-concurrency", type=int, default=32, help="parallel Mihomo delay API calls")
     parser.add_argument("--geo-concurrency", type=int, default=None, help="parallel geo workers after latency pool selection")
     parser.add_argument("--speed-limit", type=int, default=None, help="maximum number of candidates selected for speed test; 0 disables speed test")
@@ -4002,6 +4510,15 @@ def main(argv: list[str] | None = None) -> int:
     args.geo_unknown_other_sample_limit = max(0, int(args.geo_unknown_other_sample_limit))
     args.geo_hint_min_count = max(1, int(args.geo_hint_min_count))
     args.geo_hint_min_confidence = max(0.0, min(1.0, float(args.geo_hint_min_confidence)))
+    args.hk_probe_cap = max(0, int(args.hk_probe_cap))
+    args.hk_probe_cap_multiplier = max(0.0, float(args.hk_probe_cap_multiplier))
+    args.hk_suppress_min_samples = max(1, int(args.hk_suppress_min_samples))
+    args.hk_suppress_confidence = max(0.0, min(1.0, float(args.hk_suppress_confidence)))
+    args.hk_suppress_explore_rate = max(0.0, min(1.0, float(args.hk_suppress_explore_rate)))
+    args.hk_suppress_probe_batch_size = max(0, int(args.hk_suppress_probe_batch_size))
+    args.hk_suppress_ipv4_prefix = max(0, min(32, int(args.hk_suppress_ipv4_prefix)))
+    args.hk_suppress_ipv6_prefix = max(0, min(128, int(args.hk_suppress_ipv6_prefix)))
+    args.hk_suppress_log_limit = max(0, int(args.hk_suppress_log_limit))
     args.geo_cap_countries_resolved = {
         item.strip().upper()
         for item in str(args.geo_cap_countries or "").split(",")

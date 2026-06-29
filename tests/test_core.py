@@ -310,6 +310,213 @@ class AllRegionsSelectionTests(unittest.TestCase):
         self.assertEqual([result.selection_stage for result in results], ["all_regions"] * len(eligible))
 
 
+class HkSuppressionTests(unittest.TestCase):
+    def make_candidate(self, endpoint: str = "104.17.1.1:443", source: str = "src") -> tool.Candidate:
+        host, port = endpoint.rsplit(":", 1)
+        return tool.Candidate(source=source, raw=endpoint, host=host, port=int(port))
+
+    def make_args(self, **overrides):
+        values = {
+            "hk_suppression": True,
+            "hk_probe_cap": 105,
+            "hk_probe_cap_multiplier": 3.0,
+            "country_max": 35,
+            "hk_suppress_min_samples": 20,
+            "hk_suppress_confidence": 0.98,
+            "hk_suppress_bucket_scope": "prefix",
+            "hk_suppress_strategy": "worker",
+            "hk_suppress_probe_batch_size": 300,
+            "hk_suppress_ipv4_prefix": 20,
+            "hk_suppress_ipv6_prefix": 40,
+            "hk_suppress_explore_rate": 0.05,
+            "geo_hint_cache_enabled": False,
+        }
+        values.update(overrides)
+        return Namespace(**values)
+
+    def test_hk_suppression_waits_until_probe_cap(self):
+        candidate = self.make_candidate()
+        stats = {"prefix:104.17.0.0/20": tool.collections.Counter({"HK": 20})}
+
+        decision = tool.should_suppress_likely_hk(candidate, stats, 104, self.make_args())
+
+        self.assertFalse(decision.suppress)
+
+    def test_hk_suppression_suppresses_confident_prefix_bucket(self):
+        candidate = self.make_candidate()
+        stats = {"prefix:104.17.0.0/20": tool.collections.Counter({"HK": 20})}
+
+        decision = tool.should_suppress_likely_hk(candidate, stats, 105, self.make_args())
+
+        self.assertTrue(decision.suppress)
+        self.assertEqual(decision.bucket_key, "prefix:104.17.0.0/20")
+
+    def test_hk_suppression_requires_min_samples(self):
+        candidate = self.make_candidate()
+        stats = {"prefix:104.17.0.0/20": tool.collections.Counter({"HK": 19})}
+
+        decision = tool.should_suppress_likely_hk(candidate, stats, 105, self.make_args())
+
+        self.assertFalse(decision.suppress)
+
+    def test_hk_suppression_does_not_suppress_mixed_bucket(self):
+        candidate = self.make_candidate()
+        stats = {"prefix:104.17.0.0/20": tool.collections.Counter({"HK": 20, "JP": 1})}
+
+        decision = tool.should_suppress_likely_hk(candidate, stats, 105, self.make_args())
+
+        self.assertFalse(decision.suppress)
+
+    def test_hk_suppression_can_use_source_bucket(self):
+        candidate = self.make_candidate(source="pure_hk")
+        stats = {"source:pure_hk": tool.collections.Counter({"HK": 20})}
+
+        decision = tool.should_suppress_likely_hk(
+            candidate,
+            stats,
+            105,
+            self.make_args(hk_suppress_bucket_scope="source"),
+        )
+
+        self.assertTrue(decision.suppress)
+        self.assertEqual(decision.bucket_key, "source:pure_hk")
+
+    def test_stable_exploration_sample_boundaries_and_stability(self):
+        endpoint = "104.17.1.1:443"
+
+        self.assertFalse(tool.stable_exploration_sample(endpoint, 0.0))
+        self.assertTrue(tool.stable_exploration_sample(endpoint, 1.0))
+        self.assertEqual(
+            tool.stable_exploration_sample(endpoint, 0.05),
+            tool.stable_exploration_sample(endpoint, 0.05),
+        )
+
+    def test_all_regions_hk_suppression_skips_only_confident_bucket(self):
+        candidates = [
+            self.make_candidate(f"104.17.0.{index}:443", "hk_src")
+            for index in range(1, 24)
+        ]
+        jp_candidate = self.make_candidate("203.0.113.1:443", "jp_src")
+        eligible = [(f"p{index}", candidate, 10 + index) for index, candidate in enumerate(candidates, start=1)]
+        eligible.append(("pjp", jp_candidate, 999))
+        args = Namespace(
+            selection_mode="all-regions",
+            hk_suppression=True,
+            hk_probe_cap=5,
+            hk_probe_cap_multiplier=3.0,
+            country_max=35,
+            hk_suppress_min_samples=5,
+            hk_suppress_confidence=0.98,
+            hk_suppress_bucket_scope="prefix",
+            hk_suppress_strategy="iterative",
+            hk_suppress_probe_batch_size=300,
+            hk_suppress_ipv4_prefix=20,
+            hk_suppress_ipv6_prefix=40,
+            hk_suppress_explore_rate=0.0,
+            hk_suppress_log_limit=0,
+            geo_refill_batch_size=6,
+            geo_refill_min_batch_size=1,
+            geo_refill_max_tested=0,
+            time_budget=0,
+            time_safety_margin=0,
+            run_started_at=0,
+            timings={},
+            speed_bands_parsed=[],
+            speed_limit=0,
+            speed_concurrency=1,
+            speed_timeout=1,
+            start_timeout=0,
+            geo_hint_cache_enabled=False,
+        )
+
+        def fake_geo_batch(items, _template_proxy, _args, stage):
+            results = []
+            for _proxy_name, candidate, delay in items:
+                code = "JP" if candidate is jp_candidate else "HK"
+                results.append(
+                    tool.TestResult(
+                        candidate,
+                        True,
+                        "geo_only",
+                        latency_ms=delay,
+                        exit_country_code=code,
+                        exit_region=tool.country_name(code),
+                        selection_stage=stage,
+                    )
+                )
+            return results
+
+        with mock.patch.object(tool, "run_geo_batch", side_effect=fake_geo_batch):
+            results = tool.run_all_regions_geo_tests(eligible, [], {}, args)
+
+        skipped = [result for result in results if result.status == "geo_quota_skipped"]
+        ok = [result for result in results if result.ok]
+
+        self.assertGreaterEqual(len(skipped), 1)
+        self.assertTrue(all(result.candidate.source == "hk_src" for result in skipped))
+        self.assertEqual(sum(1 for result in ok if result.exit_country_code == "JP"), 1)
+
+    def test_worker_hk_suppression_skips_inside_geo_batch(self):
+        candidates = [
+            self.make_candidate(f"104.17.0.{index}:443", "hk_src")
+            for index in range(1, 10)
+        ]
+        eligible = [(f"p{index}", candidate, 10 + index) for index, candidate in enumerate(candidates, start=1)]
+        args = Namespace(
+            selection_mode="all-regions",
+            hk_suppression=True,
+            hk_probe_cap=3,
+            hk_probe_cap_multiplier=3.0,
+            country_max=35,
+            hk_suppress_min_samples=3,
+            hk_suppress_confidence=0.98,
+            hk_suppress_bucket_scope="prefix",
+            hk_suppress_strategy="worker",
+            hk_suppress_probe_batch_size=300,
+            hk_suppress_ipv4_prefix=20,
+            hk_suppress_ipv6_prefix=40,
+            hk_suppress_explore_rate=0.0,
+            hk_suppress_log_limit=0,
+            geo_concurrency=1,
+            geo_cache_enabled=False,
+            geo_cache={"entries": {}},
+            allow_other_regions=True,
+            preferred_countries={"HK"},
+            allow_unknown_region=False,
+            service_check=False,
+            min_service_score=0,
+            timeout=1,
+            timings={},
+            geo_hint_cache_enabled=False,
+        )
+
+        def fake_geo_chunk(chunk, _template_proxy, _worker_id, chunk_args):
+            results = []
+            tool.init_hk_runtime_suppression(chunk_args)
+            for _proxy_name, candidate, delay in chunk:
+                decision, explore = tool.worker_hk_suppression_decision(candidate, chunk_args)
+                if decision.suppress and not explore:
+                    results.append(tool.make_geo_quota_skipped_result(candidate, delay, decision, chunk_args))
+                    continue
+                result = tool.TestResult(
+                    candidate,
+                    True,
+                    "geo_only",
+                    latency_ms=delay,
+                    exit_country_code="HK",
+                    exit_region="香港",
+                )
+                tool.update_hk_runtime_suppression_stats(candidate, "HK", chunk_args)
+                results.append(result)
+            return results
+
+        with mock.patch.object(tool, "test_geo_chunk", side_effect=fake_geo_chunk):
+            results = tool.run_geo_batch(eligible, {}, args, "all_regions")
+
+        self.assertEqual(sum(1 for result in results if result.ok), 3)
+        self.assertEqual(sum(1 for result in results if result.status == "geo_quota_skipped"), 6)
+
+
 class ValidateOutputTests(unittest.TestCase):
     def test_validate_rejects_invalid_lines(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -50,7 +50,16 @@ python .\bestcf_tool.py `
     --geo-concurrency 16 `
     --selection-mode all-regions `
     --country-max 35 `
-    --max-final-candidates 0
+    --max-final-candidates 0 `
+    --hk-suppression `
+    --hk-suppress-strategy worker `
+    --hk-probe-cap 105 `
+    --hk-suppress-bucket-scope prefix `
+    --hk-suppress-ipv4-prefix 20 `
+    --hk-suppress-ipv6-prefix 40 `
+    --hk-suppress-min-samples 6 `
+    --hk-suppress-confidence 0.98 `
+    --hk-suppress-explore-rate 0.05
 Assert-NativeCommandSucceeded "bestcf_tool.py update"
 
 python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1
