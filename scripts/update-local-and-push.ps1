@@ -46,7 +46,11 @@ python .\bestcf_tool.py `
     --output .\public\bestcf_final.txt `
     --no-geo-cache `
     --no-geo-hint-cache `
-    --geo-concurrency 16
+    --geo-providers ping0 `
+    --geo-concurrency 16 `
+    --selection-mode all-regions `
+    --country-max 35 `
+    --max-final-candidates 0
 Assert-NativeCommandSucceeded "bestcf_tool.py update"
 
 python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1

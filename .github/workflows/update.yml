@@ -77,7 +77,11 @@ jobs:
             --mihomo ./bin/mihomo \
             --no-geo-cache \
             --no-geo-hint-cache \
-            --geo-concurrency 16
+            --geo-providers ping0 \
+            --geo-concurrency 16 \
+            --selection-mode all-regions \
+            --country-max 35 \
+            --max-final-candidates 0
 
       - name: Validate generated result
         run: |

@@ -14,6 +14,7 @@ import argparse
 import collections
 import csv
 import dataclasses
+import http.client
 import ipaddress
 import json
 import os
@@ -150,12 +151,14 @@ EXTERNAL_SOURCE_ALLOW_HOSTS = {
 }
 
 COUNTRY_NAMES = {
+    "CN": "中国",
     "HK": "香港",
     "JP": "日本",
     "SG": "新加坡",
     "US": "美国",
     "KR": "韩国",
     "TW": "台湾",
+    "MO": "澳门",
     "DE": "德国",
     "GB": "英国",
     "UK": "英国",
@@ -170,6 +173,12 @@ COUNTRY_NAMES = {
     "PH": "菲律宾",
     "IN": "印度",
     "RS": "塞尔维亚",
+}
+
+SPECIFIC_REGION_CODES = {
+    "香港": "HK",
+    "台湾": "TW",
+    "澳门": "MO",
 }
 
 REGION_ALIASES = {
@@ -317,6 +326,9 @@ def country_rank(code: str | None, order: list[str]) -> int:
 
 def country_code_from_text(text: str) -> str | None:
     upper = text.upper()
+    for name, code in SPECIFIC_REGION_CODES.items():
+        if name in text:
+            return code
     for code in sorted(COUNTRY_NAMES, key=len, reverse=True):
         if re.search(rf"(?<![A-Z]){re.escape(code)}(?![A-Z])", upper):
             return code
@@ -1139,7 +1151,7 @@ def fetch_url(url: str, timeout: int = 20) -> tuple[bool, str]:
             if content.strip():
                 return True, content
             errors = ["urllib: empty response"]
-    except (urllib.error.URLError, TimeoutError, ssl.SSLError, UnicodeDecodeError) as exc:
+    except (urllib.error.URLError, TimeoutError, ssl.SSLError, UnicodeDecodeError, http.client.IncompleteRead) as exc:
         errors = [f"urllib: {exc}"]
 
     ok, content = powershell_text(url, timeout=timeout)
@@ -2018,6 +2030,9 @@ def add_final_result(
 
 
 def select_final_results(ok_results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
+    if getattr(args, "selection_mode", "preferred") == "all-regions":
+        return select_final_results_all_regions(ok_results, args)
+
     target_count = args.max_final_candidates
     if not ok_results:
         return []
@@ -2098,6 +2113,36 @@ def select_final_results(ok_results: list[TestResult], args: argparse.Namespace)
             )
 
     return selected[:target_count] if target_count > 0 else selected
+
+
+def select_final_results_all_regions(ok_results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
+    target_count = args.max_final_candidates
+    if not ok_results:
+        return []
+
+    groups: dict[str, list[TestResult]] = {}
+    for result in ok_results:
+        if not result.exit_country_code:
+            continue
+        groups.setdefault(result_region(result), []).append(result)
+    for items in groups.values():
+        items.sort(key=result_quality_key)
+
+    region_limit = args.country_max
+    selected: list[TestResult] = []
+    for _region, items in sorted(
+        groups.items(),
+        key=lambda item: (
+            result_latency(item[1][0]) if item[1] else float("inf"),
+            item[0],
+        ),
+    ):
+        keep_items = items[:region_limit] if region_limit > 0 else items
+        selected.extend(keep_items)
+
+    if target_count > 0:
+        return selected[:target_count]
+    return selected
 
 
 def write_region_counts(path: Path, ok_results: list[TestResult], final_results: list[TestResult]) -> None:
@@ -2354,14 +2399,22 @@ def write_results(
                 line += f"|{result.measured_speed:.2f}MB/s"
             handle.write(line + "\n")
 
-    other_region_results = [
-        result for result in results
-        if result.status == "region_not_preferred" or (
-            result.ok
-            and result.exit_country_code
-            and result.exit_country_code.upper() not in set(args.preferred_country_order or PREFERRED_COUNTRY_ORDER)
-        )
-    ]
+    final_keys = {result.candidate.key for result in final_results}
+    if getattr(args, "selection_mode", "preferred") == "all-regions":
+        other_region_results = [
+            result
+            for result in ok_results
+            if result.exit_country_code and result.candidate.key not in final_keys
+        ]
+    else:
+        other_region_results = [
+            result for result in results
+            if result.status == "region_not_preferred" or (
+                result.ok
+                and result.exit_country_code
+                and result.exit_country_code.upper() not in set(args.preferred_country_order or PREFERRED_COUNTRY_ORDER)
+            )
+        ]
     other_region_results.sort(
         key=lambda result: (
             result.exit_country_code or "",
@@ -2953,8 +3006,18 @@ def finish_geo_results_with_speed(
     refill_stop_reason: str,
     skipped_latency_pool: list[tuple[str, Candidate, int]],
 ) -> list[TestResult]:
-    preferred_geo_all = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
-    preferred_geo = preferred_geo_all
+    all_regions_mode = getattr(args, "selection_mode", "preferred") == "all-regions"
+    if all_regions_mode:
+        selectable_geo_all = sorted(
+            [result for result in geo_results if result.ok and result.exit_country_code],
+            key=lambda result: (
+                result_region(result),
+                result_quality_key(result),
+            ),
+        )
+    else:
+        selectable_geo_all = sort_geo_results([result for result in geo_results if result.ok], args.preferred_country_order)
+    selectable_geo = selectable_geo_all
     latency_failures.extend(
         TestResult(
             candidate,
@@ -2966,10 +3029,13 @@ def finish_geo_results_with_speed(
         for _proxy_name, candidate, delay in skipped_latency_pool
     )
     print(f"Geo tested: {geo_tested}; stop reason: {refill_stop_reason}", flush=True)
-    print(f"Preferred geo selected: {len(preferred_geo)} / {len(preferred_geo_all)}", flush=True)
-    speed_keys = select_speed_sample(preferred_geo, args.speed_bands_parsed, args.speed_limit)
-    speed_selected = [result for result in preferred_geo if result.candidate.key in speed_keys]
-    geo_only = [result for result in preferred_geo if result.candidate.key not in speed_keys]
+    if all_regions_mode:
+        print(f"All-region geo selected: {len(selectable_geo)} / {len(selectable_geo_all)}", flush=True)
+    else:
+        print(f"Preferred geo selected: {len(selectable_geo)} / {len(selectable_geo_all)}", flush=True)
+    speed_keys = select_speed_sample(selectable_geo, args.speed_bands_parsed, args.speed_limit)
+    speed_selected = [result for result in selectable_geo if result.candidate.key in speed_keys]
+    geo_only = [result for result in selectable_geo if result.candidate.key not in speed_keys]
     speed_budget_limit = budgeted_speed_sample_limit(args, len(speed_selected))
     if speed_budget_limit < len(speed_selected):
         skipped_speed = speed_selected[speed_budget_limit:]
@@ -3556,6 +3622,26 @@ def run_declared_round_robin_geo_tests(
     )
 
 
+def run_all_regions_geo_tests(
+    eligible: list[tuple[str, Candidate, int]],
+    latency_failures: list[TestResult],
+    template_proxy: dict[str, Any],
+    args: argparse.Namespace,
+) -> list[TestResult]:
+    print(f"Geo all-regions selected: {len(eligible)}", flush=True)
+    geo_results = run_geo_batch(eligible, template_proxy, args, "all_regions")
+    args.timings.setdefault("geo_country_refill_test", 0.0)
+    return finish_geo_results_with_speed(
+        geo_results,
+        latency_failures,
+        template_proxy,
+        args,
+        len(eligible),
+        "latency candidates exhausted",
+        [],
+    )
+
+
 def run_latency_first_tests(
     candidates: list[Candidate],
     template_proxy: dict[str, Any],
@@ -3565,6 +3651,9 @@ def run_latency_first_tests(
     eligible, latency_failures = run_latency_tests(candidates, template_proxy, args)
     args.timings["latency_test"] = time.monotonic() - stage_started
     print(f"Latency passed: {len(eligible)} / {len(candidates)}", flush=True)
+
+    if args.selection_mode == "all-regions":
+        return run_all_regions_geo_tests(eligible, latency_failures, template_proxy, args)
 
     if args.geo_scheduler == "declared-round-robin":
         return run_declared_round_robin_geo_tests(eligible, latency_failures, template_proxy, args)
@@ -3743,6 +3832,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-final-candidates", type=int, default=None, help="maximum preferred candidates written to final output; 0 disables")
     parser.add_argument("--country-max", type=int, default=None, help="maximum final output candidates per exit country; 0 disables")
     parser.add_argument("--final-preferred-latency-ms", type=int, default=None, help="scarce regions prefer nodes no slower than this latency")
+    parser.add_argument(
+        "--selection-mode",
+        choices=["preferred", "all-regions"],
+        default="preferred",
+        help="final selection mode: preferred country workflow or all detected exit regions",
+    )
     parser.add_argument("--geo-initial-limit", type=int, default=None, help="initial latency-ranked candidates selected for geo; 0 means all")
     parser.add_argument("--geo-refill-batch-size", type=int, default=None, help="candidate count per geo refill batch")
     parser.add_argument("--geo-refill-min-batch-size", type=int, default=None, help="stop refill when time budget allows fewer than this batch size")
@@ -3921,6 +4016,9 @@ def main(argv: list[str] | None = None) -> int:
         if item.strip()
     ] or list(PREFERRED_COUNTRY_ORDER)
     args.preferred_countries = set(args.preferred_country_order)
+    if args.selection_mode == "all-regions":
+        args.allow_other_regions = True
+        args.preferred_country_min = {}
     workdir = Path(args.workdir)
     workdir.mkdir(parents=True, exist_ok=True)
     args.geo_cache_path = Path(args.geo_cache) if args.geo_cache else workdir / DEFAULT_GEO_CACHE_NAME

@@ -23,6 +23,12 @@ class ParseCandidateTests(unittest.TestCase):
         self.assertEqual(candidate.host, "2606:4700::1")
         self.assertEqual(candidate.port, 443)
 
+    def test_parse_region_prefers_specific_chinese_regions(self):
+        self.assertEqual(tool.parse_region("2a09:bac1::1 中国 香港 香港 — Cloudflare"), "HK")
+        self.assertEqual(tool.parse_region("2a09:bac1::1 中国 台湾 台湾 — Cloudflare"), "TW")
+        self.assertEqual(tool.parse_region("2a09:bac1::1 中国 澳门 澳门 — Cloudflare"), "MO")
+        self.assertEqual(tool.parse_region("203.0.113.1 中国 广东 广州"), "CN")
+
 
 class GeoPolicyTests(unittest.TestCase):
     def test_daily_policy_short_circuits_on_ping0_success(self):
@@ -223,6 +229,85 @@ class DeclaredSchedulerTests(unittest.TestCase):
         self.assertEqual(results[0].status, "geo_cached")
         self.assertEqual(results[0].exit_country_code, "JP")
         self.assertEqual(results[0].selection_stage, "declared")
+
+
+class AllRegionsSelectionTests(unittest.TestCase):
+    def make_result(self, endpoint: str, code: str, latency: int) -> tool.TestResult:
+        host, port = endpoint.rsplit(":", 1)
+        candidate = tool.Candidate(source="src", raw=endpoint, host=host, port=int(port))
+        return tool.TestResult(
+            candidate,
+            True,
+            "geo_only",
+            latency_ms=latency,
+            exit_country_code=code,
+            exit_region=tool.country_name(code),
+            geo_evidence=f"ping0:{code}",
+            geo_selected_provider="ping0",
+        )
+
+    def test_all_regions_selection_caps_each_detected_region(self):
+        results = [
+            self.make_result("1.1.1.1:443", "HK", 30),
+            self.make_result("1.1.1.2:443", "HK", 10),
+            self.make_result("1.1.1.3:443", "HK", 20),
+            self.make_result("2.2.2.1:443", "JP", 50),
+            self.make_result("2.2.2.2:443", "JP", 40),
+            self.make_result("3.3.3.3:443", "", 1),
+        ]
+        args = Namespace(selection_mode="all-regions", country_max=2, max_final_candidates=0)
+
+        selected = tool.select_final_results(results, args)
+
+        self.assertEqual([result.candidate.endpoint for result in selected], [
+            "1.1.1.2:443",
+            "1.1.1.3:443",
+            "2.2.2.2:443",
+            "2.2.2.1:443",
+        ])
+        self.assertEqual(sum(1 for result in selected if result.exit_country_code == "HK"), 2)
+        self.assertEqual(sum(1 for result in selected if result.exit_country_code == "JP"), 2)
+
+    def test_all_regions_mode_tests_every_latency_passed_candidate(self):
+        candidates = [
+            tool.Candidate(source="src", raw=f"1.1.1.{index}:443", host=f"1.1.1.{index}", port=443)
+            for index in range(1, 4)
+        ]
+        eligible = [(f"p{index}", candidate, index * 10) for index, candidate in enumerate(candidates, start=1)]
+        args = Namespace(
+            selection_mode="all-regions",
+            preferred_country_order=["HK"],
+            speed_bands_parsed=[],
+            speed_limit=0,
+            speed_concurrency=1,
+            time_budget=0,
+            run_started_at=0,
+            speed_timeout=1,
+            start_timeout=0,
+            timings={},
+        )
+
+        def fake_geo_batch(items, _template_proxy, _args, stage):
+            return [
+                tool.TestResult(
+                    candidate,
+                    True,
+                    "geo_only",
+                    latency_ms=delay,
+                    exit_country_code="HK",
+                    exit_region="香港",
+                    selection_stage=stage,
+                )
+                for _proxy_name, candidate, delay in items
+            ]
+
+        with mock.patch.object(tool, "run_geo_batch", side_effect=fake_geo_batch) as geo_mock:
+            results = tool.run_all_regions_geo_tests(eligible, [], {}, args)
+
+        geo_mock.assert_called_once()
+        self.assertEqual(len(geo_mock.call_args.args[0]), len(eligible))
+        self.assertEqual(len([result for result in results if result.ok]), len(eligible))
+        self.assertEqual([result.selection_stage for result in results], ["all_regions"] * len(eligible))
 
 
 class ValidateOutputTests(unittest.TestCase):
