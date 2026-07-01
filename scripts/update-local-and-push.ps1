@@ -51,15 +51,18 @@ function Stop-BestCFWorkerProcesses {
     }
 }
 
-$mihomo = "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
+$mihomo = "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe"
 if (-not (Test-Path -LiteralPath $mihomo)) {
-    $fallbackMihomo = Get-ChildItem -LiteralPath "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy" -Recurse -Filter "mihomo.exe" -ErrorAction SilentlyContinue |
+    $fallbackMihomo = "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
+    if (-not (Test-Path -LiteralPath $fallbackMihomo)) {
+        $fallbackMihomo = Get-ChildItem -LiteralPath "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bin" -Recurse -Filter "mihomo*.exe" -ErrorAction SilentlyContinue |
         Select-Object -First 1 -ExpandProperty FullName
+    }
     if ($fallbackMihomo -and (Test-Path -LiteralPath $fallbackMihomo)) {
         $mihomo = $fallbackMihomo
         Write-Host "Using fallback mihomo: $mihomo"
     } else {
-        throw "mihomo not found: $mihomo; fallback not found under C:\Users\sundewang\edgetunnel-bestcf-selfdeploy"
+        throw "mihomo not found: $mihomo; fallback not found: E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
     }
 }
 if (-not (Test-Path -LiteralPath ".\template.yaml")) {
