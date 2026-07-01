@@ -10,11 +10,10 @@ if (-not (Test-Path -LiteralPath $scriptPath)) {
 
 $action = New-ScheduledTaskAction `
     -Execute "powershell.exe" `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$scriptPath`""
+    -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$scriptPath`""
 
-$trigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(10) `
-    -RepetitionInterval (New-TimeSpan -Hours 6) `
-    -RepetitionDuration (New-TimeSpan -Days 3650)
+$triggerMorning = New-ScheduledTaskTrigger -Daily -At "08:00"
+$triggerEvening = New-ScheduledTaskTrigger -Daily -At "18:00"
 
 $principal = New-ScheduledTaskPrincipal `
     -UserId $env:USERNAME `
@@ -26,15 +25,17 @@ $settings = New-ScheduledTaskSettingsSet `
     -DontStopIfGoingOnBatteries `
     -StartWhenAvailable `
     -MultipleInstances IgnoreNew
+$settings.Hidden = $true
 
 Register-ScheduledTask `
     -TaskName $taskName `
     -Action $action `
-    -Trigger $trigger `
+    -Trigger @($triggerMorning, $triggerEvening) `
     -Principal $principal `
     -Settings $settings `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $taskName"
-Write-Host "Interval: every 6 hours"
+Write-Host "Schedule: daily at 08:00 and 18:00"
+Write-Host "Window: hidden"
 Write-Host "Script: $scriptPath"
