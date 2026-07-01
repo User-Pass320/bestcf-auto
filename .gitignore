@@ -4,6 +4,7 @@ __pycache__/
 venv/
 bin/
 bestcf_work/
+bestcf_work_*/
 archive/
 template.yaml
 template.b64.txt

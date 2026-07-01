@@ -81,7 +81,7 @@ python .\bestcf_tool.py `
     --output .\public\bestcf_final.txt `
     --no-geo-cache `
     --no-geo-hint-cache `
-    --geo-providers ipwhois,ip_api `
+    --geo-providers ping0,ipwhois,ip_api `
     --geo-concurrency 16 `
     --selection-mode all-regions `
     --country-max 35 `

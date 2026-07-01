@@ -80,7 +80,7 @@ DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
 GEO_CACHE_VERSION = 2
 GEO_HINT_CACHE_VERSION = 1
-DEFAULT_GEO_POLICY_VERSION = "ipwhois_primary_ip_api_fallback_v1"
+DEFAULT_GEO_POLICY_VERSION = "ping0_primary_ipwhois_ip_api_crosscheck_v1"
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
 DEFAULT_SOURCE_PRUNE_MIN_LINES = 5
@@ -116,8 +116,8 @@ GEO_PROVIDER_URLS = {
     "ipwhois": "https://ipwho.is/",
     "ip_api": "http://ip-api.com/json/?fields=status,countryCode,query",
 }
-DEFAULT_GEO_PROVIDERS_DAILY = ["ipwhois", "ip_api"]
-DEFAULT_GEO_PROVIDERS_ALL = ["ipwhois", "ip_api", "ipinfo", "ip_sb", "cloudflare", "ipapi", "ping0"]
+DEFAULT_GEO_PROVIDERS_DAILY = ["ping0", "ipwhois", "ip_api"]
+DEFAULT_GEO_PROVIDERS_ALL = ["ping0", "ipwhois", "ip_api", "ipinfo", "ip_sb", "cloudflare", "ipapi"]
 SOURCE_SKIP_MARKERS = (
     "/CIDR/",
     "/WARP/",
@@ -1621,18 +1621,59 @@ def select_geo_result(
     return None, "未知", exit_ip, colo, evidence
 
 
+def select_geo_result_by_provider_priority(
+    results: list[tuple[str, str | None, str | None, str | None]],
+    provider_order: list[str],
+) -> tuple[str | None, str, str | None, str | None, str]:
+    evidence = ";".join(f"{name}:{code or '-'}" for name, code, _ip, _colo in results)
+    selected: tuple[str, str | None, str | None, str | None] | None = None
+    for provider in provider_order:
+        for name, code, ip, probe_colo in results:
+            if name == provider and code:
+                selected = (name, code, ip, probe_colo)
+                break
+        if selected:
+            break
+
+    if selected:
+        _selected_name, selected_code, exit_ip, colo = selected
+        for _name, code, ip, probe_colo in results:
+            if code == selected_code:
+                exit_ip = exit_ip or ip
+                colo = colo or probe_colo
+        if exit_ip is None or colo is None:
+            for _name, _code, ip, probe_colo in results:
+                exit_ip = exit_ip or ip
+                colo = colo or probe_colo
+        return selected_code, country_name(selected_code), exit_ip, colo, evidence
+
+    exit_ip: str | None = None
+    colo: str | None = None
+    for _name, _code, ip, probe_colo in results:
+        exit_ip = exit_ip or ip
+        colo = colo or probe_colo
+    return None, "未知", exit_ip, colo, evidence
+
+
 def geo_decision_from_results(
     results: list[tuple[str, str | None, str | None, str | None]],
     provider_order: list[str],
     policy: str,
     selected_provider: str = "",
     fallback_used: bool = False,
+    selection_mode: str = "vote",
 ) -> GeoDecision:
-    code, region, exit_ip, colo, evidence = select_geo_result(results, provider_order)
+    if selection_mode == "priority":
+        code, region, exit_ip, colo, evidence = select_geo_result_by_provider_priority(results, provider_order)
+    else:
+        code, region, exit_ip, colo, evidence = select_geo_result(results, provider_order)
     if not selected_provider and code:
-        for name, result_code, _ip, _colo in results:
-            if result_code == code:
-                selected_provider = name
+        for provider in provider_order:
+            for name, result_code, _ip, _colo in results:
+                if name == provider and result_code == code:
+                    selected_provider = name
+                    break
+            if selected_provider:
                 break
     return GeoDecision(
         country_code=code,
@@ -1652,30 +1693,15 @@ def detect_geo(proxy: str, timeout: int, providers: list[str]) -> GeoDecision:
         providers = list(DEFAULT_GEO_PROVIDERS_DAILY)
 
     if providers == DEFAULT_GEO_PROVIDERS_DAILY:
-        primary_name = providers[0]
-        fallback_name = providers[1] if len(providers) > 1 else ""
-        primary = geo_probe(proxy, timeout, primary_name, GEO_PROVIDER_URLS[primary_name])
-        if primary[1]:
-            return geo_decision_from_results(
-                [primary],
-                providers,
-                policy=DEFAULT_GEO_POLICY_VERSION,
-                selected_provider=primary_name,
-                fallback_used=False,
-            )
-        fallback = (
-            geo_probe(proxy, timeout, fallback_name, GEO_PROVIDER_URLS[fallback_name])
-            if fallback_name
-            else ("", None, None, None)
-        )
-        selected_provider = fallback_name if fallback[1] else ""
-        return geo_decision_from_results(
-            [primary, fallback],
+        results = run_geo_probes_parallel(proxy, timeout, providers)
+        decision = geo_decision_from_results(
+            results,
             providers,
             policy=DEFAULT_GEO_POLICY_VERSION,
-            selected_provider=selected_provider,
-            fallback_used=True,
+            selection_mode="priority",
         )
+        decision.fallback_used = bool(decision.selected_provider and decision.selected_provider != providers[0])
+        return decision
 
     results = run_geo_probes_parallel(proxy, timeout, providers)
     return geo_decision_from_results(results, providers, policy="provider_vote_v1")
@@ -4679,8 +4705,10 @@ def main(argv: list[str] | None = None) -> int:
     stage_started = time.monotonic()
     final = write_results(workdir, results, parse_failures, source_failures, args)
     if args.output:
-        shutil.copyfile(final, args.output)
-        final = Path(args.output)
+        output_path = Path(args.output)
+        if final.resolve() != output_path.resolve():
+            shutil.copyfile(final, output_path)
+        final = output_path
     if args.geo_cache_enabled:
         save_geo_cache(args.geo_cache_path, args.geo_cache)
     if args.geo_hint_cache_enabled:
