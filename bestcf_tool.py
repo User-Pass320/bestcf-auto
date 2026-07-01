@@ -80,7 +80,7 @@ DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
 GEO_CACHE_VERSION = 2
 GEO_HINT_CACHE_VERSION = 1
-DEFAULT_GEO_POLICY_VERSION = "ping0_primary_ipwhois_fallback_v1"
+DEFAULT_GEO_POLICY_VERSION = "ipwhois_primary_ip_api_fallback_v1"
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
 DEFAULT_SOURCE_PRUNE_MIN_LINES = 5
@@ -116,8 +116,8 @@ GEO_PROVIDER_URLS = {
     "ipwhois": "https://ipwho.is/",
     "ip_api": "http://ip-api.com/json/?fields=status,countryCode,query",
 }
-DEFAULT_GEO_PROVIDERS_DAILY = ["ping0", "ipwhois"]
-DEFAULT_GEO_PROVIDERS_ALL = ["ipinfo", "ip_sb", "cloudflare", "ping0", "ipapi", "ipwhois", "ip_api"]
+DEFAULT_GEO_PROVIDERS_DAILY = ["ipwhois", "ip_api"]
+DEFAULT_GEO_PROVIDERS_ALL = ["ipwhois", "ip_api", "ipinfo", "ip_sb", "cloudflare", "ipapi", "ping0"]
 SOURCE_SKIP_MARKERS = (
     "/CIDR/",
     "/WARP/",
@@ -1652,17 +1652,23 @@ def detect_geo(proxy: str, timeout: int, providers: list[str]) -> GeoDecision:
         providers = list(DEFAULT_GEO_PROVIDERS_DAILY)
 
     if providers == DEFAULT_GEO_PROVIDERS_DAILY:
-        primary = geo_probe(proxy, timeout, "ping0", GEO_PROVIDER_URLS["ping0"])
+        primary_name = providers[0]
+        fallback_name = providers[1] if len(providers) > 1 else ""
+        primary = geo_probe(proxy, timeout, primary_name, GEO_PROVIDER_URLS[primary_name])
         if primary[1]:
             return geo_decision_from_results(
                 [primary],
                 providers,
                 policy=DEFAULT_GEO_POLICY_VERSION,
-                selected_provider="ping0",
+                selected_provider=primary_name,
                 fallback_used=False,
             )
-        fallback = geo_probe(proxy, timeout, "ipwhois", GEO_PROVIDER_URLS["ipwhois"])
-        selected_provider = "ipwhois" if fallback[1] else ""
+        fallback = (
+            geo_probe(proxy, timeout, fallback_name, GEO_PROVIDER_URLS[fallback_name])
+            if fallback_name
+            else ("", None, None, None)
+        )
+        selected_provider = fallback_name if fallback[1] else ""
         return geo_decision_from_results(
             [primary, fallback],
             providers,

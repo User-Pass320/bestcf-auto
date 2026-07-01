@@ -107,7 +107,7 @@ scripts/update-local-and-push.ps1
 
 它会本地生成新的 `public/bestcf_final.txt`，校验至少 10 行，然后提交并推送到 GitHub。Cloudflare Pages 会自动重新部署 `public/`。
 
-本机更新默认禁用 `geo` 与 `geo hint` 缓存，并使用 `--geo-providers ping0 --selection-mode all-regions --country-max 35 --max-final-candidates 0 --geo-concurrency 16`。它会对本轮真连接通过的候选执行实时 `https://ip.ping0.cc/geo` 探测，不再按偏好国家提前过滤；只有 `ping0` 明确给出出口地区的候选才参与最终选择，最终按真实出口地区分组，每个出口地区最多写入 35 个节点。
+本机更新默认禁用 `geo` 与 `geo hint` 缓存，并使用 `--geo-providers ipwhois,ip_api --selection-mode all-regions --country-max 35 --max-final-candidates 0 --geo-concurrency 16`。它会对本轮真连接通过的候选优先执行实时 `https://ipwho.is/` 探测，失败时回退到 `http://ip-api.com/json/`，不再按偏好国家提前过滤；只有探测服务明确给出出口地区的候选才参与最终选择，最终按真实出口地区分组，每个出口地区最多写入 35 个节点。
 
 为减少大量无效香港出口探测，本机与 GitHub Actions 更新默认启用本轮运行时 HK suppression：
 
@@ -123,7 +123,7 @@ scripts/update-local-and-push.ps1
 --hk-suppress-explore-rate 0.05
 ```
 
-该策略只使用本轮 `ping0` 实测结果，不使用持久 geo 缓存或 geo hint 缓存；只压制已实测为高置信 HK 的 IP 前缀桶，未知前缀与已出现非 HK 的前缀不会被压制。旧 825 个 geo 候选池离线回放显示：`prefix /20-/40 + min_samples=6 + hk_probe_cap=105` 可跳过约 185 个 HK 探测，JP/SG/KR/TW 误伤为 0；`min_samples=4/5` 会误伤 JP，因此不采用。
+该策略只使用本轮 `ipwhois/ip_api` 实测结果，不使用持久 geo 缓存或 geo hint 缓存；只压制已实测为高置信 HK 的 IP 前缀桶，未知前缀与已出现非 HK 的前缀不会被压制。旧 825 个 geo 候选池离线回放显示：`prefix /20-/40 + min_samples=6 + hk_probe_cap=105` 可跳过约 185 个 HK 探测，JP/SG/KR/TW 误伤为 0；`min_samples=4/5` 会误伤 JP，因此不采用。
 
 未启用 `--selection-mode all-regions` 时，默认 `balanced` 配置会限制每个出口国家最多 50 个节点，避免单个国家占满结果。当前 all-regions 本机更新会把超过每地区 35 个上限的已探测候选写入：
 

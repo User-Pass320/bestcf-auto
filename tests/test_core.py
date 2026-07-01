@@ -31,7 +31,7 @@ class ParseCandidateTests(unittest.TestCase):
 
 
 class GeoPolicyTests(unittest.TestCase):
-    def test_daily_policy_short_circuits_on_ping0_success(self):
+    def test_daily_policy_short_circuits_on_ipwhois_success(self):
         calls = []
 
         def fake_probe(_proxy, _timeout, name, _url):
@@ -41,26 +41,26 @@ class GeoPolicyTests(unittest.TestCase):
         with mock.patch.object(tool, "geo_probe", side_effect=fake_probe):
             decision = tool.detect_geo("http://127.0.0.1:7890", 1, tool.DEFAULT_GEO_PROVIDERS_DAILY)
 
-        self.assertEqual(calls, ["ping0"])
+        self.assertEqual(calls, ["ipwhois"])
         self.assertEqual(decision.country_code, "HK")
-        self.assertEqual(decision.selected_provider, "ping0")
+        self.assertEqual(decision.selected_provider, "ipwhois")
         self.assertFalse(decision.fallback_used)
 
-    def test_daily_policy_falls_back_to_ipwhois(self):
+    def test_daily_policy_falls_back_to_ip_api(self):
         calls = []
 
         def fake_probe(_proxy, _timeout, name, _url):
             calls.append(name)
-            if name == "ping0":
+            if name == "ipwhois":
                 return name, None, None, None
             return name, "JP", "203.0.113.2", None
 
         with mock.patch.object(tool, "geo_probe", side_effect=fake_probe):
             decision = tool.detect_geo("http://127.0.0.1:7890", 1, tool.DEFAULT_GEO_PROVIDERS_DAILY)
 
-        self.assertEqual(calls, ["ping0", "ipwhois"])
+        self.assertEqual(calls, ["ipwhois", "ip_api"])
         self.assertEqual(decision.country_code, "JP")
-        self.assertEqual(decision.selected_provider, "ipwhois")
+        self.assertEqual(decision.selected_provider, "ip_api")
         self.assertTrue(decision.fallback_used)
 
 
@@ -206,7 +206,7 @@ class DeclaredSchedulerTests(unittest.TestCase):
                         "cf_colo": "NRT",
                         "geo_evidence": "cached",
                         "policy": tool.DEFAULT_GEO_POLICY_VERSION,
-                        "selected_provider": "ping0",
+                        "selected_provider": "ipwhois",
                         "fallback_used": False,
                         "providers": list(tool.DEFAULT_GEO_PROVIDERS_DAILY),
                         "expires_at": 9999999999,
@@ -242,8 +242,8 @@ class AllRegionsSelectionTests(unittest.TestCase):
             latency_ms=latency,
             exit_country_code=code,
             exit_region=tool.country_name(code),
-            geo_evidence=f"ping0:{code}",
-            geo_selected_provider="ping0",
+            geo_evidence=f"ipwhois:{code}",
+            geo_selected_provider="ipwhois",
         )
 
     def test_all_regions_selection_caps_each_detected_region(self):
