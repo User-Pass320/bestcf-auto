@@ -78,9 +78,9 @@ DEFAULT_GEO_HINT_CACHE_NAME = "bestcf_geo_hint_cache.json"
 DEFAULT_SOURCE_DENYLIST_NAME = "bestcf_source_denylist.txt"
 DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
 SOURCE_CACHE_VERSION = 1
-GEO_CACHE_VERSION = 2
+GEO_CACHE_VERSION = 3
 GEO_HINT_CACHE_VERSION = 1
-DEFAULT_GEO_POLICY_VERSION = "ping0_primary_ipwhois_ip_api_crosscheck_v1"
+DEFAULT_GEO_POLICY_VERSION = "youtube_primary_ping0_ipwhois_fallback_v1"
 DEFAULT_SOURCE_INVALID_THRESHOLD = 2
 DEFAULT_SOURCE_QUARANTINE_HOURS = 24.0
 DEFAULT_SOURCE_PRUNE_MIN_LINES = 5
@@ -108,6 +108,7 @@ GEO_HINT_PROMOTE_COUNTRY_ORDER = ["JP", "KR", "TW", "US"]
 PREFERRED_REGION_NAMES = {"香港", "日本", "新加坡", "美国", "韩国", "台湾"}
 DEFAULT_LATENCY_URL = "https://www.gstatic.com/generate_204"
 GEO_PROVIDER_URLS = {
+    "youtube": "https://www.youtube.com/",
     "ipinfo": "https://ipinfo.io/json",
     "ip_sb": "https://api.ip.sb/geoip",
     "cloudflare": "https://www.cloudflare.com/cdn-cgi/trace",
@@ -116,8 +117,8 @@ GEO_PROVIDER_URLS = {
     "ipwhois": "https://ipwho.is/",
     "ip_api": "http://ip-api.com/json/?fields=status,countryCode,query",
 }
-DEFAULT_GEO_PROVIDERS_DAILY = ["ping0", "ipwhois", "ip_api"]
-DEFAULT_GEO_PROVIDERS_ALL = ["ping0", "ipwhois", "ip_api", "ipinfo", "ip_sb", "cloudflare", "ipapi"]
+DEFAULT_GEO_PROVIDERS_DAILY = ["youtube", "ping0", "ipwhois"]
+DEFAULT_GEO_PROVIDERS_ALL = ["youtube", "ping0", "ipwhois", "ip_api", "ipinfo", "ip_sb", "cloudflare", "ipapi"]
 SOURCE_SKIP_MARKERS = (
     "/CIDR/",
     "/WARP/",
@@ -1025,16 +1026,27 @@ def parse_candidate(source: str, line: str) -> Candidate | None:
     )
 
 
-def curl_text(url: str, timeout: int = 20, proxy: str | None = None) -> tuple[bool, str]:
+def curl_text(
+    url: str,
+    timeout: int = 20,
+    proxy: str | None = None,
+    headers: dict[str, str] | None = None,
+    user_agent: str | None = None,
+) -> tuple[bool, str]:
     cmd = [
         "curl.exe",
         "-sS",
         "-L",
+        "--compressed",
         "--insecure",
         "--ssl-no-revoke",
         "--max-time",
         str(timeout),
     ]
+    if user_agent:
+        cmd.extend(["-A", user_agent])
+    for key, value in (headers or {}).items():
+        cmd.extend(["-H", f"{key}: {value}"])
     if proxy:
         cmd.extend(["--proxy", proxy])
     cmd.append(url)
@@ -1512,11 +1524,40 @@ def parse_cloudflare_trace(text: str) -> dict[str, str]:
     return fields
 
 
+YOUTUBE_GEO_PATTERNS = [
+    re.compile(r'"GL"\s*:\s*"([A-Z]{2})"'),
+    re.compile(r'"INNERTUBE_CONTEXT_GL"\s*:\s*"([A-Z]{2})"'),
+    re.compile(r'"countryCode"\s*:\s*"([A-Z]{2})"'),
+    re.compile(r'"client"\s*:\s*\{.*?"gl"\s*:\s*"([A-Z]{2})"', re.S),
+]
+
+
+def parse_youtube_geo(text: str) -> str | None:
+    for pattern in YOUTUBE_GEO_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            return match.group(1).upper()
+    return None
+
+
 def geo_probe(proxy: str, timeout: int, name: str, url: str) -> tuple[str, str | None, str | None, str | None]:
-    ok, text = curl_text(url, timeout=timeout, proxy=proxy)
+    headers = None
+    user_agent = None
+    if name == "youtube":
+        headers = {
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        }
+        user_agent = (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0"
+        )
+    ok, text = curl_text(url, timeout=timeout, proxy=proxy, headers=headers, user_agent=user_agent)
     if not ok:
         return name, None, None, None
     try:
+        if name == "youtube":
+            return name, parse_youtube_geo(text), None, None
         if name == "cloudflare":
             fields = parse_cloudflare_trace(text)
             code = str(fields.get("loc") or "").upper() or None

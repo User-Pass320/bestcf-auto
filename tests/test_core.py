@@ -31,58 +31,62 @@ class ParseCandidateTests(unittest.TestCase):
 
 
 class GeoPolicyTests(unittest.TestCase):
-    def test_daily_policy_prefers_ping0_over_crosscheck_disagreement(self):
+    def test_parse_youtube_geo_prefers_gl(self):
+        html = '{"INNERTUBE_CONTEXT_GL":"HK","GL":"JP","countryCode":"SG"}'
+        self.assertEqual(tool.parse_youtube_geo(html), "JP")
+
+    def test_daily_policy_prefers_youtube_over_crosscheck_disagreement(self):
         calls = []
 
         def fake_probe(_proxy, _timeout, name, _url):
             calls.append(name)
-            if name == "ping0":
-                return name, "HK", "203.0.113.1", None
+            if name == "youtube":
+                return name, "HK", None, None
             return name, "SG", "203.0.113.2", None
 
         with mock.patch.object(tool, "geo_probe", side_effect=fake_probe):
             decision = tool.detect_geo("http://127.0.0.1:7890", 1, tool.DEFAULT_GEO_PROVIDERS_DAILY)
 
-        self.assertCountEqual(calls, ["ping0", "ipwhois", "ip_api"])
+        self.assertCountEqual(calls, ["youtube", "ping0", "ipwhois"])
         self.assertEqual(decision.country_code, "HK")
-        self.assertEqual(decision.selected_provider, "ping0")
+        self.assertEqual(decision.selected_provider, "youtube")
         self.assertFalse(decision.fallback_used)
-        self.assertEqual(tool.parse_geo_evidence(decision.evidence), {"ping0": "HK", "ipwhois": "SG", "ip_api": "SG"})
+        self.assertEqual(tool.parse_geo_evidence(decision.evidence), {"youtube": "HK", "ping0": "SG", "ipwhois": "SG"})
 
-    def test_daily_policy_falls_back_to_ipwhois_when_ping0_unknown(self):
+    def test_daily_policy_falls_back_to_ping0_when_youtube_unknown(self):
         calls = []
 
         def fake_probe(_proxy, _timeout, name, _url):
             calls.append(name)
-            if name == "ping0":
+            if name == "youtube":
                 return name, None, None, None
-            if name == "ipwhois":
+            if name == "ping0":
                 return name, "JP", "203.0.113.2", None
             return name, "SG", "203.0.113.3", None
 
         with mock.patch.object(tool, "geo_probe", side_effect=fake_probe):
             decision = tool.detect_geo("http://127.0.0.1:7890", 1, tool.DEFAULT_GEO_PROVIDERS_DAILY)
 
-        self.assertCountEqual(calls, ["ping0", "ipwhois", "ip_api"])
+        self.assertCountEqual(calls, ["youtube", "ping0", "ipwhois"])
         self.assertEqual(decision.country_code, "JP")
-        self.assertEqual(decision.selected_provider, "ipwhois")
+        self.assertEqual(decision.selected_provider, "ping0")
         self.assertTrue(decision.fallback_used)
 
-    def test_daily_policy_falls_back_to_ip_api_when_ping0_and_ipwhois_unknown(self):
+    def test_daily_policy_falls_back_to_ipwhois_when_youtube_and_ping0_unknown(self):
         calls = []
 
         def fake_probe(_proxy, _timeout, name, _url):
             calls.append(name)
-            if name in {"ping0", "ipwhois"}:
+            if name in {"youtube", "ping0"}:
                 return name, None, None, None
             return name, "TW", "203.0.113.3", None
 
         with mock.patch.object(tool, "geo_probe", side_effect=fake_probe):
             decision = tool.detect_geo("http://127.0.0.1:7890", 1, tool.DEFAULT_GEO_PROVIDERS_DAILY)
 
-        self.assertCountEqual(calls, ["ping0", "ipwhois", "ip_api"])
+        self.assertCountEqual(calls, ["youtube", "ping0", "ipwhois"])
         self.assertEqual(decision.country_code, "TW")
-        self.assertEqual(decision.selected_provider, "ip_api")
+        self.assertEqual(decision.selected_provider, "ipwhois")
         self.assertTrue(decision.fallback_used)
 
 
