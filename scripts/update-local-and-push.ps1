@@ -28,15 +28,47 @@ function Assert-NativeCommandSucceeded {
     }
 }
 
+function Stop-BestCFWorkerProcesses {
+    $patterns = @(
+        "bestcf_work",
+        "bestcf-auto"
+    )
+    $processes = Get-CimInstance Win32_Process |
+        Where-Object {
+            $commandLine = $_.CommandLine
+            $_.Name -eq "mihomo.exe" -and
+            $null -ne $commandLine -and
+            ($patterns | Where-Object { $commandLine -like "*$_*" })
+        }
+
+    foreach ($process in $processes) {
+        Write-Host "Stopping stale BestCF mihomo worker: pid=$($process.ProcessId) command=$($process.CommandLine)"
+        Stop-Process -Id $process.ProcessId -Force -ErrorAction SilentlyContinue
+    }
+
+    if ($processes) {
+        Start-Sleep -Seconds 2
+    }
+}
+
 $mihomo = "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
 if (-not (Test-Path -LiteralPath $mihomo)) {
-    throw "mihomo not found: $mihomo"
+    $fallbackMihomo = Get-ChildItem -LiteralPath "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy" -Recurse -Filter "mihomo.exe" -ErrorAction SilentlyContinue |
+        Select-Object -First 1 -ExpandProperty FullName
+    if ($fallbackMihomo -and (Test-Path -LiteralPath $fallbackMihomo)) {
+        $mihomo = $fallbackMihomo
+        Write-Host "Using fallback mihomo: $mihomo"
+    } else {
+        throw "mihomo not found: $mihomo; fallback not found under C:\Users\sundewang\edgetunnel-bestcf-selfdeploy"
+    }
 }
 if (-not (Test-Path -LiteralPath ".\template.yaml")) {
     throw "template.yaml not found. This private file is required for local testing."
 }
 
 New-Item -ItemType Directory -Force -Path ".\public" | Out-Null
+
+Stop-BestCFWorkerProcesses
 
 python .\bestcf_tool.py `
     --profile balanced `
