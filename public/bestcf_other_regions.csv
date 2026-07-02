@@ -1,533 +1,399 @@
 ﻿exit_country_code,exit_region_name,host,port,endpoint,source,latency_ms,cf_colo,geo_evidence,geo_cache_status,status,error,raw_line
-HK,香港,2606:4700:2:8d45:93ed:ccf5:23d9:67f7,443,[2606:4700:2:8d45:93ed:ccf5:23d9:67f7]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,458,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,2606:4700:2:8d45:93ed:ccf5:23d9:67f7
-HK,香港,108.162.194.1,443,108.162.194.1:443,bestcf_pages_dev_entryip_50_txt,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
-HK,香港,172.64.229.42,443,172.64.229.42:443,uouin,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.42:443#麒麟优选 | 移动 | 172.64.229.42 | 57.49ms | 0.15mb/s
-HK,香港,2606:4700:2:8d25:5b9f:a020:1263:1326,443,[2606:4700:2:8d25:5b9f:a020:1263:1326]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,459,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,2606:4700:2:8d25:5b9f:a020:1263:1326
-HK,香港,2606:4700:8399::7831:682f,443,[2606:4700:8399::7831:682f]:443,bestcf_pages_dev_vvhan_ipv6_txt,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:8399::7831:682f]:443#vvHan优选 | 移动 | HKG | 2606:4700:8399::7831:682f
-HK,香港,2606:4700:9ad2:7b34:41b4:85bf:8fa1:add9,443,[2606:4700:9ad2:7b34:41b4:85bf:8fa1:add9]:443,bestcf_pages_dev_vvhan_ipv6_txt,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9ad2:7b34:41b4:85bf:8fa1:add9]:443#vvHan优选 | 移动 | Default | 2606:4700:9ad2:7b34:41b4:85bf:8fa1:add9
-HK,香港,104.17.142.26,2096,104.17.142.26:2096,gshtwy_wetest_v4,460,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.142.26:2096#联通-SJC-2096-WS-TLS
-HK,香港,104.19.254.30,443,104.19.254.30:443,cfyes_ipv4,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.254.30:443#CFYes优选 | 电信 | 104.19.254.30
-HK,香港,104.26.0.7,443,104.26.0.7:443,bestcf_pages_dev_gslege_DE_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.7:443#Gslege优选 | de 【德国】 DE | 104.26.0.7
-HK,香港,141.101.115.1,443,141.101.115.1:443,bestcf_pages_dev_entryip_50_txt,460,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,141.101.115.1:443#141.101.115.1 | 跨境优化段，路径短，适合海外资源
-HK,香港,172.64.32.5,443,172.64.32.5:443,gslege_sg,460,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,172.64.32.5:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.5
-HK,香港,172.67.116.63,443,172.67.116.63:443,cfyes_ipv4,460,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,172.67.116.63:443#CFYes优选 | 移动 | 172.67.116.63
-HK,香港,190.93.244.1,443,190.93.244.1:443,bestcf_pages_dev_entryip_50_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,190.93.244.1:443#190.93.244.1 | 链路冗余段，提供差异化出口路径选择
-HK,香港,2606:4700:2:8d45:2824:aabd:fd64:a9c3,443,[2606:4700:2:8d45:2824:aabd:fd64:a9c3]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,460,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,2606:4700:2:8d45:2824:aabd:fd64:a9c3
-HK,香港,2606:4700:57::2a28:f02a,443,[2606:4700:57::2a28:f02a]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:57::2a28:f02a]:443#WeTestV6-6dabd7
-HK,香港,104.17.0.4,443,104.17.0.4:443,gslege_us,461,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.0.4:443#Gslege优选 | us 【美国】 US | 104.17.0.4
-HK,香港,104.19.0.9,443,104.19.0.9:443,gslege_us,461,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.0.9:443#Gslege优选 | us 【美国】 US | 104.19.0.9
-HK,香港,104.27.0.2,443,104.27.0.2:443,bestcf_pages_dev_gslege_DE_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.2:443#Gslege优选 | de 【德国】 DE | 104.27.0.2
-HK,香港,108.162.198.66,443,108.162.198.66:443,uouin,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.66:443#麒麟优选 | 多线 | 108.162.198.66 | 55.45ms | 15.69mb/s
-HK,香港,108.162.198.6,443,108.162.198.6:443,gslege_jp,461,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,108.162.198.6:443#Gslege优选 | jp 【日本】 JP | 108.162.198.6
-HK,香港,104.19.212.207,443,104.19.212.207:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,youtube:HK;ping0:-;ipwhois:SG,disabled,geo_only,,104.19.212.207:443#US-9172f1
-HK,香港,162.159.48.39,2096,162.159.48.39:2096,gshtwy_wetest_v4,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.39:2096#电信-SIN-2096-WS-TLS
-HK,香港,172.64.151.184,443,172.64.151.184:443,uouin,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.151.184:443#麒麟优选 | 电信 | 172.64.151.184 | 46.84ms | 2.09mb/s
-HK,香港,2a06:98c1:3121:0:efde:82d1:8124:3fed,443,[2a06:98c1:3121:0:efde:82d1:8124:3fed]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,462,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2a06:98c1:3121:0:efde:82d1:8124:3fed]:443#Uouin-0c00910
-HK,香港,2a06:98c1:3121:c677:c614:1f96:d4bf:a723,443,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,462,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443#Uouin-9fda34
-HK,香港,104.17.141.4,8443,104.17.141.4:8443,gshtwy_wetest_v4,463,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.141.4:8443#移动-SJC-8443-WS-TLS
-HK,香港,104.19.59.119,443,104.19.59.119:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,463,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.59.119
-HK,香港,104.27.70.104,443,104.27.70.104:443,cfyes_ipv4,463,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.27.70.104:443#CFYes优选 | 电信 | 104.27.70.104
-HK,香港,162.159.46.86,443,162.159.46.86:443,bestcf_pages_dev_nirevil_ipv4_txt,463,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.46.86:443#NiREvil优选 | 电信 | 162.159.46.86 | Default | 89ms | 250mbps
-HK,香港,104.17.128.145,2096,104.17.128.145:2096,gshtwy_wetest_v4,464,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.128.145:2096#联通-SJC-2096-WS-TLS
-HK,香港,104.17.25.55,443,104.17.25.55:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.25.55
-HK,香港,104.18.39.44,443,104.18.39.44:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.39.44
-HK,香港,104.19.48.190,443,104.19.48.190:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,464,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.48.190
-HK,香港,104.20.22.170,443,104.20.22.170:443,uouin,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.22.170:443#麒麟优选 | 联通 | 104.20.22.170 | 145.79ms | 0.13mb/s
-HK,香港,104.25.110.208,443,104.25.110.208:443,cfyes_ipv4,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.110.208:443#CFYes优选 | 电信 | 104.25.110.208
-HK,香港,162.159.6.206,443,162.159.6.206:443,uouin,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.6.206:443#麒麟优选 | 电信 | 162.159.6.206 | 46.84ms | 0.42mb/s
-HK,香港,172.64.147.88,443,172.64.147.88:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.147.88:443#US-9dda82
-HK,香港,104.17.128.54,443,104.17.128.54:443,wetest,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.54:443#微测优选 | 联通 | SJC | 104.17.128.54
-HK,香港,104.18.139.137,443,104.18.139.137:443,bestcf_pages_dev_nirevil_ipv4_txt,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.139.137:443#NiREvil优选 | 电信 | 104.18.139.137 | Default | 135ms | 210mbps
-HK,香港,104.25.250.63,2087,104.25.250.63:2087,gshtwy_wetest_v4,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:2087#移动-HKG-2087-WS-TLS
-HK,香港,108.162.198.1,443,108.162.198.1:443,gslege_jp,465,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,108.162.198.1:443#Gslege优选 | jp 【日本】 JP | 108.162.198.1
-HK,香港,162.159.10.137,2096,162.159.10.137:2096,gshtwy_wetest_v4,465,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,162.159.10.137:2096#电信-SIN-2096-WS-TLS
-HK,香港,162.159.140.116,443,162.159.140.116:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.140.116:443#US-7f0e67
-HK,香港,162.159.48.39,443,162.159.48.39:443,wetest,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.39:443#微测优选 | 电信 | SIN | 162.159.48.39
-HK,香港,172.66.3.228,2053,172.66.3.228:2053,gshtwy_wetest_v4,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:2053#移动-HKG-2053-WS-TLS
-HK,香港,2606:4700:0:53:58f9:2ad7:5bc1:d3c6,443,[2606:4700:0:53:58f9:2ad7:5bc1:d3c6]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,465,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,2606:4700:0:53:58f9:2ad7:5bc1:d3c6
-HK,香港,104.16.0.6,443,104.16.0.6:443,gslege_us,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.0.6:443#Gslege优选 | us 【美国】 US | 104.16.0.6
-HK,香港,104.17.128.145,2053,104.17.128.145:2053,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.128.145:2053#联通-SJC-2053-WS-TLS
-HK,香港,104.17.128.54,2053,104.17.128.54:2053,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.54:2053#联通-SJC-2053-WS-TLS
-HK,香港,104.17.128.54,2096,104.17.128.54:2096,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.17.128.54:2096#联通-SJC-2096-WS-TLS
-HK,香港,104.17.53.1,443,104.17.53.1:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.53.1
-HK,香港,104.17.79.65,443,104.17.79.65:443,bestcf_pages_dev_nirevil_ipv4_txt,466,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.79.65:443#NiREvil优选 | 电信 | 104.17.79.65 | Default | 131ms | 285mbps
-HK,香港,104.18.166.129,443,104.18.166.129:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:-;ipwhois:SG,disabled,geo_only,,104.18.166.129:443#US-90e092
+HK,香港,104.17.108.56,443,104.17.108.56:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.108.56
+HK,香港,104.17.141.4,8443,104.17.141.4:8443,gshtwy_wetest_v4,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.141.4:8443#移动-SJC-8443-WS-TLS
+HK,香港,108.162.198.12,443,108.162.198.12:443,gslege_jp,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.12:443#Gslege优选 | jp 【日本】 JP | 108.162.198.12
+HK,香港,162.159.10.137,8443,162.159.10.137:8443,gshtwy_wetest_v4,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.137:8443#电信-SIN-8443-WS-TLS
+HK,香港,162.159.46.202,443,162.159.46.202:443,bestcf_pages_dev_vvhan_ipv4_txt,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.46.202:443#vvHan优选 | 电信 | Default | 162.159.46.202
+HK,香港,162.159.49.184,443,162.159.49.184:443,wetest,459,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.49.184:443#微测优选 | 电信 | SIN | 162.159.49.184
+HK,香港,2a06:98c1:3121:0:ef18:6ab0:b648:d756,443,[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,459,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2a06:98c1:3121:0:ef18:6ab0:b648:d756]:443#Uouin-0f8610
+HK,香港,2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2,443,[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,459,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,[2a06:98c1:3121:cdc1:6b1b:cfe6:f0:eaa2]:443#Uouin-00dad1
+HK,香港,104.24.0.4,443,104.24.0.4:443,bestcf_pages_dev_gslege_DE_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.4:443#Gslege优选 | de 【德国】 DE | 104.24.0.4
+HK,香港,104.27.0.1,443,104.27.0.1:443,bestcf_pages_dev_entryip_50_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.1:443#104.27.0.1 | 综合边缘节点，兼顾延迟表现与带宽
+HK,香港,108.162.194.1,443,108.162.194.1:443,bestcf_pages_dev_entryip_50_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.194.1:443#108.162.194.1 | 企业冗余入口，构建高可用链路架构
+HK,香港,108.162.198.15,443,108.162.198.15:443,gslege_jp,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.15:443#Gslege优选 | jp 【日本】 JP | 108.162.198.15
+HK,香港,162.159.2.82,443,162.159.2.82:443,wetest,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.2.82:443#微测优选 | 电信 | SIN | 162.159.2.82
+HK,香港,172.64.156.112,443,172.64.156.112:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.156.112:443#US-1d9887
+HK,香港,172.64.229.76,443,172.64.229.76:443,uouin,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.76:443#麒麟优选 | 移动 | 172.64.229.76 | 48.79ms | 11.16mb/s
+HK,香港,172.64.32.3,443,172.64.32.3:443,gslege_sg,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.3:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.3
+HK,香港,2606:4700:2:8d45:2824:aabd:fd64:a9c3,443,[2606:4700:2:8d45:2824:aabd:fd64:a9c3]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,2606:4700:2:8d45:2824:aabd:fd64:a9c3
+HK,香港,2a06:98c1:53::c3a1:3456,443,[2a06:98c1:53::c3a1:3456]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:53::c3a1:3456]:443#WeTestV6-5c6716
+HK,香港,2a06:98c1:56::38f8:4281,2096,[2a06:98c1:56::38f8:4281]:2096,moistr,460,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:56::38f8:4281]:2096#MoistR优选 | 电信 IPV6 02 | [2a06:98c1:56::38f8:4281]:2096
+HK,香港,104.19.33.125,443,104.19.33.125:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.33.125
+HK,香港,104.25.246.136,443,104.25.246.136:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.246.136:443#US-34c437
+HK,香港,104.26.0.1,443,104.26.0.1:443,bestcf_pages_dev_gslege_DE_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.1:443#Gslege优选 | de 【德国】 DE | 104.26.0.1
+HK,香港,162.159.35.125,443,162.159.35.125:443,wetest,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.35.125:443#微测优选 | 联通 | LAX | 162.159.35.125
+HK,香港,172.66.1.76,443,172.66.1.76:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.1.76:443#US-599697
+HK,香港,172.67.76.33,443,172.67.76.33:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.76.33:443#US-4970a4
+HK,香港,2606:4700:3036:941a:cc67:e85e:289b:84cb,443,[2606:4700:3036:941a:cc67:e85e:289b:84cb]:443,cfyes_ipv6,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:941a:cc67:e85e:289b:84cb]:443#CFYes优选 | 移动 | [2606:4700:3036:941a:cc67:e85e:289b:84cb]
+HK,香港,2606:4700:50::dc63:83ce,443,[2606:4700:50::dc63:83ce]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:50::dc63:83ce]:443#WeTestV6-e59246
+HK,香港,2606:4700:8397::15a3:8989,2096,[2606:4700:8397::15a3:8989]:2096,moistr,461,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:8397::15a3:8989]:2096#MoistR优选 | 移动 IPV6 03 | [2606:4700:8397::15a3:8989]:2096
+HK,香港,104.18.0.1,443,104.18.0.1:443,gslege_us,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.0.1:443#Gslege优选 | us 【美国】 US | 104.18.0.1
+HK,香港,104.18.151.172,443,104.18.151.172:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.151.172:443#US-ee10d4
+HK,香港,104.18.42.243,8443,104.18.42.243:8443,moistr,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.42.243:8443#MoistR优选 | 移动优选 01 | 104.18.42.243:8443
+HK,香港,108.162.198.5,443,108.162.198.5:443,gslege_jp,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.5:443#Gslege优选 | jp 【日本】 JP | 108.162.198.5
+HK,香港,141.101.115.1,443,141.101.115.1:443,bestcf_pages_dev_entryip_50_txt,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,141.101.115.1:443#141.101.115.1 | 跨境优化段，路径短，适合海外资源
+HK,香港,162.159.152.69,443,162.159.152.69:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.152.69:443#US-0472b8
+HK,香港,162.159.5.3,443,162.159.5.3:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.5.3:443#US-570aa5
+HK,香港,172.64.153.189,443,172.64.153.189:443,uouin,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.153.189:443#麒麟优选 | 多线 | 172.64.153.189 | 66.91ms | 13.96mb/s
+HK,香港,198.41.211.101,443,198.41.211.101:443,cfyes_ipv4,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,198.41.211.101:443#CFYes优选 | 电信 | 198.41.211.101
+HK,香港,2606:4700:0:53:58f9:2ad7:5bc1:d3c6,443,[2606:4700:0:53:58f9:2ad7:5bc1:d3c6]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,462,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,2606:4700:0:53:58f9:2ad7:5bc1:d3c6
+HK,香港,2606:4700:2:8d45:93ed:ccf5:23d9:67f7,443,[2606:4700:2:8d45:93ed:ccf5:23d9:67f7]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,462,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,2606:4700:2:8d45:93ed:ccf5:23d9:67f7
+HK,香港,104.16.253.117,443,104.16.253.117:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,463,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.253.117
+HK,香港,104.16.255.41,443,104.16.255.41:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,463,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.255.41
+HK,香港,108.162.198.2,443,108.162.198.2:443,gslege_jp,463,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.2:443#Gslege优选 | jp 【日本】 JP | 108.162.198.2
+HK,香港,104.16.0.5,443,104.16.0.5:443,gslege_us,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.0.5:443#Gslege优选 | us 【美国】 US | 104.16.0.5
+HK,香港,104.16.248.199,443,104.16.248.199:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.248.199
+HK,香港,104.17.104.153,443,104.17.104.153:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.104.153
+HK,香港,104.17.128.145,2087,104.17.128.145:2087,gshtwy_wetest_v4,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.145:2087#联通-SJC-2087-WS-TLS
+HK,香港,104.19.0.3,443,104.19.0.3:443,gslege_us,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.0.3:443#Gslege优选 | us 【美国】 US | 104.19.0.3
+HK,香港,104.19.158.238,443,104.19.158.238:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.158.238
+HK,香港,104.19.27.5,443,104.19.27.5:443,cfyes_ipv4,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.27.5:443#CFYes优选 | 电信 | 104.19.27.5
+HK,香港,104.19.35.218,443,104.19.35.218:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,464,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,104.19.35.218
+HK,香港,104.20.0.7,443,104.20.0.7:443,bestcf_pages_dev_gslege_NL_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.7:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.7
+HK,香港,104.25.250.63,443,104.25.250.63:443,gshtwy_wetest_v4,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:443#移动-HKG-443-WS-TLS
+HK,香港,162.159.41.53,443,162.159.41.53:443,uouin,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.41.53:443#麒麟优选 | 电信 | 162.159.41.53 | 46.31ms | 66.10mb/s
+HK,香港,162.159.48.12,2096,162.159.48.12:2096,gshtwy_wetest_v4,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.12:2096#电信-SIN-2096-WS-TLS
+HK,香港,172.64.158.9,443,172.64.158.9:443,uouin,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.158.9:443#麒麟优选 | 移动 | 172.64.158.9 | 50.23ms | 12.52mb/s
+HK,香港,2606:4700:2:8d25:ba61:12e1:d518:2f77,443,[2606:4700:2:8d25:ba61:12e1:d518:2f77]:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv6_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,2606:4700:2:8d25:ba61:12e1:d518:2f77
+HK,香港,2606:4700:8399::9d09:16d1,443,[2606:4700:8399::9d09:16d1]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,464,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:8399::9d09:16d1]:443#WeTestV6-bd8709
+HK,香港,104.17.117.50,443,104.17.117.50:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.117.50
+HK,香港,104.17.128.145,8443,104.17.128.145:8443,gshtwy_wetest_v4,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.145:8443#联通-SJC-8443-WS-TLS
+HK,香港,104.17.185.192,443,104.17.185.192:443,uouin,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.185.192:443#麒麟优选 | 移动 | 104.17.185.192 | 49.50ms | 14.84mb/s
+HK,香港,172.64.91.69,443,172.64.91.69:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.91.69:443#US-1d8f18
+HK,香港,190.93.244.1,443,190.93.244.1:443,bestcf_pages_dev_entryip_50_txt,465,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,190.93.244.1:443#190.93.244.1 | 链路冗余段，提供差异化出口路径选择
+HK,香港,104.17.142.26,2096,104.17.142.26:2096,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.142.26:2096#联通-SJC-2096-WS-TLS
+HK,香港,104.20.0.2,443,104.20.0.2:443,bestcf_pages_dev_gslege_NL_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.2:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.2
+HK,香港,104.20.0.4,443,104.20.0.4:443,bestcf_pages_dev_gslege_NL_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.4:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.4
 HK,香港,162.159.20.58,2096,162.159.20.58:2096,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.20.58:2096#电信-SIN-2096-WS-TLS
-HK,香港,172.64.157.118,443,172.64.157.118:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.157.118:443#US-db7e39
-HK,香港,172.64.159.7,443,172.64.159.7:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.159.7:443#US-a4b936
-HK,香港,172.66.3.228,8443,172.66.3.228:8443,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:8443#移动-HKG-8443-WS-TLS
-HK,香港,2606:4700:8392:8390:19f4:359e:33f3:f3b4,443,[2606:4700:8392:8390:19f4:359e:33f3:f3b4]:443,bestcf_pages_dev_vvhan_ipv6_txt,466,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2606:4700:8392:8390:19f4:359e:33f3:f3b4]:443#vvHan优选 | 移动 | Default | 2606:4700:8392:8390:19f4:359e:33f3:f3b4
-HK,香港,104.17.164.52,443,104.17.164.52:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,467,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.164.52
-HK,香港,104.17.173.4,443,104.17.173.4:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.173.4
-HK,香港,104.18.35.77,443,104.18.35.77:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.35.77
-HK,香港,172.64.157.58,443,172.64.157.58:443,uouin,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.157.58:443#麒麟优选 | 移动 | 172.64.157.58 | 63.19ms | 0.15mb/s
-HK,香港,172.64.49.249,443,172.64.49.249:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.49.249:443#US-1989a3
-HK,香港,2a06:98c1:3121:c677:c614:7606:cec1:f722,443,[2a06:98c1:3121:c677:c614:7606:cec1:f722]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:3121:c677:c614:7606:cec1:f722]:443#Uouin-653671
-HK,香港,104.16.0.7,443,104.16.0.7:443,gslege_us,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.0.7:443#Gslege优选 | us 【美国】 US | 104.16.0.7
-HK,香港,104.17.122.69,443,104.17.122.69:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.122.69
-HK,香港,104.17.97.43,443,104.17.97.43:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.97.43
-HK,香港,104.19.0.4,443,104.19.0.4:443,gslege_us,468,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.0.4:443#Gslege优选 | us 【美国】 US | 104.19.0.4
-HK,香港,162.159.48.12,2053,162.159.48.12:2053,gshtwy_wetest_v4,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.12:2053#电信-SIN-2053-WS-TLS
-HK,香港,2606:4700:440f:d3f5:cf83:7ba3:7028:fc46,443,[2606:4700:440f:d3f5:cf83:7ba3:7028:fc46]:443,bestcf_pages_dev_nirevil_ipv6_txt,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:440f:d3f5:cf83:7ba3:7028:fc46]:443#NiREvil优选 | 移动 | Default | 0ms | 545mbps
-HK,香港,static.cloudflareinsights.com,443,static.cloudflareinsights.com:443,domain_all,468,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,static.cloudflareinsights.com:443#官方域名 | Analytics
-HK,香港,104.18.255.167,443,104.18.255.167:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.255.167:443#US-5aabc4
-HK,香港,104.19.59.20,443,104.19.59.20:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.59.20:443#US-c2db09
-HK,香港,104.24.0.5,443,104.24.0.5:443,bestcf_pages_dev_gslege_DE_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.5:443#Gslege优选 | de 【德国】 DE | 104.24.0.5
-HK,香港,108.162.198.5,443,108.162.198.5:443,gslege_jp,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.5:443#Gslege优选 | jp 【日本】 JP | 108.162.198.5
-HK,香港,162.159.33.17,443,162.159.33.17:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.33.17:443#US-1e8bb6
-HK,香港,172.64.90.119,443,172.64.90.119:443,cfyes_ipv4,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.90.119:443#CFYes优选 | 移动 | 172.64.90.119
-HK,香港,172.67.71.114,443,172.67.71.114:443,uouin,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.71.114:443#麒麟优选 | 联通 | 172.67.71.114 | 144.51ms | 0.14mb/s
-HK,香港,104.16.105.166,443,104.16.105.166:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.105.166:443#US-3b2d63
-HK,香港,104.17.162.3,443,104.17.162.3:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.162.3:443#US-cc18a3
-HK,香港,104.25.245.17,443,104.25.245.17:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.245.17:443#US-5074e6
-HK,香港,104.17.142.26,443,104.17.142.26:443,wetest,471,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.142.26:443#微测优选 | 联通 | SJC | 104.17.142.26
-HK,香港,104.17.145.113,8443,104.17.145.113:8443,gshtwy_wetest_v4,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:8443#联通-SJC-8443-WS-TLS
-HK,香港,104.17.221.229,443,104.17.221.229:443,uouin,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.221.229:443#麒麟优选 | 移动 | 104.17.221.229 | 73.43ms | 0.11mb/s
-HK,香港,104.20.0.6,443,104.20.0.6:443,bestcf_pages_dev_gslege_NL_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.6:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.6
-HK,香港,104.20.0.8,443,104.20.0.8:443,bestcf_pages_dev_gslege_NL_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.8:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.8
-HK,香港,104.27.0.4,443,104.27.0.4:443,bestcf_pages_dev_gslege_DE_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.4:443#Gslege优选 | de 【德国】 DE | 104.27.0.4
-HK,香港,104.17.148.209,443,104.17.148.209:443,uouin,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.148.209:443#麒麟优选 | 联通 | 104.17.148.209 | 152.62ms | 13.67mb/s
-HK,香港,104.17.187.112,443,104.17.187.112:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.187.112
-HK,香港,104.17.69.244,443,104.17.69.244:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.69.244:443#US-ddd941
-HK,香港,104.19.220.22,443,104.19.220.22:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,472,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.220.22:443#US-47d824
-HK,香港,104.26.6.75,443,104.26.6.75:443,uouin,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.6.75:443#麒麟优选 | 联通 | 104.26.6.75 | 141.88ms | 0.15mb/s
-HK,香港,162.159.48.12,8443,162.159.48.12:8443,gshtwy_wetest_v4,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.12:8443#电信-SIN-8443-WS-TLS
-HK,香港,2a06:98c1:3109::f1d9:7ab4,443,[2a06:98c1:3109::f1d9:7ab4]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,472,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2a06:98c1:3109::f1d9:7ab4]:443#WeTestV6-d82fe4
-HK,香港,104.17.0.1,443,104.17.0.1:443,gslege_us,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.0.1:443#Gslege优选 | us 【美国】 US | 104.17.0.1
-HK,香港,104.17.145.113,2087,104.17.145.113:2087,gshtwy_wetest_v4,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:2087#联通-SJC-2087-WS-TLS
+HK,香港,162.159.25.119,443,162.159.25.119:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.25.119:443#US-d63ca1
+HK,香港,162.159.48.39,2087,162.159.48.39:2087,gshtwy_wetest_v4,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.39:2087#电信-SIN-2087-WS-TLS
+HK,香港,162.159.49.152,443,162.159.49.152:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:-;ipwhois:SG,disabled,geo_only,,162.159.49.152:443#US-28e943
+HK,香港,162.159.62.20,443,162.159.62.20:443,uouin,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.62.20:443#麒麟优选 | 电信 | 162.159.62.20 | 46.07ms | 66.84mb/s
+HK,香港,172.64.53.126,443,172.64.53.126:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.53.126:443#US-a68d94
+HK,香港,2a06:98c1:3120:c39b:7522:c680:d288:d13c,443,[2a06:98c1:3120:c39b:7522:c680:d288:d13c]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,466,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:3120:c39b:7522:c680:d288:d13c]:443#Uouin-4b9970
+HK,香港,104.16.0.4,443,104.16.0.4:443,gslege_us,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.0.4:443#Gslege优选 | us 【美国】 US | 104.16.0.4
+HK,香港,104.17.148.40,443,104.17.148.40:443,gshtwy_wetest_v4,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.148.40:443#联通-SJC-443-WS-TLS
+HK,香港,104.19.61.50,443,104.19.61.50:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.61.50
+HK,香港,104.26.0.8,443,104.26.0.8:443,bestcf_pages_dev_gslege_DE_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.8:443#Gslege优选 | de 【德国】 DE | 104.26.0.8
+HK,香港,108.162.192.6,443,108.162.192.6:443,gslege_sg,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.192.6:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.6
+HK,香港,108.162.198.9,443,108.162.198.9:443,gslege_jp,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.9:443#Gslege优选 | jp 【日本】 JP | 108.162.198.9
+HK,香港,162.159.0.9,443,162.159.0.9:443,gslege_sg,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.0.9:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.9
+HK,香港,162.159.140.116,443,162.159.140.116:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.140.116:443#US-08d573
+HK,香港,172.64.157.118,443,172.64.157.118:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.157.118:443#US-e6bd410
+HK,香港,172.64.32.8,443,172.64.32.8:443,gslege_sg,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.8:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.8
+HK,香港,172.64.52.169,443,172.64.52.169:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,172.64.52.169:443#US-dac204
+HK,香港,172.64.52.7,443,172.64.52.7:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.52.7:443#US-5696c9
+HK,香港,172.64.53.9,443,172.64.53.9:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.53.9:443#US-085d45
+HK,香港,172.67.66.87,443,172.67.66.87:443,wetest,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.66.87:443#微测优选 | 联通 | HKG | 172.67.66.87
+HK,香港,2606:4700:3037:88a6:7003:8a9:a339:69ac,443,[2606:4700:3037:88a6:7003:8a9:a339:69ac]:443,bestcf_pages_dev_nirevil_ipv6_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3037:88a6:7003:8a9:a339:69ac]:443#NiREvil优选 | 移动 | Default | 0ms | 323mbps
+HK,香港,2606:4700:4700::2882:be0b,443,[2606:4700:4700::2882:be0b]:443,bestcf_pages_dev_vvhan_ipv6_txt,467,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4700::2882:be0b]:443#vvHan优选 | 电信 | SIN | 2606:4700:4700::2882:be0b
+HK,香港,104.17.142.26,2053,104.17.142.26:2053,gshtwy_wetest_v4,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.142.26:2053#联通-SJC-2053-WS-TLS
+HK,香港,104.20.0.6,443,104.20.0.6:443,bestcf_pages_dev_gslege_NL_txt,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.6:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.6
+HK,香港,172.66.0.1,443,172.66.0.1:443,bestcf_pages_dev_entryip_50_txt,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.0.1:443#172.66.0.1 | 主干网优化段，物理跳数少，握手快
+HK,香港,198.41.208.67,443,198.41.208.67:443,cfyes_ipv4,468,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,198.41.208.67:443#CFYes优选 | 移动 | 198.41.208.67
+HK,香港,104.16.196.105,443,104.16.196.105:443,bestcf_pages_dev_vvhan_ipv4_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.196.105:443#vvHan优选 | 电信 | Default | 104.16.196.105
+HK,香港,104.17.145.113,2087,104.17.145.113:2087,gshtwy_wetest_v4,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:2087#联通-SJC-2087-WS-TLS
+HK,香港,104.26.0.3,443,104.26.0.3:443,bestcf_pages_dev_gslege_DE_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.3:443#Gslege优选 | de 【德国】 DE | 104.26.0.3
+HK,香港,104.26.0.9,443,104.26.0.9:443,bestcf_pages_dev_gslege_DE_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.9:443#Gslege优选 | de 【德国】 DE | 104.26.0.9
+HK,香港,104.27.0.3,443,104.27.0.3:443,bestcf_pages_dev_gslege_DE_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.3:443#Gslege优选 | de 【德国】 DE | 104.27.0.3
+HK,香港,162.159.33.205,443,162.159.33.205:443,uouin,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.33.205:443#麒麟优选 | 电信 | 162.159.33.205 | 46.28ms | 66.32mb/s
+HK,香港,162.159.62.89,443,162.159.62.89:443,uouin,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.62.89:443#麒麟优选 | 多线 | 162.159.62.89 | 67.48ms | 13.90mb/s
+HK,香港,172.64.144.190,2087,172.64.144.190:2087,bestcf_pages_dev_tiancheng_mini_txt,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.144.190:2087#天诚优选1 | 战争贩子 | US | 172.64.144.190:2087
+HK,香港,172.64.229.45,443,172.64.229.45:443,uouin,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.45:443#麒麟优选 | 多线 | 172.64.229.45 | 48.60ms | 0.13mb/s
+HK,香港,172.66.3.228,8443,172.66.3.228:8443,gshtwy_wetest_v4,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:8443#移动-HKG-8443-WS-TLS
+HK,香港,2606:4700:90d5::444e:d15a,2096,[2606:4700:90d5::444e:d15a]:2096,moistr,469,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:90d5::444e:d15a]:2096#MoistR优选 | 移动 IPV6 02 | [2606:4700:90d5::444e:d15a]:2096
+HK,香港,104.19.34.242,443,104.19.34.242:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.34.242:443#US-7ce666
+HK,香港,104.24.0.2,443,104.24.0.2:443,bestcf_pages_dev_gslege_DE_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.2:443#Gslege优选 | de 【德国】 DE | 104.24.0.2
+HK,香港,108.162.198.1,443,108.162.198.1:443,gslege_jp,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.1:443#Gslege优选 | jp 【日本】 JP | 108.162.198.1
+HK,香港,108.162.198.28,443,108.162.198.28:443,uouin,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.28:443#麒麟优选 | 多线 | 108.162.198.28 | 62.23ms | 14.38mb/s
+HK,香港,162.159.137.204,443,162.159.137.204:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.137.204:443#US-886186
+HK,香港,162.159.49.247,443,162.159.49.247:443,uouin,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.49.247:443#麒麟优选 | 电信 | 162.159.49.247 | 46.22ms | 67.95mb/s
+HK,香港,198.41.208.44,443,198.41.208.44:443,cfyes_ipv4,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,198.41.208.44:443#CFYes优选 | 移动 | 198.41.208.44
+HK,香港,2606:4700:9642::54cc:d18f,443,[2606:4700:9642::54cc:d18f]:443,bestcf_pages_dev_vvhan_ipv6_txt,470,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9642::54cc:d18f]:443#vvHan优选 | 移动 | HKG | 2606:4700:9642::54cc:d18f
+HK,香港,104.17.142.212,443,104.17.142.212:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,471,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.17.142.212:443#US-e6f8b6
+HK,香港,104.18.33.198,443,104.18.33.198:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.33.198:443#US-0abde10
+HK,香港,104.18.47.140,2096,104.18.47.140:2096,moistr,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.47.140:2096#MoistR优选 | 移动优选 02 | 104.18.47.140:2096
+HK,香港,104.20.0.1,443,104.20.0.1:443,bestcf_pages_dev_gslege_NL_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.1:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.1
+HK,香港,104.20.0.3,443,104.20.0.3:443,bestcf_pages_dev_gslege_NL_txt,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.3:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.3
+HK,香港,162.159.10.89,2053,162.159.10.89:2053,gshtwy_wetest_v4,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.89:2053#电信-SIN-2053-WS-TLS
+HK,香港,172.64.90.119,443,172.64.90.119:443,cfyes_ipv4,471,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.90.119:443#CFYes优选 | 移动 | 172.64.90.119
+HK,香港,104.17.102.95,8443,104.17.102.95:8443,moistr,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.102.95:8443#MoistR优选 | 06-24 23:34 | BestCF.pages.dev
+HK,香港,104.17.106.55,443,104.17.106.55:443,uouin,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.106.55:443#麒麟优选 | 移动 | 104.17.106.55 | 47.75ms | 13.73mb/s
+HK,香港,104.17.128.54,2053,104.17.128.54:2053,gshtwy_wetest_v4,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.54:2053#联通-SJC-2053-WS-TLS
+HK,香港,104.17.152.93,443,104.17.152.93:443,uouin,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.152.93:443#麒麟优选 | 移动 | 104.17.152.93 | 50.00ms | 13.36mb/s
+HK,香港,104.17.71.137,443,104.17.71.137:443,cfyes_ipv4,472,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.17.71.137:443#CFYes优选 | 电信 | 104.17.71.137
+HK,香港,104.18.139.137,443,104.18.139.137:443,bestcf_pages_dev_nirevil_ipv4_txt,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.139.137:443#NiREvil优选 | 电信 | 104.18.139.137 | Default | 135ms | 210mbps
+HK,香港,108.162.198.19,443,108.162.198.19:443,gslege_jp,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.19:443#Gslege优选 | jp 【日本】 JP | 108.162.198.19
+HK,香港,162.159.10.89,443,162.159.10.89:443,gshtwy_wetest_v4,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.89:443#电信-SIN-443-WS-TLS
+HK,香港,162.159.10.89,8443,162.159.10.89:8443,gshtwy_wetest_v4,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.89:8443#电信-SIN-8443-WS-TLS
+HK,香港,162.159.20.58,2053,162.159.20.58:2053,gshtwy_wetest_v4,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.20.58:2053#电信-SIN-2053-WS-TLS
+HK,香港,162.159.24.131,443,162.159.24.131:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.24.131:443#US-93ab59
+HK,香港,172.64.32.4,443,172.64.32.4:443,gslege_sg,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.4:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.4
+HK,香港,2606:4700:4406::a677:399a,2096,[2606:4700:4406::a677:399a]:2096,moistr,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4406::a677:399a]:2096#MoistR优选 | 电信 IPV6 01 | [2606:4700:4406::a677:399a]:2096
+HK,香港,2606:4700:9b0a::a6e8:cee3,443,[2606:4700:9b0a::a6e8:cee3]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,472,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9b0a::a6e8:cee3]:443#WeTestV6-c827410
+HK,香港,104.17.0.1,443,104.17.0.1:443,bestcf_pages_dev_entryip_50_txt,473,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.0.1:443#104.17.0.1 | 静态资源分发，多线路由接入极稳
+HK,香港,104.17.164.52,443,104.17.164.52:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.164.52
+HK,香港,104.18.89.52,443,104.18.89.52:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.89.52:443#US-93ada5
+HK,香港,104.19.0.6,443,104.19.0.6:443,gslege_us,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.0.6:443#Gslege优选 | us 【美国】 US | 104.19.0.6
+HK,香港,104.25.0.2,443,104.25.0.2:443,bestcf_pages_dev_gslege_DE_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.2:443#Gslege优选 | de 【德国】 DE | 104.25.0.2
+HK,香港,104.25.0.7,443,104.25.0.7:443,bestcf_pages_dev_gslege_DE_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.7:443#Gslege优选 | de 【德国】 DE | 104.25.0.7
+HK,香港,104.25.240.85,2053,104.25.240.85:2053,gshtwy_wetest_v4,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:2053#移动-HKG-2053-WS-TLS
 HK,香港,104.25.250.63,2053,104.25.250.63:2053,gshtwy_wetest_v4,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:2053#移动-HKG-2053-WS-TLS
-HK,香港,162.159.192.1,443,162.159.192.1:443,bestcf_pages_dev_entryip_50_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
-HK,香港,162.159.198.1,443,162.159.198.1:443,gslege,473,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.198.1:443#Gslege优选 Speed | 07-01 20:31 | BestCF.pages.dev
-HK,香港,172.64.156.112,443,172.64.156.112:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.156.112
-HK,香港,172.66.3.228,2096,172.66.3.228:2096,gshtwy_wetest_v4,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:2096#移动-HKG-2096-WS-TLS
-HK,香港,172.67.103.217,443,172.67.103.217:443,cfyes_ipv4,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.103.217:443#CFYes优选 | 移动 | 172.67.103.217
-HK,香港,2606:4700:4400::9bca:5f54,443,[2606:4700:4400::9bca:5f54]:443,bestcf_pages_dev_vvhan_ipv6_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4400::9bca:5f54]:443#vvHan优选 | 移动 | LAX | 2606:4700:4400::9bca:5f54
-HK,香港,104.16.0.1,443,104.16.0.1:443,bestcf_pages_dev_entryip_50_txt,474,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.16.0.1:443#104.16.0.1 | 核心业务主网，全国三网优先级最高
-HK,香港,104.18.81.19,443,104.18.81.19:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.81.19:443#US-664135
-HK,香港,104.19.154.204,443,104.19.154.204:443,uouin,474,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.154.204:443#麒麟优选 | 移动 | 104.19.154.204 | 65.56ms | 0.12mb/s
-HK,香港,108.162.198.11,443,108.162.198.11:443,gslege_jp,474,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,108.162.198.11:443#Gslege优选 | jp 【日本】 JP | 108.162.198.11
-HK,香港,162.159.152.225,443,162.159.152.225:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.152.225:443#US-4a3f20
-HK,香港,172.64.229.128,443,172.64.229.128:443,uouin,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.128:443#麒麟优选 | 多线 | 172.64.229.128 | 41.86ms | 13.92mb/s
-HK,香港,172.64.48.254,443,172.64.48.254:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.48.254:443#US-4f4cb2
-HK,香港,172.67.113.59,443,172.67.113.59:443,cfyes_ipv4,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.113.59:443#CFYes优选 | 移动 | 172.67.113.59
-HK,香港,2606:4700:4408:804d:ebfa:ebd1:5d0:5f0c,443,[2606:4700:4408:804d:ebfa:ebd1:5d0:5f0c]:443,bestcf_pages_dev_vvhan_ipv6_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4408:804d:ebfa:ebd1:5d0:5f0c]:443#vvHan优选 | 移动 | Default | 2606:4700:4408:804d:ebfa:ebd1:5d0:5f0c
-HK,香港,104.18.89.52,443,104.18.89.52:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.89.52:443#US-edb493
-HK,香港,104.20.0.9,443,104.20.0.9:443,bestcf_pages_dev_gslege_NL_txt,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.0.9:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.9
-HK,香港,104.25.240.85,8443,104.25.240.85:8443,gshtwy_wetest_v4,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:8443#移动-HKG-8443-WS-TLS
-HK,香港,162.159.20.58,8443,162.159.20.58:8443,gshtwy_wetest_v4,475,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.20.58:8443#电信-SIN-8443-WS-TLS
-HK,香港,172.64.52.197,443,172.64.52.197:443,uouin,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.52.197:443#麒麟优选 | 多线 | 172.64.52.197 | 54.33ms | 0.67mb/s
-HK,香港,172.66.0.1,443,172.66.0.1:443,bestcf_pages_dev_entryip_50_txt,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.0.1:443#172.66.0.1 | 主干网优化段，物理跳数少，握手快
-HK,香港,103.21.244.5,443,103.21.244.5:443,gslege_us,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,103.21.244.5:443#Gslege优选 | us 【美国】 US | 103.21.244.5
-HK,香港,104.16.246.42,443,104.16.246.42:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.246.42
-HK,香港,104.19.155.51,443,104.19.155.51:443,uouin,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.155.51:443#麒麟优选 | 移动 | 104.19.155.51 | 82.12ms | 0.14mb/s
-HK,香港,162.159.0.5,443,162.159.0.5:443,gslege_sg,476,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.0.5:443#Gslege优选 | sg 【新加坡】 SG | 162.159.0.5
-HK,香港,162.159.23.162,443,162.159.23.162:443,uouin,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.23.162:443#麒麟优选 | 电信 | 162.159.23.162 | 46.75ms | 0.34mb/s
-HK,香港,162.159.48.12,443,162.159.48.12:443,wetest,476,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,162.159.48.12:443#微测优选 | 电信 | SIN | 162.159.48.12
-HK,香港,104.17.100.120,443,104.17.100.120:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.100.120
-HK,香港,104.17.167.134,443,104.17.167.134:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.167.134:443#US-7a0892
-HK,香港,104.19.41.140,443,104.19.41.140:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.41.140
-HK,香港,104.24.0.1,443,104.24.0.1:443,bestcf_pages_dev_gslege_DE_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.1:443#Gslege优选 | de 【德国】 DE | 104.24.0.1
-HK,香港,104.25.240.85,2053,104.25.240.85:2053,gshtwy_wetest_v4,477,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.25.240.85:2053#移动-HKG-2053-WS-TLS
-HK,香港,162.159.10.89,2053,162.159.10.89:2053,gshtwy_wetest_v4,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.89:2053#电信-SIN-2053-WS-TLS
-HK,香港,172.64.48.67,443,172.64.48.67:443,uouin,477,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,172.64.48.67:443#麒麟优选 | 电信 | 172.64.48.67 | 46.35ms | 0.51mb/s
-HK,香港,172.64.53.183,443,172.64.53.183:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.53.183:443#US-8e1ee5
-HK,香港,172.64.53.243,443,172.64.53.243:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.53.243:443#US-b32238
-HK,香港,2606:4700:4406::a677:399a,2096,[2606:4700:4406::a677:399a]:2096,moistr,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4406::a677:399a]:2096#MoistR优选 | 电信 IPV6 01 | [2606:4700:4406::a677:399a]:2096
-HK,香港,2606:4700:9ad1::c1e2:45b7,2096,[2606:4700:9ad1::c1e2:45b7]:2096,moistr,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9ad1::c1e2:45b7]:2096#MoistR优选 | 移动 IPV6 01 | [2606:4700:9ad1::c1e2:45b7]:2096
-HK,香港,103.21.244.6,443,103.21.244.6:443,gslege_us,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,103.21.244.6:443#Gslege优选 | us 【美国】 US | 103.21.244.6
-HK,香港,104.16.239.162,443,104.16.239.162:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.239.162:443#US-6c77f5
-HK,香港,104.16.240.70,443,104.16.240.70:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.240.70
-HK,香港,104.17.18.224,443,104.17.18.224:443,bestcf_pages_dev_nirevil_ipv4_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.18.224:443#NiREvil优选 | 电信 | 104.17.18.224 | Default | 132ms | 300mbps
-HK,香港,104.19.154.200,443,104.19.154.200:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,478,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.154.200:443#US-b3fbc7
-HK,香港,104.20.0.1,443,104.20.0.1:443,bestcf_pages_dev_gslege_NL_txt,478,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.20.0.1:443#Gslege优选 | nl 【荷兰】 NL | 104.20.0.1
-HK,香港,104.26.0.39,443,104.26.0.39:443,uouin,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.39:443#麒麟优选 | 联通 | 104.26.0.39 | 144.89ms | 0.13mb/s
-HK,香港,162.159.20.58,443,162.159.20.58:443,wetest,478,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.20.58:443#微测优选 | 电信 | SIN | 162.159.20.58
-HK,香港,8.cf.3666888.xyz,443,8.cf.3666888.xyz:443,domain_ai_vps789,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,8.cf.3666888.xyz:443#AI优选 | 8.cf.3666888.xyz
-HK,香港,2606:4700:91b8::7373:5322,443,[2606:4700:91b8::7373:5322]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:91b8::7373:5322]:443#WeTestV6-9cb8e3
-HK,香港,cloudflare.cfgo.cc,443,cloudflare.cfgo.cc:443,domain_ai_vps789,478,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,cloudflare.cfgo.cc:443#AI优选 | cloudflare.cfgo.cc
-HK,香港,104.17.241.100,443,104.17.241.100:443,bestcf_pages_dev_nirevil_ipv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.241.100:443#NiREvil优选 | 电信 | 104.17.241.100 | Default | 132ms | 210mbps
-HK,香港,104.25.250.63,443,104.25.250.63:443,wetest,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:443#微测优选 | 移动 | HKG | 104.25.250.63
-HK,香港,162.159.58.65,443,162.159.58.65:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.58.65:443#US-6c5851
-HK,香港,2606:4700:3036:6ed4:ffdf:f2ba:820b:ed5c,443,[2606:4700:3036:6ed4:ffdf:f2ba:820b:ed5c]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:6ed4:ffdf:f2ba:820b:ed5c]:443#CMLiussv6-ddd8c3
-HK,香港,2606:4700:3037:88a6:7003:8a9:a339:69ac,443,[2606:4700:3037:88a6:7003:8a9:a339:69ac]:443,bestcf_pages_dev_nirevil_ipv6_txt,480,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3037:88a6:7003:8a9:a339:69ac]:443#NiREvil优选 | 移动 | Default | 0ms | 323mbps
-HK,香港,2606:4700:8397::15a3:8989,2096,[2606:4700:8397::15a3:8989]:2096,moistr,480,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:8397::15a3:8989]:2096#MoistR优选 | 移动 IPV6 03 | [2606:4700:8397::15a3:8989]:2096
-HK,香港,104.17.148.40,443,104.17.148.40:443,wetest,481,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.148.40:443#微测优选 | 联通 | SJC | 104.17.148.40
-HK,香港,104.18.189.153,443,104.18.189.153:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,481,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.189.153:443#US-7fb735
-HK,香港,162.159.153.216,443,162.159.153.216:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,481,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.153.216:443#US-0cedf0
-HK,香港,162.159.19.76,443,162.159.19.76:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,481,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,162.159.19.76:443#US-e649b3
-HK,香港,162.159.42.188,443,162.159.42.188:443,uouin,481,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,162.159.42.188:443#麒麟优选 | 多线 | 162.159.42.188 | 65.60ms | 0.29mb/s
-HK,香港,172.67.78.239,443,172.67.78.239:443,uouin,481,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.78.239:443#麒麟优选 | 联通 | 172.67.78.239 | 140.43ms | 0.22mb/s
-HK,香港,104.16.252.146,443,104.16.252.146:443,bestcf_pages_dev_ircf_ipv4_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.252.146:443#IRCF优选 | 104.16.252.146
-HK,香港,104.18.37.133,443,104.18.37.133:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.37.133:443#US-c8c4c3
-HK,香港,104.18.40.163,443,104.18.40.163:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.40.163
-HK,香港,104.25.250.63,2096,104.25.250.63:2096,gshtwy_wetest_v4,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:2096#移动-HKG-2096-WS-TLS
-HK,香港,104.26.8.117,443,104.26.8.117:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.8.117:443#US-58ae58
-HK,香港,162.159.195.1,443,162.159.195.1:443,bestcf_pages_dev_entryip_50_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.195.1:443#162.159.195.1 | 备用业务入口，路由宣告极其精准
-HK,香港,172.66.3.228,2087,172.66.3.228:2087,gshtwy_wetest_v4,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:2087#移动-HKG-2087-WS-TLS
-HK,香港,104.17.0.8,443,104.17.0.8:443,gslege_us,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.0.8:443#Gslege优选 | us 【美国】 US | 104.17.0.8
-HK,香港,104.18.40.130,443,104.18.40.130:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.40.130
-HK,香港,162.159.10.89,2087,162.159.10.89:2087,gshtwy_wetest_v4,483,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,162.159.10.89:2087#电信-SIN-2087-WS-TLS
-HK,香港,shop.glico.com,443,shop.glico.com:443,domain_asia,483,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,shop.glico.com:443#亚洲域名 | 日本格力高
-HK,香港,104.16.65.1,443,104.16.65.1:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.65.1:443#US-2a3084
-HK,香港,104.18.35.194,443,104.18.35.194:443,uouin,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.35.194:443#麒麟优选 | 电信 | 104.18.35.194 | 46.35ms | 0.34mb/s
-HK,香港,172.67.68.65,443,172.67.68.65:443,cfyes_ipv4,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.68.65:443#CFYes优选 | 电信 | 172.67.68.65
-HK,香港,104.17.148.40,2053,104.17.148.40:2053,gshtwy_wetest_v4,485,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.17.148.40:2053#联通-SJC-2053-WS-TLS
-HK,香港,104.17.216.184,443,104.17.216.184:443,uouin,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.216.184:443#麒麟优选 | 移动 | 104.17.216.184 | 83.16ms | 0.13mb/s
-HK,香港,104.18.0.1,443,104.18.0.1:443,gslege_us,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.0.1:443#Gslege优选 | us 【美国】 US | 104.18.0.1
-HK,香港,104.18.47.140,2096,104.18.47.140:2096,moistr,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.47.140:2096#MoistR优选 | 移动优选 02 | 104.18.47.140:2096
-HK,香港,104.19.0.1,443,104.19.0.1:443,bestcf_pages_dev_entryip_50_txt,485,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.0.1:443#104.19.0.1 | 动态加速段，低延迟跨境数据传输首选
-HK,香港,162.159.25.55,443,162.159.25.55:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.25.55:443#US-260c82
-HK,香港,yg1.ygkkk.dpdns.org,443,yg1.ygkkk.dpdns.org:443,domain_all,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg1.ygkkk.dpdns.org:443#大佬维护 | YGKKK
-HK,香港,104.17.145.113,2053,104.17.145.113:2053,gshtwy_wetest_v4,486,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:2053#联通-SJC-2053-WS-TLS
-HK,香港,104.18.32.14,443,104.18.32.14:443,gslege,486,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.32.14:443#Gslege优选 | 【测速 Nodes】46.43MB/s | 104.18.32.14
-HK,香港,104.16.251.19,443,104.16.251.19:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,487,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.16.251.19
-HK,香港,104.17.212.143,443,104.17.212.143:443,uouin,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.212.143:443#麒麟优选 | 移动 | 104.17.212.143 | 87.55ms | 0.38mb/s
-HK,香港,104.27.0.1,443,104.27.0.1:443,bestcf_pages_dev_gslege_DE_txt,487,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.27.0.1:443#Gslege优选 | de 【德国】 DE | 104.27.0.1
-HK,香港,162.159.10.137,2053,162.159.10.137:2053,gshtwy_wetest_v4,487,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,162.159.10.137:2053#电信-SIN-2053-WS-TLS
-HK,香港,162.159.36.209,443,162.159.36.209:443,bestcf_pages_dev_ircf_ipv4_txt,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.36.209:443#IRCF优选 | 162.159.36.209
-HK,香港,162.159.43.78,443,162.159.43.78:443,uouin,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.43.78:443#麒麟优选 | 电信 | 162.159.43.78 | 46.66ms | 0.33mb/s
-HK,香港,ralphlauren.com.sg,443,ralphlauren.com.sg:443,domain_asia,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ralphlauren.com.sg:443#亚洲域名 | 新加坡拉夫劳伦
-HK,香港,2a06:98c1:50::65fd:14a2,443,[2a06:98c1:50::65fd:14a2]:443,bestcf_pages_dev_vvhan_ipv6_txt,488,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:50::65fd:14a2]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:50::65fd:14a2
-HK,香港,cf.mubaiovo.top,443,cf.mubaiovo.top:443,domain_ai_vps789,489,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.mubaiovo.top:443#AI优选 | cf.mubaiovo.top
-HK,香港,starbucks.qa,443,starbucks.qa:443,domain_asia,489,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,starbucks.qa:443#亚洲域名 | 卡塔尔星巴克
-HK,香港,104.16.243.209,443,104.16.243.209:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,490,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.243.209:443#US-e45c29
-HK,香港,2606:4700:90d7::2864:3b2b,443,[2606:4700:90d7::2864:3b2b]:443,bestcf_pages_dev_vvhan_ipv6_txt,490,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,[2606:4700:90d7::2864:3b2b]:443#vvHan优选 | 移动 | HKG | 2606:4700:90d7::2864:3b2b
-HK,香港,prs.ircf.space,443,prs.ircf.space:443,domain_ircf_all,490,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,prs.ircf.space:443#IRCF优选 | Pars Online | prs.ircf.space
-HK,香港,4.cf.3666888.xyz,443,4.cf.3666888.xyz:443,domain_ai_vps789,491,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,4.cf.3666888.xyz:443#AI优选 | 4.cf.3666888.xyz
-HK,香港,162.159.152.81,443,162.159.152.81:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,492,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.152.81:443#US-56fb61
-HK,香港,www.shopify.com,443,www.shopify.com:443,domain_all,492,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.shopify.com:443#企业域名 | Shopify
-HK,香港,104.17.128.145,443,104.17.128.145:443,wetest,493,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.145:443#微测优选 | 联通 | SJC | 104.17.128.145
-HK,香港,162.159.40.181,2096,162.159.40.181:2096,moistr,493,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
-HK,香港,104.25.250.63,8443,104.25.250.63:8443,gshtwy_wetest_v4,494,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.250.63:8443#移动-HKG-8443-WS-TLS
-HK,香港,2606:4700:440f:bd45:20f4:1985:85bc:19b,443,[2606:4700:440f:bd45:20f4:1985:85bc:19b]:443,bestcf_pages_dev_nirevil_ipv6_txt,495,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:440f:bd45:20f4:1985:85bc:19b]:443#NiREvil优选 | 移动 | Default | 0ms | 320mbps
-HK,香港,skk.moe,443,skk.moe:443,domain_all,495,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,skk.moe:443#大佬维护 | Sukka
-HK,香港,104.18.223.253,443,104.18.223.253:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,496,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.223.253:443#US-262a94
-HK,香港,ask.ircf.space,443,ask.ircf.space:443,domain_ircf_all,496,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ask.ircf.space:443#IRCF优选 | ASK | ask.ircf.space
-HK,香港,mkh.ircf.space,443,mkh.ircf.space:443,domain_ircf_all,496,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,mkh.ircf.space:443#IRCF优选 | TCI | mkh.ircf.space
-HK,香港,na.877774.xyz,443,na.877774.xyz:443,domain_qms_all,496,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,na.877774.xyz:443#秋名山优选 | 美洲 | na.877774.xyz
-HK,香港,www.transunion.hk,443,www.transunion.hk:443,domain_all,498,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.transunion.hk:443#更多选择 | 香港环联
-HK,香港,70mai.store,443,70mai.store:443,domain_asia,499,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,70mai.store:443#亚洲域名 | 中国70迈
-HK,香港,cf.553314.xyz,443,cf.553314.xyz:443,vps789_top100,499,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.553314.xyz:443#VPS789优选 | cf.553314.xyz
-HK,香港,104.19.148.121,443,104.19.148.121:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,500,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.148.121:443#US-4ce410
-HK,香港,5.cf.3666888.xyz,443,5.cf.3666888.xyz:443,domain_ai_vps789,500,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,5.cf.3666888.xyz:443#AI优选 | 5.cf.3666888.xyz
-HK,香港,2606:4700:9a9a:65cf:6add:ea9c:7109:cdd2,443,[2606:4700:9a9a:65cf:6add:ea9c:7109:cdd2]:443,cfyes_ipv6,500,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9a9a:65cf:6add:ea9c:7109:cdd2]:443#CFYes优选 | 移动 | [2606:4700:9a9a:65cf:6add:ea9c:7109:cdd2]
-HK,香港,www.nexusmods.com,443,www.nexusmods.com:443,domain_ai_vps789,500,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.nexusmods.com:443#AI优选 | www.nexusmods.com
-HK,香港,162.159.42.128,443,162.159.42.128:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,501,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.42.128
-HK,香港,7.cf.3666888.xyz,443,7.cf.3666888.xyz:443,domain_ai_vps789,501,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,7.cf.3666888.xyz:443#AI优选 | 7.cf.3666888.xyz
-HK,香港,sanwang.cf.3666888.xyz,443,sanwang.cf.3666888.xyz:443,domain_ai_vps789,501,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,sanwang.cf.3666888.xyz:443#AI优选 | sanwang.cf.3666888.xyz
-HK,香港,cloudflare.468123.xyz,443,cloudflare.468123.xyz:443,domain_ai_vps789,502,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.468123.xyz:443#AI优选 | cloudflare.468123.xyz
-HK,香港,freeyx.cloudflare88.eu.org,443,freeyx.cloudflare88.eu.org:443,domain_ai_vps789,502,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,freeyx.cloudflare88.eu.org:443#AI优选 | freeyx.cloudflare88.eu.org
-HK,香港,www.yata.hk,443,www.yata.hk:443,domain_asia,502,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.yata.hk:443#亚洲域名 | 中国香港一田百货
-HK,香港,104.17.113.124,443,104.17.113.124:443,raw_githubusercontent_com_Senflare_Senflare_IP_refs_heads_main_IPlist_Pro_txt,503,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.113.124
-HK,香港,104.19.34.153,443,104.19.34.153:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,503,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.19.34.153
-HK,香港,172.67.70.92,443,172.67.70.92:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,503,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.70.92:443#US-f06378
-HK,香港,2.cf.3666888.xyz,443,2.cf.3666888.xyz:443,domain_ai_vps789,503,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,2.cf.3666888.xyz:443#AI优选 | 2.cf.3666888.xyz
-HK,香港,104.18.162.232,443,104.18.162.232:443,bestcf_pages_dev_ircf_ipv4_txt,504,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.162.232:443#IRCF优选 | 104.18.162.232
-HK,香港,www.visa.cn,443,www.visa.cn:443,domain_all,504,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,www.visa.cn:443#金融域名 | VISA中国
-HK,香港,104.19.45.24,443,104.19.45.24:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,505,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.45.24:443#US-0d1a76
-HK,香港,6.cf.3666888.xyz,443,6.cf.3666888.xyz:443,domain_ai_vps789,505,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,6.cf.3666888.xyz:443#AI优选 | 6.cf.3666888.xyz
-HK,香港,cloudflare.idc.rocks,2096,cloudflare.idc.rocks:2096,moistr,505,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.idc.rocks:2096#MoistR优选 | 优选域名 02 | cloudflare.idc.rocks:2096
-HK,香港,test.509666.xyz,443,test.509666.xyz:443,domain_ai_vps789,505,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,test.509666.xyz:443#AI优选 | test.509666.xyz
-HK,香港,104.19.33.134,443,104.19.33.134:443,cfyes_ipv4,506,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.33.134:443#CFYes优选 | 电信 | 104.19.33.134
-HK,香港,162.159.197.1,443,162.159.197.1:443,gslege,506,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.197.1:443#Gslege优选 | 分享免费优选网 BestCF.pages.dev
-HK,香港,162.159.48.12,2087,162.159.48.12:2087,gshtwy_wetest_v4,506,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.48.12:2087#电信-SIN-2087-WS-TLS
-HK,香港,guardian.com.vn,443,guardian.com.vn:443,domain_asia,508,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,guardian.com.vn:443#亚洲域名 | 越南Guardian
-HK,香港,nexusmods.com,443,nexusmods.com:443,domain_all,508,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,nexusmods.com:443#企业域名 | NexusMods
-HK,香港,www.speedtest.net,443,www.speedtest.net:443,domain_all,508,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.speedtest.net:443#更多选择 | Ookla
-HK,香港,www.udacity.com,443,www.udacity.com:443,domain_all,508,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,www.udacity.com:443#教育域名 | Udacity
-HK,香港,172.64.229.225,443,172.64.229.225:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,509,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.225
-HK,香港,cloudflare.idc.rocks,443,cloudflare.idc.rocks:443,domain_ai_vps789,509,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,cloudflare.idc.rocks:443#AI优选 | cloudflare.idc.rocks
-HK,香港,3.cf.3666888.xyz,443,3.cf.3666888.xyz:443,domain_ai_vps789,511,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,3.cf.3666888.xyz:443#AI优选 | 3.cf.3666888.xyz
-HK,香港,jebsen.com,443,jebsen.com:443,domain_asia,511,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,jebsen.com:443#亚洲域名 | 中国香港捷成
-HK,香港,www.sage.com,443,www.sage.com:443,domain_all,512,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.sage.com:443#更多选择 | Sage
-HK,香港,www.wto.org,443,www.wto.org:443,domain_all,512,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.wto.org:443#更多选择 | WTO
-HK,香港,sg.cf.3666888.xyz,443,sg.cf.3666888.xyz:443,domain_ai_vps789,513,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,sg.cf.3666888.xyz:443#AI优选 | sg.cf.3666888.xyz
-HK,香港,104.19.40.189,443,104.19.40.189:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,514,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.40.189:443#US-22e1f4
-HK,香港,avido.cf.3666888.xyz,443,avido.cf.3666888.xyz:443,domain_ai_vps789,517,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,avido.cf.3666888.xyz:443#AI优选 | avido.cf.3666888.xyz
-HK,香港,www.zendesk.com,443,www.zendesk.com:443,domain_all,517,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.zendesk.com:443#更多选择 | Zendesk
-HK,香港,asia.877774.xyz,443,asia.877774.xyz:443,domain_qms_all,519,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,asia.877774.xyz:443#秋名山优选 | 亚洲 | asia.877774.xyz
-HK,香港,www.5h.com,443,www.5h.com:443,domain_ai_vps789,520,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.5h.com:443#AI优选 | www.5h.com
-HK,香港,china-unicom.cname.cloudflare.468123.xyz,443,china-unicom.cname.cloudflare.468123.xyz:443,vps789_top100,521,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,china-unicom.cname.cloudflare.468123.xyz:443#VPS789优选 | china-unicom.cname.cloudflare.468123.xyz
-HK,香港,hfqek.cf.3666888.xyz,443,hfqek.cf.3666888.xyz:443,domain_ai_vps789,522,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
-HK,香港,104.17.163.222,443,104.17.163.222:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,524,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.163.222
-HK,香港,www.researchgate.net,443,www.researchgate.net:443,domain_all,524,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.researchgate.net:443#教育域名 | ResearchGate
-HK,香港,jp.cf.3666888.xyz,443,jp.cf.3666888.xyz:443,domain_ai_vps789,526,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,jp.cf.3666888.xyz:443#AI优选 | jp.cf.3666888.xyz
-HK,香港,104.25.0.3,443,104.25.0.3:443,bestcf_pages_dev_gslege_DE_txt,527,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.3:443#Gslege优选 | de 【德国】 DE | 104.25.0.3
-HK,香港,keji.cf.3666888.xyz,443,keji.cf.3666888.xyz:443,domain_ai_vps789,527,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,keji.cf.3666888.xyz:443#AI优选 | keji.cf.3666888.xyz
-HK,香港,saas.sin.fan,443,saas.sin.fan:443,domain_all,530,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,saas.sin.fan:443#大佬维护 | MIYU
-HK,香港,store.ubi.com,443,store.ubi.com:443,domain_all,530,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,store.ubi.com:443#企业域名 | 育碧商城
-HK,香港,pfizer.com.hk,443,pfizer.com.hk:443,domain_asia,532,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,pfizer.com.hk:443#亚洲域名 | 中国香港辉瑞
-HK,香港,kniu.cc,443,kniu.cc:443,domain_ai_vps789,535,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,kniu.cc:443#AI优选 | kniu.cc
-HK,香港,investor.apple.com,443,investor.apple.com:443,domain_all,536,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,investor.apple.com:443#更多选择 | Apple
-HK,香港,ln.edu.hk,443,ln.edu.hk:443,domain_all,536,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ln.edu.hk:443#教育域名 | 岭南大学
-HK,香港,camperandnicholsons.com,443,camperandnicholsons.com:443,domain_asia,537,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,camperandnicholsons.com:443#亚洲域名 | 新加坡游艇
-HK,香港,fossilchina.cn,443,fossilchina.cn:443,domain_asia,537,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,fossilchina.cn:443#亚洲域名 | 中国Fossil
-HK,香港,hk.cf.3666888.xyz,443,hk.cf.3666888.xyz:443,domain_ai_vps789,537,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hk.cf.3666888.xyz:443#AI优选 | hk.cf.3666888.xyz
-HK,香港,sbn.ircf.space,443,sbn.ircf.space:443,domain_ircf_all,538,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,sbn.ircf.space:443#IRCF优选 | Sabanet | sbn.ircf.space
-HK,香港,172.64.32.2,443,172.64.32.2:443,gslege_sg,539,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.2:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.2
-HK,香港,cdns.doon.eu.org,443,cdns.doon.eu.org:443,domain_ai_vps789,540,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdns.doon.eu.org:443#AI优选 | cdns.doon.eu.org
-HK,香港,qms.3.hhhhh.eu.org,443,qms.3.hhhhh.eu.org:443,domain_wuya_all,540,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qms.3.hhhhh.eu.org:443#乌鸦优选 | qms3 | qms.3.hhhhh.eu.org
-HK,香港,vip.cf.3666888.xyz,443,vip.cf.3666888.xyz:443,domain_ai_vps789,541,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,vip.cf.3666888.xyz:443#AI优选 | vip.cf.3666888.xyz
-HK,香港,www.stheadline.com,443,www.stheadline.com:443,domain_asia,541,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.stheadline.com:443#亚洲域名 | 香港星岛头条
-HK,香港,cdn.cf.3666888.xyz,443,cdn.cf.3666888.xyz:443,domain_ai_vps789,542,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.cf.3666888.xyz:443#AI优选 | cdn.cf.3666888.xyz
-HK,香港,cfip-avg.stoeaves.us.ci,443,cfip-avg.stoeaves.us.ci:443,vps789_top100,542,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfip-avg.stoeaves.us.ci:443#VPS789优选 | cfip-avg.stoeaves.us.ci
-HK,香港,sy.hhhhh.eu.org,443,sy.hhhhh.eu.org:443,domain_wuya_all,542,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,sy.hhhhh.eu.org:443#乌鸦优选 | shopify | sy.hhhhh.eu.org
-HK,香港,cloudflare-ech.com,443,cloudflare-ech.com:443,domain_all,543,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare-ech.com:443#官方域名 | ECH
-HK,香港,diesel.co.jp,443,diesel.co.jp:443,domain_asia,543,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,diesel.co.jp:443#亚洲域名 | 日本迪赛
-HK,香港,www.xflash.vip,443,www.xflash.vip:443,vps789_top100,543,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.xflash.vip:443#VPS789优选 | www.xflash.vip
-HK,香港,yesstyle.com,443,yesstyle.com:443,domain_asia,543,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yesstyle.com:443#亚洲域名 | 中国香港YesStyle
-HK,香港,cyberport.com.hk,443,cyberport.com.hk:443,domain_asia,547,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cyberport.com.hk:443#亚洲域名 | 中国香港数码港
-HK,香港,doosan.com,443,doosan.com:443,domain_asia,547,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,doosan.com:443#亚洲域名 | 韩国斗山
-HK,香港,gh-proxy.com,443,gh-proxy.com:443,domain_ai_vps789,547,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,gh-proxy.com:443#AI优选 | gh-proxy.com
-HK,香港,qms.1.hhhhh.eu.org,443,qms.1.hhhhh.eu.org:443,domain_wuya_all,547,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qms.1.hhhhh.eu.org:443#乌鸦优选 | qms1 | qms.1.hhhhh.eu.org
-HK,香港,rsp.ircf.space,443,rsp.ircf.space:443,domain_ircf_all,547,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,rsp.ircf.space:443#IRCF优选 | Respina | rsp.ircf.space
-HK,香港,cf-ip-node.vov.moe,443,cf-ip-node.vov.moe:443,vps789_top100,548,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf-ip-node.vov.moe:443#VPS789优选 | cf-ip-node.vov.moe
-HK,香港,cfip-cm.stoeaves.us.ci,443,cfip-cm.stoeaves.us.ci:443,vps789_top100,548,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfip-cm.stoeaves.us.ci:443#VPS789优选 | cfip-cm.stoeaves.us.ci
-HK,香港,cloudflare.net,443,cloudflare.net:443,domain_all,549,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.net:443#官方域名 | Business
-HK,香港,sy.1.hhhhh.eu.org,443,sy.1.hhhhh.eu.org:443,domain_wuya_all,549,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,sy.1.hhhhh.eu.org:443#乌鸦优选 | shopify1 | sy.1.hhhhh.eu.org
-HK,香港,wto.3.hhhhh.eu.org,443,wto.3.hhhhh.eu.org:443,domain_wuya_all,549,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,wto.3.hhhhh.eu.org:443#乌鸦优选 | wto3 | wto.3.hhhhh.eu.org
-HK,香港,www.akasantech.com,443,www.akasantech.com:443,vps789_top100,549,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.akasantech.com:443#VPS789优选 | www.akasantech.com
-HK,香港,fnv.ircf.space,443,fnv.ircf.space:443,domain_ircf_all,550,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fnv.ircf.space:443#IRCF优选 | Fanava | fnv.ircf.space
-HK,香港,vinhomes.vn,443,vinhomes.vn:443,domain_asia,550,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,vinhomes.vn:443#亚洲域名 | 越南地产龙头
-HK,香港,fnp.ircf.space,443,fnp.ircf.space:443,domain_ircf_all,551,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
-HK,香港,advantech.com,443,advantech.com:443,domain_asia,552,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,advantech.com:443#亚洲域名 | 中国台湾研华
-HK,香港,cloudflare.seeck.cn,443,cloudflare.seeck.cn:443,domain_senflare_all,552,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.seeck.cn:443#Senflare优选 | 三网 | cloudflare.seeck.cn
-HK,香港,wto.hhhhh.eu.org,443,wto.hhhhh.eu.org:443,domain_wuya_all,552,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,wto.hhhhh.eu.org:443#乌鸦优选 | wto | wto.hhhhh.eu.org
-HK,香港,ztl.ircf.space,443,ztl.ircf.space:443,domain_ircf_all,552,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ztl.ircf.space:443#IRCF优选 | Zitel | ztl.ircf.space
-HK,香港,apt.ircf.space,443,apt.ircf.space:443,domain_ircf_all,553,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,apt.ircf.space:443#IRCF优选 | Aptel | apt.ircf.space
-HK,香港,chrono24.com,443,chrono24.com:443,vps789_top100,553,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,chrono24.com:443#VPS789优选 | chrono24.com
-HK,香港,ipv4.ircf.space,443,ipv4.ircf.space:443,domain_ircf_all,553,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ipv4.ircf.space:443#IRCF优选 | Universal IPv4 | ipv4.ircf.space
-HK,香港,youxuan.cf.3666888.xyz,443,youxuan.cf.3666888.xyz:443,domain_ai_vps789,553,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,youxuan.cf.3666888.xyz:443#AI优选 | youxuan.cf.3666888.xyz
-HK,香港,95.40.61.115,443,95.40.61.115:443,bestcf_pages_dev_tiancheng_mini_txt,554,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,95.40.61.115:443#天诚优选1 | 港岛茶记 | HK | 95.40.61.115:443
-HK,香港,www.pcone.com.tw,443,www.pcone.com.tw:443,domain_asia,554,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.pcone.com.tw:443#亚洲域名 | 中国台湾披西玩
-HK,香港,cdn.555586.xyz,443,cdn.555586.xyz:443,vps789_top100,555,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.555586.xyz:443#VPS789优选 | cdn.555586.xyz
-HK,香港,prompt.gzcrtw.com,443,prompt.gzcrtw.com:443,vps789_top100,555,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,prompt.gzcrtw.com:443#VPS789优选 | prompt.gzcrtw.com
-HK,香港,staticdelivery.nexusmods.com,443,staticdelivery.nexusmods.com:443,domain_ai_vps789,555,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,staticdelivery.nexusmods.com:443#AI优选 | staticdelivery.nexusmods.com
-HK,香港,cloudflare.dev,443,cloudflare.dev:443,domain_all,556,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.dev:443#官方域名 | Developers
-HK,香港,fk.hshwk.org,443,fk.hshwk.org:443,vps789_top100,556,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fk.hshwk.org:443#VPS789优选 | fk.hshwk.org
-HK,香港,dbn.ircf.space,443,dbn.ircf.space:443,domain_ircf_all,557,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dbn.ircf.space:443#IRCF优选 | DidehbanNet | dbn.ircf.space
-HK,香港,mycareer.verizon.com,443,mycareer.verizon.com:443,domain_all,558,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,mycareer.verizon.com:443#更多选择 | Verizon
-HK,香港,ten.com,443,ten.com:443,domain_asia,558,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ten.com:443#亚洲域名 | 日本营销科技
-HK,香港,arx.ircf.space,443,arx.ircf.space:443,domain_ircf_all,559,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,arx.ircf.space:443#IRCF优选 | Arax | arx.ircf.space
-HK,香港,hongkongairport.com,443,hongkongairport.com:443,domain_asia,559,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hongkongairport.com:443#亚洲域名 | 香港机场
-HK,香港,lac.com.tw,443,lac.com.tw:443,domain_asia,559,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lac.com.tw:443#亚洲域名 | 中国台湾LAC
-HK,香港,uplus.co.kr,443,uplus.co.kr:443,domain_asia,559,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,uplus.co.kr:443#亚洲域名 | 韩国LG电信
-HK,香港,www.buy123.com.tw,443,www.buy123.com.tw:443,domain_asia,560,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.buy123.com.tw:443#亚洲域名 | 中国台湾帮客
-HK,香港,markmonitor.com,443,markmonitor.com:443,domain_all,561,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,markmonitor.com:443#更多选择 | MarkMonitor
-HK,香港,www.ooredoo.qa,443,www.ooredoo.qa:443,domain_asia,561,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.ooredoo.qa:443#亚洲域名 | 卡塔尔电信
-HK,香港,2606:4700:3036:0:a36a:4af2:65e7:a0d6,443,[2606:4700:3036:0:a36a:4af2:65e7:a0d6]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,562,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:0:a36a:4af2:65e7:a0d6]:443#CMLiussv6-cf31b4
-HK,香港,openai.2.hhhhh.eu.org,443,openai.2.hhhhh.eu.org:443,domain_wuya_all,562,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,openai.2.hhhhh.eu.org:443#乌鸦优选 | openai2 | openai.2.hhhhh.eu.org
-HK,香港,104.16.253.3,443,104.16.253.3:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.253.3
-HK,香港,172.64.155.89,443,172.64.155.89:443,uouin,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.155.89:443#麒麟优选 | 移动 | 172.64.155.89 | 52.82ms | 0.20mb/s
-HK,香港,afn.ircf.space,443,afn.ircf.space:443,domain_ircf_all,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,afn.ircf.space:443#IRCF优选 | Afranet | afn.ircf.space
-HK,香港,cdnjs.com,443,cdnjs.com:443,domain_all,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdnjs.com:443#官方域名 | CDNJS
-HK,香港,172.64.32.1,443,172.64.32.1:443,gslege_sg,564,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.1:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.1
-HK,香港,2606:4700:9ad0::79f2:589b,443,[2606:4700:9ad0::79f2:589b]:443,bestcf_pages_dev_vvhan_ipv6_txt,564,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9ad0::79f2:589b]:443#vvHan优选 | 移动 | HKG | 2606:4700:9ad0::79f2:589b
-HK,香港,youxuan.cf.636949.xyz,443,youxuan.cf.636949.xyz:443,domain_ai_vps789,564,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,youxuan.cf.636949.xyz:443#AI优选 | youxuan.cf.636949.xyz
-HK,香港,104.24.0.7,443,104.24.0.7:443,bestcf_pages_dev_gslege_DE_txt,566,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.7:443#Gslege优选 | de 【德国】 DE | 104.24.0.7
-HK,香港,wto.2.hhhhh.eu.org,443,wto.2.hhhhh.eu.org:443,domain_wuya_all,566,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,wto.2.hhhhh.eu.org:443#乌鸦优选 | wto2 | wto.2.hhhhh.eu.org
-HK,香港,103.21.244.9,443,103.21.244.9:443,gslege_us,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,103.21.244.9:443#Gslege优选 | us 【美国】 US | 103.21.244.9
-HK,香港,104.17.102.95,8443,104.17.102.95:8443,moistr,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.102.95:8443#MoistR优选 | 06-24 23:34 | BestCF.pages.dev
-HK,香港,104.17.16.63,443,104.17.16.63:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.16.63
-HK,香港,172.64.32.6,443,172.64.32.6:443,gslege_sg,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.6:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.6
-HK,香港,eteaf.cf.3666888.xyz,443,eteaf.cf.3666888.xyz:443,vps789_top100,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
-HK,香港,ryn.ircf.space,443,ryn.ircf.space:443,domain_ircf_all,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ryn.ircf.space:443#IRCF优选 | Raynet | ryn.ircf.space
-HK,香港,yd.3.hhhhh.eu.org,443,yd.3.hhhhh.eu.org:443,domain_wuya_all,567,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,yd.3.hhhhh.eu.org:443#乌鸦优选 | 移动3 | yd.3.hhhhh.eu.org
-HK,香港,104.25.240.85,2096,104.25.240.85:2096,gshtwy_wetest_v4,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:2096#移动-HKG-2096-WS-TLS
-HK,香港,162.159.193.1,443,162.159.193.1:443,bestcf_pages_dev_entryip_50_txt,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
-HK,香港,2606:4700:3036:ef:db9e:ee41:a8df:d3b2,443,[2606:4700:3036:ef:db9e:ee41:a8df:d3b2]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:ef:db9e:ee41:a8df:d3b2]:443#CMLiussv6-f705f10
-HK,香港,qms.2.hhhhh.eu.org,443,qms.2.hhhhh.eu.org:443,domain_wuya_all,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qms.2.hhhhh.eu.org:443#乌鸦优选 | qms2 | qms.2.hhhhh.eu.org
-HK,香港,104.17.0.9,443,104.17.0.9:443,gslege_us,569,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.0.9:443#Gslege优选 | us 【美国】 US | 104.17.0.9
-HK,香港,104.18.0.8,443,104.18.0.8:443,gslege_us,569,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.18.0.8:443#Gslege优选 | us 【美国】 US | 104.18.0.8
-HK,香港,104.18.8.232,443,104.18.8.232:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,569,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.18.8.232
-HK,香港,cfgo.timelate.com,443,cfgo.timelate.com:443,vps789_top100,569,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfgo.timelate.com:443#VPS789优选 | cfgo.timelate.com
-HK,香港,cf1s.cf.3666888.xyz,443,cf1s.cf.3666888.xyz:443,domain_ai_vps789,570,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,cf1s.cf.3666888.xyz:443#AI优选 | cf1s.cf.3666888.xyz
-HK,香港,ping.pe,443,ping.pe:443,vps789_top100,570,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ping.pe:443#VPS789优选 | ping.pe
-HK,香港,yd.5.hhhhh.eu.org,443,yd.5.hhhhh.eu.org:443,domain_wuya_all,570,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
-HK,香港,104.26.2.118,443,104.26.2.118:443,uouin,571,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.2.118:443#麒麟优选 | 联通 | 104.26.2.118 | 139.65ms | 0.15mb/s
-HK,香港,glassdoor.com,443,glassdoor.com:443,domain_all,573,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,glassdoor.com:443#企业域名 | Glassdoor
-HK,香港,run.254301.xyz,443,run.254301.xyz:443,vps789_top100,573,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,run.254301.xyz:443#VPS789优选 | run.254301.xyz
-HK,香港,woodsbagot.com,443,woodsbagot.com:443,domain_all,573,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,woodsbagot.com:443#更多选择 | 伍兹贝格
-HK,香港,198.41.208.224,443,198.41.208.224:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,574,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,198.41.208.224:443#US-670b29
-HK,香港,172.64.32.3,443,172.64.32.3:443,gslege_sg,575,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.3:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.3
-HK,香港,172.64.229.7,443,172.64.229.7:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,576,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.7:443#US-e89872
-HK,香港,2606:4700:9c60::d818:2e08,443,[2606:4700:9c60::d818:2e08]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,576,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,[2606:4700:9c60::d818:2e08]:443#WeTestV6-1bcf64
-HK,香港,2606:4700:a8::20d7:21b1,443,[2606:4700:a8::20d7:21b1]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,576,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,[2606:4700:a8::20d7:21b1]:443#WeTestV6-8b60b5
-HK,香港,engage.cloudflareclient.com,443,engage.cloudflareclient.com:443,domain_all,576,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,engage.cloudflareclient.com:443#官方入口 | WireGuard
-HK,香港,104.27.0.7,443,104.27.0.7:443,bestcf_pages_dev_gslege_DE_txt,577,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.7:443#Gslege优选 | de 【德国】 DE | 104.27.0.7
-HK,香港,104.18.0.9,443,104.18.0.9:443,gslege_us,578,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.0.9:443#Gslege优选 | us 【美国】 US | 104.18.0.9
-HK,香港,104.17.212.113,443,104.17.212.113:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,579,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.212.113
-HK,香港,172.64.38.70,443,172.64.38.70:443,uouin,579,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,172.64.38.70:443#麒麟优选 | 多线 | 172.64.38.70 | 68.18ms | 1.51mb/s
-HK,香港,104.18.0.2,443,104.18.0.2:443,gslege_us,580,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.0.2:443#Gslege优选 | us 【美国】 US | 104.18.0.2
-HK,香港,mci.ircf.space,443,mci.ircf.space:443,domain_ircf_all,581,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,mci.ircf.space:443#IRCF优选 | MCI | mci.ircf.space
-HK,香港,104.19.33.125,443,104.19.33.125:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,582,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.33.125
-HK,香港,104.26.0.6,443,104.26.0.6:443,bestcf_pages_dev_gslege_DE_txt,582,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.6:443#Gslege优选 | de 【德国】 DE | 104.26.0.6
-HK,香港,ubuntu.com.cn,443,ubuntu.com.cn:443,domain_asia,582,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ubuntu.com.cn:443#亚洲域名 | 中国乌班图
-HK,香港,104.24.0.9,443,104.24.0.9:443,bestcf_pages_dev_gslege_DE_txt,583,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.9:443#Gslege优选 | de 【德国】 DE | 104.24.0.9
-HK,香港,cloudflare-eth.com,443,cloudflare-eth.com:443,domain_all,583,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare-eth.com:443#官方域名 | Web3
-HK,香港,2606:4700:3036:6ed4:e1ed:36:8916:dace,443,[2606:4700:3036:6ed4:e1ed:36:8916:dace]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:6ed4:e1ed:36:8916:dace]:443#CMLiussv6-dd6a88
-HK,香港,cdn.2158.cc,443,cdn.2158.cc:443,domain_ai_vps789,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.2158.cc:443#AI优选 | cdn.2158.cc
-HK,香港,coke.cf.3666888.xyz,443,coke.cf.3666888.xyz:443,vps789_top100,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,coke.cf.3666888.xyz:443#VPS789优选 | coke.cf.3666888.xyz
-HK,香港,psm.ircf.space,443,psm.ircf.space:443,domain_ircf_all,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,psm.ircf.space:443#IRCF优选 | Pishgaman | psm.ircf.space
-HK,香港,104.25.0.7,443,104.25.0.7:443,bestcf_pages_dev_gslege_DE_txt,585,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.7:443#Gslege优选 | de 【德国】 DE | 104.25.0.7
-HK,香港,visasg.hhhhh.eu.org,443,visasg.hhhhh.eu.org:443,domain_wuya_all,585,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,visasg.hhhhh.eu.org:443#乌鸦优选 | visasg | visasg.hhhhh.eu.org
-HK,香港,bp.3.hhhhh.eu.org,443,bp.3.hhhhh.eu.org:443,domain_wuya_all,586,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,bp.3.hhhhh.eu.org:443#乌鸦优选 | bp3 | bp.3.hhhhh.eu.org
-HK,香港,cf.3666888.xyz,443,cf.3666888.xyz:443,domain_ai_vps789,586,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.3666888.xyz:443#AI优选 | cf.3666888.xyz
-HK,香港,cm.2.hhhhh.eu.org,443,cm.2.hhhhh.eu.org:443,domain_wuya_all,586,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.2.hhhhh.eu.org:443#乌鸦优选 | cm2 | cm.2.hhhhh.eu.org
-HK,香港,www.giannidelprete.it,443,www.giannidelprete.it:443,domain_ai_vps789,586,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.giannidelprete.it:443#AI优选 | www.giannidelprete.it
-HK,香港,172.67.77.157,443,172.67.77.157:443,uouin,587,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.77.157:443#麒麟优选 | 联通 | 172.67.77.157 | 140.64ms | 0.17mb/s
-HK,香港,auctions.ihg.com.cn,443,auctions.ihg.com.cn:443,domain_all,587,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,auctions.ihg.com.cn:443#更多选择 | 洲际酒店
-HK,香港,104.25.240.85,443,104.25.240.85:443,wetest,588,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:443#微测优选 | 移动 | HKG | 104.25.240.85
-HK,香港,104.25.240.85,2087,104.25.240.85:2087,gshtwy_wetest_v4,589,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:2087#移动-HKG-2087-WS-TLS
-HK,香港,104.26.0.1,443,104.26.0.1:443,bestcf_pages_dev_gslege_DE_txt,589,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.0.1:443#Gslege优选 | de 【德国】 DE | 104.26.0.1
-HK,香港,digitalocean.com,443,digitalocean.com:443,domain_all,590,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,digitalocean.com:443#更多选择 | DigitalOcean
-HK,香港,104.16.0.9,443,104.16.0.9:443,gslege_us,592,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.0.9:443#Gslege优选 | us 【美国】 US | 104.16.0.9
-HK,香港,104.17.160.251,443,104.17.160.251:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,592,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.160.251
-HK,香港,104.27.0.3,443,104.27.0.3:443,bestcf_pages_dev_gslege_DE_txt,592,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.27.0.3:443#Gslege优选 | de 【德国】 DE | 104.27.0.3
-HK,香港,www.nestle.com,443,www.nestle.com:443,domain_all,592,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.nestle.com:443#更多选择 | 雀巢
-HK,香港,play.mc.js.cool,443,play.mc.js.cool:443,vps789_top100,593,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,play.mc.js.cool:443#VPS789优选 | play.mc.js.cool
-HK,香港,104.19.49.38,443,104.19.49.38:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,594,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.19.49.38:443#US-e99b85
-HK,香港,bp.hhhhh.eu.org,443,bp.hhhhh.eu.org:443,domain_wuya_all,594,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,bp.hhhhh.eu.org:443#乌鸦优选 | bp | bp.hhhhh.eu.org
-HK,香港,sy.2.hhhhh.eu.org,443,sy.2.hhhhh.eu.org:443,domain_wuya_all,595,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,sy.2.hhhhh.eu.org:443#乌鸦优选 | shopify2 | sy.2.hhhhh.eu.org
-HK,香港,yg11.ygkkk.dpdns.org,443,yg11.ygkkk.dpdns.org:443,domain_ai_vps789,595,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg11.ygkkk.dpdns.org:443#AI优选 | yg11.ygkkk.dpdns.org
-HK,香港,104.17.142.26,8443,104.17.142.26:8443,gshtwy_wetest_v4,596,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.142.26:8443#联通-SJC-8443-WS-TLS
-HK,香港,103.21.244.1,443,103.21.244.1:443,gslege_us,597,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,103.21.244.1:443#Gslege优选 | us 【美国】 US | 103.21.244.1
-HK,香港,108.162.198.18,443,108.162.198.18:443,gslege_jp,598,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.18:443#Gslege优选 | jp 【日本】 JP | 108.162.198.18
-HK,香港,162.159.136.89,443,162.159.136.89:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,599,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.136.89:443#US-847d110
-HK,香港,104.19.54.38,443,104.19.54.38:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,601,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.54.38:443#US-001f60
-HK,香港,162.159.152.53,443,162.159.152.53:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,602,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.152.53:443#US-0c20610
-HK,香港,www.cdzxdz.com,443,www.cdzxdz.com:443,domain_ai_vps789,602,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.cdzxdz.com:443#AI优选 | www.cdzxdz.com
-HK,香港,104.25.0.1,443,104.25.0.1:443,bestcf_pages_dev_entryip_50_txt,603,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.1:443#104.25.0.1 | 缓存加速段，国内跨网流媒体分发利器
-HK,香港,104.18.81.111,443,104.18.81.111:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,604,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.81.111:443#US-761a01
-HK,香港,090.hhhhh.eu.org,443,090.hhhhh.eu.org:443,domain_wuya_all,605,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,090.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 090.hhhhh.eu.org
-HK,香港,serviceshub.samsclub.com,443,serviceshub.samsclub.com:443,domain_all,605,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,serviceshub.samsclub.com:443#企业域名 | 山姆会员
-HK,香港,www.ntu.edu.sg,443,www.ntu.edu.sg:443,domain_all,606,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.ntu.edu.sg:443#教育域名 | 南洋理工
-HK,香港,104.18.151.172,443,104.18.151.172:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,607,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.151.172:443#US-233884
-HK,香港,104.25.0.5,443,104.25.0.5:443,bestcf_pages_dev_gslege_DE_txt,609,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.5:443#Gslege优选 | de 【德国】 DE | 104.25.0.5
-HK,香港,dongbanghong.com,443,dongbanghong.com:443,domain_ai_vps789,609,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dongbanghong.com:443#AI优选 | dongbanghong.com
-HK,香港,wto.1.hhhhh.eu.org,443,wto.1.hhhhh.eu.org:443,domain_wuya_all,609,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,wto.1.hhhhh.eu.org:443#乌鸦优选 | wto1 | wto.1.hhhhh.eu.org
-HK,香港,www.wilshire.com,443,www.wilshire.com:443,domain_all,609,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.wilshire.com:443#金融域名 | Wilshire
-HK,香港,172.64.80.239,443,172.64.80.239:443,bestcf_pages_dev_ircf_ipv4_txt,610,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.80.239:443#IRCF优选 | 172.64.80.239
-HK,香港,173.245.49.194,443,173.245.49.194:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,610,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,173.245.49.194:443#US-ff14210
-HK,香港,lt.4.hhhhh.eu.org,443,lt.4.hhhhh.eu.org:443,domain_wuya_all,614,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,lt.4.hhhhh.eu.org:443#乌鸦优选 | 联通4 | lt.4.hhhhh.eu.org
-HK,香港,cf.090227.xyz,443,cf.090227.xyz:443,domain_all,615,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.090227.xyz:443#大佬维护 | CMLiu
-HK,香港,qocu.cf.3666888.xyz,443,qocu.cf.3666888.xyz:443,domain_ai_vps789,615,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qocu.cf.3666888.xyz:443#AI优选 | qocu.cf.3666888.xyz
-HK,香港,104.24.0.3,443,104.24.0.3:443,bestcf_pages_dev_gslege_DE_txt,616,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.3:443#Gslege优选 | de 【德国】 DE | 104.24.0.3
-HK,香港,lt.5.hhhhh.eu.org,443,lt.5.hhhhh.eu.org:443,domain_wuya_all,616,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.5.hhhhh.eu.org:443#乌鸦优选 | 联通5 | lt.5.hhhhh.eu.org
-HK,香港,ir.yuntongxun.com,443,ir.yuntongxun.com:443,domain_asia,617,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ir.yuntongxun.com:443#亚洲域名 | 中国容联
-HK,香港,atc.ircf.space,443,atc.ircf.space:443,domain_ircf_all,618,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,atc.ircf.space:443#IRCF优选 | Asre Telecom | atc.ircf.space
-HK,香港,cm.1.hhhhh.eu.org,443,cm.1.hhhhh.eu.org:443,domain_wuya_all,618,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
-HK,香港,foodpanda.hk,443,foodpanda.hk:443,domain_asia,618,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,foodpanda.hk:443#亚洲域名 | 香港富胖达
-HK,香港,www.allianz.com,443,www.allianz.com:443,domain_all,618,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.allianz.com:443#企业域名 | 安联集团
-HK,香港,www.victoriassecretbeauty.co.th,443,www.victoriassecretbeauty.co.th:443,domain_asia,620,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.victoriassecretbeauty.co.th:443#亚洲域名 | 泰国维密
-HK,香港,yg5.ygkkk.dpdns.org,443,yg5.ygkkk.dpdns.org:443,domain_ai_vps789,621,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg5.ygkkk.dpdns.org:443#AI优选 | yg5.ygkkk.dpdns.org
-HK,香港,cdn.091224.xyz,443,cdn.091224.xyz:443,domain_ai_vps789,624,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
-HK,香港,www.aeon.com.hk,443,www.aeon.com.hk:443,domain_asia,626,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.aeon.com.hk:443#亚洲域名 | 中国香港永旺
-HK,香港,www.toysrus.co.th,443,www.toysrus.co.th:443,domain_asia,626,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.toysrus.co.th:443#亚洲域名 | 泰国玩具反斗城
-HK,香港,www.bumrungrad.com,443,www.bumrungrad.com:443,domain_asia,627,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.bumrungrad.com:443#亚洲域名 | 泰国康民
-HK,香港,www.mplus.org.hk,443,www.mplus.org.hk:443,domain_asia,627,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.mplus.org.hk:443#亚洲域名 | 香港M+博物馆
-HK,香港,www.nokair.com,443,www.nokair.com:443,domain_asia,628,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.nokair.com:443#亚洲域名 | 泰国皇雀航空
-HK,香港,r2.dev,443,r2.dev:443,domain_all,632,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,r2.dev:443#官方域名 | R2
-HK,香港,1.cloudflare.19931110.xyz,443,1.cloudflare.19931110.xyz:443,vps789_top100,633,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,1.cloudflare.19931110.xyz:443#VPS789优选 | 1.cloudflare.19931110.xyz
-HK,香港,www.allianz.co.th,443,www.allianz.co.th:443,domain_asia,633,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.allianz.co.th:443#亚洲域名 | 泰国安联
-HK,香港,cu.877774.xyz,443,cu.877774.xyz:443,domain_all,634,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,cu.877774.xyz:443#按运营商 | 联通QMS
-HK,香港,1111111.hhhhh.eu.org,443,1111111.hhhhh.eu.org:443,domain_wuya_all,635,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,1111111.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 1111111.hhhhh.eu.org
-HK,香港,lt.2.hhhhh.eu.org,443,lt.2.hhhhh.eu.org:443,domain_wuya_all,635,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.2.hhhhh.eu.org:443#乌鸦优选 | 联通2 | lt.2.hhhhh.eu.org
-HK,香港,11.cf.3666888.xyz,443,11.cf.3666888.xyz:443,domain_ai_vps789,636,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,11.cf.3666888.xyz:443#AI优选 | 11.cf.3666888.xyz
-HK,香港,cloudflare.rainyfall.com,443,cloudflare.rainyfall.com:443,domain_ai_vps789,637,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.rainyfall.com:443#AI优选 | cloudflare.rainyfall.com
-HK,香港,www.airpremia.com,443,www.airpremia.com:443,domain_asia,637,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.airpremia.com:443#亚洲域名 | 韩国航空会社
-HK,香港,www.allianz.com.my,443,www.allianz.com.my:443,domain_asia,637,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.allianz.com.my:443#亚洲域名 | 大马安联
-HK,香港,www.minorhotels.com,443,www.minorhotels.com:443,domain_asia,638,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.minorhotels.com:443#亚洲域名 | 泰国美诺酒店
-HK,香港,jimdo.com,443,jimdo.com:443,domain_all,640,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,jimdo.com:443#企业域名 | Jimdo
-HK,香港,www.kohler.co.id,443,www.kohler.co.id:443,domain_asia,641,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.kohler.co.id:443#亚洲域名 | 印尼科勒
-HK,香港,cfsaas.080112.xyz,443,cfsaas.080112.xyz:443,domain_ai_vps789,642,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfsaas.080112.xyz:443#AI优选 | cfsaas.080112.xyz
-HK,香港,172.66.3.86,443,172.66.3.86:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,643,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.86:443#US-2c7a25
-HK,香港,www.leics.police.uk,443,www.leics.police.uk:443,domain_ai_vps789,643,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.leics.police.uk:443#AI优选 | www.leics.police.uk
-HK,香港,cf.877774.xyz,443,cf.877774.xyz:443,domain_all,644,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,cf.877774.xyz:443#大佬维护 | QMS
-HK,香港,cf.godns.cc,443,cf.godns.cc:443,domain_ai_vps789,644,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.godns.cc:443#AI优选 | cf.godns.cc
-HK,香港,cm.3.hhhhh.eu.org,443,cm.3.hhhhh.eu.org:443,domain_wuya_all,644,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.3.hhhhh.eu.org:443#乌鸦优选 | cm3 | cm.3.hhhhh.eu.org
-HK,香港,uac.cf.3666888.xyz,443,uac.cf.3666888.xyz:443,domain_ai_vps789,645,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,uac.cf.3666888.xyz:443#AI优选 | uac.cf.3666888.xyz
-HK,香港,www.mc.js.cool,443,www.mc.js.cool:443,domain_ai_vps789,645,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.mc.js.cool:443#AI优选 | www.mc.js.cool
-HK,香港,lt.3.hhhhh.eu.org,443,lt.3.hhhhh.eu.org:443,domain_wuya_all,646,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.3.hhhhh.eu.org:443#乌鸦优选 | 联通3 | lt.3.hhhhh.eu.org
-HK,香港,cf.tencentapp.cn,443,cf.tencentapp.cn:443,domain_all,647,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,cf.tencentapp.cn:443#大佬维护 | KTFF
-HK,香港,ct.877774.xyz,443,ct.877774.xyz:443,domain_all,647,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,ct.877774.xyz:443#按运营商 | 电信QMS
-HK,香港,dnew.cc,443,dnew.cc:443,domain_ai_vps789,648,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dnew.cc:443#AI优选 | dnew.cc
-HK,香港,yd.1.hhhhh.eu.org,443,yd.1.hhhhh.eu.org:443,domain_wuya_all,648,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.1.hhhhh.eu.org:443#乌鸦优选 | 移动1 | yd.1.hhhhh.eu.org
-HK,香港,www.affirm.com,443,www.affirm.com:443,domain_all,649,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.affirm.com:443#更多选择 | Affirm
-HK,香港,www.emerson.com,443,www.emerson.com:443,domain_all,649,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.emerson.com:443#更多选择 | 艾默生
-HK,香港,shopback.com.tw,443,shopback.com.tw:443,domain_asia,651,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,shopback.com.tw:443#亚洲域名 | 中国台湾返利
-HK,香港,www.lacoste.qa,443,www.lacoste.qa:443,domain_asia,652,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.lacoste.qa:443#亚洲域名 | 卡塔尔鳄鱼
-HK,香港,newsmarket.com.tw,443,newsmarket.com.tw:443,domain_asia,653,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,newsmarket.com.tw:443#亚洲域名 | 中国台湾上下游
-HK,香港,dx.4.hhhhh.eu.org,443,dx.4.hhhhh.eu.org:443,domain_wuya_all,655,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dx.4.hhhhh.eu.org:443#乌鸦优选 | 电信4 | dx.4.hhhhh.eu.org
-HK,香港,107.148.239.178,16027,107.148.239.178:16027,bestcf_pages_dev_tiancheng_all_txt,656,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,107.148.239.178:16027#天诚优选1 | 港岛茶记 | HK | 107.148.239.178:16027
-HK,香港,cf-cname.xingpingcn.top,443,cf-cname.xingpingcn.top:443,domain_ai_vps789,656,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf-cname.xingpingcn.top:443#AI优选 | cf-cname.xingpingcn.top
-HK,香港,pages.dev,443,pages.dev:443,domain_all,656,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,pages.dev:443#官方域名 | Pages
-HK,香港,cfvip.cf.3666888.xyz,443,cfvip.cf.3666888.xyz:443,domain_ai_vps789,658,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfvip.cf.3666888.xyz:443#AI优选 | cfvip.cf.3666888.xyz
-HK,香港,polestar.com,443,polestar.com:443,domain_all,658,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,polestar.com:443#更多选择 | 极星汽车
-HK,香港,store.sony.com.sg,443,store.sony.com.sg:443,domain_asia,658,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,store.sony.com.sg:443#亚洲域名 | 新加坡索尼
-HK,香港,visa.com,443,visa.com:443,domain_all,658,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,visa.com:443#金融域名 | VISA美国
-HK,香港,cf.v8.longsays.com,443,cf.v8.longsays.com:443,vps789_top100,660,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.v8.longsays.com:443#VPS789优选 | cf.v8.longsays.com
-HK,香港,www.hongkongairport.com,443,www.hongkongairport.com:443,domain_all,660,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.hongkongairport.com:443#更多选择 | 香港机场
-HK,香港,www.sloomb.com,443,www.sloomb.com:443,domain_ai_vps789,660,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.sloomb.com:443#AI优选 | www.sloomb.com
-HK,香港,www.xiaoshuofen.com,443,www.xiaoshuofen.com:443,domain_ai_vps789,660,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.xiaoshuofen.com:443#AI优选 | www.xiaoshuofen.com
-HK,香港,cmcc.877774.xyz,443,cmcc.877774.xyz:443,domain_all,661,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cmcc.877774.xyz:443#按运营商 | 移动QMS
-HK,香港,lt.1.hhhhh.eu.org,443,lt.1.hhhhh.eu.org:443,domain_wuya_all,661,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.1.hhhhh.eu.org:443#乌鸦优选 | 联通1 | lt.1.hhhhh.eu.org
-HK,香港,172.67.165.182,443,172.67.165.182:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,663,,youtube:HK;ping0:SG;ipwhois:HK,disabled,geo_only,,172.67.165.182:443#US-f97c16
-HK,香港,chotot.com,443,chotot.com:443,domain_asia,663,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,chotot.com:443#亚洲域名 | 越南电商
-HK,香港,104.18.203.238,443,104.18.203.238:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,664,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.203.238:443#US-2ca743
-HK,香港,qnb.com,443,qnb.com:443,domain_asia,665,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qnb.com:443#亚洲域名 | 卡塔尔国家银行
-HK,香港,www.vexere.com,443,www.vexere.com:443,domain_asia,665,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.vexere.com:443#亚洲域名 | 越南巴士
-HK,香港,cloudflare.182682.xyz,443,cloudflare.182682.xyz:443,domain_all,666,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.182682.xyz:443#大佬维护 | WeTest
-HK,香港,onetrust.com,443,onetrust.com:443,domain_all,666,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,onetrust.com:443#更多选择 | OneTrust
-HK,香港,www.doordash.com,443,www.doordash.com:443,domain_all,667,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.doordash.com:443#更多选择 | DoorDash
-HK,香港,baka.fun,443,baka.fun:443,domain_ai_vps789,671,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,baka.fun:443#AI优选 | baka.fun
-HK,香港,www.aeon.info,443,www.aeon.info:443,domain_asia,671,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.aeon.info:443#亚洲域名 | 中国香港永旺
-HK,香港,yd.2.hhhhh.eu.org,443,yd.2.hhhhh.eu.org:443,domain_wuya_all,672,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.2.hhhhh.eu.org:443#乌鸦优选 | 移动2 | yd.2.hhhhh.eu.org
-HK,香港,52pojie.org,443,52pojie.org:443,domain_asia,673,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,52pojie.org:443#亚洲域名 | 吾爱破解
-HK,香港,188.114.96.1,443,188.114.96.1:443,bestcf_pages_dev_gslege_NL_txt,678,,youtube:HK;ping0:SG;ipwhois:SG,disabled,geo_only,,188.114.96.1:443#Gslege优选 | nl 【荷兰】 NL | 188.114.96.1
-HK,香港,yg6.ygkkk.dpdns.org,443,yg6.ygkkk.dpdns.org:443,domain_ygkkk_all,678,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg6.ygkkk.dpdns.org:443#甬哥优选 | yg6.ygkkk.dpdns.org
-HK,香港,edion.co.jp,443,edion.co.jp:443,domain_asia,681,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,edion.co.jp:443#亚洲域名 | 日本爱电王
-HK,香港,cmcc.cc.cd,443,cmcc.cc.cd:443,domain_ai_vps789,683,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cmcc.cc.cd:443#AI优选 | cmcc.cc.cd
-HK,香港,yd.hhhhh.eu.org,443,yd.hhhhh.eu.org:443,domain_wuya_all,685,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
-HK,香港,2606:4700:9762:29d4:d820:bc35:7510:68eb,443,[2606:4700:9762:29d4:d820:bc35:7510:68eb]:443,bestcf_pages_dev_nirevil_ipv6_txt,686,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9762:29d4:d820:bc35:7510:68eb]:443#NiREvil优选 | 移动 | Default | 0ms | 321mbps
-HK,香港,bluehost.com,443,bluehost.com:443,domain_all,688,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,bluehost.com:443#企业域名 | BlueHost
-HK,香港,bestcf.030101.xyz,443,bestcf.030101.xyz:443,domain_all,693,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,bestcf.030101.xyz:443#大佬维护 | MingYu
-HK,香港,www.dbs.com,443,www.dbs.com:443,domain_asia,693,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.dbs.com:443#亚洲域名 | 新加坡星展
-HK,香港,store.epicgames.com,443,store.epicgames.com:443,domain_all,694,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,store.epicgames.com:443#更多选择 | Epicgames
-HK,香港,www.ox.ac.uk,443,www.ox.ac.uk:443,domain_all,694,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.ox.ac.uk:443#教育域名 | 牛津大学
-HK,香港,1.cf.3666888.xyz,443,1.cf.3666888.xyz:443,domain_ai_vps789,695,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
-HK,香港,10.cf.3666888.xyz,443,10.cf.3666888.xyz:443,domain_ai_vps789,698,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,10.cf.3666888.xyz:443#AI优选 | 10.cf.3666888.xyz
-HK,香港,www.hthkh.com,443,www.hthkh.com:443,domain_asia,701,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.hthkh.com:443#亚洲域名 | 中国香港和记电讯
-HK,香港,www.vastnovel.com,443,www.vastnovel.com:443,domain_ai_vps789,701,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.vastnovel.com:443#AI优选 | www.vastnovel.com
-HK,香港,yg3.ygkkk.dpdns.org,443,yg3.ygkkk.dpdns.org:443,domain_ygkkk_all,701,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg3.ygkkk.dpdns.org:443#甬哥优选 | yg3.ygkkk.dpdns.org
-HK,香港,www.nestle.com.cn,443,www.nestle.com.cn:443,domain_asia,705,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.nestle.com.cn:443#亚洲域名 | 中国雀巢
-HK,香港,www.mskcc.org,443,www.mskcc.org:443,domain_all,711,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,www.mskcc.org:443#更多选择 | MSKCC
-HK,香港,cm.hhhhh.eu.org,443,cm.hhhhh.eu.org:443,domain_wuya_all,714,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.hhhhh.eu.org:443#乌鸦优选 | cm | cm.hhhhh.eu.org
-HK,香港,cf.cf.3666888.xyz,443,cf.cf.3666888.xyz:443,domain_ai_vps789,717,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.cf.3666888.xyz:443#AI优选 | cf.cf.3666888.xyz
-HK,香港,www.nike.qa,443,www.nike.qa:443,domain_asia,718,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.nike.qa:443#亚洲域名 | 卡塔尔耐克
-HK,香港,01-qq.com,443,01-qq.com:443,domain_ai_vps789,719,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,01-qq.com:443#AI优选 | 01-qq.com
-HK,香港,visit.honeywell.com,443,visit.honeywell.com:443,domain_all,723,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,visit.honeywell.com:443#更多选择 | 霍尼韦尔
-HK,香港,www.mlb-korea.com,443,www.mlb-korea.com:443,domain_asia,731,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.mlb-korea.com:443#亚洲域名 | 韩国MLB
-HK,香港,yg12.ygkkk.dpdns.org,443,yg12.ygkkk.dpdns.org:443,domain_ygkkk_all,731,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
-HK,香港,yg2.ygkkk.dpdns.org,443,yg2.ygkkk.dpdns.org:443,domain_ygkkk_all,732,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg2.ygkkk.dpdns.org:443#甬哥优选 | yg2.ygkkk.dpdns.org
-HK,香港,www.mizuno.com,443,www.mizuno.com:443,domain_asia,733,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.mizuno.com:443#亚洲域名 | 日本美津浓
-HK,香港,dx.5.hhhhh.eu.org,443,dx.5.hhhhh.eu.org:443,domain_wuya_all,741,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
-HK,香港,www.razer.com,443,www.razer.com:443,domain_asia,741,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.razer.com:443#亚洲域名 | 新加坡雷蛇
-HK,香港,www.airasia.com,443,www.airasia.com:443,domain_asia,742,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.airasia.com:443#亚洲域名 | 大马亚航
-HK,香港,www.broadcom.com,443,www.broadcom.com:443,domain_all,744,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.broadcom.com:443#更多选择 | 博通
-HK,香港,hwb.ircf.space,443,hwb.ircf.space:443,domain_ircf_all,746,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hwb.ircf.space:443#IRCF优选 | Hi-Web | hwb.ircf.space
-HK,香港,yg8.ygkkk.dpdns.org,443,yg8.ygkkk.dpdns.org:443,domain_ygkkk_all,746,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg8.ygkkk.dpdns.org:443#甬哥优选 | yg8.ygkkk.dpdns.org
-HK,香港,cdn.2020111.xyz,443,cdn.2020111.xyz:443,domain_ai_vps789,749,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.2020111.xyz:443#AI优选 | cdn.2020111.xyz
-HK,香港,cf1.v8.longsays.com,443,cf1.v8.longsays.com:443,vps789_top100,749,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf1.v8.longsays.com:443#VPS789优选 | cf1.v8.longsays.com
-HK,香港,www.5199dy.com,443,www.5199dy.com:443,domain_ai_vps789,750,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.5199dy.com:443#AI优选 | www.5199dy.com
-HK,香港,cdn.204910.best,443,cdn.204910.best:443,domain_ai_vps789,751,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.204910.best:443#AI优选 | cdn.204910.best
-HK,香港,edgeone.gh-proxy.org,443,edgeone.gh-proxy.org:443,vps789_top100,754,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,edgeone.gh-proxy.org:443#VPS789优选 | edgeone.gh-proxy.org
-HK,香港,www.allianz.co.id,443,www.allianz.co.id:443,domain_asia,757,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.allianz.co.id:443#亚洲域名 | 印尼安联
-HK,香港,fw8je9.cf.3666888.xyz,443,fw8je9.cf.3666888.xyz:443,domain_ai_vps789,759,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fw8je9.cf.3666888.xyz:443#AI优选 | fw8je9.cf.3666888.xyz
-HK,香港,api.gzcrtw.com,443,api.gzcrtw.com:443,domain_ai_vps789,761,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
-HK,香港,www.caritas.org.hk,443,www.caritas.org.hk:443,domain_asia,765,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.caritas.org.hk:443#亚洲域名 | 中国香港明爱
-HK,香港,www.asda.com,443,www.asda.com:443,domain_all,768,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.asda.com:443#企业域名 | 阿斯达
-HK,香港,ct.hw.090227.xyz,443,ct.hw.090227.xyz:443,vps789_top100,770,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ct.hw.090227.xyz:443#VPS789优选 | ct.hw.090227.xyz
-HK,香港,www.bathandbodyworks.co.th,443,www.bathandbodyworks.co.th:443,domain_asia,788,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.bathandbodyworks.co.th:443#亚洲域名 | 泰国BBW
-HK,香港,www.hyundai.com,443,www.hyundai.com:443,domain_asia,797,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.hyundai.com:443#亚洲域名 | 韩国现代
-HK,香港,47.76.218.163,443,47.76.218.163:443,tiancheng2,800,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,47.76.218.163:443#天诚优选2 | 港岛古惑 | HK | 47.76.218.163:443
+HK,香港,2606:4700:3036:0:a36a:4a94:8d40:c92c,443,[2606:4700:3036:0:a36a:4a94:8d40:c92c]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,473,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:0:a36a:4a94:8d40:c92c]:443#CMLiussv6-2cc847
+HK,香港,104.17.0.2,443,104.17.0.2:443,gslege_us,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.0.2:443#Gslege优选 | us 【美国】 US | 104.17.0.2
+HK,香港,104.18.0.4,443,104.18.0.4:443,gslege_us,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.0.4:443#Gslege优选 | us 【美国】 US | 104.18.0.4
+HK,香港,104.19.77.117,443,104.19.77.117:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.77.117:443#US-1aab25
+HK,香港,104.24.0.9,443,104.24.0.9:443,bestcf_pages_dev_gslege_DE_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.9:443#Gslege优选 | de 【德国】 DE | 104.24.0.9
+HK,香港,162.159.152.81,443,162.159.152.81:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.152.81:443#US-a570e8
+HK,香港,172.66.3.228,2053,172.66.3.228:2053,gshtwy_wetest_v4,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.66.3.228:2053#移动-HKG-2053-WS-TLS
+HK,香港,198.41.208.224,443,198.41.208.224:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,198.41.208.224:443#US-240647
+HK,香港,2a06:98c1:3121:c677:c614:1f96:d4bf:a723,443,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:3121:c677:c614:1f96:d4bf:a723]:443#Uouin-1ac846
+HK,香港,2a06:98c1:3121:c6d4:af96:6677:59bf:faec,443,[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,474,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:3121:c6d4:af96:6677:59bf:faec]:443#Uouin-cadd41
+HK,香港,103.21.244.1,443,103.21.244.1:443,bestcf_pages_dev_entryip_50_txt,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,103.21.244.1:443#103.21.244.1 | 亚太入口，覆盖华南及港澳接入中心
+HK,香港,104.16.0.1,443,104.16.0.1:443,bestcf_pages_dev_entryip_50_txt,475,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,104.16.0.1:443#104.16.0.1 | 核心业务主网，全国三网优先级最高
+HK,香港,104.18.13.229,443,104.18.13.229:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.13.229:443#US-565f36
+HK,香港,104.19.0.4,443,104.19.0.4:443,gslege_us,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.0.4:443#Gslege优选 | us 【美国】 US | 104.19.0.4
+HK,香港,172.64.229.60,443,172.64.229.60:443,gslege,475,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.60:443#Gslege优选 | 【测速 Nodes】75.92MB/s | 172.64.229.60
+HK,香港,104.16.65.1,443,104.16.65.1:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.65.1:443#US-7a04b6
+HK,香港,104.17.148.40,8443,104.17.148.40:8443,gshtwy_wetest_v4,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.148.40:8443#联通-SJC-8443-WS-TLS
+HK,香港,104.19.212.207,443,104.19.212.207:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.212.207:443#US-c5aa60
+HK,香港,104.19.220.22,443,104.19.220.22:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.220.22:443#US-0f9bc4
+HK,香港,162.159.192.1,443,162.159.192.1:443,bestcf_pages_dev_entryip_50_txt,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.192.1:443#162.159.192.1 | 纯净业务段，三网干扰低，连接成功高
+HK,香港,162.159.198.1,443,162.159.198.1:443,uouin,476,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,162.159.198.1:443#麒麟优选 | 07-02 07:39 | BestCF.pages.dev
+HK,香港,172.67.116.63,443,172.67.116.63:443,cfyes_ipv4,476,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.116.63:443#CFYes优选 | 移动 | 172.67.116.63
+HK,香港,104.17.69.244,443,104.17.69.244:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.69.244:443#US-4fb5f7
+HK,香港,104.19.199.128,443,104.19.199.128:443,cfyes_ipv4,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.199.128:443#CFYes优选 | 电信 | 104.19.199.128
+HK,香港,2606:4700:4403::f2ec:43ae,443,[2606:4700:4403::f2ec:43ae]:443,bestcf_pages_dev_vvhan_ipv6_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4403::f2ec:43ae]:443#vvHan优选 | 电信 | SIN | 2606:4700:4403::f2ec:43ae
+HK,香港,2606:4700:4409::1c8c:e63,443,[2606:4700:4409::1c8c:e63]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:4409::1c8c:e63]:443#WeTestV6-1d9ed3
+HK,香港,2a06:98c1:310a::a74c:fc61,443,[2a06:98c1:310a::a74c:fc61]:443,bestcf_pages_dev_vvhan_ipv6_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:310a::a74c:fc61]:443#vvHan优选 | 电信 | SIN | 2a06:98c1:310a::a74c:fc61
+HK,香港,2a06:98c1:3121:c677:c614:7606:cec1:f722,443,[2a06:98c1:3121:c677:c614:7606:cec1:f722]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,477,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2a06:98c1:3121:c677:c614:7606:cec1:f722]:443#Uouin-61ba85
+HK,香港,104.17.145.113,443,104.17.145.113:443,gshtwy_wetest_v4,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:443#联通-SJC-443-WS-TLS
+HK,香港,104.19.0.5,443,104.19.0.5:443,gslege_us,478,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,104.19.0.5:443#Gslege优选 | us 【美国】 US | 104.19.0.5
+HK,香港,104.19.39.27,443,104.19.39.27:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.39.27
+HK,香港,104.20.17.218,443,104.20.17.218:443,uouin,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.20.17.218:443#麒麟优选 | 联通 | 104.20.17.218 | 83.44ms | 41.02mb/s
+HK,香港,162.159.136.89,443,162.159.136.89:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.136.89:443#US-aff508
+HK,香港,162.159.193.1,443,162.159.193.1:443,bestcf_pages_dev_entryip_50_txt,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.193.1:443#162.159.193.1 | 官方业务分支，负载低，通行成功率高
+HK,香港,172.67.79.52,443,172.67.79.52:443,uouin,478,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.79.52:443#麒麟优选 | 联通 | 172.67.79.52 | 82.48ms | 38.78mb/s
+HK,香港,104.16.151.0,443,104.16.151.0:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.151.0:443#US-3e8b210
+HK,香港,104.17.128.145,443,104.17.128.145:443,gshtwy_wetest_v4,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.128.145:443#联通-SJC-443-WS-TLS
+HK,香港,104.17.208.113,443,104.17.208.113:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.208.113
+HK,香港,104.18.47.244,443,104.18.47.244:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.47.244:443#US-f20ad6
+HK,香港,104.19.148.121,443,104.19.148.121:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.148.121:443#US-0ac9410
+HK,香港,104.19.37.90,443,104.19.37.90:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.37.90
+HK,香港,104.19.48.190,443,104.19.48.190:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.48.190
+HK,香港,104.24.0.1,443,104.24.0.1:443,bestcf_pages_dev_entryip_50_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.24.0.1:443#▼ Cloudflare Anycast Entry IP TOP50 | 2026.4
+HK,香港,104.25.0.1,443,104.25.0.1:443,bestcf_pages_dev_gslege_DE_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.1:443#Gslege优选 | de 【德国】 DE | 104.25.0.1
+HK,香港,104.25.240.85,2096,104.25.240.85:2096,gshtwy_wetest_v4,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.240.85:2096#移动-HKG-2096-WS-TLS
+HK,香港,104.26.0.4,443,104.26.0.4:443,bestcf_pages_dev_gslege_DE_txt,479,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,104.26.0.4:443#Gslege优选 | de 【德国】 DE | 104.26.0.4
+HK,香港,108.162.198.11,443,108.162.198.11:443,gslege_jp,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.11:443#Gslege优选 | jp 【日本】 JP | 108.162.198.11
+HK,香港,162.159.40.181,2096,162.159.40.181:2096,moistr,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.40.181:2096#MoistR优选 | 电信优选 01 | 162.159.40.181:2096
+HK,香港,2606:4700:9a9b::a770:c293,443,[2606:4700:9a9b::a770:c293]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,479,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9a9b::a770:c293]:443#WeTestV6-399e22
+HK,香港,104.26.2.191,443,104.26.2.191:443,uouin,480,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.26.2.191:443#麒麟优选 | 联通 | 104.26.2.191 | 82.88ms | 38.37mb/s
+HK,香港,162.159.22.77,443,162.159.22.77:443,wetest,480,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.22.77:443#微测优选 | 电信 | SIN | 162.159.22.77
+HK,香港,2a06:98c1:3121:5d:1caa:56dd:a908:af7b,443,[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,480,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,[2a06:98c1:3121:5d:1caa:56dd:a908:af7b]:443#Uouin-cc9c47
+HK,香港,104.17.145.113,2053,104.17.145.113:2053,gshtwy_wetest_v4,481,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.145.113:2053#联通-SJC-2053-WS-TLS
+HK,香港,108.162.192.4,443,108.162.192.4:443,gslege_sg,481,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.192.4:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.4
+HK,香港,104.17.18.224,443,104.17.18.224:443,bestcf_pages_dev_nirevil_ipv4_txt,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.18.224:443#NiREvil优选 | 电信 | 104.17.18.224 | Default | 132ms | 300mbps
+HK,香港,172.67.77.136,443,172.67.77.136:443,uouin,482,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.77.136:443#麒麟优选 | 联通 | 172.67.77.136 | 82.70ms | 40.13mb/s
+HK,香港,104.17.111.167,443,104.17.111.167:443,uouin,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.111.167:443#麒麟优选 | 移动 | 104.17.111.167 | 49.76ms | 14.60mb/s
+HK,香港,104.17.223.113,443,104.17.223.113:443,uouin,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.223.113:443#麒麟优选 | 移动 | 104.17.223.113 | 49.78ms | 13.50mb/s
+HK,香港,162.159.153.212,443,162.159.153.212:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.153.212:443#US-b7f089
+HK,香港,2606:4700:3036:ef:92f:be51:8695:9fc5,443,[2606:4700:3036:ef:92f:be51:8695:9fc5]:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv6_txt,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:3036:ef:92f:be51:8695:9fc5]:443#CMLiussv6-7a11310
+HK,香港,2606:4700:9762:29d4:d820:bc35:7510:68eb,443,[2606:4700:9762:29d4:d820:bc35:7510:68eb]:443,bestcf_pages_dev_nirevil_ipv6_txt,483,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9762:29d4:d820:bc35:7510:68eb]:443#NiREvil优选 | 移动 | Default | 0ms | 321mbps
+HK,香港,104.19.0.8,443,104.19.0.8:443,gslege_us,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.0.8:443#Gslege优选 | us 【美国】 US | 104.19.0.8
+HK,香港,141.101.120.1,443,141.101.120.1:443,bestcf_pages_dev_entryip_50_txt,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,141.101.120.1:443#141.101.120.1 | 边缘端点，部分地区具备超额带宽
+HK,香港,172.64.32.9,443,172.64.32.9:443,gslege_sg,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.9:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.9
+HK,香港,172.67.69.95,443,172.67.69.95:443,wetest,484,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.69.95:443#微测优选 | 移动 | SEA | 172.67.69.95
+HK,香港,104.16.105.166,443,104.16.105.166:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.105.166:443#US-6adff7
+HK,香港,104.17.0.8,443,104.17.0.8:443,gslege_us,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.0.8:443#Gslege优选 | us 【美国】 US | 104.17.0.8
+HK,香港,162.159.195.1,443,162.159.195.1:443,bestcf_pages_dev_entryip_50_txt,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.195.1:443#162.159.195.1 | 备用业务入口，路由宣告极其精准
+HK,香港,2606:4700:9ad1::c1e2:45b7,2096,[2606:4700:9ad1::c1e2:45b7]:2096,moistr,485,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9ad1::c1e2:45b7]:2096#MoistR优选 | 移动 IPV6 01 | [2606:4700:9ad1::c1e2:45b7]:2096
+HK,香港,104.25.0.9,443,104.25.0.9:443,bestcf_pages_dev_gslege_DE_txt,486,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.25.0.9:443#Gslege优选 | de 【德国】 DE | 104.25.0.9
+HK,香港,108.162.198.11,2096,108.162.198.11:2096,moistr,486,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,108.162.198.11:2096#MoistR优选 | 电信优选 02 | 108.162.198.11:2096
+HK,香港,108.162.198.4,443,108.162.198.4:443,gslege_jp,486,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.4:443#Gslege优选 | jp 【日本】 JP | 108.162.198.4
+HK,香港,2606:4700:440c::d047:32ab,443,[2606:4700:440c::d047:32ab]:443,bestcf_pages_dev_vvhan_ipv6_txt,486,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:440c::d047:32ab]:443#vvHan优选 | 电信 | SIN | 2606:4700:440c::d047:32ab
+HK,香港,104.16.151.117,443,104.16.151.117:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.151.117:443#US-b47943
+HK,香港,104.17.167.134,443,104.17.167.134:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.167.134:443#US-1648e0
+HK,香港,104.17.190.127,443,104.17.190.127:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.190.127:443#US-f801c1
+HK,香港,104.19.0.1,443,104.19.0.1:443,gslege_us,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.0.1:443#Gslege优选 | us 【美国】 US | 104.19.0.1
+HK,香港,104.19.41.209,443,104.19.41.209:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,487,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.41.209:443#US-cbb260
+HK,香港,172.64.32.6,443,172.64.32.6:443,gslege_sg,488,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.32.6:443#Gslege优选 | sg 【新加坡】 SG | 172.64.32.6
+HK,香港,108.162.192.2,443,108.162.192.2:443,gslege_sg,489,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.192.2:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.2
+HK,香港,104.16.151.78,443,104.16.151.78:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,491,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.151.78:443#US-e1b7f2
+HK,香港,108.162.198.86,443,108.162.198.86:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,494,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.86:443#US-7c94c5
+HK,香港,108.162.192.7,443,108.162.192.7:443,gslege_sg,495,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.192.7:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.7
+HK,香港,162.159.22.3,443,162.159.22.3:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,496,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.22.3
+HK,香港,2606:4700:9a9a::e86c:d5b3,443,[2606:4700:9a9a::e86c:d5b3]:443,bestcf_pages_dev_vvhan_ipv6_txt,498,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:9a9a::e86c:d5b3]:443#vvHan优选 | 移动 | HKG | 2606:4700:9a9a::e86c:d5b3
+HK,香港,staticdelivery.nexusmods.com,443,staticdelivery.nexusmods.com:443,domain_ai_vps789,498,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,staticdelivery.nexusmods.com:443#AI优选 | staticdelivery.nexusmods.com
+HK,香港,104.19.56.32,443,104.19.56.32:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,499,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.56.32
+HK,香港,www.speedtest.net,443,www.speedtest.net:443,domain_all,501,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.speedtest.net:443#更多选择 | Ookla
+HK,香港,108.162.198.6,443,108.162.198.6:443,gslege_jp,503,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.6:443#Gslege优选 | jp 【日本】 JP | 108.162.198.6
+HK,香港,www.udacity.com,443,www.udacity.com:443,domain_all,503,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.udacity.com:443#教育域名 | Udacity
+HK,香港,162.159.128.253,443,162.159.128.253:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,509,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.128.253:443#US-6d1f92
+HK,香港,108.162.198.105,443,108.162.198.105:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,514,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.105
+HK,香港,172.67.69.209,443,172.67.69.209:443,uouin,516,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.69.209:443#麒麟优选 | 联通 | 172.67.69.209 | 81.75ms | 40.18mb/s
+HK,香港,ct.090227.xyz,443,ct.090227.xyz:443,vps789_top100,516,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ct.090227.xyz:443#VPS789优选 | ct.090227.xyz
+HK,香港,108.162.198.14,443,108.162.198.14:443,gslege_jp,517,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.198.14:443#Gslege优选 | jp 【日本】 JP | 108.162.198.14
+HK,香港,www.sage.com,443,www.sage.com:443,domain_all,517,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,www.sage.com:443#更多选择 | Sage
+HK,香港,104.19.41.38,443,104.19.41.38:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,518,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.41.38
+HK,香港,ask.ircf.space,443,ask.ircf.space:443,domain_ircf_all,524,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ask.ircf.space:443#IRCF优选 | ASK | ask.ircf.space
+HK,香港,bestcf.030101.xyz,443,bestcf.030101.xyz:443,domain_all,525,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,bestcf.030101.xyz:443#大佬维护 | MingYu
+HK,香港,104.19.154.200,443,104.19.154.200:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,526,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.154.200:443#US-b3ca210
+HK,香港,cfip-cm.stoeaves.us.ci,443,cfip-cm.stoeaves.us.ci:443,vps789_top100,539,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfip-cm.stoeaves.us.ci:443#VPS789优选 | cfip-cm.stoeaves.us.ci
+HK,香港,cloudflare.seeck.cn,443,cloudflare.seeck.cn:443,domain_senflare_all,539,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.seeck.cn:443#Senflare优选 | 三网 | cloudflare.seeck.cn
+HK,香港,104.27.0.2,443,104.27.0.2:443,bestcf_pages_dev_gslege_DE_txt,552,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.0.2:443#Gslege优选 | de 【德国】 DE | 104.27.0.2
+HK,香港,lt.5.hhhhh.eu.org,443,lt.5.hhhhh.eu.org:443,domain_wuya_all,554,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.5.hhhhh.eu.org:443#乌鸦优选 | 联通5 | lt.5.hhhhh.eu.org
+HK,香港,ubuntu.com.cn,443,ubuntu.com.cn:443,domain_asia,556,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ubuntu.com.cn:443#亚洲域名 | 中国乌班图
+HK,香港,ct.877774.xyz,443,ct.877774.xyz:443,domain_all,557,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ct.877774.xyz:443#按运营商 | 电信QMS
+HK,香港,starbucks.qa,443,starbucks.qa:443,domain_asia,559,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,starbucks.qa:443#亚洲域名 | 卡塔尔星巴克
+HK,香港,cu.877774.xyz,443,cu.877774.xyz:443,domain_all,562,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,cu.877774.xyz:443#按运营商 | 联通QMS
+HK,香港,eteaf.cf.3666888.xyz,443,eteaf.cf.3666888.xyz:443,vps789_top100,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,eteaf.cf.3666888.xyz:443#VPS789优选 | eteaf.cf.3666888.xyz
+HK,香港,fw8je9.cf.3666888.xyz,2096,fw8je9.cf.3666888.xyz:2096,moistr,563,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fw8je9.cf.3666888.xyz:2096#MoistR优选 | 优选域名 01 | fw8je9.cf.3666888.xyz:2096
+HK,香港,104.18.223.253,443,104.18.223.253:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,567,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.223.253:443#US-d8af91
+HK,香港,chotot.com,443,chotot.com:443,domain_asia,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,chotot.com:443#亚洲域名 | 越南电商
+HK,香港,ztl.ircf.space,443,ztl.ircf.space:443,domain_ircf_all,568,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ztl.ircf.space:443#IRCF优选 | Zitel | ztl.ircf.space
+HK,香港,cm.1.hhhhh.eu.org,443,cm.1.hhhhh.eu.org:443,domain_wuya_all,569,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.1.hhhhh.eu.org:443#乌鸦优选 | cm1 | cm.1.hhhhh.eu.org
+HK,香港,104.17.148.40,2096,104.17.148.40:2096,gshtwy_wetest_v4,570,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.148.40:2096#联通-SJC-2096-WS-TLS
+HK,香港,104.27.54.180,443,104.27.54.180:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,570,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.27.54.180:443#US-7da9e3
+HK,香港,2606:4700:90c9::d016:72eb,443,[2606:4700:90c9::d016:72eb]:443,bestcf_pages_dev_vvhan_ipv6_txt,570,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,[2606:4700:90c9::d016:72eb]:443#vvHan优选 | 移动 | HKG | 2606:4700:90c9::d016:72eb
+HK,香港,cf-ip-node.vov.moe,443,cf-ip-node.vov.moe:443,vps789_top100,571,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf-ip-node.vov.moe:443#VPS789优选 | cf-ip-node.vov.moe
+HK,香港,atc.ircf.space,443,atc.ircf.space:443,domain_ircf_all,572,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,atc.ircf.space:443#IRCF优选 | Asre Telecom | atc.ircf.space
+HK,香港,apt.ircf.space,443,apt.ircf.space:443,domain_ircf_all,574,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,apt.ircf.space:443#IRCF优选 | Aptel | apt.ircf.space
+HK,香港,shop.glico.com,443,shop.glico.com:443,domain_asia,574,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,shop.glico.com:443#亚洲域名 | 日本格力高
+HK,香港,bluehost.com,443,bluehost.com:443,domain_all,575,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,bluehost.com:443#企业域名 | BlueHost
+HK,香港,108.162.192.3,443,108.162.192.3:443,gslege_sg,576,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,108.162.192.3:443#Gslege优选 | sg 【新加坡】 SG | 108.162.192.3
+HK,香港,108.162.193.1,443,108.162.193.1:443,bestcf_pages_dev_entryip_50_txt,576,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,108.162.193.1:443#108.162.193.1 | 高权重中转，流量杂乱，隐蔽性极佳
+HK,香港,104.17.142.26,8443,104.17.142.26:8443,gshtwy_wetest_v4,580,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.142.26:8443#联通-SJC-8443-WS-TLS
+HK,香港,cfip-avg.stoeaves.us.ci,443,cfip-avg.stoeaves.us.ci:443,vps789_top100,580,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfip-avg.stoeaves.us.ci:443#VPS789优选 | cfip-avg.stoeaves.us.ci
+HK,香港,china-mobile.cname.cloudflare.468123.xyz,443,china-mobile.cname.cloudflare.468123.xyz:443,vps789_top100,580,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,china-mobile.cname.cloudflare.468123.xyz:443#VPS789优选 | china-mobile.cname.cloudflare.468123.xyz
+HK,香港,cmcc.090227.xyz,443,cmcc.090227.xyz:443,vps789_top100,583,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cmcc.090227.xyz:443#VPS789优选 | cmcc.090227.xyz
+HK,香港,104.17.113.230,443,104.17.113.230:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.113.230
+HK,香港,104.17.114.213,443,104.17.114.213:443,raw_githubusercontent_com_einsitang_my_fast_cf_ip_refs_heads_master_fastips_txt,584,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.114.213
+HK,香港,172.66.3.228,2087,172.66.3.228:2087,gshtwy_wetest_v4,585,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,172.66.3.228:2087#移动-HKG-2087-WS-TLS
+HK,香港,104.19.34.153,443,104.19.34.153:443,raw_githubusercontent_com_ymyuuu_IPDB_refs_heads_main_BestCF_bestcfv4_txt,587,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.34.153
+HK,香港,auctions.ihg.com.cn,443,auctions.ihg.com.cn:443,domain_all,588,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,auctions.ihg.com.cn:443#更多选择 | 洲际酒店
+HK,香港,yg11.ygkkk.dpdns.org,443,yg11.ygkkk.dpdns.org:443,domain_ygkkk_all,591,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg11.ygkkk.dpdns.org:443#甬哥优选 | yg11.ygkkk.dpdns.org
+HK,香港,104.19.174.68,443,104.19.174.68:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,592,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.174.68:443#US-b4e4a7
+HK,香港,172.64.53.188,443,172.64.53.188:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,592,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.53.188:443#US-155d89
+HK,香港,104.16.159.166,443,104.16.159.166:443,uouin,594,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.16.159.166:443#麒麟优选 | 移动 | 104.16.159.166 | 50.03ms | 12.34mb/s
+HK,香港,172.67.103.217,443,172.67.103.217:443,bestcf_pages_dev_nirevil_ipv4_txt,594,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.67.103.217:443#NiREvil优选 | 移动 | 172.67.103.217 | Default | 182ms | 325mbps
+HK,香港,cmcc.877774.xyz,443,cmcc.877774.xyz:443,domain_all,594,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cmcc.877774.xyz:443#按运营商 | 移动QMS
+HK,香港,104.18.189.153,443,104.18.189.153:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,596,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.189.153:443#US-36a612
+HK,香港,prompt.gzcrtw.com,443,prompt.gzcrtw.com:443,vps789_top100,598,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,prompt.gzcrtw.com:443#VPS789优选 | prompt.gzcrtw.com
+HK,香港,104.18.255.167,443,104.18.255.167:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,599,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.255.167:443#US-ce4027
+HK,香港,psm.ircf.space,443,psm.ircf.space:443,domain_ircf_all,599,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,psm.ircf.space:443#IRCF优选 | Pishgaman | psm.ircf.space
+HK,香港,162.159.197.1,443,162.159.197.1:443,uouin,600,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.197.1:443#麒麟优选 | 分享免费优选网 BestCF.pages.dev
+HK,香港,104.17.148.40,2087,104.17.148.40:2087,gshtwy_wetest_v4,601,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.148.40:2087#联通-SJC-2087-WS-TLS
+HK,香港,162.159.10.137,2053,162.159.10.137:2053,gshtwy_wetest_v4,601,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.10.137:2053#电信-SIN-2053-WS-TLS
+HK,香港,172.64.229.132,443,172.64.229.132:443,bestcf_pages_dev_zhixuanwang_ipv4_onlyip_txt,601,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,172.64.229.132
+HK,香港,newsmarket.com.tw,443,newsmarket.com.tw:443,domain_asia,601,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,newsmarket.com.tw:443#亚洲域名 | 中国台湾上下游
+HK,香港,visa.com.tw,443,visa.com.tw:443,vps789_top100,603,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,visa.com.tw:443#VPS789优选 | visa.com.tw
+HK,香港,104.18.156.217,443,104.18.156.217:443,cfyes_ipv4,604,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.156.217:443#CFYes优选 | 电信 | 104.18.156.217
+HK,香港,uplus.co.kr,443,uplus.co.kr:443,domain_asia,606,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,uplus.co.kr:443#亚洲域名 | 韩国LG电信
+HK,香港,162.159.140.85,443,162.159.140.85:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,607,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,162.159.140.85:443#US-169733
+HK,香港,play.mc.js.cool,443,play.mc.js.cool:443,vps789_top100,607,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,play.mc.js.cool:443#VPS789优选 | play.mc.js.cool
+HK,香港,www.visa.cn,443,www.visa.cn:443,domain_all,607,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.visa.cn:443#金融域名 | VISA中国
+HK,香港,104.19.149.220,443,104.19.149.220:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,611,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.19.149.220:443#US-8619b9
+HK,香港,edgeone.gh-proxy.org,443,edgeone.gh-proxy.org:443,vps789_top100,614,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,edgeone.gh-proxy.org:443#VPS789优选 | edgeone.gh-proxy.org
+HK,香港,cdns.doon.eu.org,443,cdns.doon.eu.org:443,domain_ai_vps789,615,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdns.doon.eu.org:443#AI优选 | cdns.doon.eu.org
+HK,香港,cfip-cu.stoeaves.us.ci,443,cfip-cu.stoeaves.us.ci:443,vps789_top100,617,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cfip-cu.stoeaves.us.ci:443#VPS789优选 | cfip-cu.stoeaves.us.ci
+HK,香港,104.17.79.65,443,104.17.79.65:443,bestcf_pages_dev_nirevil_ipv4_txt,621,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.17.79.65:443#NiREvil优选 | 电信 | 104.17.79.65 | Default | 131ms | 285mbps
+HK,香港,cdn.555586.xyz,443,cdn.555586.xyz:443,vps789_top100,621,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.555586.xyz:443#VPS789优选 | cdn.555586.xyz
+HK,香港,104.18.81.19,443,104.18.81.19:443,raw_githubusercontent_com_joname1_BestCFip_refs_heads_main_ipv4_txt,622,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,104.18.81.19:443#US-338634
+HK,香港,172.66.3.228,443,172.66.3.228:443,gshtwy_wetest_v4,623,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,172.66.3.228:443#移动-HKG-443-WS-TLS
+HK,香港,chrono24.com,443,chrono24.com:443,vps789_top100,623,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,chrono24.com:443#VPS789优选 | chrono24.com
+HK,香港,www.wilshire.com,443,www.wilshire.com:443,domain_all,626,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.wilshire.com:443#金融域名 | Wilshire
+HK,香港,www.shopify.com,443,www.shopify.com:443,domain_all,629,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.shopify.com:443#企业域名 | Shopify
+HK,香港,foodpanda.hk,443,foodpanda.hk:443,domain_asia,631,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,foodpanda.hk:443#亚洲域名 | 香港富胖达
+HK,香港,glassdoor.com,443,glassdoor.com:443,domain_all,637,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,glassdoor.com:443#企业域名 | Glassdoor
+HK,香港,hk.cf.3666888.xyz,443,hk.cf.3666888.xyz:443,domain_ai_vps789,637,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hk.cf.3666888.xyz:443#AI优选 | hk.cf.3666888.xyz
+HK,香港,arx.ircf.space,443,arx.ircf.space:443,domain_ircf_all,643,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,arx.ircf.space:443#IRCF优选 | Arax | arx.ircf.space
+HK,香港,diesel.co.jp,443,diesel.co.jp:443,domain_asia,643,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,diesel.co.jp:443#亚洲域名 | 日本迪赛
+HK,香港,doosan.com,443,doosan.com:443,domain_asia,645,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,doosan.com:443#亚洲域名 | 韩国斗山
+HK,香港,www.emerson.com,443,www.emerson.com:443,domain_all,647,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.emerson.com:443#更多选择 | 艾默生
+HK,香港,yg2.ygkkk.dpdns.org,443,yg2.ygkkk.dpdns.org:443,domain_ygkkk_all,652,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg2.ygkkk.dpdns.org:443#甬哥优选 | yg2.ygkkk.dpdns.org
+HK,香港,cloudflare.dev,443,cloudflare.dev:443,domain_all,654,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.dev:443#官方域名 | Developers
+HK,香港,shopback.com.tw,443,shopback.com.tw:443,domain_asia,654,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,shopback.com.tw:443#亚洲域名 | 中国台湾返利
+HK,香港,cdn.2158.cc,443,cdn.2158.cc:443,domain_ai_vps789,655,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.2158.cc:443#AI优选 | cdn.2158.cc
+HK,香港,asia.877774.xyz,443,asia.877774.xyz:443,domain_qms_all,660,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,asia.877774.xyz:443#秋名山优选 | 亚洲 | asia.877774.xyz
+HK,香港,news.cathaypacific.com,443,news.cathaypacific.com:443,domain_asia,661,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,news.cathaypacific.com:443#亚洲域名 | 香港国泰航空
+HK,香港,lt.4.hhhhh.eu.org,443,lt.4.hhhhh.eu.org:443,domain_wuya_all,662,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.4.hhhhh.eu.org:443#乌鸦优选 | 联通4 | lt.4.hhhhh.eu.org
+HK,香港,www.xflash.vip,443,www.xflash.vip:443,vps789_top100,663,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.xflash.vip:443#VPS789优选 | www.xflash.vip
+HK,香港,www.researchgate.net,443,www.researchgate.net:443,domain_all,664,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.researchgate.net:443#教育域名 | ResearchGate
+HK,香港,fnv.ircf.space,443,fnv.ircf.space:443,domain_ircf_all,665,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fnv.ircf.space:443#IRCF优选 | Fanava | fnv.ircf.space
+HK,香港,qms.1.hhhhh.eu.org,443,qms.1.hhhhh.eu.org:443,domain_wuya_all,665,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qms.1.hhhhh.eu.org:443#乌鸦优选 | qms1 | qms.1.hhhhh.eu.org
+HK,香港,yd.hhhhh.eu.org,443,yd.hhhhh.eu.org:443,domain_wuya_all,665,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,yd.hhhhh.eu.org:443#乌鸦优选 | 移动 | yd.hhhhh.eu.org
+HK,香港,qnb.com,443,qnb.com:443,domain_asia,667,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,qnb.com:443#亚洲域名 | 卡塔尔国家银行
+HK,香港,columbia.edu,443,columbia.edu:443,domain_all,669,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,columbia.edu:443#教育域名 | 哥伦比亚
+HK,香港,jimdo.com,443,jimdo.com:443,domain_all,673,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,jimdo.com:443#企业域名 | Jimdo
+HK,香港,fnp.ircf.space,443,fnp.ircf.space:443,domain_ircf_all,679,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fnp.ircf.space:443#IRCF优选 | Fanap | fnp.ircf.space
+HK,香港,www.buy123.com.tw,443,www.buy123.com.tw:443,domain_asia,680,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,www.buy123.com.tw:443#亚洲域名 | 中国台湾帮客
+HK,香港,yd.5.hhhhh.eu.org,443,yd.5.hhhhh.eu.org:443,domain_wuya_all,681,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.5.hhhhh.eu.org:443#乌鸦优选 | 移动5 | yd.5.hhhhh.eu.org
+HK,香港,cm.hhhhh.eu.org,443,cm.hhhhh.eu.org:443,domain_wuya_all,685,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cm.hhhhh.eu.org:443#乌鸦优选 | cm | cm.hhhhh.eu.org
+HK,香港,ryn.ircf.space,443,ryn.ircf.space:443,domain_ircf_all,688,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ryn.ircf.space:443#IRCF优选 | Raynet | ryn.ircf.space
+HK,香港,yg12.ygkkk.dpdns.org,443,yg12.ygkkk.dpdns.org:443,domain_ygkkk_all,688,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg12.ygkkk.dpdns.org:443#甬哥优选 | yg12.ygkkk.dpdns.org
+HK,香港,digitalocean.com,443,digitalocean.com:443,domain_all,691,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,digitalocean.com:443#更多选择 | DigitalOcean
+HK,香港,openai.hhhhh.eu.org,443,openai.hhhhh.eu.org:443,domain_wuya_all,691,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,openai.hhhhh.eu.org:443#乌鸦优选 | openai | openai.hhhhh.eu.org
+HK,香港,ir.yuntongxun.com,443,ir.yuntongxun.com:443,domain_asia,693,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ir.yuntongxun.com:443#亚洲域名 | 中国容联
+HK,香港,edion.co.jp,443,edion.co.jp:443,domain_asia,695,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,edion.co.jp:443#亚洲域名 | 日本爱电王
+HK,香港,dbn.ircf.space,443,dbn.ircf.space:443,domain_ircf_all,697,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dbn.ircf.space:443#IRCF优选 | DidehbanNet | dbn.ircf.space
+HK,香港,hfqek.cf.3666888.xyz,443,hfqek.cf.3666888.xyz:443,domain_ai_vps789,700,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hfqek.cf.3666888.xyz:443#AI优选 | hfqek.cf.3666888.xyz
+HK,香港,cf.nyanya.moe,443,cf.nyanya.moe:443,vps789_top100,703,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.nyanya.moe:443#VPS789优选 | cf.nyanya.moe
+HK,香港,cyberport.com.hk,443,cyberport.com.hk:443,domain_asia,703,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cyberport.com.hk:443#亚洲域名 | 中国香港数码港
+HK,香港,openai.2.hhhhh.eu.org,443,openai.2.hhhhh.eu.org:443,domain_wuya_all,706,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,openai.2.hhhhh.eu.org:443#乌鸦优选 | openai2 | openai.2.hhhhh.eu.org
+HK,香港,yg5.ygkkk.dpdns.org,443,yg5.ygkkk.dpdns.org:443,domain_ygkkk_all,706,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg5.ygkkk.dpdns.org:443#甬哥优选 | yg5.ygkkk.dpdns.org
+HK,香港,cloudflare.182682.xyz,443,cloudflare.182682.xyz:443,domain_all,708,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.182682.xyz:443#大佬维护 | WeTest
+HK,香港,www.allianz.com.my,443,www.allianz.com.my:443,domain_asia,709,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.allianz.com.my:443#亚洲域名 | 大马安联
+HK,香港,www.kingpower.com,443,www.kingpower.com:443,domain_asia,709,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.kingpower.com:443#亚洲域名 | 泰国皇权免税
+HK,香港,camperandnicholsons.com,443,camperandnicholsons.com:443,domain_asia,713,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,camperandnicholsons.com:443#亚洲域名 | 新加坡游艇
+HK,香港,ten.com,443,ten.com:443,domain_asia,716,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ten.com:443#亚洲域名 | 日本营销科技
+HK,香港,yd.4.hhhhh.eu.org,443,yd.4.hhhhh.eu.org:443,domain_wuya_all,716,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.4.hhhhh.eu.org:443#乌鸦优选 | 移动4 | yd.4.hhhhh.eu.org
+HK,香港,vinhomes.vn,443,vinhomes.vn:443,domain_asia,721,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,vinhomes.vn:443#亚洲域名 | 越南地产龙头
+HK,香港,cf.553314.xyz,443,cf.553314.xyz:443,vps789_top100,724,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.553314.xyz:443#VPS789优选 | cf.553314.xyz
+HK,香港,dx.5.hhhhh.eu.org,443,dx.5.hhhhh.eu.org:443,domain_wuya_all,727,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,dx.5.hhhhh.eu.org:443#乌鸦优选 | 电信5 | dx.5.hhhhh.eu.org
+HK,香港,jp.cf.3666888.xyz,443,jp.cf.3666888.xyz:443,domain_ai_vps789,727,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,jp.cf.3666888.xyz:443#AI优选 | jp.cf.3666888.xyz
+HK,香港,test.509666.xyz,443,test.509666.xyz:443,domain_ai_vps789,727,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,test.509666.xyz:443#AI优选 | test.509666.xyz
+HK,香港,cf.tencentapp.cn,443,cf.tencentapp.cn:443,domain_all,729,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.tencentapp.cn:443#大佬维护 | KTFF
+HK,香港,leyun.cloud,443,leyun.cloud:443,domain_asia,730,,youtube:HK;ping0:HK;ipwhois:-,disabled,geo_only,,leyun.cloud:443#亚洲域名 | 中国台湾乐云
+HK,香港,www.epicgames.com,443,www.epicgames.com:443,vps789_top100,730,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.epicgames.com:443#VPS789优选 | www.epicgames.com
+HK,香港,www.vexere.com,443,www.vexere.com:443,domain_asia,735,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.vexere.com:443#亚洲域名 | 越南巴士
+HK,香港,www.transunion.hk,443,www.transunion.hk:443,domain_all,736,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.transunion.hk:443#更多选择 | 香港环联
+HK,香港,lac.com.tw,443,lac.com.tw:443,domain_asia,740,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lac.com.tw:443#亚洲域名 | 中国台湾LAC
+HK,香港,mci.ircf.space,443,mci.ircf.space:443,domain_ircf_all,742,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,mci.ircf.space:443#IRCF优选 | MCI | mci.ircf.space
+HK,香港,cloudflare-eth.com,443,cloudflare-eth.com:443,domain_all,745,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare-eth.com:443#官方域名 | Web3
+HK,香港,www.kia.com,443,www.kia.com:443,domain_asia,745,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.kia.com:443#亚洲域名 | 韩国起亚
+HK,香港,www.bitkub.com,443,www.bitkub.com:443,domain_asia,750,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.bitkub.com:443#亚洲域名 | 泰国加密货币
+HK,香港,uac.cf.3666888.xyz,443,uac.cf.3666888.xyz:443,domain_ai_vps789,751,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,uac.cf.3666888.xyz:443#AI优选 | uac.cf.3666888.xyz
+HK,香港,cdn.091224.xyz,443,cdn.091224.xyz:443,domain_ai_vps789,752,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.091224.xyz:443#AI优选 | cdn.091224.xyz
+HK,香港,www.ox.ac.uk,443,www.ox.ac.uk:443,domain_all,752,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,www.ox.ac.uk:443#教育域名 | 牛津大学
+HK,香港,www.stheadline.com,443,www.stheadline.com:443,domain_asia,752,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.stheadline.com:443#亚洲域名 | 香港星岛头条
+HK,香港,store.sony.com.sg,443,store.sony.com.sg:443,domain_asia,753,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,store.sony.com.sg:443#亚洲域名 | 新加坡索尼
+HK,香港,www.nestle.com,443,www.nestle.com:443,domain_all,757,,youtube:HK;ping0:HK;ipwhois:CN,disabled,geo_only,,www.nestle.com:443#更多选择 | 雀巢
+HK,香港,advantech.com,443,advantech.com:443,domain_asia,761,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,advantech.com:443#亚洲域名 | 中国台湾研华
+HK,香港,hongkongairport.com,443,hongkongairport.com:443,domain_asia,762,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,hongkongairport.com:443#亚洲域名 | 香港机场
+HK,香港,lt.2.hhhhh.eu.org,443,lt.2.hhhhh.eu.org:443,domain_wuya_all,762,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,lt.2.hhhhh.eu.org:443#乌鸦优选 | 联通2 | lt.2.hhhhh.eu.org
+HK,香港,yesstyle.com,443,yesstyle.com:443,domain_asia,762,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yesstyle.com:443#亚洲域名 | 中国香港YesStyle
+HK,香港,bp.hhhhh.eu.org,443,bp.hhhhh.eu.org:443,domain_wuya_all,764,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,bp.hhhhh.eu.org:443#乌鸦优选 | bp | bp.hhhhh.eu.org
+HK,香港,ralphlauren.com.sg,443,ralphlauren.com.sg:443,domain_asia,764,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,ralphlauren.com.sg:443#亚洲域名 | 新加坡拉夫劳伦
+HK,香港,fossilchina.cn,443,fossilchina.cn:443,domain_asia,767,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,fossilchina.cn:443#亚洲域名 | 中国Fossil
+HK,香港,cdn.jsdelivr.net,443,cdn.jsdelivr.net:443,domain_all,768,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdn.jsdelivr.net:443#更多选择 | jsDelivr
+HK,香港,cu.cdn.djx-ybelove.pp.ua,443,cu.cdn.djx-ybelove.pp.ua:443,domain_fiatnorm_all,769,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cu.cdn.djx-ybelove.pp.ua:443#Fiatnorm优选 | 联通 (CU) · 双线护航，全速满跑
+HK,香港,43.128.21.39,443,43.128.21.39:443,xinyitang3,772,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,43.128.21.39:443#Mia优选 | 中国香港 HK | 43.128.21.39:443
+HK,香港,3.cf.3666888.xyz,443,3.cf.3666888.xyz:443,domain_ai_vps789,774,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,3.cf.3666888.xyz:443#AI优选 | 3.cf.3666888.xyz
+HK,香港,www.zendesk.com,443,www.zendesk.com:443,domain_all,777,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.zendesk.com:443#更多选择 | Zendesk
+HK,香港,1.cf.3666888.xyz,443,1.cf.3666888.xyz:443,domain_ai_vps789,780,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,1.cf.3666888.xyz:443#AI优选 | 1.cf.3666888.xyz
+HK,香港,yd.2.hhhhh.eu.org,443,yd.2.hhhhh.eu.org:443,domain_wuya_all,781,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yd.2.hhhhh.eu.org:443#乌鸦优选 | 移动2 | yd.2.hhhhh.eu.org
+HK,香港,afn.ircf.space,443,afn.ircf.space:443,domain_ircf_all,782,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,afn.ircf.space:443#IRCF优选 | Afranet | afn.ircf.space
+HK,香港,api.gzcrtw.com,443,api.gzcrtw.com:443,domain_ai_vps789,783,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,api.gzcrtw.com:443#AI优选 | api.gzcrtw.com
+HK,香港,www.ooredoo.qa,443,www.ooredoo.qa:443,domain_asia,783,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,www.ooredoo.qa:443#亚洲域名 | 卡塔尔电信
+HK,香港,cloudflare.cfgo.cc,443,cloudflare.cfgo.cc:443,domain_ai_vps789,786,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cloudflare.cfgo.cc:443#AI优选 | cloudflare.cfgo.cc
+HK,香港,cf.090227.xyz,443,cf.090227.xyz:443,domain_all,788,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cf.090227.xyz:443#大佬维护 | CMLiu
+HK,香港,batdongsan.com.vn,443,batdongsan.com.vn:443,domain_asia,792,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,batdongsan.com.vn:443#亚洲域名 | 越南房产网
+HK,香港,6.cf.3666888.xyz,443,6.cf.3666888.xyz:443,domain_ai_vps789,794,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,6.cf.3666888.xyz:443#AI优选 | 6.cf.3666888.xyz
+HK,香港,yg3.ygkkk.dpdns.org,443,yg3.ygkkk.dpdns.org:443,domain_ygkkk_all,794,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg3.ygkkk.dpdns.org:443#甬哥优选 | yg3.ygkkk.dpdns.org
+HK,香港,090.hhhhh.eu.org,443,090.hhhhh.eu.org:443,domain_wuya_all,796,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,090.hhhhh.eu.org:443#乌鸦优选 | 未知线路 | 090.hhhhh.eu.org
+HK,香港,cdnjs.com,443,cdnjs.com:443,domain_all,796,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,cdnjs.com:443#官方域名 | CDNJS
+HK,香港,yg9.ygkkk.dpdns.org,443,yg9.ygkkk.dpdns.org:443,domain_ygkkk_all,797,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,yg9.ygkkk.dpdns.org:443#甬哥优选 | yg9.ygkkk.dpdns.org
+HK,香港,9.cf.3666888.xyz,443,9.cf.3666888.xyz:443,domain_ai_vps789,798,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,9.cf.3666888.xyz:443#AI优选 | 9.cf.3666888.xyz
+HK,香港,sanwang.cf.3666888.xyz,443,sanwang.cf.3666888.xyz:443,domain_ai_vps789,798,,youtube:HK;ping0:HK;ipwhois:SG,disabled,geo_only,,sanwang.cf.3666888.xyz:443#AI优选 | sanwang.cf.3666888.xyz
+HK,香港,prs.ircf.space,443,prs.ircf.space:443,domain_ircf_all,800,,youtube:HK;ping0:HK;ipwhois:HK,disabled,geo_only,,prs.ircf.space:443#IRCF优选 | Pars Online | prs.ircf.space
