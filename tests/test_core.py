@@ -294,6 +294,66 @@ class AllRegionsSelectionTests(unittest.TestCase):
         self.assertEqual(sum(1 for result in selected if result.exit_country_code == "HK"), 2)
         self.assertEqual(sum(1 for result in selected if result.exit_country_code == "JP"), 2)
 
+    def test_all_regions_selection_uses_country_max_overrides(self):
+        results = [
+            self.make_result(f"1.1.1.{index}:443", "HK", index)
+            for index in range(1, 6)
+        ] + [
+            self.make_result(f"2.2.2.{index}:443", "JP", index)
+            for index in range(1, 6)
+        ]
+        args = Namespace(
+            selection_mode="all-regions",
+            country_max=5,
+            country_max_overrides={"HK": 2},
+            max_final_candidates=0,
+        )
+
+        selected = tool.select_final_results(results, args)
+
+        self.assertEqual(sum(1 for result in selected if result.exit_country_code == "HK"), 2)
+        self.assertEqual(sum(1 for result in selected if result.exit_country_code == "JP"), 5)
+
+    def test_target_refill_picks_latency_too_high_declared_candidates(self):
+        sg_candidate = tool.Candidate(
+            source="src",
+            raw="3.3.3.3:443#SG",
+            host="3.3.3.3",
+            port=443,
+            declared_region="SG",
+        )
+        latency_failures = [
+            tool.TestResult(sg_candidate, False, "latency_too_high", "1200ms > 800ms", latency_ms=1200),
+        ]
+        args = Namespace(
+            target_country_min={"SG": 1},
+            target_latency_threshold={"SG": 1500},
+            target_refill_max_tested={"SG": 10},
+            target_refill_min_service_score=0,
+        )
+
+        def fake_geo_batch(items, _template_proxy, _args, stage):
+            return [
+                tool.TestResult(
+                    candidate,
+                    True,
+                    "geo_only",
+                    latency_ms=delay,
+                    exit_country_code="SG",
+                    exit_region="新加坡",
+                    selection_stage=stage,
+                )
+                for _proxy_name, candidate, delay in items
+            ]
+
+        with mock.patch.object(tool, "run_geo_batch", side_effect=fake_geo_batch) as geo_mock:
+            results, geo_tested = tool.run_target_country_refill([], latency_failures, {}, args, 0)
+
+        geo_mock.assert_called_once()
+        self.assertEqual(geo_tested, 1)
+        self.assertEqual(sum(1 for result in results if result.ok and result.exit_country_code == "SG"), 1)
+        self.assertEqual(latency_failures, [])
+
     def test_all_regions_mode_tests_every_latency_passed_candidate(self):
         candidates = [
             tool.Candidate(source="src", raw=f"1.1.1.{index}:443", host=f"1.1.1.{index}", port=443)
@@ -550,6 +610,26 @@ class ValidateOutputTests(unittest.TestCase):
             path.write_text("not-an-endpoint\n", encoding="utf-8")
             ok, _message = tool.validate_final_output(path, min_lines=1)
         self.assertFalse(ok)
+
+    def test_validate_checks_min_country(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bestcf_final.txt"
+            path.write_text(
+                "1.1.1.1:443#日本-1\n"
+                "2.2.2.2:443#新加坡-1\n",
+                encoding="utf-8",
+            )
+            ok, message = tool.validate_final_output(path, min_lines=1, min_country={"JP": 2, "SG": 1})
+        self.assertFalse(ok)
+        self.assertIn("JP", message)
+
+    def test_validate_min_country_uses_final_label_before_domain_hint(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bestcf_final.txt"
+            path.write_text("converse.co.jp:443#美国-1\n", encoding="utf-8")
+            ok, message = tool.validate_final_output(path, min_lines=1, min_country={"JP": 1})
+        self.assertFalse(ok)
+        self.assertIn("JP", message)
 
 
 if __name__ == "__main__":

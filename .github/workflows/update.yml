@@ -80,11 +80,16 @@ jobs:
             --geo-providers youtube,ping0,ipwhois \
             --geo-concurrency 16 \
             --selection-mode all-regions \
-            --country-max 35 \
+            --country-max 50 \
+            --country-max-overrides HK:15 \
             --max-final-candidates 0 \
+            --target-country-min JP:10,SG:10 \
+            --target-latency-threshold JP:2000,SG:3000 \
+            --target-refill-max-tested JP:80,SG:160 \
+            --target-refill-min-service-score 1 \
             --hk-suppression \
             --hk-suppress-strategy worker \
-            --hk-probe-cap 105 \
+            --hk-probe-cap 45 \
             --hk-suppress-bucket-scope prefix \
             --hk-suppress-ipv4-prefix 20 \
             --hk-suppress-ipv6-prefix 40 \
@@ -95,7 +100,7 @@ jobs:
       - name: Validate generated result
         run: |
           echo "VALID_RESULT=false" >> "$GITHUB_ENV"
-          if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final.txt --min-lines 10 --min-regions 1; then
+          if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final.txt --min-lines 10 --min-regions 1 --min-country JP:10,SG:10; then
             echo "Generated bestcf_final.txt failed validation; keeping previous public files."
             exit 0
           fi

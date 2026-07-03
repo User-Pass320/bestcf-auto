@@ -1,3 +1,7 @@
+param(
+    [switch]$NoPush
+)
+
 $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
@@ -73,22 +77,29 @@ New-Item -ItemType Directory -Force -Path ".\public" | Out-Null
 
 Stop-BestCFWorkerProcesses
 
+$candidateOutput = ".\bestcf_work\bestcf_final_candidate.txt"
+
 python .\bestcf_tool.py `
     --profile balanced `
     --workdir .\bestcf_work `
     --template .\template.yaml `
     --mihomo $mihomo `
-    --output .\public\bestcf_final.txt `
+    --output $candidateOutput `
     --no-geo-cache `
     --no-geo-hint-cache `
     --geo-providers youtube,ping0,ipwhois `
     --geo-concurrency 16 `
     --selection-mode all-regions `
-    --country-max 35 `
+    --country-max 50 `
+    --country-max-overrides HK:15 `
     --max-final-candidates 0 `
+    --target-country-min JP:10,SG:10 `
+    --target-latency-threshold JP:2000,SG:3000 `
+    --target-refill-max-tested JP:80,SG:160 `
+    --target-refill-min-service-score 1 `
     --hk-suppression `
     --hk-suppress-strategy worker `
-    --hk-probe-cap 105 `
+    --hk-probe-cap 45 `
     --hk-suppress-bucket-scope prefix `
     --hk-suppress-ipv4-prefix 20 `
     --hk-suppress-ipv6-prefix 40 `
@@ -97,8 +108,10 @@ python .\bestcf_tool.py `
     --hk-suppress-explore-rate 0.05
 Assert-NativeCommandSucceeded "bestcf_tool.py update"
 
-python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 1
+python .\bestcf_tool.py validate-output $candidateOutput --min-lines 10 --min-regions 1 --min-country JP:10,SG:10
 Assert-NativeCommandSucceeded "bestcf_tool.py validate-output"
+
+Copy-Item -LiteralPath $candidateOutput -Destination ".\public\bestcf_final.txt" -Force
 
 $lineCount = (Get-Content -LiteralPath ".\public\bestcf_final.txt" | Measure-Object -Line).Lines
 
@@ -108,6 +121,12 @@ Copy-Item -LiteralPath ".\bestcf_work\bestcf_sources.csv" -Destination ".\public
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_other_regions.csv" -Destination ".\public\bestcf_other_regions.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_region_counts.csv" -Destination ".\public\bestcf_region_counts.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_geo_provider_stats.csv" -Destination ".\public\bestcf_geo_provider_stats.csv" -Force -ErrorAction SilentlyContinue
+
+if ($NoPush) {
+    Write-Host "NoPush enabled; skipping git add/commit/push. Lines: $lineCount"
+    Stop-Transcript | Out-Null
+    exit 0
+}
 
 git add public/
 git diff --cached --quiet

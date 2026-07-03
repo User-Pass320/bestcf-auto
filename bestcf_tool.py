@@ -2123,6 +2123,14 @@ def add_final_result(
     return True
 
 
+def country_limit_for_result(result: TestResult, args: argparse.Namespace) -> int:
+    code = (result.exit_country_code or "").upper()
+    overrides = getattr(args, "country_max_overrides", {}) or {}
+    if code and code in overrides:
+        return overrides[code]
+    return args.country_max
+
+
 def select_final_results(ok_results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
     if getattr(args, "selection_mode", "preferred") == "all-regions":
         return select_final_results_all_regions(ok_results, args)
@@ -2222,7 +2230,6 @@ def select_final_results_all_regions(ok_results: list[TestResult], args: argpars
     for items in groups.values():
         items.sort(key=result_quality_key)
 
-    region_limit = args.country_max
     selected: list[TestResult] = []
     for _region, items in sorted(
         groups.items(),
@@ -2231,6 +2238,7 @@ def select_final_results_all_regions(ok_results: list[TestResult], args: argpars
             item[0],
         ),
     ):
+        region_limit = country_limit_for_result(items[0], args) if items else args.country_max
         keep_items = items[:region_limit] if region_limit > 0 else items
         selected.extend(keep_items)
 
@@ -3108,6 +3116,13 @@ def finish_geo_results_with_speed(
     skipped_latency_pool: list[tuple[str, Candidate, int]],
 ) -> list[TestResult]:
     all_regions_mode = getattr(args, "selection_mode", "preferred") == "all-regions"
+    geo_results, geo_tested = run_target_country_refill(
+        geo_results,
+        latency_failures,
+        template_proxy,
+        args,
+        geo_tested,
+    )
     if all_regions_mode:
         selectable_geo_all = sorted(
             [result for result in geo_results if result.ok and result.exit_country_code],
@@ -3227,7 +3242,23 @@ def parse_geo_providers(text: str) -> list[str]:
     return providers or list(DEFAULT_GEO_PROVIDERS_DAILY)
 
 
-def validate_final_output(path: Path, min_lines: int = 10, min_regions: int = 1) -> tuple[bool, str]:
+def final_line_country_code(line: str, candidate: Candidate) -> str:
+    label = ""
+    if "#" in line:
+        label = line.split("#", 1)[1].split("|", 1)[0].strip()
+        label = re.sub(r"-\d+$", "", label)
+    code = country_code_from_text(label) if label else None
+    if code:
+        return code.upper()
+    return str(candidate.declared_region or "").upper()
+
+
+def validate_final_output(
+    path: Path,
+    min_lines: int = 10,
+    min_regions: int = 1,
+    min_country: dict[str, int] | None = None,
+) -> tuple[bool, str]:
     if not path.exists() or path.stat().st_size <= 0:
         return False, f"final output is empty or missing: {path}"
     lines = [line.strip() for line in path.read_text(encoding="utf-8", errors="replace").splitlines() if line.strip()]
@@ -3235,19 +3266,27 @@ def validate_final_output(path: Path, min_lines: int = 10, min_regions: int = 1)
         return False, f"final output has too few lines: {len(lines)} < {min_lines}"
     invalid: list[str] = []
     regions: set[str] = set()
+    country_counts: dict[str, int] = {}
     for line in lines:
         candidate = parse_candidate("validate", line)
         if candidate is None:
             invalid.append(line)
             continue
-        if candidate.declared_region:
-            regions.add(str(candidate.declared_region).upper())
+        code = final_line_country_code(line, candidate)
+        if code:
+            regions.add(code)
+            country_counts[code] = country_counts.get(code, 0) + 1
     if invalid:
         sample = invalid[0][:160]
         return False, f"final output contains invalid endpoint lines: {len(invalid)}; first={sample}"
     if min_regions > 1 and len(regions) < min_regions:
         return False, f"final output has too few declared regions: {len(regions)} < {min_regions}"
-    return True, f"final output valid: lines={len(lines)} declared_regions={len(regions)}"
+    for code, required in (min_country or {}).items():
+        actual = country_counts.get(code.upper(), 0)
+        if actual < required:
+            return False, f"final output has too few {code.upper()} lines: {actual} < {required}"
+    country_summary = ",".join(f"{code}:{country_counts[code]}" for code in sorted(country_counts))
+    return True, f"final output valid: lines={len(lines)} declared_regions={len(regions)} countries={country_summary}"
 
 
 def profile_defaults(profile: str) -> dict[str, Any]:
@@ -3411,6 +3450,61 @@ def preferred_counts(results: list[TestResult]) -> dict[str, int]:
     return counts
 
 
+def target_country_counts(results: list[TestResult], target_min: dict[str, int]) -> dict[str, int]:
+    targets = {code.upper() for code in target_min}
+    counts: dict[str, int] = {code: 0 for code in targets}
+    for result in results:
+        code = (result.exit_country_code or "").upper()
+        if result.ok and code in targets:
+            counts[code] = counts.get(code, 0) + 1
+    return counts
+
+
+def promote_target_service_fallback(results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
+    target_min = getattr(args, "target_country_min", {}) or {}
+    if not target_min:
+        return results
+    fallback_min = int(getattr(args, "target_refill_min_service_score", 0) or 0)
+    if fallback_min <= 0:
+        return results
+
+    counts = target_country_counts(results, target_min)
+    promoted: list[TestResult] = []
+    for result in sorted(results, key=result_quality_key):
+        if result.status != "service_check_failed":
+            continue
+        code = (result.exit_country_code or "").upper()
+        if code not in target_min:
+            continue
+        if counts.get(code, 0) >= target_min[code]:
+            continue
+        if result.service_score < fallback_min:
+            continue
+        promoted.append(
+            dataclasses.replace(
+                result,
+                ok=True,
+                status="target_service_fallback",
+                error=f"{result.error}; accepted by target_refill_min_service_score={fallback_min}",
+            )
+        )
+        counts[code] = counts.get(code, 0) + 1
+
+    if not promoted:
+        return results
+    promoted_keys = {result.candidate.key for result in promoted}
+    kept = [result for result in results if result.candidate.key not in promoted_keys]
+    print(
+        "Target service fallback promoted: "
+        + ",".join(
+            f"{code}:{sum(1 for result in promoted if (result.exit_country_code or '').upper() == code)}"
+            for code in sorted(target_min)
+        ),
+        flush=True,
+    )
+    return kept + promoted
+
+
 def candidate_mentions_country(candidate: Candidate, code: str) -> bool:
     code = code.upper()
     names = {country_name(code)}
@@ -3422,6 +3516,85 @@ def candidate_mentions_country(candidate: Candidate, code: str) -> bool:
     if re.search(rf"(?<![A-Z]){re.escape(code)}(?![A-Z])", text):
         return True
     return any(re.search(rf"(?<![A-Z]){re.escape(alias)}(?![A-Z])", text) for alias in aliases)
+
+
+def target_refill_candidates_from_latency_failures(
+    latency_failures: list[TestResult],
+    geo_results: list[TestResult],
+    args: argparse.Namespace,
+) -> dict[str, list[tuple[str, Candidate, int]]]:
+    target_min = getattr(args, "target_country_min", {}) or {}
+    thresholds = getattr(args, "target_latency_threshold", {}) or {}
+    max_tested = getattr(args, "target_refill_max_tested", {}) or {}
+    tested_keys = {result.candidate.key for result in geo_results}
+    buckets: dict[str, list[tuple[str, Candidate, int]]] = {code: [] for code in target_min}
+    for result in latency_failures:
+        if result.status != "latency_too_high":
+            continue
+        if result.latency_ms is None:
+            continue
+        if result.candidate.key in tested_keys:
+            continue
+        delay = int(result.latency_ms)
+        for code in target_min:
+            threshold = int(thresholds.get(code, 0) or 0)
+            if threshold <= 0 or delay > threshold:
+                continue
+            if not candidate_mentions_country(result.candidate, code):
+                continue
+            limit = int(max_tested.get(code, 0) or 0)
+            if limit > 0 and len(buckets[code]) >= limit:
+                continue
+            buckets[code].append((f"target-{code.lower()}-{len(buckets[code]) + 1}", result.candidate, delay))
+    return buckets
+
+
+def run_target_country_refill(
+    geo_results: list[TestResult],
+    latency_failures: list[TestResult],
+    template_proxy: dict[str, Any],
+    args: argparse.Namespace,
+    geo_tested: int,
+) -> tuple[list[TestResult], int]:
+    target_min = getattr(args, "target_country_min", {}) or {}
+    if not target_min:
+        return promote_target_service_fallback(geo_results, args), geo_tested
+
+    counts = target_country_counts(geo_results, target_min)
+    if all(counts.get(code, 0) >= target for code, target in target_min.items()):
+        return promote_target_service_fallback(geo_results, args), geo_tested
+
+    buckets = target_refill_candidates_from_latency_failures(latency_failures, geo_results, args)
+    used_keys: set[tuple[str, int]] = set()
+    for code in target_min:
+        if counts.get(code, 0) >= target_min[code]:
+            continue
+        batch = [item for item in buckets.get(code, []) if item[1].key not in used_keys]
+        if not batch:
+            print(f"[target-refill] country={code}; no latency-too-high candidates within target threshold", flush=True)
+            continue
+        before = counts.get(code, 0)
+        print(
+            f"[target-refill] country={code}; current={before}/{target_min[code]}; "
+            f"testing={len(batch)}; threshold={getattr(args, 'target_latency_threshold', {}).get(code, 0)}ms",
+            flush=True,
+        )
+        batch_results = run_geo_batch(batch, template_proxy, args, f"target_refill_{code.lower()}")
+        geo_results.extend(batch_results)
+        geo_tested += len(batch)
+        used_keys.update(item[1].key for item in batch)
+        geo_results = promote_target_service_fallback(geo_results, args)
+        counts = target_country_counts(geo_results, target_min)
+        print(
+            f"[target-refill] country={code}; added={counts.get(code, 0) - before}; "
+            f"current={counts.get(code, 0)}/{target_min[code]}",
+            flush=True,
+        )
+
+    if used_keys:
+        latency_failures[:] = [result for result in latency_failures if result.candidate.key not in used_keys]
+    geo_results = promote_target_service_fallback(geo_results, args)
+    return geo_results, geo_tested
 
 
 def declared_bucket(candidate: Candidate, preferred_order: list[str], args: argparse.Namespace | None = None) -> str:
@@ -4374,6 +4547,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
     parser.add_argument("--max-final-candidates", type=int, default=None, help="maximum preferred candidates written to final output; 0 disables")
     parser.add_argument("--country-max", type=int, default=None, help="maximum final output candidates per exit country; 0 disables")
+    parser.add_argument(
+        "--country-max-overrides",
+        default="",
+        help="per-exit-country final cap overrides, e.g. HK:15,JP:50,SG:50",
+    )
     parser.add_argument("--final-preferred-latency-ms", type=int, default=None, help="scarce regions prefer nodes no slower than this latency")
     parser.add_argument(
         "--selection-mode",
@@ -4413,6 +4591,27 @@ def build_arg_parser() -> argparse.ArgumentParser:
         type=int,
         default=None,
         help="maximum UNKNOWN/OTHER declared candidates sampled by declared-round-robin scheduler; 0 disables this cap",
+    )
+    parser.add_argument(
+        "--target-country-min",
+        default="",
+        help="minimum true-exit countries to seek and validate in final output, e.g. JP:10,SG:10",
+    )
+    parser.add_argument(
+        "--target-latency-threshold",
+        default="",
+        help="per-target-country max delay for quota refill from latency_too_high candidates, e.g. JP:1200,SG:2000",
+    )
+    parser.add_argument(
+        "--target-refill-max-tested",
+        default="",
+        help="per-target-country maximum latency_too_high candidates tested during target refill, e.g. JP:80,SG:160; 0 disables cap",
+    )
+    parser.add_argument(
+        "--target-refill-min-service-score",
+        type=int,
+        default=0,
+        help="accept target-country service_check_failed nodes with at least this service score when target quota is short; 0 disables",
     )
     parser.add_argument(
         "--hk-suppression",
@@ -4547,11 +4746,13 @@ def main(argv: list[str] | None = None) -> int:
         validate_parser.add_argument("path", help="path to bestcf_final.txt")
         validate_parser.add_argument("--min-lines", type=int, default=10, help="minimum non-empty lines")
         validate_parser.add_argument("--min-regions", type=int, default=1, help="minimum declared regions in final lines")
+        validate_parser.add_argument("--min-country", default="", help="minimum final lines by country code, e.g. JP:10,SG:10")
         validate_args = validate_parser.parse_args(argv[1:])
         ok, message = validate_final_output(
             Path(validate_args.path),
             min_lines=max(1, validate_args.min_lines),
             min_regions=max(1, validate_args.min_regions),
+            min_country=parse_country_min(validate_args.min_country),
         )
         print(message, flush=True)
         return 0 if ok else 1
@@ -4598,6 +4799,11 @@ def main(argv: list[str] | None = None) -> int:
         if item.strip()
     }
     args.preferred_country_min = parse_country_min(args.preferred_country_min)
+    args.country_max_overrides = parse_country_min(args.country_max_overrides)
+    args.target_country_min = parse_country_min(args.target_country_min)
+    args.target_latency_threshold = parse_country_min(args.target_latency_threshold)
+    args.target_refill_max_tested = parse_country_min(args.target_refill_max_tested)
+    args.target_refill_min_service_score = max(0, min(3, int(args.target_refill_min_service_score)))
     args.timings = timer.timings
     args.run_started_at = timer.started_at
     args.preferred_country_order = [

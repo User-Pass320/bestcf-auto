@@ -1,4 +1,4 @@
 ﻿provider,total_geo_results,covered_count,coverage_rate,agree_count,agree_rate,disagree_count,unknown_count,gb_count,provider_country_top,selected_country_top
-youtube,215,211,0.981395,211,1.000000,0,4,0,HK:193|KR:10|JP:5|VN:2|SG:1,HK:193|KR:10|JP:8|SG:2|VN:2
-ping0,215,215,1.000000,213,0.990698,2,0,0,HK:195|KR:10|JP:8|SG:2,HK:193|KR:10|JP:8|SG:2|VN:2
-ipwhois,215,200,0.930233,24,0.120000,176,15,0,SG:168|KR:10|CN:8|JP:7|HK:7,HK:193|KR:10|JP:8|SG:2|VN:2
+youtube,417,414,0.992806,414,1.000000,0,3,0,HK:356|SG:27|JP:18|KR:7|VN:4|IN:1|US:1,HK:357|SG:27|JP:19|KR:8|VN:4|IN:1|US:1
+ping0,417,417,1.000000,413,0.990408,4,0,0,HK:361|SG:27|JP:19|KR:8|IN:1|US:1,HK:357|SG:27|JP:19|KR:8|VN:4|IN:1|US:1
+ipwhois,417,401,0.961631,77,0.192020,324,16,0,SG:346|HK:27|JP:18|KR:7|IN:1|US:1|CN:1,HK:357|SG:27|JP:19|KR:8|VN:4|IN:1|US:1
