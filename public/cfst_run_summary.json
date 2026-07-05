@@ -1,0 +1,49 @@
+{
+  "candidate_count": 2729,
+  "cfst_ports": [
+    443
+  ],
+  "final_count": 81,
+  "ok_count": 2418,
+  "pool_file": "bestcf_work\\edgetunnel_node_pool.csv",
+  "pool_final_count": 122,
+  "pool_healthy": 4836,
+  "pool_healthy_country_counts": {
+    "DE": 9,
+    "FR": 2,
+    "HK": 4122,
+    "IN": 1,
+    "JP": 10,
+    "PL": 1,
+    "SG": 632,
+    "TW": 2,
+    "US": 17,
+    "VN": 40
+  },
+  "pool_limits": {
+    "HK": 60,
+    "SG": 60,
+    "UNKNOWN": 0,
+    "other": 70
+  },
+  "pool_mode": "audit-all",
+  "pool_status_counts": {
+    "failed": 612,
+    "healthy": 4836
+  },
+  "pool_total": 5448,
+  "source_mode": "cfst-only",
+  "speed_tests_enabled": false,
+  "tested_count": 2729,
+  "timings": {
+    "cfst_discovery": 55.397066300036386,
+    "geo_all_regions_test": 564.0112930999603,
+    "geo_country_refill_test": 0.0,
+    "geo_test": 564.0112930999603,
+    "latency_test": 53.94726809998974,
+    "setup": 0.018773499876260757,
+    "source_fetch_parse": 55.429411499993876,
+    "speed_test": 3.5499921068549156e-05,
+    "template_load": 0.0019467000383883715
+  }
+}

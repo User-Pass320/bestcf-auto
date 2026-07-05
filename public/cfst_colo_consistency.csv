@@ -1,0 +1,17 @@
+﻿cfst_colo,declared_country,tested_count,true_same_count,true_diff_count,unknown_count,match_rate,unknown_rate,recommended_trust,true_country_top
+DEN,US,4,4,0,0,1.000000,0.000000,False,US:4
+FRA,DE,5,5,0,0,1.000000,0.000000,False,DE:5
+HKG,HK,2116,2071,17,28,0.978733,0.013233,False,HK:2071|VN:13|SG:4
+KIX,JP,1,1,0,0,1.000000,0.000000,False,JP:1
+LAX,US,1,1,0,0,1.000000,0.000000,False,US:1
+MRS,FR,2,1,0,1,0.500000,0.500000,False,FR:1
+MXP,,1,0,1,0,0.000000,0.000000,False,PL:1
+NRT,JP,4,4,0,0,1.000000,0.000000,False,JP:4
+SEA,US,3,0,0,3,0.000000,1.000000,False,
+SIN,SG,332,315,0,17,0.948795,0.051205,False,SG:315
+SJC,US,5,5,0,0,1.000000,0.000000,False,US:5
+SYD,,1,0,0,1,0.000000,1.000000,False,
+TPE,TW,1,1,0,0,1.000000,0.000000,False,TW:1
+UNKNOWN,,251,0,0,251,0.000000,1.000000,False,
+VIE,,1,0,0,1,0.000000,1.000000,False,
+WAW,,1,0,0,1,0.000000,1.000000,False,
