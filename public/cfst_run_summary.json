@@ -3,25 +3,27 @@
   "cfst_ports": [
     8443
   ],
-  "final_count": 73,
-  "ok_count": 142,
+  "final_count": 85,
+  "ok_count": 131,
   "pool_file": "bestcf_work\\edgetunnel_node_pool.csv",
-  "pool_final_count": 161,
-  "pool_healthy": 6403,
+  "pool_final_count": 200,
+  "pool_healthy": 9068,
   "pool_healthy_country_counts": {
-    "DE": 61,
+    "AU": 1,
+    "DE": 91,
     "ES": 1,
-    "FR": 12,
+    "FR": 16,
     "GB": 1,
-    "HK": 4822,
-    "IN": 5,
-    "JP": 66,
+    "HK": 6303,
+    "IN": 7,
+    "JP": 109,
     "PL": 1,
-    "SA": 1,
-    "SG": 1293,
+    "PT": 1,
+    "SA": 2,
+    "SG": 1831,
     "TW": 7,
-    "US": 130,
-    "VN": 3
+    "US": 197,
+    "VN": 500
   },
   "pool_limits": {
     "HK": 60,
@@ -31,22 +33,22 @@
   },
   "pool_mode": "incremental",
   "pool_status_counts": {
-    "failed": 3748,
-    "healthy": 6403
+    "failed": 5941,
+    "healthy": 9068
   },
-  "pool_total": 10151,
+  "pool_total": 15009,
   "source_mode": "cfst-only",
   "speed_tests_enabled": false,
   "tested_count": 442,
   "timings": {
-    "cfst_discovery": 54.756009400007315,
-    "geo_all_regions_test": 48.743841300019994,
+    "cfst_discovery": 54.501224000006914,
+    "geo_all_regions_test": 72.77781789994333,
     "geo_country_refill_test": 0.0,
-    "geo_test": 48.743841300019994,
-    "latency_test": 10.970631400006823,
-    "setup": 0.016461399965919554,
-    "source_fetch_parse": 54.7615612000227,
-    "speed_test": 8.349999552592635e-05,
-    "template_load": 0.002065100008621812
+    "geo_test": 72.77781789994333,
+    "latency_test": 12.380306600010954,
+    "setup": 0.038858799962326884,
+    "source_fetch_parse": 54.50651590002235,
+    "speed_test": 4.539999645203352e-05,
+    "template_load": 0.0008671999676153064
   }
 }
