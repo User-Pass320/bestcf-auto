@@ -2,8 +2,6 @@ name: Update BestCF
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "15 */6 * * *"
 
 permissions:
   contents: write
@@ -67,11 +65,28 @@ jobs:
           chmod +x bin/mihomo
           ./bin/mihomo -v
 
+      - name: Download CloudflareSpeedTest
+        run: |
+          mkdir -p tools/cfst
+          curl -fsSL \
+            -H "User-Agent: bestcf-auto-cfst" \
+            https://github.com/XIU2/CloudflareSpeedTest/releases/download/v2.3.5/cfst_linux_amd64.tar.gz \
+            -o tools/cfst/cfst_linux_amd64.tar.gz
+          tar -zxf tools/cfst/cfst_linux_amd64.tar.gz -C tools/cfst
+          chmod +x tools/cfst/cfst
+          ./tools/cfst/cfst -v
+
       - name: Run BestCF
         run: |
           mkdir -p public
           python bestcf_tool.py \
             --profile balanced \
+            --source-mode cfst-only \
+            --cfst-exe ./tools/cfst/cfst \
+            --cfst-ip-file ./tools/cfst/ip.txt \
+            --cfst-port 443 \
+            --cfst-pool-limits HK:60,SG:60,UNKNOWN:0 \
+            --cfst-other-pool-limit 70 \
             --workdir ./bestcf_work \
             --template ./template.yaml \
             --mihomo ./bin/mihomo \
@@ -79,45 +94,55 @@ jobs:
             --no-geo-hint-cache \
             --geo-providers youtube,ping0,ipwhois \
             --geo-concurrency 16 \
+            --latency-threshold 1500 \
             --selection-mode all-regions \
-            --country-max 50 \
-            --country-max-overrides HK:15 \
+            --country-max 35 \
+            --country-max-overrides HK:15,SG:30 \
             --max-final-candidates 0 \
-            --target-country-min JP:10,SG:10 \
-            --target-latency-threshold JP:2000,SG:3000 \
-            --target-refill-max-tested JP:80,SG:160 \
-            --target-refill-min-service-score 1 \
-            --hk-suppression \
-            --hk-suppress-strategy worker \
-            --hk-probe-cap 45 \
-            --hk-suppress-bucket-scope prefix \
-            --hk-suppress-ipv4-prefix 20 \
-            --hk-suppress-ipv6-prefix 40 \
-            --hk-suppress-min-samples 6 \
-            --hk-suppress-confidence 0.98 \
-            --hk-suppress-explore-rate 0.05
+            --no-hk-suppression
 
       - name: Validate generated result
         run: |
           echo "VALID_RESULT=false" >> "$GITHUB_ENV"
-          if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final.txt --min-lines 10 --min-regions 1 --min-country JP:10,SG:10; then
-            echo "Generated bestcf_final.txt failed validation; keeping previous public files."
+          if ! python scripts/verify-final-true-exit.py \
+            --input bestcf_work/bestcf_final.txt \
+            --output bestcf_work/bestcf_final_verified.txt \
+            --workdir bestcf_work/final_true_exit_verify \
+            --template ./template.yaml \
+            --mihomo ./bin/mihomo \
+            --providers youtube,ping0,ipwhois \
+            --geo-concurrency 16 \
+            --min-lines 30 \
+            --min-regions 3 \
+            --details-csv bestcf_work/final_true_exit_verify.csv \
+            --summary-json bestcf_work/final_true_exit_verify_summary.json; then
+            echo "Generated bestcf_final.txt failed true-exit verification; keeping previous public files."
             exit 0
           fi
-          line_count="$(wc -l < bestcf_work/bestcf_final.txt)"
-          echo "Generated bestcf_final.txt lines: $line_count"
+          if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final_verified.txt --min-lines 30 --min-regions 3; then
+            echo "Verified bestcf_final.txt failed validation; keeping previous public files."
+            exit 0
+          fi
+          line_count="$(wc -l < bestcf_work/bestcf_final_verified.txt)"
+          echo "Verified bestcf_final.txt lines: $line_count"
           echo "VALID_RESULT=true" >> "$GITHUB_ENV"
 
       - name: Copy reports
         if: env.VALID_RESULT == 'true'
         run: |
-          cp bestcf_work/bestcf_final.txt public/bestcf_final.txt
+          cp bestcf_work/bestcf_final_verified.txt public/bestcf_final.txt
           cp bestcf_work/bestcf_tested.csv public/bestcf_tested.csv || true
           cp bestcf_work/bestcf_failed.csv public/bestcf_failed.csv || true
           cp bestcf_work/bestcf_sources.csv public/bestcf_sources.csv || true
           cp bestcf_work/bestcf_other_regions.csv public/bestcf_other_regions.csv || true
           cp bestcf_work/bestcf_region_counts.csv public/bestcf_region_counts.csv || true
           cp bestcf_work/bestcf_geo_provider_stats.csv public/bestcf_geo_provider_stats.csv || true
+          cp bestcf_work/cfst_buckets_summary.csv public/cfst_buckets_summary.csv || true
+          cp bestcf_work/cfst_colo_consistency.csv public/cfst_colo_consistency.csv || true
+          cp bestcf_work/cfst_run_summary.json public/cfst_run_summary.json || true
+          cp bestcf_work/edgetunnel_pool_summary.csv public/edgetunnel_pool_summary.csv || true
+          cp bestcf_work/final_true_exit_verify.csv public/final_true_exit_verify.csv || true
+          cp bestcf_work/final_true_exit_verify_summary.json public/final_true_exit_verify_summary.json || true
 
       - name: Commit generated files
         if: env.VALID_RESULT == 'true'

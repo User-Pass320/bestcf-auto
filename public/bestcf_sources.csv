@@ -4,5 +4,5 @@ cfst_fr_8443,tools\cfst\ip.txt,cfst_only,1,1,1,0,1.000000,0.000000,1
 cfst_hk_8443,tools\cfst\ip.txt,cfst_only,60,60,60,0,1.000000,0.000000,60
 cfst_jp_8443,tools\cfst\ip.txt,cfst_only,5,5,5,0,1.000000,0.000000,5
 cfst_sg_8443,tools\cfst\ip.txt,cfst_only,60,60,60,0,1.000000,0.000000,60
-cfst_unknown_8443,tools\cfst\ip.txt,cfst_only,301,301,301,0,1.000000,0.000000,301
-cfst_us_8443,tools\cfst\ip.txt,cfst_only,10,10,10,0,1.000000,0.000000,10
+cfst_unknown_8443,tools\cfst\ip.txt,cfst_only,293,293,293,0,1.000000,0.000000,293
+cfst_us_8443,tools\cfst\ip.txt,cfst_only,9,9,9,0,1.000000,0.000000,9

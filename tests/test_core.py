@@ -631,6 +631,22 @@ class ValidateOutputTests(unittest.TestCase):
         self.assertFalse(ok)
         self.assertIn("JP", message)
 
+    def test_validate_accepts_two_letter_country_label(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bestcf_final.txt"
+            path.write_text("1.1.1.1:443#PT-1\n", encoding="utf-8")
+            ok, message = tool.validate_final_output(path, min_lines=1, min_country={"PT": 1})
+        self.assertTrue(ok, message)
+
+    def test_write_final_uses_country_code_before_stale_region_name(self):
+        candidate = tool.Candidate(source="test", raw="1.1.1.1:443#香港", host="1.1.1.1", port=443)
+        result = tool.TestResult(candidate, True, "pool_healthy", exit_country_code="HK", exit_region="???")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bestcf_final.txt"
+            tool.write_final_from_results(path, [result])
+            text = path.read_text(encoding="utf-8")
+        self.assertEqual(text, "1.1.1.1:443#香港-1\n")
+
 
 if __name__ == "__main__":
     unittest.main()

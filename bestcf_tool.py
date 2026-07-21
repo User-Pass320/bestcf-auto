@@ -18,6 +18,7 @@ import hashlib
 import http.client
 import ipaddress
 import json
+import locale
 import os
 import queue
 import re
@@ -77,6 +78,8 @@ DEFAULT_GEO_CACHE_NAME = "bestcf_geo_cache.json"
 DEFAULT_GEO_HINT_CACHE_NAME = "bestcf_geo_hint_cache.json"
 DEFAULT_SOURCE_DENYLIST_NAME = "bestcf_source_denylist.txt"
 DEFAULT_SOURCE_PRUNE_REPORT_NAME = "bestcf_source_prune_candidates.csv"
+DEFAULT_CFST_EXE_WINDOWS = Path(r".\tools\cfst\cfst.exe")
+DEFAULT_CFST_IP_FILE = Path(r".\tools\cfst\ip.txt")
 SOURCE_CACHE_VERSION = 1
 GEO_CACHE_VERSION = 3
 GEO_HINT_CACHE_VERSION = 1
@@ -170,11 +173,25 @@ COUNTRY_NAMES = {
     "AU": "澳大利亚",
     "TH": "泰国",
     "VN": "越南",
+    "ES": "西班牙",
+    "PT": "葡萄牙",
+    "CH": "瑞士",
+    "QA": "卡塔尔",
+    "DK": "丹麦",
+    "SE": "瑞典",
+    "AT": "奥地利",
+    "BG": "保加利亚",
+    "CZ": "捷克",
+    "IT": "意大利",
+    "RO": "罗马尼亚",
     "MY": "马来西亚",
     "ID": "印度尼西亚",
     "PH": "菲律宾",
     "IN": "印度",
+    "IE": "爱尔兰",
+    "PL": "波兰",
     "RS": "塞尔维亚",
+    "SA": "沙特阿拉伯",
 }
 
 SPECIFIC_REGION_CODES = {
@@ -217,6 +234,30 @@ CLOUDFLARE_CIDRS = [
     "2c0f:f248::/32",
 ]
 CF_NETWORKS = [ipaddress.ip_network(cidr) for cidr in CLOUDFLARE_CIDRS]
+
+CFST_COLO_COUNTRY = {
+    "HKG": "HK",
+    "SIN": "SG",
+    "NRT": "JP",
+    "KIX": "JP",
+    "TPE": "TW",
+    "ICN": "KR",
+    "LAX": "US",
+    "SJC": "US",
+    "SEA": "US",
+    "PDX": "US",
+    "DEN": "US",
+    "FRA": "DE",
+    "MRS": "FR",
+    "LYS": "FR",
+    "CPH": "DK",
+}
+
+CFST_COUNTRY_POOL_DEFAULTS = {
+    "HK": 60,
+    "SG": 60,
+    "UNKNOWN": 0,  # 0 means all candidates in the bucket.
+}
 
 
 @dataclasses.dataclass(slots=True)
@@ -1024,6 +1065,792 @@ def parse_candidate(source: str, line: str) -> Candidate | None:
         parse_format="endpoint_with_comment" if desc else "endpoint_no_comment",
         port_inferred=False,
     )
+
+
+def cfst_candidate_source(country: str, port: int) -> str:
+    bucket = (country or "unknown").strip().lower()
+    return f"cfst_{bucket}_{port}"
+
+
+def parse_cfst_float(value: Any) -> float | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def read_cfst_csv(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    rows: list[dict[str, Any]] = []
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            host = str(row.get("IP 地址") or row.get("IP") or "").strip()
+            if not host:
+                continue
+            rows.append(
+                {
+                    "host": host,
+                    "sent": parse_cfst_float(row.get("已发送")),
+                    "received": parse_cfst_float(row.get("已接收")),
+                    "loss": parse_cfst_float(row.get("丢包率")),
+                    "latency_ms": parse_cfst_float(row.get("平均延迟")),
+                    "speed_MBps": parse_cfst_float(row.get("下载速度(MB/s)")),
+                    "colo": str(row.get("地区码") or "").strip().upper(),
+                }
+            )
+    return rows
+
+
+def run_cfst_command(cfst_exe: Path, args: list[str], timeout: int) -> None:
+    def print_safe(text: str) -> None:
+        encoding = getattr(sys.stdout, "encoding", None) or "utf-8"
+        safe_text = str(text).encode(encoding, errors="replace").decode(encoding, errors="replace")
+        print(safe_text, flush=True)
+
+    cmd = [str(cfst_exe), *args]
+    print("Running CFST: " + " ".join(cmd), flush=True)
+    proc = subprocess.run(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        timeout=timeout,
+        check=False,
+    )
+    output = (proc.stdout or b"").decode(locale.getpreferredencoding(False) or "utf-8", errors="replace").strip()
+    if output:
+        # Keep CFST progress visible in logs, but avoid flooding normal output
+        # with every progress-bar redraw when commands are run by schedulers.
+        lines = output.splitlines()
+        for line in lines[:80]:
+            print_safe(line)
+        if len(lines) > 80:
+            print_safe(f"... CFST output truncated, total lines={len(lines)}")
+    if proc.returncode != 0:
+        raise RuntimeError(f"CFST exited {proc.returncode}: {output[-2000:]}")
+
+
+def cfst_port_args(args: argparse.Namespace) -> list[int]:
+    raw = str(getattr(args, "cfst_ports", "") or getattr(args, "cfst_port", 443))
+    ports: list[int] = []
+    for item in raw.split(","):
+        item = item.strip()
+        if not item:
+            continue
+        port = int(item)
+        if port < 1 or port > 65535:
+            raise ValueError(f"invalid CFST port: {port}")
+        ports.append(port)
+    return ports or [443]
+
+
+def cfst_country_pool_limit(country: str, args: argparse.Namespace) -> int:
+    country = (country or "UNKNOWN").upper()
+    overrides = dict(CFST_COUNTRY_POOL_DEFAULTS)
+    text = str(getattr(args, "cfst_pool_limits", "") or "")
+    for item in text.split(","):
+        item = item.strip()
+        if not item or ":" not in item:
+            continue
+        key, value = item.split(":", 1)
+        try:
+            overrides[key.strip().upper()] = max(0, int(value.strip()))
+        except ValueError:
+            continue
+    if country in overrides:
+        return overrides[country]
+    return max(0, int(getattr(args, "cfst_other_pool_limit", 70)))
+
+
+def build_cfst_only_candidates(workdir: Path, args: argparse.Namespace) -> list[Candidate]:
+    cfst_exe = Path(args.cfst_exe)
+    cfst_ip_file = Path(args.cfst_ip_file)
+    if not cfst_exe.exists():
+        raise FileNotFoundError(cfst_exe)
+    if not cfst_ip_file.exists():
+        raise FileNotFoundError(cfst_ip_file)
+
+    ports = cfst_port_args(args)
+    if len(ports) != 1:
+        raise ValueError("CFST-only first version supports exactly one port")
+    port = ports[0]
+    started = time.monotonic()
+    cfst_dir = workdir / "cfst"
+    cfst_dir.mkdir(parents=True, exist_ok=True)
+    for stale in workdir.glob("cfst_speed*.csv"):
+        try:
+            stale.unlink()
+        except OSError:
+            pass
+
+    latency_path = workdir / f"cfst_latency_{port}.csv"
+    httping_input_path = cfst_dir / f"cfst_latency_{port}_ips.txt"
+    httping_path = workdir / f"cfst_httping_{port}.csv"
+
+    run_cfst_command(
+        cfst_exe,
+        [
+            "-f",
+            str(cfst_ip_file),
+            "-tp",
+            str(port),
+            "-n",
+            str(args.cfst_threads),
+            "-t",
+            str(args.cfst_latency_tests),
+            "-tl",
+            str(args.cfst_latency_threshold),
+            "-tlr",
+            str(args.cfst_loss_threshold),
+            "-dd",
+            "-o",
+            str(latency_path),
+            "-p",
+            "0",
+        ],
+        timeout=args.cfst_timeout,
+    )
+    latency_rows = read_cfst_csv(latency_path)
+    if not latency_rows:
+        raise RuntimeError(f"CFST latency produced no candidates: {latency_path}")
+    with httping_input_path.open("w", encoding="utf-8", newline="\n") as handle:
+        for row in latency_rows:
+            handle.write(str(row["host"]) + "\n")
+
+    httping_rows: list[dict[str, Any]] = []
+    httping_attempts = max(1, int(getattr(args, "cfst_httping_retries", 1)))
+    for attempt in range(1, httping_attempts + 1):
+        run_cfst_command(
+            cfst_exe,
+            [
+                "-f",
+                str(httping_input_path),
+                "-httping",
+                "-tp",
+                str(port),
+                "-n",
+                str(args.cfst_threads),
+                "-t",
+                str(args.cfst_httping_tests),
+                "-tl",
+                str(args.cfst_httping_threshold),
+                "-tlr",
+                str(args.cfst_loss_threshold),
+                "-dd",
+                "-o",
+                str(httping_path),
+                "-p",
+                "0",
+            ],
+            timeout=args.cfst_timeout,
+        )
+        httping_rows = read_cfst_csv(httping_path)
+        if httping_rows:
+            break
+        if attempt < httping_attempts:
+            delay = max(0.0, float(getattr(args, "cfst_httping_retry_delay", 3.0)))
+            print(
+                f"CFST HTTPing produced no rows; retrying {attempt + 1}/{httping_attempts} after {delay:.1f}s",
+                flush=True,
+            )
+            if delay:
+                time.sleep(delay)
+    httping_by_host = {str(row["host"]): row for row in httping_rows}
+
+    bucket_rows: list[dict[str, Any]] = []
+    for row in latency_rows:
+        host = str(row["host"])
+        http_row = httping_by_host.get(host)
+        cfst_colo = str((http_row or {}).get("colo") or "").upper()
+        if cfst_colo in {"", "N/A"}:
+            cfst_colo = "UNKNOWN"
+        declared_country = CFST_COLO_COUNTRY.get(cfst_colo, "")
+        bucket = declared_country or "UNKNOWN"
+        bucket_rows.append(
+            {
+                "host": host,
+                "port": port,
+                "endpoint": format_endpoint(host, port),
+                "cfst_colo": cfst_colo,
+                "declared_country": declared_country,
+                "bucket": bucket,
+                "cfst_tcp_latency_ms": row.get("latency_ms"),
+                "cfst_httping_latency_ms": (http_row or {}).get("latency_ms"),
+                "selected_for_test": False,
+                "selection_rank": "",
+                "selection_reason": "",
+                "source": cfst_candidate_source(bucket, port),
+            }
+        )
+
+    groups: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+    for row in bucket_rows:
+        groups[str(row["bucket"]).upper()].append(row)
+
+    selected_rows: list[dict[str, Any]] = []
+    audit_all = getattr(args, "pool_mode", "direct") == "audit-all"
+    for bucket, items in groups.items():
+        items.sort(
+            key=lambda item: (
+                item["cfst_httping_latency_ms"] is None,
+                item["cfst_httping_latency_ms"] if item["cfst_httping_latency_ms"] is not None else float("inf"),
+                item["cfst_tcp_latency_ms"] if item["cfst_tcp_latency_ms"] is not None else float("inf"),
+                item["host"],
+            )
+        )
+        limit = cfst_country_pool_limit(bucket, args)
+        keep = items if audit_all or limit <= 0 else items[:limit]
+        for rank, item in enumerate(keep, 1):
+            item["selected_for_test"] = True
+            item["selection_rank"] = rank
+            item["selection_reason"] = "audit_all" if audit_all else f"pool_limit={limit or 'all'}"
+            selected_rows.append(item)
+
+    selected_rows.sort(
+        key=lambda item: (
+            {"HK": 0, "SG": 1, "JP": 2, "TW": 3, "KR": 4, "UNKNOWN": 99}.get(str(item["bucket"]).upper(), 20),
+            item["cfst_httping_latency_ms"] is None,
+            item["cfst_httping_latency_ms"] if item["cfst_httping_latency_ms"] is not None else float("inf"),
+            item["cfst_tcp_latency_ms"] if item["cfst_tcp_latency_ms"] is not None else float("inf"),
+            item["host"],
+        )
+    )
+
+    write_cfst_bucket_files(workdir, bucket_rows, selected_rows, args)
+
+    candidates: list[Candidate] = []
+    for item in selected_rows:
+        bucket = str(item["bucket"]).upper()
+        country_label = country_name(bucket if bucket != "UNKNOWN" else None)
+        latency = item["cfst_tcp_latency_ms"]
+        http_latency = item["cfst_httping_latency_ms"]
+        raw = (
+            f"{item['endpoint']}#{country_label}|cfst|colo={item['cfst_colo']}"
+            f"|tcp={latency if latency is not None else ''}ms"
+            f"|httping={http_latency if http_latency is not None else ''}ms"
+        )
+        candidates.append(
+            Candidate(
+                source=str(item["source"]),
+                raw=raw,
+                host=str(item["host"]),
+                port=int(item["port"]),
+                name=f"cfst|{item['cfst_colo']}",
+                declared_latency=float(latency) if latency is not None else None,
+                declared_region=bucket if bucket != "UNKNOWN" else None,
+                is_cloudflare=is_cloudflare_host(str(item["host"])),
+                parse_format="cfst_only",
+            )
+        )
+    args.cfst_bucket_rows = bucket_rows
+    args.timings["cfst_discovery"] = time.monotonic() - started
+    print(
+        f"CFST-only candidates: latency={len(latency_rows)}; "
+        f"httping={len(httping_rows)}; selected={len(candidates)}",
+        flush=True,
+    )
+    return candidates
+
+
+def write_cfst_bucket_files(
+    workdir: Path,
+    bucket_rows: list[dict[str, Any]],
+    selected_rows: list[dict[str, Any]],
+    args: argparse.Namespace,
+) -> None:
+    fields = [
+        "host",
+        "port",
+        "endpoint",
+        "cfst_colo",
+        "declared_country",
+        "bucket",
+        "cfst_tcp_latency_ms",
+        "cfst_httping_latency_ms",
+        "selected_for_test",
+        "selection_rank",
+        "selection_reason",
+        "source",
+    ]
+    for path, rows in [
+        (workdir / "cfst_buckets.csv", bucket_rows),
+        (workdir / "cfst_selected_candidates.csv", selected_rows),
+    ]:
+        with path.open("w", encoding="utf-8-sig", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fields)
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+
+    counts: dict[str, dict[str, Any]] = {}
+    selected_keys = {(row["host"], row["port"]) for row in selected_rows}
+    for row in bucket_rows:
+        bucket = str(row["bucket"]).upper()
+        entry = counts.setdefault(
+            bucket,
+            {"bucket": bucket, "cfst_colos": set(), "total_candidates": 0, "selected_for_test": 0},
+        )
+        entry["total_candidates"] += 1
+        entry["cfst_colos"].add(row["cfst_colo"])
+        if (row["host"], row["port"]) in selected_keys:
+            entry["selected_for_test"] += 1
+    with (workdir / "cfst_buckets_summary.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["bucket", "cfst_colos", "total_candidates", "selected_for_test", "pool_limit"],
+        )
+        writer.writeheader()
+        for bucket, entry in sorted(counts.items(), key=lambda item: (item[0] == "UNKNOWN", item[0])):
+            writer.writerow(
+                {
+                    "bucket": bucket,
+                    "cfst_colos": "|".join(sorted(entry["cfst_colos"])),
+                    "total_candidates": entry["total_candidates"],
+                    "selected_for_test": entry["selected_for_test"],
+                    "pool_limit": cfst_country_pool_limit(bucket, args) or "all",
+                }
+            )
+
+
+def write_cfst_post_reports(workdir: Path, results: list[TestResult], args: argparse.Namespace) -> None:
+    if getattr(args, "source_mode", "legacy") != "cfst-only":
+        return
+    bucket_rows = getattr(args, "cfst_bucket_rows", []) or []
+    bucket_by_key = {(str(row["host"]), int(row["port"])): row for row in bucket_rows}
+    ok_results = [result for result in results if result.ok]
+    final_results = select_final_results(ok_results, args)
+    final_keys = {result.candidate.key for result in final_results}
+
+    selected_counts: dict[str, dict[str, int]] = collections.defaultdict(lambda: collections.Counter())
+    for result in results:
+        meta = bucket_by_key.get(result.candidate.key)
+        bucket = str((meta or {}).get("bucket") or "UNKNOWN").upper()
+        selected_counts[bucket]["tested"] += 1
+        if result.ok:
+            selected_counts[bucket]["ok"] += 1
+        if result.candidate.key in final_keys:
+            selected_counts[bucket]["final"] += 1
+
+    summary_path = workdir / "cfst_buckets_summary.csv"
+    if summary_path.exists():
+        rows: list[dict[str, Any]] = []
+        with summary_path.open("r", encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        with summary_path.open("w", encoding="utf-8-sig", newline="") as handle:
+            fields = ["bucket", "cfst_colos", "total_candidates", "selected_for_test", "tested", "ok", "final", "pool_limit"]
+            writer = csv.DictWriter(handle, fieldnames=fields)
+            writer.writeheader()
+            for row in rows:
+                bucket = str(row["bucket"]).upper()
+                counter = selected_counts.get(bucket, {})
+                row["tested"] = counter.get("tested", 0)
+                row["ok"] = counter.get("ok", 0)
+                row["final"] = counter.get("final", 0)
+                writer.writerow({field: row.get(field, "") for field in fields})
+
+    consistency: dict[str, dict[str, Any]] = {}
+    for result in results:
+        meta = bucket_by_key.get(result.candidate.key)
+        if not meta:
+            continue
+        colo = str(meta.get("cfst_colo") or "UNKNOWN").upper()
+        declared = str(meta.get("declared_country") or "").upper()
+        entry = consistency.setdefault(
+            colo,
+            {
+                "cfst_colo": colo,
+                "declared_country": declared,
+                "tested_count": 0,
+                "true_same_count": 0,
+                "true_diff_count": 0,
+                "unknown_count": 0,
+                "true_country_top": collections.Counter(),
+            },
+        )
+        entry["tested_count"] += 1
+        true_country = (result.exit_country_code or "").upper()
+        if true_country:
+            entry["true_country_top"][true_country] += 1
+        if not true_country:
+            entry["unknown_count"] += 1
+        elif declared and true_country == declared:
+            entry["true_same_count"] += 1
+        else:
+            entry["true_diff_count"] += 1
+
+    with (workdir / "cfst_colo_consistency.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        fields = [
+            "cfst_colo",
+            "declared_country",
+            "tested_count",
+            "true_same_count",
+            "true_diff_count",
+            "unknown_count",
+            "match_rate",
+            "unknown_rate",
+            "recommended_trust",
+            "true_country_top",
+        ]
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        min_trust = int(getattr(args, "cfst_trust_min_tested", 50))
+        for _colo, entry in sorted(consistency.items()):
+            tested = max(1, int(entry["tested_count"]))
+            match_rate = entry["true_same_count"] / tested
+            unknown_rate = entry["unknown_count"] / tested
+            recommended = (
+                entry["tested_count"] >= min_trust
+                and bool(entry["declared_country"])
+                and match_rate >= float(getattr(args, "cfst_trust_match_rate", 0.98))
+                and unknown_rate <= float(getattr(args, "cfst_trust_unknown_rate", 0.02))
+            )
+            writer.writerow(
+                {
+                    "cfst_colo": entry["cfst_colo"],
+                    "declared_country": entry["declared_country"],
+                    "tested_count": entry["tested_count"],
+                    "true_same_count": entry["true_same_count"],
+                    "true_diff_count": entry["true_diff_count"],
+                    "unknown_count": entry["unknown_count"],
+                    "match_rate": f"{match_rate:.6f}",
+                    "unknown_rate": f"{unknown_rate:.6f}",
+                    "recommended_trust": recommended,
+                    "true_country_top": "|".join(
+                        f"{country}:{count}" for country, count in entry["true_country_top"].most_common()
+                    ),
+                }
+            )
+
+    run_summary = {
+        "source_mode": args.source_mode,
+        "pool_mode": getattr(args, "pool_mode", "direct"),
+        "cfst_ports": cfst_port_args(args),
+        "pool_limits": {
+            "HK": cfst_country_pool_limit("HK", args),
+            "SG": cfst_country_pool_limit("SG", args),
+            "UNKNOWN": cfst_country_pool_limit("UNKNOWN", args),
+            "other": args.cfst_other_pool_limit,
+        },
+        "candidate_count": len([row for row in bucket_rows if row.get("selected_for_test")]),
+        "tested_count": len(results),
+        "ok_count": len(ok_results),
+        "final_count": len(final_results),
+        "timings": getattr(args, "timings", {}),
+        "speed_tests_enabled": False,
+    }
+
+    if getattr(args, "pool_mode", "direct") != "direct":
+        pool_rows = update_edgetunnel_node_pool(workdir, results, bucket_by_key, args)
+        pool_ok_results = pool_rows_to_results(pool_rows)
+        pool_final_results = select_final_results(pool_ok_results, args)
+        write_final_from_results(
+            workdir / "bestcf_final.txt",
+            pool_final_results,
+        )
+        write_region_counts(workdir / "bestcf_region_counts.csv", pool_ok_results, pool_final_results)
+        write_edgetunnel_pool_summary(workdir, pool_rows, pool_final_results)
+        pool_status_counts = collections.Counter(str(row.get("status") or "unknown") for row in pool_rows)
+        pool_country_counts = collections.Counter(
+            str(row.get("true_exit_country") or "UNKNOWN").upper()
+            for row in pool_rows
+            if row.get("status") == "healthy"
+        )
+        run_summary.update(
+            {
+                "pool_file": str(workdir / args.pool_file),
+                "pool_total": len(pool_rows),
+                "pool_healthy": len(pool_ok_results),
+                "pool_final_count": len(pool_final_results),
+                "pool_status_counts": dict(sorted(pool_status_counts.items())),
+                "pool_healthy_country_counts": dict(sorted(pool_country_counts.items())),
+            }
+        )
+        print(
+            f"Pool final generated: healthy={len(pool_ok_results)} final={len(pool_final_results)} "
+            f"pool={workdir / args.pool_file}",
+            flush=True,
+        )
+
+    with (workdir / "cfst_run_summary.json").open("w", encoding="utf-8") as handle:
+        json.dump(run_summary, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+
+
+POOL_FIELDS = [
+    "endpoint",
+    "host",
+    "port",
+    "cfst_colo",
+    "declared_country",
+    "true_exit_country",
+    "true_exit_region_name",
+    "exit_ip",
+    "cf_colo",
+    "geo_evidence",
+    "geo_selected_provider",
+    "geo_fallback_used",
+    "service_score",
+    "google_ok",
+    "youtube_ok",
+    "gpt_ok",
+    "proxy_latency_ms",
+    "cfst_tcp_latency_ms",
+    "cfst_httping_latency_ms",
+    "status",
+    "fail_reason",
+    "first_seen_at",
+    "last_seen_at",
+    "last_tested_at",
+    "success_count",
+    "fail_count",
+    "consecutive_fail_count",
+    "last_success_at",
+    "last_failure_at",
+    "source",
+    "raw_line",
+]
+
+
+def now_iso() -> str:
+    return time.strftime("%Y-%m-%dT%H:%M:%S%z", time.localtime())
+
+
+def int_field(row: dict[str, Any], key: str) -> int:
+    try:
+        return int(str(row.get(key, "") or "0"))
+    except ValueError:
+        return 0
+
+
+def float_field(row: dict[str, Any], key: str) -> float | None:
+    return parse_cfst_float(row.get(key))
+
+
+def bool_field(row: dict[str, Any], key: str) -> bool | None:
+    value = str(row.get(key, "")).strip().lower()
+    if value in {"true", "1", "yes"}:
+        return True
+    if value in {"false", "0", "no"}:
+        return False
+    return None
+
+
+def load_pool_rows(path: Path) -> dict[tuple[str, int], dict[str, Any]]:
+    rows: dict[tuple[str, int], dict[str, Any]] = {}
+    if not path.exists():
+        return rows
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        for row in csv.DictReader(handle):
+            host = str(row.get("host") or "").strip()
+            try:
+                port = int(str(row.get("port") or "0"))
+            except ValueError:
+                continue
+            if host and port:
+                rows[(host.lower(), port)] = row
+    return rows
+
+
+def write_pool_rows(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with tmp_path.open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=POOL_FIELDS, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({field: row.get(field, "") for field in POOL_FIELDS})
+    os.replace(tmp_path, path)
+
+
+def result_pool_status(result: TestResult) -> str:
+    if result.ok and result.exit_country_code:
+        return "healthy"
+    if not result.exit_country_code and result.status in {"geo_unknown", "region_unknown", "latency_failed", "latency_too_high"}:
+        return "unresolved" if result.status in {"geo_unknown", "region_unknown"} else "failed"
+    return "failed"
+
+
+def update_edgetunnel_node_pool(
+    workdir: Path,
+    results: list[TestResult],
+    bucket_by_key: dict[tuple[str, int], dict[str, Any]],
+    args: argparse.Namespace,
+) -> list[dict[str, Any]]:
+    pool_path = workdir / args.pool_file
+    existing = load_pool_rows(pool_path)
+    timestamp = now_iso()
+
+    for result in results:
+        candidate = result.candidate
+        key = candidate.key
+        meta = bucket_by_key.get(key, {})
+        row = dict(existing.get(key, {}))
+        first_seen = row.get("first_seen_at") or timestamp
+        success_count = int_field(row, "success_count")
+        fail_count = int_field(row, "fail_count")
+        consecutive_fail = int_field(row, "consecutive_fail_count")
+        status = result_pool_status(result)
+        if status == "healthy":
+            success_count += 1
+            consecutive_fail = 0
+            last_success_at = timestamp
+            last_failure_at = row.get("last_failure_at", "")
+        else:
+            fail_count += 1
+            consecutive_fail += 1
+            last_success_at = row.get("last_success_at", "")
+            last_failure_at = timestamp
+            if consecutive_fail >= int(getattr(args, "pool_cooldown_failures", 5)):
+                status = "cooldown"
+
+        row.update(
+            {
+                "endpoint": candidate.endpoint,
+                "host": candidate.host,
+                "port": candidate.port,
+                "cfst_colo": meta.get("cfst_colo", ""),
+                "declared_country": meta.get("declared_country", ""),
+                "true_exit_country": result.exit_country_code or "",
+                "true_exit_region_name": result.exit_region if result.exit_country_code else "",
+                "exit_ip": result.exit_ip or "",
+                "cf_colo": result.cf_colo or "",
+                "geo_evidence": result.geo_evidence or "",
+                "geo_selected_provider": result.geo_selected_provider or "",
+                "geo_fallback_used": result.geo_fallback_used,
+                "service_score": result.service_score,
+                "google_ok": result.google_ok if result.google_ok is not None else "",
+                "youtube_ok": result.youtube_ok if result.youtube_ok is not None else "",
+                "gpt_ok": result.gpt_ok if result.gpt_ok is not None else "",
+                "proxy_latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
+                "cfst_tcp_latency_ms": meta.get("cfst_tcp_latency_ms", candidate.declared_latency or ""),
+                "cfst_httping_latency_ms": meta.get("cfst_httping_latency_ms", ""),
+                "status": status,
+                "fail_reason": "" if status == "healthy" else f"{result.status}: {result.error}",
+                "first_seen_at": first_seen,
+                "last_seen_at": timestamp,
+                "last_tested_at": timestamp,
+                "success_count": success_count,
+                "fail_count": fail_count,
+                "consecutive_fail_count": consecutive_fail,
+                "last_success_at": last_success_at,
+                "last_failure_at": last_failure_at,
+                "source": candidate.source,
+                "raw_line": candidate.raw,
+            }
+        )
+        existing[key] = row
+
+    rows = sorted(existing.values(), key=lambda row: (row.get("status") != "healthy", row.get("true_exit_country", ""), row.get("endpoint", "")))
+    write_pool_rows(pool_path, rows)
+    return rows
+
+
+def pool_rows_to_results(rows: list[dict[str, Any]]) -> list[TestResult]:
+    results: list[TestResult] = []
+    for row in rows:
+        if row.get("status") != "healthy":
+            continue
+        country = str(row.get("true_exit_country") or "").upper()
+        if not country:
+            continue
+        host = str(row.get("host") or "")
+        try:
+            port = int(str(row.get("port") or "0"))
+        except ValueError:
+            continue
+        if not host or not port:
+            continue
+        candidate = Candidate(
+            source=str(row.get("source") or cfst_candidate_source(country, port)),
+            raw=str(row.get("raw_line") or f"{format_endpoint(host, port)}#{country_name(country)}|pool"),
+            host=host,
+            port=port,
+            name=f"pool|{row.get('cfst_colo') or ''}",
+            declared_latency=float_field(row, "cfst_tcp_latency_ms"),
+            declared_region=str(row.get("declared_country") or "") or None,
+            is_cloudflare=is_cloudflare_host(host),
+            parse_format="pool",
+        )
+        results.append(
+            TestResult(
+                candidate,
+                True,
+                "pool_healthy",
+                measured_speed=None,
+                latency_ms=float_field(row, "proxy_latency_ms"),
+                exit_ip=str(row.get("exit_ip") or "") or None,
+                exit_country_code=country,
+                exit_region=str(row.get("true_exit_region_name") or country_name(country)),
+                cf_colo=str(row.get("cf_colo") or "") or None,
+                geo_evidence=str(row.get("geo_evidence") or ""),
+                geo_selected_provider=str(row.get("geo_selected_provider") or ""),
+                geo_fallback_used=str(row.get("geo_fallback_used")).lower() == "true",
+                service_score=int_field(row, "service_score"),
+                google_ok=bool_field(row, "google_ok"),
+                youtube_ok=bool_field(row, "youtube_ok"),
+                gpt_ok=bool_field(row, "gpt_ok"),
+                selection_stage="pool",
+            )
+        )
+    return results
+
+
+def write_final_from_results(path: Path, final_results: list[TestResult]) -> None:
+    counters: dict[str, int] = {}
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        for result in final_results:
+            region = result_region(result)
+            counters[region] = counters.get(region, 0) + 1
+            line = f"{result.candidate.endpoint}#{region}-{counters[region]}"
+            if result.measured_speed is not None:
+                line += f"|{result.measured_speed:.2f}MB/s"
+            handle.write(line + "\n")
+
+
+def write_edgetunnel_pool_summary(workdir: Path, rows: list[dict[str, Any]], final_results: list[TestResult]) -> None:
+    final_counts = collections.Counter((result.exit_country_code or "").upper() for result in final_results)
+    groups: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+    for row in rows:
+        country = str(row.get("true_exit_country") or "UNKNOWN").upper()
+        groups[country].append(row)
+    with (workdir / "edgetunnel_pool_summary.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=[
+                "true_exit_country",
+                "total_nodes",
+                "healthy_nodes",
+                "failed_nodes",
+                "unresolved_nodes",
+                "cooldown_nodes",
+                "selected_count",
+                "min_proxy_latency_ms",
+                "median_proxy_latency_ms",
+            ],
+        )
+        writer.writeheader()
+        for country, items in sorted(groups.items()):
+            latencies = [
+                value for value in (float_field(row, "proxy_latency_ms") for row in items if row.get("status") == "healthy")
+                if value is not None
+            ]
+            writer.writerow(
+                {
+                    "true_exit_country": country,
+                    "total_nodes": len(items),
+                    "healthy_nodes": sum(1 for row in items if row.get("status") == "healthy"),
+                    "failed_nodes": sum(1 for row in items if row.get("status") == "failed"),
+                    "unresolved_nodes": sum(1 for row in items if row.get("status") == "unresolved"),
+                    "cooldown_nodes": sum(1 for row in items if row.get("status") == "cooldown"),
+                    "selected_count": final_counts.get(country, 0),
+                    "min_proxy_latency_ms": f"{min(latencies):.0f}" if latencies else "",
+                    "median_proxy_latency_ms": f"{median_number(latencies):.0f}" if latencies else "",
+                }
+            )
 
 
 def curl_text(
@@ -2062,7 +2889,9 @@ def write_source_prune_report(
 
 
 def result_region(result: TestResult) -> str:
-    return result.exit_region or country_name(result.exit_country_code) or "未知"
+    if result.exit_country_code:
+        return country_name(result.exit_country_code)
+    return result.exit_region or "未知"
 
 
 def result_latency(result: TestResult) -> float:
@@ -2562,6 +3391,7 @@ def write_results(
                     "raw_line": result.candidate.raw,
                 }
             )
+    write_cfst_post_reports(workdir, results, args)
     return final_path
 
 
@@ -3247,6 +4077,8 @@ def final_line_country_code(line: str, candidate: Candidate) -> str:
     if "#" in line:
         label = line.split("#", 1)[1].split("|", 1)[0].strip()
         label = re.sub(r"-\d+$", "", label)
+    if re.fullmatch(r"[A-Za-z]{2}", label or ""):
+        return label.upper()
     code = country_code_from_text(label) if label else None
     if code:
         return code.upper()
@@ -4528,6 +5360,54 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--start-timeout", type=float, default=6.0, help="mihomo startup timeout")
     parser.add_argument("--concurrency", type=int, default=4, help="parallel test workers")
     parser.add_argument("--legacy-per-candidate", action="store_true", help="use old per-candidate mihomo process mode")
+    parser.add_argument(
+        "--source-mode",
+        choices=["legacy", "cfst-only"],
+        default="legacy",
+        help="candidate source mode; cfst-only fully disables legacy BestCF sources",
+    )
+    parser.add_argument(
+        "--pool-mode",
+        choices=["direct", "audit-all", "incremental"],
+        default="direct",
+        help=(
+            "edgetunnel node-pool mode; direct writes final from current run, "
+            "audit-all tests every CFST low-latency candidate, incremental updates the pool from the normal CFST subset"
+        ),
+    )
+    parser.add_argument(
+        "--pool-file",
+        default="edgetunnel_node_pool.csv",
+        help="edgetunnel node-pool CSV path relative to workdir unless absolute",
+    )
+    parser.add_argument(
+        "--pool-cooldown-failures",
+        type=int,
+        default=5,
+        help="mark a previously tracked pool node as cooldown after this many consecutive failures",
+    )
+    parser.add_argument("--cfst-exe", default=str(DEFAULT_CFST_EXE_WINDOWS), help="CloudflareSpeedTest executable path")
+    parser.add_argument("--cfst-ip-file", default=str(DEFAULT_CFST_IP_FILE), help="CloudflareSpeedTest IPv4 CIDR file")
+    parser.add_argument("--cfst-port", type=int, default=443, help="CFST port for first-version cfst-only mode")
+    parser.add_argument("--cfst-ports", default=None, help="reserved comma-separated CFST ports; first version supports one port")
+    parser.add_argument("--cfst-threads", type=int, default=300, help="CFST latency/httping worker count")
+    parser.add_argument("--cfst-latency-tests", type=int, default=4, help="CFST TCPing test count per IP")
+    parser.add_argument("--cfst-httping-tests", type=int, default=2, help="CFST HTTPing test count per IP")
+    parser.add_argument("--cfst-latency-threshold", type=int, default=800, help="CFST TCPing max average latency in ms")
+    parser.add_argument("--cfst-httping-threshold", type=int, default=1000, help="CFST HTTPing max average latency in ms")
+    parser.add_argument("--cfst-loss-threshold", default="0", help="CFST max packet loss ratio")
+    parser.add_argument("--cfst-timeout", type=int, default=600, help="CFST command timeout in seconds")
+    parser.add_argument("--cfst-httping-retries", type=int, default=2, help="retry CFST HTTPing when it produces no rows")
+    parser.add_argument("--cfst-httping-retry-delay", type=float, default=3.0, help="seconds to wait before retrying empty CFST HTTPing")
+    parser.add_argument(
+        "--cfst-pool-limits",
+        default="HK:60,SG:60,UNKNOWN:0",
+        help="pre-geo pool limits by declared country; 0 means all, e.g. HK:60,SG:60,UNKNOWN:0",
+    )
+    parser.add_argument("--cfst-other-pool-limit", type=int, default=70, help="pre-geo pool limit for mapped non-HK/SG countries")
+    parser.add_argument("--cfst-trust-min-tested", type=int, default=50, help="minimum tested count before consistency trust recommendation")
+    parser.add_argument("--cfst-trust-match-rate", type=float, default=0.98, help="match-rate threshold for trust recommendation")
+    parser.add_argument("--cfst-trust-unknown-rate", type=float, default=0.02, help="unknown-rate threshold for trust recommendation")
     parser.add_argument("--no-discover-sources", action="store_true", help="disable bestcf.pages.dev source discovery")
     parser.add_argument("--latency-url", default=DEFAULT_LATENCY_URL, help="URL used by Mihomo delay API")
     parser.add_argument("--latency-timeout", type=int, default=5000, help="Mihomo delay timeout in milliseconds")
@@ -4760,6 +5640,19 @@ def main(argv: list[str] | None = None) -> int:
     args = build_arg_parser().parse_args(argv)
     apply_profile_defaults(args)
     args.concurrency = max(1, args.concurrency)
+    args.cfst_threads = max(1, min(1000, int(args.cfst_threads)))
+    args.cfst_latency_tests = max(1, int(args.cfst_latency_tests))
+    args.cfst_httping_tests = max(1, int(args.cfst_httping_tests))
+    args.cfst_latency_threshold = max(1, int(args.cfst_latency_threshold))
+    args.cfst_httping_threshold = max(1, int(args.cfst_httping_threshold))
+    args.cfst_timeout = max(30, int(args.cfst_timeout))
+    args.cfst_httping_retries = max(1, int(args.cfst_httping_retries))
+    args.cfst_httping_retry_delay = max(0.0, float(args.cfst_httping_retry_delay))
+    args.cfst_other_pool_limit = max(0, int(args.cfst_other_pool_limit))
+    args.cfst_trust_min_tested = max(1, int(args.cfst_trust_min_tested))
+    args.cfst_trust_match_rate = max(0.0, min(1.0, float(args.cfst_trust_match_rate)))
+    args.cfst_trust_unknown_rate = max(0.0, min(1.0, float(args.cfst_trust_unknown_rate)))
+    args.pool_cooldown_failures = max(1, int(args.pool_cooldown_failures))
     args.source_concurrency = max(1, args.source_concurrency)
     args.source_retries = max(0, args.source_retries)
     args.latency_concurrency = max(1, args.latency_concurrency)
@@ -4827,93 +5720,138 @@ def main(argv: list[str] | None = None) -> int:
         clean_workers(workdir)
     timer.mark("setup")
 
-    print("Fetching sources...", flush=True)
-    source_cache_path = workdir / DEFAULT_SOURCE_CACHE_NAME
-    source_cache = load_source_cache(source_cache_path)
-    sources = build_sources(
-        discover=not args.no_discover_sources,
-        timeout=args.source_timeout,
-        source_cache=source_cache,
-    )
-    source_denylist_path = Path(args.source_denylist) if args.source_denylist else workdir / DEFAULT_SOURCE_DENYLIST_NAME
-    source_denylist = set() if args.refresh_sources else load_source_denylist(source_denylist_path)
-    sources_after_denylist, denied_source_failures = filter_denied_sources(sources, source_denylist)
-    if args.use_source_cache_quarantine:
-        active_sources, skipped_cached_failures = filter_cached_invalid_sources(
-            sources_after_denylist,
-            source_cache,
-            refresh=args.refresh_sources,
-        )
+    source_failures: list[dict[str, str]] = []
+    parse_failures: list[dict[str, str]] = []
+    if args.source_mode == "cfst-only":
+        print("Building CFST-only candidates...", flush=True)
+        candidates = build_cfst_only_candidates(workdir, args)
+        rows = [(candidate.source, candidate.raw) for candidate in candidates]
+        write_raw(workdir, rows)
+        write_parsed(workdir, candidates)
+        total_unique = len(candidates)
+        # Keep compatibility with existing copy/report steps.
+        with (workdir / "bestcf_sources.csv").open("w", encoding="utf-8-sig", newline="") as handle:
+            writer = csv.DictWriter(
+                handle,
+                fieldnames=[
+                    "source",
+                    "url",
+                    "status",
+                    "raw_lines",
+                    "nonempty_lines",
+                    "valid_lines",
+                    "invalid_lines",
+                    "valid_ratio",
+                    "invalid_ratio",
+                    "unique_selected",
+                ],
+            )
+            writer.writeheader()
+            by_source = collections.Counter(candidate.source for candidate in candidates)
+            for source, count in sorted(by_source.items()):
+                writer.writerow(
+                    {
+                        "source": source,
+                        "url": str(Path(args.cfst_ip_file)),
+                        "status": "cfst_only",
+                        "raw_lines": count,
+                        "nonempty_lines": count,
+                        "valid_lines": count,
+                        "invalid_lines": 0,
+                        "valid_ratio": "1.000000",
+                        "invalid_ratio": "0.000000",
+                        "unique_selected": count,
+                    }
+                )
+        print(f"CFST-only selected for test: {len(candidates)}", flush=True)
     else:
-        active_sources, skipped_cached_failures = dict(sources_after_denylist), []
-    print(
-        "Source count: "
-        f"{len(sources)}; active: {len(active_sources)}; "
-        f"hard-pruned: {len(denied_source_failures)}; "
-        f"cached-skipped: {len(skipped_cached_failures)}",
-        flush=True,
-    )
-    rows, fetch_failures = fetch_sources(
-        active_sources,
-        timeout=args.source_timeout,
-        concurrency=args.source_concurrency,
-        retries=args.source_retries,
-    )
-    source_failures = denied_source_failures + skipped_cached_failures + fetch_failures
-    write_raw(workdir, rows)
-    candidates, parse_failures, source_stats = parse_candidates(rows, active_sources)
-    candidates = rank_candidates_by_source_quality(candidates, source_cache)
-    write_parsed(workdir, candidates)
-    newly_denied: set[str] = set()
-    if not args.no_auto_prune_sources and not args.refresh_sources:
-        newly_denied = update_source_denylist_from_stats(
-            source_denylist_path,
-            source_denylist,
+        print("Fetching sources...", flush=True)
+        source_cache_path = workdir / DEFAULT_SOURCE_CACHE_NAME
+        source_cache = load_source_cache(source_cache_path)
+        sources = build_sources(
+            discover=not args.no_discover_sources,
+            timeout=args.source_timeout,
+            source_cache=source_cache,
+        )
+        source_denylist_path = Path(args.source_denylist) if args.source_denylist else workdir / DEFAULT_SOURCE_DENYLIST_NAME
+        source_denylist = set() if args.refresh_sources else load_source_denylist(source_denylist_path)
+        sources_after_denylist, denied_source_failures = filter_denied_sources(sources, source_denylist)
+        if args.use_source_cache_quarantine:
+            active_sources, skipped_cached_failures = filter_cached_invalid_sources(
+                sources_after_denylist,
+                source_cache,
+                refresh=args.refresh_sources,
+            )
+        else:
+            active_sources, skipped_cached_failures = dict(sources_after_denylist), []
+        print(
+            "Source count: "
+            f"{len(sources)}; active: {len(active_sources)}; "
+            f"hard-pruned: {len(denied_source_failures)}; "
+            f"cached-skipped: {len(skipped_cached_failures)}",
+            flush=True,
+        )
+        rows, fetch_failures = fetch_sources(
+            active_sources,
+            timeout=args.source_timeout,
+            concurrency=args.source_concurrency,
+            retries=args.source_retries,
+        )
+        source_failures = denied_source_failures + skipped_cached_failures + fetch_failures
+        write_raw(workdir, rows)
+        candidates, parse_failures, source_stats = parse_candidates(rows, active_sources)
+        candidates = rank_candidates_by_source_quality(candidates, source_cache)
+        write_parsed(workdir, candidates)
+        newly_denied: set[str] = set()
+        if not args.no_auto_prune_sources and not args.refresh_sources:
+            newly_denied = update_source_denylist_from_stats(
+                source_denylist_path,
+                source_denylist,
+                active_sources,
+                source_stats,
+                source_failures,
+                min_lines=args.source_prune_min_lines,
+                high_invalid_ratio=args.source_high_invalid_ratio,
+            )
+        update_source_cache(
+            source_cache,
             active_sources,
             source_stats,
             source_failures,
+            invalid_threshold=args.source_invalid_threshold,
+            quarantine_hours=args.source_quarantine_hours,
+        )
+        save_source_cache(source_cache_path, source_cache)
+        write_source_report(workdir, sources, source_stats, source_failures, source_cache)
+        write_source_prune_report(
+            workdir,
+            sources,
+            source_stats,
+            source_failures,
+            source_denylist | newly_denied,
+            newly_denied,
             min_lines=args.source_prune_min_lines,
             high_invalid_ratio=args.source_high_invalid_ratio,
         )
-    update_source_cache(
-        source_cache,
-        active_sources,
-        source_stats,
-        source_failures,
-        invalid_threshold=args.source_invalid_threshold,
-        quarantine_hours=args.source_quarantine_hours,
-    )
-    save_source_cache(source_cache_path, source_cache)
-    write_source_report(workdir, sources, source_stats, source_failures, source_cache)
-    write_source_prune_report(
-        workdir,
-        sources,
-        source_stats,
-        source_failures,
-        source_denylist | newly_denied,
-        newly_denied,
-        min_lines=args.source_prune_min_lines,
-        high_invalid_ratio=args.source_high_invalid_ratio,
-    )
-    total_unique = len(candidates)
+        total_unique = len(candidates)
+        actual_fetch_failures = sum(1 for failure in source_failures if failure.get("status") == "source_fetch_failed")
+        print(
+            "Source status: "
+            f"fetch_failed={actual_fetch_failures}; "
+            f"hard_pruned={len(denied_source_failures)}; "
+            f"cached_skipped={len(skipped_cached_failures)}; "
+            f"parse_failed_lines={len(parse_failures)}",
+            flush=True,
+        )
+        print(f"Source report: {workdir / 'bestcf_sources.csv'}", flush=True)
+        print(f"Source prune report: {workdir / DEFAULT_SOURCE_PRUNE_REPORT_NAME}", flush=True)
+        if newly_denied:
+            print(f"New hard-pruned sources for next run: {len(newly_denied)}", flush=True)
     if args.limit > 0:
         candidates = candidates[: args.limit]
 
     print(f"Fetched lines: {len(rows)}", flush=True)
     print(f"Parsed unique candidates: {total_unique}; selected for test: {len(candidates)}", flush=True)
-    actual_fetch_failures = sum(1 for failure in source_failures if failure.get("status") == "source_fetch_failed")
-    print(
-        "Source status: "
-        f"fetch_failed={actual_fetch_failures}; "
-        f"hard_pruned={len(denied_source_failures)}; "
-        f"cached_skipped={len(skipped_cached_failures)}; "
-        f"parse_failed_lines={len(parse_failures)}",
-        flush=True,
-    )
-    print(f"Source report: {workdir / 'bestcf_sources.csv'}", flush=True)
-    print(f"Source prune report: {workdir / DEFAULT_SOURCE_PRUNE_REPORT_NAME}", flush=True)
-    if newly_denied:
-        print(f"New hard-pruned sources for next run: {len(newly_denied)}", flush=True)
     timer.mark("source_fetch_parse")
 
     if args.dry_run:

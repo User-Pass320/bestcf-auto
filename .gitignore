@@ -9,3 +9,4 @@ archive/
 template.yaml
 template.b64.txt
 *.log
+tools/cfst/

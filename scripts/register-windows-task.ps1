@@ -16,8 +16,7 @@ $action = New-ScheduledTaskAction `
     -Execute "wscript.exe" `
     -Argument "`"$launcherPath`""
 
-$triggerMorning = New-ScheduledTaskTrigger -Daily -At "08:00"
-$triggerEvening = New-ScheduledTaskTrigger -Daily -At "18:00"
+$triggerWeekly = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At "04:00"
 
 $principal = New-ScheduledTaskPrincipal `
     -UserId $env:USERNAME `
@@ -34,12 +33,12 @@ $settings.Hidden = $true
 Register-ScheduledTask `
     -TaskName $taskName `
     -Action $action `
-    -Trigger @($triggerMorning, $triggerEvening) `
+    -Trigger $triggerWeekly `
     -Principal $principal `
     -Settings $settings `
     -Force | Out-Null
 
 Write-Host "Registered scheduled task: $taskName"
-Write-Host "Schedule: daily at 08:00 and 18:00"
+Write-Host "Schedule: weekly on Sunday at 04:00"
 Write-Host "Window: hidden via wscript launcher"
 Write-Host "Script: $scriptPath"

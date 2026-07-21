@@ -78,40 +78,123 @@ New-Item -ItemType Directory -Force -Path ".\public" | Out-Null
 Stop-BestCFWorkerProcesses
 
 $candidateOutput = ".\bestcf_work\bestcf_final_candidate.txt"
+$verifiedOutput = ".\bestcf_work\bestcf_final_verified.txt"
+$verifyDetails = ".\bestcf_work\final_true_exit_verify.csv"
+$verifySummary = ".\bestcf_work\final_true_exit_verify_summary.json"
+$cfstPorts = @(443, 2053, 2083, 2087, 2096, 8443)
 
-python .\bestcf_tool.py `
-    --profile balanced `
-    --workdir .\bestcf_work `
-    --template .\template.yaml `
+foreach ($cfstPort in $cfstPorts) {
+    Write-Host "Running weekly CFST incremental update for port $cfstPort"
+    python .\bestcf_tool.py `
+        --profile balanced `
+        --source-mode cfst-only `
+        --pool-mode incremental `
+        --pool-file edgetunnel_node_pool.csv `
+        --cfst-exe .\tools\cfst\cfst.exe `
+        --cfst-ip-file .\tools\cfst\ip.txt `
+        --cfst-port $cfstPort `
+        --cfst-pool-limits HK:60,SG:60,UNKNOWN:0 `
+        --cfst-other-pool-limit 70 `
+        --workdir .\bestcf_work `
+        --template .\template.yaml `
+        --mihomo $mihomo `
+        --output $candidateOutput `
+        --no-geo-cache `
+        --no-geo-hint-cache `
+        --geo-providers youtube,ping0,ipwhois `
+        --geo-concurrency 16 `
+        --latency-threshold 1500 `
+        --selection-mode all-regions `
+        --country-max 30 `
+        --country-max-overrides HK:20,DE:20 `
+        --max-final-candidates 0 `
+        --no-hk-suppression
+    Assert-NativeCommandSucceeded "bestcf_tool.py update port $cfstPort"
+}
+
+@'
+import argparse
+import collections
+import csv
+import json
+import time
+from pathlib import Path
+
+import bestcf_tool as tool
+
+started = time.perf_counter()
+workdir = Path("bestcf_work")
+pool_path = workdir / "edgetunnel_node_pool.csv"
+candidate_output = workdir / "bestcf_final_candidate.txt"
+rows = list(csv.DictReader(pool_path.open("r", encoding="utf-8-sig", newline="")))
+
+args = argparse.Namespace(
+    selection_mode="all-regions",
+    max_final_candidates=0,
+    country_max=30,
+    country_max_overrides={"HK": 20, "DE": 20},
+    final_preferred_latency_ms=800,
+    preferred_country_order=["JP", "SG", "US", "HK", "KR", "TW"],
+)
+results = tool.pool_rows_to_results(rows)
+select_started = time.perf_counter()
+final_results = tool.select_final_results(results, args)
+select_elapsed = time.perf_counter() - select_started
+
+tool.write_final_from_results(workdir / "bestcf_final.txt", final_results)
+tool.write_final_from_results(candidate_output, final_results)
+tool.write_region_counts(workdir / "bestcf_region_counts.csv", results, final_results)
+tool.write_edgetunnel_pool_summary(workdir, rows, final_results)
+
+summary = {
+    "mode": "weekly_incremental_multiport",
+    "ports": [443, 2053, 2083, 2087, 2096, 8443],
+    "pool_file": str(pool_path),
+    "pool_rows": len(rows),
+    "pool_healthy": sum(1 for row in rows if row.get("status") == "healthy"),
+    "healthy_by_country": dict(
+        sorted(
+            collections.Counter(
+                (row.get("true_exit_country") or "UNKNOWN").upper()
+                for row in rows
+                if row.get("status") == "healthy"
+            ).items()
+        )
+    ),
+    "limits": {"HK": 20, "DE": 20, "other": 30, "UNKNOWN": 0},
+    "final_count": len(final_results),
+    "final_by_country": dict(
+        sorted(collections.Counter((result.exit_country_code or "UNKNOWN").upper() for result in final_results).items())
+    ),
+    "select_elapsed_seconds": round(select_elapsed, 6),
+    "total_elapsed_seconds": round(time.perf_counter() - started, 6),
+}
+(workdir / "weekly_incremental_summary.json").write_text(
+    json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+    encoding="utf-8",
+)
+print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+'@ | python -
+Assert-NativeCommandSucceeded "weekly final generation"
+
+python .\scripts\verify-final-true-exit.py `
+    --input $candidateOutput `
+    --output $verifiedOutput `
+    --workdir ".\bestcf_work\final_true_exit_verify" `
+    --template ".\template.yaml" `
     --mihomo $mihomo `
-    --output $candidateOutput `
-    --no-geo-cache `
-    --no-geo-hint-cache `
-    --geo-providers youtube,ping0,ipwhois `
+    --providers youtube,ping0,ipwhois `
     --geo-concurrency 16 `
-    --selection-mode all-regions `
-    --country-max 50 `
-    --country-max-overrides HK:15 `
-    --max-final-candidates 0 `
-    --target-country-min JP:10,SG:10 `
-    --target-latency-threshold JP:2000,SG:3000 `
-    --target-refill-max-tested JP:80,SG:160 `
-    --target-refill-min-service-score 1 `
-    --hk-suppression `
-    --hk-suppress-strategy worker `
-    --hk-probe-cap 45 `
-    --hk-suppress-bucket-scope prefix `
-    --hk-suppress-ipv4-prefix 20 `
-    --hk-suppress-ipv6-prefix 40 `
-    --hk-suppress-min-samples 6 `
-    --hk-suppress-confidence 0.98 `
-    --hk-suppress-explore-rate 0.05
-Assert-NativeCommandSucceeded "bestcf_tool.py update"
+    --min-lines 30 `
+    --min-regions 3 `
+    --details-csv $verifyDetails `
+    --summary-json $verifySummary
+Assert-NativeCommandSucceeded "verify-final-true-exit"
 
-python .\bestcf_tool.py validate-output $candidateOutput --min-lines 10 --min-regions 1 --min-country JP:10,SG:10
+python .\bestcf_tool.py validate-output $verifiedOutput --min-lines 30 --min-regions 3
 Assert-NativeCommandSucceeded "bestcf_tool.py validate-output"
 
-Copy-Item -LiteralPath $candidateOutput -Destination ".\public\bestcf_final.txt" -Force
+Copy-Item -LiteralPath $verifiedOutput -Destination ".\public\bestcf_final.txt" -Force
 
 $lineCount = (Get-Content -LiteralPath ".\public\bestcf_final.txt" | Measure-Object -Line).Lines
 
@@ -121,6 +204,13 @@ Copy-Item -LiteralPath ".\bestcf_work\bestcf_sources.csv" -Destination ".\public
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_other_regions.csv" -Destination ".\public\bestcf_other_regions.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_region_counts.csv" -Destination ".\public\bestcf_region_counts.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath ".\bestcf_work\bestcf_geo_provider_stats.csv" -Destination ".\public\bestcf_geo_provider_stats.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath ".\bestcf_work\cfst_buckets_summary.csv" -Destination ".\public\cfst_buckets_summary.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath ".\bestcf_work\cfst_colo_consistency.csv" -Destination ".\public\cfst_colo_consistency.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath ".\bestcf_work\cfst_run_summary.json" -Destination ".\public\cfst_run_summary.json" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath ".\bestcf_work\edgetunnel_pool_summary.csv" -Destination ".\public\edgetunnel_pool_summary.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath ".\bestcf_work\weekly_incremental_summary.json" -Destination ".\public\weekly_incremental_summary.json" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath $verifyDetails -Destination ".\public\final_true_exit_verify.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath $verifySummary -Destination ".\public\final_true_exit_verify_summary.json" -Force -ErrorAction SilentlyContinue
 
 if ($NoPush) {
     Write-Host "NoPush enabled; skipping git add/commit/push. Lines: $lineCount"

@@ -1,36 +1,40 @@
 {
   "final_by_country": {
+    "AT": 1,
     "AU": 1,
     "DE": 20,
     "ES": 1,
-    "FR": 16,
+    "FR": 22,
     "GB": 1,
-    "HK": 40,
+    "HK": 20,
     "IN": 7,
     "JP": 30,
-    "PL": 1,
+    "PL": 2,
     "PT": 1,
     "SA": 2,
     "SG": 30,
     "TW": 7,
-    "US": 30
+    "US": 30,
+    "VN": 30
   },
-  "final_count": 187,
+  "final_count": 205,
   "healthy_by_country": {
+    "AT": 1,
     "AU": 1,
-    "DE": 91,
+    "DE": 118,
     "ES": 1,
-    "FR": 16,
+    "FR": 22,
     "GB": 1,
-    "HK": 6803,
+    "HK": 7076,
     "IN": 7,
-    "JP": 109,
-    "PL": 1,
+    "JP": 151,
+    "PL": 2,
     "PT": 1,
     "SA": 2,
-    "SG": 1831,
+    "SG": 2187,
     "TW": 7,
-    "US": 197
+    "US": 257,
+    "VN": 89
   },
   "limits": {
     "DE": 20,
@@ -40,8 +44,8 @@
   },
   "mode": "weekly_incremental_multiport",
   "pool_file": "bestcf_work\\edgetunnel_node_pool.csv",
-  "pool_healthy": 9068,
-  "pool_rows": 15009,
+  "pool_healthy": 9923,
+  "pool_rows": 17524,
   "ports": [
     443,
     2053,
@@ -50,7 +54,6 @@
     2096,
     8443
   ],
-  "select_elapsed_seconds": 0.018217,
-  "total_elapsed_seconds": 0.252807,
-  "vn_reclassified_to_hk": 500
+  "select_elapsed_seconds": 0.02335,
+  "total_elapsed_seconds": 0.179867
 }
