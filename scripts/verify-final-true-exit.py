@@ -1,5 +1,6 @@
 import argparse
 import csv
+import dataclasses
 import json
 import re
 import sys
@@ -11,6 +12,28 @@ from typing import Any
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import bestcf_tool as tool
+
+
+def parse_country_aliases(text: str) -> dict[str, str]:
+    aliases: dict[str, str] = {}
+    for part in str(text or "").split(","):
+        part = part.strip()
+        if not part:
+            continue
+        if ":" not in part:
+            raise ValueError(f"invalid country alias: {part}")
+        src, dst = part.split(":", 1)
+        src = src.strip().upper()
+        dst = dst.strip().upper()
+        if not re.fullmatch(r"[A-Z]{2}", src) or not re.fullmatch(r"[A-Z]{2}", dst):
+            raise ValueError(f"invalid country alias: {part}")
+        aliases[src] = dst
+    return aliases
+
+
+def normalize_country_code(code: str | None, aliases: dict[str, str]) -> str:
+    normalized = (code or "UNKNOWN").upper()
+    return aliases.get(normalized, normalized)
 
 
 def parse_expected_country(label: str) -> str:
@@ -100,8 +123,10 @@ def main() -> int:
     parser.add_argument("--min-regions", type=int, default=3)
     parser.add_argument("--country-max", type=int, default=0, help="maximum verified output nodes per actual country; 0 disables")
     parser.add_argument("--country-max-overrides", default="", help="per-country verified output cap, e.g. HK:20,DE:20")
+    parser.add_argument("--actual-country-aliases", default="", help="normalize live actual countries before labeling/capping, e.g. VN:HK")
     parser.add_argument("--max-final-candidates", type=int, default=0, help="maximum verified output nodes; 0 disables")
     args_ns = parser.parse_args()
+    actual_country_aliases = parse_country_aliases(args_ns.actual_country_aliases)
 
     input_path = Path(args_ns.input)
     output_path = Path(args_ns.output)
@@ -162,19 +187,35 @@ def main() -> int:
     verified_results: list[tool.TestResult] = []
     for row in rows:
         result = result_by_key.get(row["candidate"].key)
-        actual = ((result.exit_country_code if result else "") or "UNKNOWN").upper()
-        expected = row["expected_country"]
+        raw_actual = ((result.exit_country_code if result else "") or "UNKNOWN").upper()
+        actual = normalize_country_code(raw_actual, actual_country_aliases)
+        raw_expected = row["expected_country"]
+        expected = normalize_country_code(raw_expected, actual_country_aliases)
         comparable = expected != "UNKNOWN"
         consistent = comparable and actual == expected
         if result and result.exit_country_code:
-            verified_results.append(result)
+            verified_results.append(
+                dataclasses.replace(
+                    result,
+                    exit_country_code=actual,
+                    exit_region=tool.country_name(actual),
+                    geo_evidence=(
+                        f"{result.geo_evidence};alias:{raw_actual}->{actual}"
+                        if raw_actual != actual and result.geo_evidence
+                        else (f"alias:{raw_actual}->{actual}" if raw_actual != actual else result.geo_evidence)
+                    ),
+                )
+            )
         detail_rows.append(
             {
                 "line_no": row["line_no"],
                 "endpoint": row["endpoint"],
                 "label": row["label"],
+                "raw_expected_country": raw_expected,
                 "expected_country": expected,
+                "raw_actual_country": raw_actual,
                 "actual_country": actual,
+                "actual_country_alias_applied": raw_actual != actual,
                 "input_consistent": consistent,
                 "input_comparable": comparable,
                 "status": result.status if result else "missing_result",
@@ -223,8 +264,11 @@ def main() -> int:
                 "line_no",
                 "endpoint",
                 "label",
+                "raw_expected_country",
                 "expected_country",
+                "raw_actual_country",
                 "actual_country",
+                "actual_country_alias_applied",
                 "input_consistent",
                 "input_comparable",
                 "status",
@@ -260,7 +304,9 @@ def main() -> int:
         "dropped_by_post_verify_cap": len(verified_results) - len(selected_results),
         "country_max": max(0, int(args_ns.country_max)),
         "country_max_overrides": country_max_overrides,
+        "actual_country_aliases": actual_country_aliases,
         "input_by_expected_country": dict(sorted(Counter(row["expected_country"] for row in detail_rows).items())),
+        "verified_by_raw_actual_country": dict(sorted(Counter(row["raw_actual_country"] for row in detail_rows).items())),
         "verified_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),
         "output_by_actual_country": dict(sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in selected_results).items())),
         "validation": message,

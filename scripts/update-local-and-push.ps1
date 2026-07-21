@@ -185,6 +185,7 @@ python .\scripts\verify-final-true-exit.py `
     --mihomo $mihomo `
     --providers youtube,ping0,ipwhois `
     --geo-concurrency 16 `
+    --actual-country-aliases VN:HK `
     --country-max 30 `
     --country-max-overrides HK:20,DE:20 `
     --max-final-candidates 0 `
