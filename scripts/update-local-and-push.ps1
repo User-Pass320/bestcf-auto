@@ -185,14 +185,39 @@ python .\scripts\verify-final-true-exit.py `
     --mihomo $mihomo `
     --providers youtube,ping0,ipwhois `
     --geo-concurrency 16 `
+    --country-max 30 `
+    --country-max-overrides HK:20,DE:20 `
+    --max-final-candidates 0 `
     --min-lines 30 `
     --min-regions 3 `
     --details-csv $verifyDetails `
-    --summary-json $verifySummary
+    --summary-json $verifySummary `
+    --region-counts-csv ".\bestcf_work\bestcf_region_counts.csv"
 Assert-NativeCommandSucceeded "verify-final-true-exit"
 
 python .\bestcf_tool.py validate-output $verifiedOutput --min-lines 30 --min-regions 3
 Assert-NativeCommandSucceeded "bestcf_tool.py validate-output"
+
+@'
+import json
+from pathlib import Path
+
+workdir = Path("bestcf_work")
+weekly_path = workdir / "weekly_incremental_summary.json"
+verify_path = workdir / "final_true_exit_verify_summary.json"
+if weekly_path.exists() and verify_path.exists():
+    weekly = json.loads(weekly_path.read_text(encoding="utf-8"))
+    verify = json.loads(verify_path.read_text(encoding="utf-8"))
+    weekly["candidate_final_count"] = weekly.pop("final_count", None)
+    weekly["candidate_final_by_country"] = weekly.pop("final_by_country", {})
+    weekly["verified_final_count"] = verify.get("output_count")
+    weekly["verified_final_by_country"] = verify.get("output_by_actual_country", {})
+    weekly["post_verify_dropped_by_cap"] = verify.get("dropped_by_post_verify_cap")
+    weekly["post_verify_country_max"] = verify.get("country_max")
+    weekly["post_verify_country_max_overrides"] = verify.get("country_max_overrides", {})
+    weekly_path.write_text(json.dumps(weekly, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+'@ | python -
+Assert-NativeCommandSucceeded "weekly summary post-verify merge"
 
 Copy-Item -LiteralPath $verifiedOutput -Destination ".\public\bestcf_final.txt" -Force
 

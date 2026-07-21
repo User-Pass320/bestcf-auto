@@ -1,5 +1,5 @@
 {
-  "final_by_country": {
+  "candidate_final_by_country": {
     "AT": 1,
     "AU": 1,
     "DE": 20,
@@ -17,7 +17,7 @@
     "US": 30,
     "VN": 30
   },
-  "final_count": 205,
+  "candidate_final_count": 205,
   "healthy_by_country": {
     "AT": 1,
     "AU": 1,
@@ -54,6 +54,30 @@
     2096,
     8443
   ],
+  "post_verify_country_max": 30,
+  "post_verify_country_max_overrides": {
+    "DE": 20,
+    "HK": 20
+  },
+  "post_verify_dropped_by_cap": 30,
   "select_elapsed_seconds": 0.02335,
-  "total_elapsed_seconds": 0.179867
+  "total_elapsed_seconds": 0.179867,
+  "verified_final_by_country": {
+    "AU": 1,
+    "BG": 1,
+    "DE": 20,
+    "ES": 1,
+    "FR": 23,
+    "GB": 3,
+    "HK": 20,
+    "IE": 1,
+    "IT": 1,
+    "JP": 30,
+    "QA": 1,
+    "SA": 5,
+    "SG": 27,
+    "US": 26,
+    "VN": 15
+  },
+  "verified_final_count": 175
 }

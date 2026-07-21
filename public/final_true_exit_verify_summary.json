@@ -1,5 +1,11 @@
 {
-  "elapsed_seconds": 78.946,
+  "country_max": 30,
+  "country_max_overrides": {
+    "DE": 20,
+    "HK": 20
+  },
+  "dropped_by_post_verify_cap": 30,
+  "elapsed_seconds": 60.597,
   "input": "bestcf_work\\bestcf_final_candidate.txt",
   "input_by_expected_country": {
     "AT": 1,
@@ -20,36 +26,52 @@
     "VN": 30
   },
   "input_comparable_count": 205,
-  "input_consistent_count": 147,
+  "input_consistent_count": 139,
   "input_count": 205,
-  "input_mismatch_count": 58,
+  "input_mismatch_count": 66,
   "output": "bestcf_work\\bestcf_final_verified.txt",
   "output_by_actual_country": {
     "AU": 1,
     "BG": 1,
-    "CZ": 1,
     "DE": 20,
-    "DK": 1,
     "ES": 1,
-    "FR": 22,
-    "HK": 49,
-    "IN": 2,
+    "FR": 23,
+    "GB": 3,
+    "HK": 20,
+    "IE": 1,
     "IT": 1,
-    "JP": 32,
-    "PL": 1,
+    "JP": 30,
     "QA": 1,
-    "RO": 1,
-    "SA": 3,
-    "SG": 29,
-    "US": 27,
-    "VN": 12
+    "SA": 5,
+    "SG": 27,
+    "US": 26,
+    "VN": 15
   },
-  "output_count": 205,
+  "output_count": 175,
   "providers": [
     "youtube",
     "ping0",
     "ipwhois"
   ],
+  "selected_count": 175,
   "unknown_actual_count": 0,
-  "validation": "final output valid: lines=205 declared_regions=18 countries=AU:1,BG:1,CZ:1,DE:20,DK:1,ES:1,FR:22,HK:49,IN:2,IT:1,JP:32,PL:1,QA:1,RO:1,SA:3,SG:29,US:27,VN:12"
+  "validation": "final output valid: lines=175 declared_regions=15 countries=AU:1,BG:1,DE:20,ES:1,FR:23,GB:3,HK:20,IE:1,IT:1,JP:30,QA:1,SA:5,SG:27,US:26,VN:15",
+  "verified_by_actual_country": {
+    "AU": 1,
+    "BG": 1,
+    "DE": 21,
+    "ES": 1,
+    "FR": 23,
+    "GB": 3,
+    "HK": 46,
+    "IE": 1,
+    "IT": 1,
+    "JP": 33,
+    "QA": 1,
+    "SA": 5,
+    "SG": 27,
+    "US": 26,
+    "VN": 15
+  },
+  "verified_count": 205
 }

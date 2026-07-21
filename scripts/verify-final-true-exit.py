@@ -58,6 +58,28 @@ def write_verified_final(path: Path, results: list[tool.TestResult]) -> None:
             handle.write(f"{result.candidate.endpoint}#{region}-{counters[region]}\n")
 
 
+def select_verified_results(
+    results: list[tool.TestResult],
+    country_max: int,
+    country_max_overrides: dict[str, int],
+    max_final_candidates: int,
+) -> list[tool.TestResult]:
+    selected: list[tool.TestResult] = []
+    counts: Counter[str] = Counter()
+    for result in results:
+        code = (result.exit_country_code or "").upper()
+        if not code:
+            continue
+        limit = country_max_overrides.get(code, country_max)
+        if limit > 0 and counts[code] >= limit:
+            continue
+        selected.append(result)
+        counts[code] += 1
+        if max_final_candidates > 0 and len(selected) >= max_final_candidates:
+            break
+    return selected
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify final.txt labels against live true exits and rewrite labels from live results.")
     parser.add_argument("--input", required=True, help="candidate final.txt path")
@@ -73,8 +95,12 @@ def main() -> int:
     parser.add_argument("--controller-base-port", type=int, default=53100)
     parser.add_argument("--details-csv", default=None)
     parser.add_argument("--summary-json", default=None)
+    parser.add_argument("--region-counts-csv", default=None)
     parser.add_argument("--min-lines", type=int, default=30)
     parser.add_argument("--min-regions", type=int, default=3)
+    parser.add_argument("--country-max", type=int, default=0, help="maximum verified output nodes per actual country; 0 disables")
+    parser.add_argument("--country-max-overrides", default="", help="per-country verified output cap, e.g. HK:20,DE:20")
+    parser.add_argument("--max-final-candidates", type=int, default=0, help="maximum verified output nodes; 0 disables")
     args_ns = parser.parse_args()
 
     input_path = Path(args_ns.input)
@@ -130,8 +156,8 @@ def main() -> int:
     results = tool.run_geo_batch(geo_items, template_proxy, runtime_args, "final_true_exit_verify")
     elapsed = time.time() - started
 
-    meta_by_key = {row["candidate"].key: row for row in rows}
     result_by_key = {result.candidate.key: result for result in results}
+    candidate_key_by_line_no = {int(row["line_no"]): row["candidate"].key for row in rows}
     detail_rows: list[dict[str, Any]] = []
     verified_results: list[tool.TestResult] = []
     for row in rows:
@@ -168,10 +194,26 @@ def main() -> int:
         sample = ", ".join(f"{row['line_no']}:{row['endpoint']}" for row in unknown_rows[:10])
         raise SystemExit(f"true-exit verification failed: unknown actual exits={len(unknown_rows)} sample={sample}")
 
-    write_verified_final(output_path, verified_results)
+    country_max_overrides = tool.parse_country_min(args_ns.country_max_overrides)
+    selected_results = select_verified_results(
+        verified_results,
+        country_max=max(0, int(args_ns.country_max)),
+        country_max_overrides=country_max_overrides,
+        max_final_candidates=max(0, int(args_ns.max_final_candidates)),
+    )
+    # Mark selection status without depending on endpoint uniqueness beyond the
+    # already parsed candidate key map.
+    selected_endpoint_keys = {result.candidate.key for result in selected_results}
+    for row in detail_rows:
+        candidate_key = candidate_key_by_line_no[int(row["line_no"])]
+        row["selected_in_output"] = candidate_key in selected_endpoint_keys
+
+    write_verified_final(output_path, selected_results)
     ok, message = tool.validate_final_output(output_path, min_lines=args_ns.min_lines, min_regions=args_ns.min_regions)
     if not ok:
         raise SystemExit(message)
+    if args_ns.region_counts_csv:
+        tool.write_region_counts(Path(args_ns.region_counts_csv), verified_results, selected_results)
 
     if args_ns.details_csv:
         details_path = Path(args_ns.details_csv)
@@ -193,6 +235,7 @@ def main() -> int:
                 "geo_selected_provider",
                 "geo_fallback_used",
                 "geo_evidence",
+                "selected_in_output",
                 "raw_line",
             ]
             writer = csv.DictWriter(handle, fieldnames=fieldnames)
@@ -207,13 +250,19 @@ def main() -> int:
         "providers": runtime_args.geo_providers_resolved,
         "elapsed_seconds": round(elapsed, 3),
         "input_count": len(rows),
-        "output_count": len(verified_results),
+        "output_count": len(selected_results),
         "input_comparable_count": len(input_comparable),
         "input_consistent_count": len(input_comparable) - len(input_mismatch),
         "input_mismatch_count": len(input_mismatch),
         "unknown_actual_count": len(unknown_rows),
+        "verified_count": len(verified_results),
+        "selected_count": len(selected_results),
+        "dropped_by_post_verify_cap": len(verified_results) - len(selected_results),
+        "country_max": max(0, int(args_ns.country_max)),
+        "country_max_overrides": country_max_overrides,
         "input_by_expected_country": dict(sorted(Counter(row["expected_country"] for row in detail_rows).items())),
-        "output_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),
+        "verified_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),
+        "output_by_actual_country": dict(sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in selected_results).items())),
         "validation": message,
     }
     if args_ns.summary_json:
