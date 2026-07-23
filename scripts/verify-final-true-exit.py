@@ -86,18 +86,31 @@ def select_verified_results(
     country_max: int,
     country_max_overrides: dict[str, int],
     max_final_candidates: int,
+    host_max_ports: int = 0,
+    exit_ip_max: int = 0,
 ) -> list[tool.TestResult]:
     selected: list[tool.TestResult] = []
     counts: Counter[str] = Counter()
+    host_counts: Counter[str] = Counter()
+    exit_ip_counts: Counter[str] = Counter()
     for result in results:
         code = (result.exit_country_code or "").upper()
         if not code:
             continue
+        host = result.candidate.host.lower()
+        exit_ip = str(result.exit_ip or "").strip().lower()
         limit = country_max_overrides.get(code, country_max)
         if limit > 0 and counts[code] >= limit:
             continue
+        if host_max_ports > 0 and host_counts[host] >= host_max_ports:
+            continue
+        if exit_ip and exit_ip_max > 0 and exit_ip_counts[exit_ip] >= exit_ip_max:
+            continue
         selected.append(result)
         counts[code] += 1
+        host_counts[host] += 1
+        if exit_ip:
+            exit_ip_counts[exit_ip] += 1
         if max_final_candidates > 0 and len(selected) >= max_final_candidates:
             break
     return selected
@@ -110,7 +123,12 @@ def main() -> int:
     parser.add_argument("--workdir", required=True, help="verification work directory")
     parser.add_argument("--template", required=True, help="mihomo template YAML")
     parser.add_argument("--mihomo", required=True, help="mihomo executable")
-    parser.add_argument("--providers", default="youtube,ping0,ipwhois", help="geo providers")
+    parser.add_argument("--providers", default="youtube,ping0", help="diagnostic provider list; strict mode uses YouTube and Ping0 only")
+    parser.add_argument(
+        "--legacy-provider-vote",
+        action="store_true",
+        help="manual diagnostic compatibility only; automatic publishing must not use this option",
+    )
     parser.add_argument("--geo-concurrency", type=int, default=16)
     parser.add_argument("--timeout", type=int, default=10)
     parser.add_argument("--start-timeout", type=float, default=8.0)
@@ -124,7 +142,14 @@ def main() -> int:
     parser.add_argument("--country-max", type=int, default=0, help="maximum verified output nodes per actual country; 0 disables")
     parser.add_argument("--country-max-overrides", default="", help="per-country verified output cap, e.g. HK:20,DE:20")
     parser.add_argument("--actual-country-aliases", default="", help="normalize live actual countries before labeling/capping, e.g. VN:HK")
+    parser.add_argument(
+        "--drop-unknown",
+        action="store_true",
+        help="exclude candidates whose live exit country cannot be resolved instead of failing verification",
+    )
     parser.add_argument("--max-final-candidates", type=int, default=0, help="maximum verified output nodes; 0 disables")
+    parser.add_argument("--host-max-ports", type=int, default=0, help="maximum selected ports per front host; 0 disables")
+    parser.add_argument("--exit-ip-max", type=int, default=0, help="maximum selected nodes per live true-exit IP; 0 disables")
     args_ns = parser.parse_args()
     actual_country_aliases = parse_country_aliases(args_ns.actual_country_aliases)
 
@@ -149,7 +174,12 @@ def main() -> int:
         start_timeout=float(args_ns.start_timeout),
         timeout=int(args_ns.timeout),
         geo_concurrency=max(1, int(args_ns.geo_concurrency)),
-        geo_providers_resolved=tool.parse_geo_providers(args_ns.providers),
+        geo_providers_resolved=(
+            tool.parse_geo_providers(args_ns.providers)
+            if args_ns.legacy_provider_vote
+            else ["youtube", "ping0"]
+        ),
+        geo_policy="auto" if args_ns.legacy_provider_vote else "youtube-ping0-strict",
         geo_cache_enabled=False,
         geo_cache={"version": tool.GEO_CACHE_VERSION, "entries": {}},
         geo_cache_ttl_hours=0,
@@ -225,15 +255,18 @@ def main() -> int:
                 "cf_colo": result.cf_colo or "" if result else "",
                 "geo_selected_provider": result.geo_selected_provider if result else "",
                 "geo_fallback_used": result.geo_fallback_used if result else "",
+                "geo_decision_status": result.geo_decision_status if result else "",
                 "geo_evidence": result.geo_evidence if result else "",
                 "raw_line": row["raw_line"],
             }
         )
 
     unknown_rows = [row for row in detail_rows if row["actual_country"] == "UNKNOWN"]
-    if unknown_rows:
+    if unknown_rows and not args_ns.drop_unknown:
         sample = ", ".join(f"{row['line_no']}:{row['endpoint']}" for row in unknown_rows[:10])
         raise SystemExit(f"true-exit verification failed: unknown actual exits={len(unknown_rows)} sample={sample}")
+    if unknown_rows:
+        print(f"Dropping unresolved true exits: {len(unknown_rows)}", flush=True)
 
     country_max_overrides = tool.parse_country_min(args_ns.country_max_overrides)
     selected_results = select_verified_results(
@@ -241,6 +274,8 @@ def main() -> int:
         country_max=max(0, int(args_ns.country_max)),
         country_max_overrides=country_max_overrides,
         max_final_candidates=max(0, int(args_ns.max_final_candidates)),
+        host_max_ports=max(0, int(args_ns.host_max_ports)),
+        exit_ip_max=max(0, int(args_ns.exit_ip_max)),
     )
     # Mark selection status without depending on endpoint uniqueness beyond the
     # already parsed candidate key map.
@@ -278,6 +313,7 @@ def main() -> int:
                 "cf_colo",
                 "geo_selected_provider",
                 "geo_fallback_used",
+                "geo_decision_status",
                 "geo_evidence",
                 "selected_in_output",
                 "raw_line",
@@ -292,6 +328,7 @@ def main() -> int:
         "input": str(input_path),
         "output": str(output_path),
         "providers": runtime_args.geo_providers_resolved,
+        "geo_policy": runtime_args.geo_policy,
         "elapsed_seconds": round(elapsed, 3),
         "input_count": len(rows),
         "output_count": len(selected_results),
@@ -305,6 +342,8 @@ def main() -> int:
         "country_max": max(0, int(args_ns.country_max)),
         "country_max_overrides": country_max_overrides,
         "actual_country_aliases": actual_country_aliases,
+        "host_max_ports": max(0, int(args_ns.host_max_ports)),
+        "exit_ip_max": max(0, int(args_ns.exit_ip_max)),
         "input_by_expected_country": dict(sorted(Counter(row["expected_country"] for row in detail_rows).items())),
         "verified_by_raw_actual_country": dict(sorted(Counter(row["raw_actual_country"] for row in detail_rows).items())),
         "verified_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),

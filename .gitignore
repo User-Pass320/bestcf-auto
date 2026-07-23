@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+.wrangler/
 bin/
 bestcf_work/
 bestcf_work_*/
@@ -10,3 +11,8 @@ template.yaml
 template.b64.txt
 *.log
 tools/cfst/
+public/*_cn-local.*
+public/direct_preflight_*.json
+public/multi_line_*
+public/hybrid_pool_run_summary.json
+public/bestcf_final.txt.new

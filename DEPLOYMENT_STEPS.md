@@ -1,267 +1,115 @@
-# 部署步骤
+# SelfDeploy 部署步骤
 
-## 0. 当前本地状态
+## 1. 路径和边界
 
-本地项目目录：
+状态化 SelfDeploy：
+
+```text
+C:\Users\sundewang\edgetunnel-bestcf-selfdeploy
+```
+
+保留的另一条技术路径：
 
 ```text
 C:\Users\sundewang\bestcf-auto
 ```
 
-已准备：
+两个项目不共用数据库和工作目录。
 
-```text
-bestcf_tool.py
-requirements.txt
-template.example.yaml
-public/index.html
-public/bestcf_final.txt
-.github/workflows/update.yml
-```
+## 2. 一次性迁移和基线复测
 
-未提交、不会上传：
-
-```text
-template.yaml
-template.b64.txt
-bestcf_work/
-```
-
-## 1. 修改 edgetunnel 管理密码
-
-你之前公开过后台地址和密码，先改掉 `ADMIN`。
-
-Cloudflare 路径：
-
-```text
-Workers & Pages
-test1-45b
-Settings
-Environment variables
-ADMIN
-修改为新密码
-Redeploy
-```
-
-验证：
-
-```text
-旧密码不能登录
-新密码可以登录
-```
-
-## 2. 创建 GitHub 仓库
-
-浏览器打开：
-
-```text
-https://github.com/new
-```
-
-建议配置：
-
-```text
-Owner: User-Pass320
-Repository name: bestcf-auto
-Visibility: Public
-不要勾选 Add a README file
-不要勾选 Add .gitignore
-不要选择 License
-```
-
-创建后仓库地址应为：
-
-```text
-https://github.com/User-Pass320/bestcf-auto
-```
-
-## 3. 推送本地仓库
-
-在 PowerShell 执行：
+迁移现有候选、复验结果和正式订阅后，使用 CN 直连网络执行：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\push-to-github.ps1
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Prebuild `
+  -ExpectedInterfaceIndex 19
 ```
 
-验证：
+该模式只建立 SQLite 观测基线，不部署 Pages，不替换线上订阅。
+
+主要产物：
 
 ```text
-GitHub 仓库能看到 bestcf_tool.py
-GitHub 仓库能看到 .github/workflows/update.yml
-GitHub 仓库看不到 template.yaml
-GitHub 仓库看不到 template.b64.txt
+bestcf_work\bestcf_observations.sqlite
+bestcf_work\prebuild_nonhk_candidates.csv
+bestcf_work\prebuild_nonhk_audit.csv
+bestcf_work\stateful_run_summary.json
 ```
 
-## 4. 添加 GitHub Actions Secret
+## 3. 影子验证
 
-先复制 Secret 值：
+Wednesday 逻辑：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\copy-template-secret.ps1
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Shadow `
+  -EffectiveMode Wednesday `
+  -ExpectedInterfaceIndex 19
 ```
 
-GitHub 设置路径：
-
-```text
-User-Pass320/bestcf-auto
-Settings
-Secrets and variables
-Actions
-New repository secret
-```
-
-填写：
-
-```text
-Name: TEMPLATE_YAML_B64
-Secret: 粘贴剪贴板内容
-```
-
-验证：
-
-```text
-Actions secrets 列表出现 TEMPLATE_YAML_B64
-```
-
-## 5. 手动运行 GitHub Actions
-
-GitHub 路径：
-
-```text
-User-Pass320/bestcf-auto
-Actions
-Update BestCF
-Run workflow
-Branch: main
-Run workflow
-```
-
-验证：
-
-```text
-工作流成功
-public/bestcf_final.txt 被更新提交
-```
-
-如果失败，优先看这几个步骤：
-
-```text
-Restore private template
-Download mihomo
-Run BestCF
-Commit generated files
-```
-
-## 6. 用 Cloudflare Pages 托管 public
-
-Cloudflare 路径：
-
-```text
-Workers & Pages
-Create application
-Pages
-Connect to Git
-选择 User-Pass320/bestcf-auto
-```
-
-构建配置：
-
-```text
-Build command: 留空或 true
-Build output directory: public
-Root directory: 留空
-```
-
-部署完成后，记录地址：
-
-```text
-https://你的项目名.pages.dev/bestcf_final.txt
-```
-
-建议项目名：
-
-```text
-bestcf-auto
-```
-
-则地址类似：
-
-```text
-https://bestcf-auto.pages.dev/bestcf_final.txt
-```
-
-## 7. 接入 edgetunnel 后台
-
-打开：
-
-```text
-https://test1-45b.pages.dev/admin
-```
-
-在：
-
-```text
-优选订阅生成
-自定义优选地址
-```
-
-填入：
-
-```text
-https://bestcf-auto.pages.dev/bestcf_final.txt
-```
-
-保存。
-
-## 8. Clash 使用方式
-
-Clash / Clash Verge 使用 edgetunnel 生成的订阅链接：
-
-```text
-https://test1-45b.pages.dev/sub?token=你的token
-```
-
-不要直接把 `bestcf_final.txt` 当 Clash 订阅。
-
-## 9. 本机定时更新
-
-GitHub Actions 会定时尝试更新，但云端网络不一定能测出适合你本地使用的 Cloudflare 优选结果。稳定方案是用本机 Windows 定时任务运行脚本，并把新结果推送到 GitHub；Cloudflare Pages 会跟随 GitHub 仓库自动重新部署。
-
-先手动跑一次：
+Sunday 逻辑：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\update-local-and-push.ps1
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Shadow `
+  -EffectiveMode Sunday `
+  -ExpectedInterfaceIndex 19
 ```
 
-注册每 6 小时运行一次的 Windows 定时任务：
+影子模式积累独立严格确认次数，但不生成正式发布事务。
+
+## 4. 正式发布
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\register-windows-task.ps1
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Manual `
+  -EffectiveMode Sunday `
+  -ExpectedInterfaceIndex 19
 ```
 
-立即触发一次定时任务：
-
-```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\run-windows-task-now.ps1
-```
-
-查看任务状态：
-
-```powershell
-Get-ScheduledTask -TaskName "BestCF Auto Update"
-Get-ScheduledTaskInfo -TaskName "BestCF Auto Update"
-```
-
-该任务要求：
+发布顺序固定为：
 
 ```text
-本机已登录 Windows
-本机 GitHub 凭据可 push 到 User-Pass320/bestcf-auto
-E:\v2rayN-windows-64\bin\mihomo\mihomo.exe 存在
-template.yaml 存在
+生成 staging
+  -> 校验节点数和地区数
+  -> Wrangler 部署 Pages
+  -> 下载线上 bestcf_final.txt
+  -> 在线 SHA-256 与 staging 一致
+  -> finalize-publish.py 提交 SQLite published 状态
+  -> 原子替换本地 public\bestcf_final.txt
+```
+
+部署或在线校验失败时，不提交 SQLite 发布状态，也不替换本地正式文件。
+
+## 5. 定时任务
+
+```powershell
+cd C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bestcf-auto
+.\scripts\register-selfdeploy-tasks.ps1 -ExpectedInterfaceIndex 19
+```
+
+预期任务：
+
+```text
+BestCF SelfDeploy Wednesday：周三 03:00
+BestCF SelfDeploy Sunday：周日 03:00
+BestCF Auto Update：周日 04:00，继续指向 C:\Users\sundewang\bestcf-auto
+```
+
+旧的每 6 小时 `BestCF Auto SelfDeploy Update` 保持禁用。
+
+## 6. 验收
+
+```powershell
+python -m unittest discover -s .\tests -v
+python .\bestcf_tool.py validate-output .\public\bestcf_final.txt --min-lines 10 --min-regions 3
+Get-ScheduledTask | Where-Object TaskName -like '*BestCF*'
+Get-FileHash .\public\bestcf_final.txt -Algorithm SHA256
+```
+
+在线文件：
+
+```text
+https://bestcf-auto-stitchb9283.pages.dev/bestcf_final.txt
 ```

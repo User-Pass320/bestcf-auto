@@ -5,7 +5,7 @@
 ## 数据链路
 
 ```text
-GitHub Actions 定时运行 bestcf_tool.py
+本机 SelfDeploy 定时任务运行状态化更新
   -> 生成 public/bestcf_final.txt
   -> Cloudflare Pages 或 GitHub Pages 托管 bestcf_final.txt
   -> edgetunnel 后台“自定义优选地址”填写该 URL
@@ -13,6 +13,71 @@ GitHub Actions 定时运行 bestcf_tool.py
 ```
 
 `bestcf_final.txt` 不是 Clash 直接订阅文件；它是 edgetunnel 的优选源输入。
+
+## SelfDeploy 状态化链路
+
+`C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1` 使用本机 CN 直连环境执行：
+
+```text
+CN 直连硬预检
+  -> SQLite 按状态和 next_test_at 选择到期候选
+  -> YouTube/Ping0 严格双主判；VN 归一化为 HK
+  -> 地区一致后再执行分层延迟测试
+  -> active 三次延迟；轮换池一次延迟；发布前补齐三次
+  -> HK:20、DE:20、其他国家:30；同 host 按 1/2/6 软填充
+  -> 同真实出口 IP 最多 3 条
+  -> staging 部署 Cloudflare Pages
+  -> 在线 SHA-256 一致后提交 SQLite 发布状态
+```
+
+源文件下载可以使用系统代理；`CFST` 和候选 Mihomo 进程会清除代理环境变量。预检要求：
+
+- Cloudflare Trace `loc=CN`；
+- IPv4 默认路由使用指定物理网卡；
+- 没有活动的 TUN/TAP/Wintun/VPN/Clash/Mihomo 等虚拟代理网卡。
+
+现有 CSV、最终复验和正式订阅会迁移进 SQLite。冻结快照导入 8,677 条候选，其中 852 条进入一次性非 HK 基线复测。基线和影子运行不覆盖当前线上订阅。
+
+首次基线复测：
+
+```powershell
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Prebuild `
+  -ExpectedInterfaceIndex 19
+```
+
+影子运行：
+
+```powershell
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Shadow `
+  -EffectiveMode Wednesday `
+  -ExpectedInterfaceIndex 19
+```
+
+常规手动运行但只生成 staging、不部署：
+
+```powershell
+& 'C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\update-bestcf-and-deploy.ps1' `
+  -RunMode Manual `
+  -EffectiveMode Sunday `
+  -ExpectedInterfaceIndex 19 `
+  -SkipCfst `
+  -SkipDeploy
+```
+
+常规调度参数：
+
+```text
+周三 03:00：全部正式非 HK、到期候补和轮换分片；不运行 CFST
+周日 03:00：同上，并低频复测 HK、运行两个 CFST 端口
+CFST 三周轮换：443/2053 -> 2083/2087 -> 2096/8443
+每轮软上限 600、硬上限 800
+```
+
+增量来源包括 `bestcf.pages.dev` 已发现列表、`free-nodes/clashfree`、`free-nodes/v2rayfree` 和 `chengaopan/AutoMergePublicNodes`。第三方地区标签只用于候选调度，发布地区必须由 YouTube/Ping0 本轮严格结果决定。
+
+`C:\Users\sundewang\bestcf-auto` 是保留的另一条技术路径，其 `BestCF Auto Update` 任务继续在周日 04:00 运行。
 
 ## 私密模板
 
@@ -28,7 +93,7 @@ Secret value: template.yaml 的 Base64 内容
 本地生成 Base64 的 PowerShell 命令：
 
 ```powershell
-[Convert]::ToBase64String([IO.File]::ReadAllBytes("C:\Users\sundewang\bestcf-auto\template.yaml"))
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bestcf-auto\template.yaml"))
 ```
 
 GitHub 设置路径：
@@ -44,9 +109,9 @@ New repository secret
 ## 本地验证
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-python -m py_compile bestcf_tool.py
-python bestcf_tool.py --help
+cd C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bestcf-auto
+python -m py_compile bestcf_tool.py geo_policy.py state_store.py scheduler.py
+python -m unittest discover -s .\tests -v
 ```
 
 快速功能验证：
@@ -88,46 +153,22 @@ Clash / Clash Verge 使用 edgetunnel 输出的订阅：
 https://test1-45b.pages.dev/sub?token=...
 ```
 
-## 稳定定时更新
+## SelfDeploy 定时任务
 
-GitHub Actions 会按 `.github/workflows/update.yml` 每 6 小时尝试云端更新，也可手动触发；如果云端生成结果未通过 `bestcf_tool.py validate-output` 校验，workflow 会保留现有 `public/` 文件，不覆盖有效结果。
-
-稳定更新建议使用本机 Windows 定时任务：
+注册周三、周日任务：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
-.\scripts\register-windows-task.ps1
+cd C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bestcf-auto
+.\scripts\register-selfdeploy-tasks.ps1
 ```
 
-本机任务每 6 小时运行，作为更贴近本地网络质量的主更新路径：
+注册结果：
 
 ```text
-scripts/update-local-and-push.ps1
+BestCF SelfDeploy Wednesday：周三 03:00
+BestCF SelfDeploy Sunday：周日 03:00
+BestCF Auto Update：周日 04:00，保持原项目路径不变
 ```
 
-它会本地生成新的 `public/bestcf_final.txt`，校验至少 10 行，然后提交并推送到 GitHub。Cloudflare Pages 会自动重新部署 `public/`。
-
-本机更新默认禁用 `geo` 与 `geo hint` 缓存，并使用 `--geo-providers youtube,ping0,ipwhois --selection-mode all-regions --country-max 35 --max-final-candidates 0 --geo-concurrency 16`。它会对本轮真连接通过的候选同时执行 `https://www.youtube.com/`、`https://ip.ping0.cc/geo` 与 `https://ipwho.is/` 交叉验证；最终地区按 `YouTube GL > ping0 > ipwho.is` 优先级选择，不再按偏好国家提前过滤。只有探测服务明确给出出口地区的候选才参与最终选择，最终按真实出口地区分组，每个出口地区最多写入 35 个节点。
-
-为减少大量无效香港出口探测，本机与 GitHub Actions 更新默认启用本轮运行时 HK suppression：
-
-```text
---hk-suppression
---hk-suppress-strategy worker
---hk-probe-cap 105
---hk-suppress-bucket-scope prefix
---hk-suppress-ipv4-prefix 20
---hk-suppress-ipv6-prefix 40
---hk-suppress-min-samples 6
---hk-suppress-confidence 0.98
---hk-suppress-explore-rate 0.05
-```
-
-该策略只使用本轮 `youtube/ping0/ipwhois` 实测结果，不使用持久 geo 缓存或 geo hint 缓存；只压制已实测为高置信 HK 的 IP 前缀桶，未知前缀与已出现非 HK 的前缀不会被压制。旧 825 个 geo 候选池离线回放显示：`prefix /20-/40 + min_samples=6 + hk_probe_cap=105` 可跳过约 185 个 HK 探测，JP/SG/KR/TW 误伤为 0；`min_samples=4/5` 会误伤 JP，因此不采用。
-
-未启用 `--selection-mode all-regions` 时，默认 `balanced` 配置会限制每个出口国家最多 50 个节点，避免单个国家占满结果。当前 all-regions 本机更新会把超过每地区 35 个上限的已探测候选写入：
-
-```text
-public/bestcf_other_regions.csv
-```
+`.github/workflows/update.yml` 只保留手动 `workflow_dispatch`，不作为 SelfDeploy 的定时发布链路。
 

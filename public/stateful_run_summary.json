@@ -1,0 +1,74 @@
+{
+  "artifact_sha256": "1D1A7F9A546F75E9ED672075085813C7E3A3FA7F89A6290C921D4ED9C29C89B2",
+  "candidate_count": 800,
+  "cfst": {
+    "new_candidate_count": 855,
+    "per_port": {
+      "2096": {
+        "candidate_count": 424,
+        "new_candidate_count": 422
+      },
+      "8443": {
+        "candidate_count": 435,
+        "new_candidate_count": 433
+      }
+    },
+    "ports": [
+      2096,
+      8443
+    ]
+  },
+  "effective_mode": "sunday",
+  "failure_count": 247,
+  "mode": "manual",
+  "output": "C:\\Users\\sundewang\\edgetunnel-bestcf-selfdeploy\\bestcf-auto\\bestcf_work\\staging\\bestcf_final.txt",
+  "policy_version": "youtube_ping0_strict_v1",
+  "run_id": 4,
+  "selected_count": 102,
+  "source_sync": {
+    "fetch_failure_count": 1,
+    "new_candidate_count": 1630,
+    "parse_failure_count": 21,
+    "parsed_candidate_count": 6095,
+    "raw_row_count": 3351,
+    "source_count": 74
+  },
+  "stage_timings": {
+    "cfst_rotation": 114.89078459999291,
+    "latency": 33.47367229999509,
+    "promotion": 15.33840519998921,
+    "source_sync": 35.13354960002471,
+    "strict_geo": 211.99254939996172,
+    "total": 411.10035199997947
+  },
+  "state_counts": {
+    "baseline": 852,
+    "by_country": {
+      "AU": 1,
+      "DE": 21,
+      "FR": 37,
+      "HK": 5276,
+      "IN": 9,
+      "JP": 148,
+      "MY": 1,
+      "NL": 1,
+      "SG": 548,
+      "TH": 1,
+      "TW": 7,
+      "UNKNOWN": 5007,
+      "US": 105
+    },
+    "by_state": {
+      "archive_legacy": 4742,
+      "cooldown": 77,
+      "cooldown_legacy": 2598,
+      "geo_mismatch": 43,
+      "geo_unknown": 539,
+      "hot": 1246,
+      "new": 1827,
+      "probation": 90
+    },
+    "total": 11162
+  },
+  "success_count": 559
+}

@@ -11,9 +11,11 @@ proxy egress region, and writes lines in this exact format:
 from __future__ import annotations
 
 import argparse
+import base64
 import collections
 import csv
 import dataclasses
+import datetime as dt
 import hashlib
 import http.client
 import ipaddress
@@ -37,6 +39,8 @@ from pathlib import Path
 from typing import Any
 
 import yaml
+
+import geo_policy as strict_geo_policy
 
 
 DEFAULT_SOURCES = {
@@ -63,6 +67,7 @@ DEFAULT_SOURCES = {
     "domain_ircf_all": "https://bestcf.pages.dev/domain/ircf/all.txt",
     "vps789_top100": "https://bestcf.pages.dev/vps789/top100.txt",
     "tiancheng2": "https://bestcf.pages.dev/tiancheng2/all.txt",
+    "s5gy": "https://bestcf.pages.dev/s5gy/all.txt",
     "junzhen_bj": "https://cf.junzhen.qzz.io/best_ips_bj.txt",
     "love_ztm_best_ips": "https://raw.githubusercontent.com/love-ztm/cfip/refs/heads/main/best_ips.txt",
     "gshtwy_wetest_v4": "https://raw.githubusercontent.com/gshtwy/CF-DNS-Clone/refs/heads/main/wetest-cloudflare-v4.txt",
@@ -141,6 +146,7 @@ BESTCF_SOURCE_PATH_ALLOW = (
     "/luoli/",
     "/moistr/",
     "/nirevil/",
+    "/s5gy/",
     "/tiancheng/",
     "/tiancheng2/",
     "/uouin/",
@@ -235,6 +241,12 @@ CLOUDFLARE_CIDRS = [
     "2c0f:f248::/32",
 ]
 CF_NETWORKS = [ipaddress.ip_network(cidr) for cidr in CLOUDFLARE_CIDRS]
+CF_TLS_PORTS = (443, 2053, 2083, 2087, 2096, 8443)
+V2RAYFREE_CONTENTS_API = "https://api.github.com/repos/free-nodes/v2rayfree/contents?ref=main"
+V2RAYFREE_FILE_RE = re.compile(r"^v(?P<date>\d{8})(?P<batch>\d+)$")
+CLASHFREE_CONTENTS_API = "https://api.github.com/repos/free-nodes/clashfree/contents?ref=main"
+CLASHFREE_FILE_RE = re.compile(r"^clash(?P<date>\d{8})\.ya?ml$", re.IGNORECASE)
+AUTOMERGE_META_URL = "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.meta.yml"
 
 CFST_COLO_COUNTRY = {
     "HKG": "HK",
@@ -300,6 +312,7 @@ class TestResult:
     geo_policy: str = DEFAULT_GEO_POLICY_VERSION
     geo_selected_provider: str = ""
     geo_fallback_used: bool = False
+    geo_decision_status: str = ""
     geo_hint_country: str = ""
     geo_hint_source: str = ""
     geo_cache_status: str = ""
@@ -321,6 +334,7 @@ class GeoDecision:
     policy: str = DEFAULT_GEO_POLICY_VERSION
     selected_provider: str = ""
     fallback_used: bool = False
+    decision_status: str = ""
 
 
 @dataclasses.dataclass(slots=True)
@@ -342,6 +356,7 @@ def geo_result_fields(geo: GeoDecision) -> dict[str, Any]:
         "geo_policy": geo.policy,
         "geo_selected_provider": geo.selected_provider,
         "geo_fallback_used": geo.fallback_used,
+        "geo_decision_status": geo.decision_status,
     }
 
 
@@ -411,6 +426,280 @@ def is_cloudflare_host(host: str) -> bool | None:
     except ValueError:
         return None
     return any(ip in network for network in CF_NETWORKS)
+
+
+def decode_base64_text(value: str) -> str | None:
+    """Decode standard or URL-safe base64 without requiring source padding."""
+    compact = "".join(str(value or "").strip().split())
+    if not compact:
+        return None
+    compact += "=" * (-len(compact) % 4)
+    try:
+        return base64.urlsafe_b64decode(compact.encode("ascii")).decode("utf-8", errors="replace")
+    except (ValueError, UnicodeEncodeError):
+        return None
+
+
+def decode_subscription_lines(content: str) -> list[str]:
+    text = str(content or "").lstrip("\ufeff").strip()
+    if not text:
+        return []
+    decoded = text if "://" in text else (decode_base64_text(text) or "")
+    return [line.strip() for line in decoded.splitlines() if line.strip()]
+
+
+def valid_external_endpoint(host: str | None, port: int | str | None) -> tuple[str, int] | None:
+    host = str(host or "").strip().strip("[]")
+    try:
+        port_value = int(str(port or "0"))
+    except ValueError:
+        return None
+    if not host or not 1 <= port_value <= 65535 or any(char.isspace() for char in host):
+        return None
+    return host, port_value
+
+
+def endpoint_from_proxy_uri(uri: str) -> tuple[str, int] | None:
+    """Extract only the public server endpoint from common subscription URIs."""
+    raw = str(uri or "").strip()
+    if "://" not in raw:
+        return None
+    scheme, payload = raw.split("://", 1)
+    scheme = scheme.lower()
+
+    if scheme == "vmess":
+        decoded = decode_base64_text(payload.split("#", 1)[0])
+        if not decoded:
+            return None
+        try:
+            data = json.loads(decoded)
+        except json.JSONDecodeError:
+            return None
+        if not isinstance(data, dict):
+            return None
+        return valid_external_endpoint(data.get("add") or data.get("host"), data.get("port"))
+
+    if scheme == "ssr":
+        decoded = decode_base64_text(payload.split("#", 1)[0])
+        if not decoded:
+            return None
+        main = decoded.split("/?", 1)[0]
+        parts = main.split(":")
+        if len(parts) < 6:
+            return None
+        return valid_external_endpoint(parts[0], parts[1])
+
+    parse_target = raw
+    if scheme == "ss" and "@" not in payload.split("?", 1)[0]:
+        encoded = payload.split("#", 1)[0].split("?", 1)[0]
+        decoded = decode_base64_text(encoded)
+        if not decoded or "@" not in decoded:
+            return None
+        parse_target = "ss://" + decoded
+
+    try:
+        parsed = urllib.parse.urlsplit(parse_target)
+        return valid_external_endpoint(parsed.hostname, parsed.port)
+    except ValueError:
+        return None
+
+
+def extract_subscription_endpoints(content: str) -> list[tuple[str, int]]:
+    found: dict[tuple[str, int], tuple[str, int]] = {}
+    for line in decode_subscription_lines(content):
+        endpoint = endpoint_from_proxy_uri(line)
+        if endpoint is None:
+            continue
+        key = (endpoint[0].lower(), endpoint[1])
+        found.setdefault(key, endpoint)
+    return list(found.values())
+
+
+def fetch_v2rayfree_candidate_rows(timeout: int) -> tuple[list[tuple[str, str]], str, str]:
+    """Discover the newest v2rayfree subscription and expose endpoint-only rows."""
+    ok, listing_text = fetch_url(V2RAYFREE_CONTENTS_API, timeout=timeout)
+    if not ok:
+        return [], V2RAYFREE_CONTENTS_API, f"contents discovery failed: {listing_text}"
+    try:
+        listing = json.loads(listing_text)
+    except json.JSONDecodeError as exc:
+        return [], V2RAYFREE_CONTENTS_API, f"invalid contents response: {exc}"
+    if not isinstance(listing, list):
+        return [], V2RAYFREE_CONTENTS_API, "contents response is not a list"
+
+    files: list[tuple[str, str]] = []
+    for entry in listing:
+        if not isinstance(entry, dict):
+            continue
+        name = str(entry.get("name") or "")
+        url = str(entry.get("download_url") or "")
+        if V2RAYFREE_FILE_RE.fullmatch(name) and url:
+            files.append((name, url))
+    if not files:
+        return [], V2RAYFREE_CONTENTS_API, "no vYYYYMMDDN subscription file found"
+    _name, download_url = max(files, key=lambda item: item[0])
+    ok, content = fetch_url(download_url, timeout=max(timeout, 30))
+    if not ok:
+        return [], download_url, f"subscription fetch failed: {content}"
+    endpoints = extract_subscription_endpoints(content)
+    if not endpoints:
+        return [], download_url, "subscription contained no parseable endpoints"
+    rows = [
+        ("github_v2rayfree", f"{format_endpoint(host, port)}#github-v2rayfree")
+        for host, port in endpoints
+    ]
+    return rows, download_url, ""
+
+
+def extract_clash_yaml_endpoints(content: str) -> list[tuple[str, int]]:
+    try:
+        payload = yaml.safe_load(content)
+    except yaml.YAMLError:
+        return []
+    if not isinstance(payload, dict) or not isinstance(payload.get("proxies"), list):
+        return []
+    endpoints: list[tuple[str, int]] = []
+    seen: set[tuple[str, int]] = set()
+    for proxy in payload["proxies"]:
+        if not isinstance(proxy, dict):
+            continue
+        host = str(proxy.get("server") or "").strip().strip("[]")
+        try:
+            port = int(proxy.get("port") or 0)
+        except (TypeError, ValueError):
+            continue
+        if not host or not (1 <= port <= 65535):
+            continue
+        key = (host.lower(), port)
+        if key in seen:
+            continue
+        seen.add(key)
+        endpoints.append((host, port))
+    return endpoints
+
+
+def fetch_clashfree_candidate_rows(timeout: int) -> tuple[list[tuple[str, str]], str, str]:
+    ok, listing_text = fetch_url(CLASHFREE_CONTENTS_API, timeout=timeout)
+    if not ok:
+        return [], CLASHFREE_CONTENTS_API, f"contents discovery failed: {listing_text}"
+    try:
+        listing = json.loads(listing_text)
+    except json.JSONDecodeError as exc:
+        return [], CLASHFREE_CONTENTS_API, f"invalid contents response: {exc}"
+    files: list[tuple[str, str, int]] = []
+    if isinstance(listing, list):
+        for entry in listing:
+            if not isinstance(entry, dict):
+                continue
+            name = str(entry.get("name") or "")
+            url = str(entry.get("download_url") or "")
+            size = int(entry.get("size") or 0)
+            if CLASHFREE_FILE_RE.fullmatch(name) and url and size > 0:
+                files.append((name, url, size))
+    if not files:
+        return [], CLASHFREE_CONTENTS_API, "no non-empty clashYYYYMMDD YAML file found"
+    _name, download_url, _size = max(files, key=lambda item: item[0])
+    ok, content = fetch_url(download_url, timeout=max(timeout, 30))
+    if not ok:
+        return [], download_url, f"subscription fetch failed: {content}"
+    endpoints = extract_clash_yaml_endpoints(content)
+    rows = [
+        ("github_clashfree", f"{format_endpoint(host, port)}#github-clashfree")
+        for host, port in endpoints
+    ]
+    return rows, download_url, "" if rows else "latest Clash YAML contains no endpoint candidates"
+
+
+def fetch_automerge_candidate_rows(timeout: int) -> tuple[list[tuple[str, str]], str, str]:
+    ok, content = fetch_url(AUTOMERGE_META_URL, timeout=max(timeout, 30))
+    if not ok:
+        return [], AUTOMERGE_META_URL, f"subscription fetch failed: {content}"
+    endpoints = extract_clash_yaml_endpoints(content)
+    rows = [
+        ("github_automerge", f"{format_endpoint(host, port)}#github-automerge")
+        for host, port in endpoints
+    ]
+    return rows, AUTOMERGE_META_URL, "" if rows else "AutoMerge list.meta.yml contains no endpoint candidates"
+
+
+def resolve_host_cloudflare_status(host: str) -> bool | None:
+    current = is_cloudflare_host(host)
+    if current is not None:
+        return current
+    try:
+        addresses = {
+            str(item[4][0]).split("%", 1)[0]
+            for item in socket.getaddrinfo(host, None, type=socket.SOCK_STREAM)
+            if item and item[4]
+        }
+    except (OSError, UnicodeError):
+        return None
+    statuses = [is_cloudflare_host(address) for address in addresses]
+    if not statuses or any(status is None for status in statuses):
+        return None
+    return all(status is True for status in statuses)
+
+
+def classify_candidate_domains(candidates: list[Candidate], concurrency: int = 16) -> None:
+    unresolved_hosts = sorted({item.host for item in candidates if item.is_cloudflare is None})
+    if not unresolved_hosts:
+        return
+    resolved: dict[str, bool | None] = {}
+    with ThreadPoolExecutor(max_workers=min(max(1, concurrency), len(unresolved_hosts))) as pool:
+        future_map = {pool.submit(resolve_host_cloudflare_status, host): host for host in unresolved_hosts}
+        for future in as_completed(future_map):
+            host = future_map[future]
+            try:
+                resolved[host.lower()] = future.result()
+            except Exception:
+                resolved[host.lower()] = None
+    for candidate in candidates:
+        if candidate.is_cloudflare is None:
+            candidate.is_cloudflare = resolved.get(candidate.host.lower())
+
+
+def parse_cloudflare_tls_ports(value: str | None) -> list[int]:
+    if not value:
+        return []
+    ports: list[int] = []
+    for item in str(value).split(","):
+        item = item.strip()
+        if not item:
+            continue
+        port = int(item)
+        if port not in CF_TLS_PORTS:
+            raise ValueError(f"unsupported Cloudflare TLS port: {port}; allowed={','.join(map(str, CF_TLS_PORTS))}")
+        if port not in ports:
+            ports.append(port)
+    return ports
+
+
+def expand_cloudflare_candidates(candidates: list[Candidate], ports: list[int]) -> list[Candidate]:
+    if not ports:
+        return list(candidates)
+    expanded: dict[tuple[str, int], Candidate] = {candidate.key: candidate for candidate in candidates}
+    seeds: dict[str, Candidate] = {}
+    for candidate in candidates:
+        if candidate.is_cloudflare is True:
+            seeds.setdefault(candidate.host.lower(), candidate)
+    for seed in seeds.values():
+        for port in ports:
+            key = (seed.host.lower(), port)
+            if key in expanded:
+                continue
+            endpoint = format_endpoint(seed.host, port)
+            expanded[key] = dataclasses.replace(
+                seed,
+                source=f"{seed.source}+cf_tls_port",
+                raw=f"{endpoint}#cf-tls-port|derived-from={seed.endpoint}",
+                port=port,
+                name=f"{seed.name}|cf-tls-{port}" if seed.name else f"cf-tls-{port}",
+                declared_speed=None,
+                declared_latency=None,
+                parse_format="cloudflare_tls_port_expansion",
+                port_inferred=False,
+            )
+    return list(expanded.values())
 
 
 def source_name_from_url(url: str) -> str:
@@ -1121,6 +1410,7 @@ def run_cfst_command(cfst_exe: Path, args: list[str], timeout: int) -> None:
         stderr=subprocess.STDOUT,
         timeout=timeout,
         check=False,
+        env=direct_subprocess_env(),
     )
     output = (proc.stdout or b"").decode(locale.getpreferredencoding(False) or "utf-8", errors="replace").strip()
     if output:
@@ -1545,36 +1835,7 @@ def write_cfst_post_reports(workdir: Path, results: list[TestResult], args: argp
     }
 
     if getattr(args, "pool_mode", "direct") != "direct":
-        pool_rows = update_edgetunnel_node_pool(workdir, results, bucket_by_key, args)
-        pool_ok_results = pool_rows_to_results(pool_rows)
-        pool_final_results = select_final_results(pool_ok_results, args)
-        write_final_from_results(
-            workdir / "bestcf_final.txt",
-            pool_final_results,
-        )
-        write_region_counts(workdir / "bestcf_region_counts.csv", pool_ok_results, pool_final_results)
-        write_edgetunnel_pool_summary(workdir, pool_rows, pool_final_results)
-        pool_status_counts = collections.Counter(str(row.get("status") or "unknown") for row in pool_rows)
-        pool_country_counts = collections.Counter(
-            str(row.get("true_exit_country") or "UNKNOWN").upper()
-            for row in pool_rows
-            if row.get("status") == "healthy"
-        )
-        run_summary.update(
-            {
-                "pool_file": str(workdir / args.pool_file),
-                "pool_total": len(pool_rows),
-                "pool_healthy": len(pool_ok_results),
-                "pool_final_count": len(pool_final_results),
-                "pool_status_counts": dict(sorted(pool_status_counts.items())),
-                "pool_healthy_country_counts": dict(sorted(pool_country_counts.items())),
-            }
-        )
-        print(
-            f"Pool final generated: healthy={len(pool_ok_results)} final={len(pool_final_results)} "
-            f"pool={workdir / args.pool_file}",
-            flush=True,
-        )
+        run_summary.update(write_incremental_pool_outputs(workdir, results, args))
 
     with (workdir / "cfst_run_summary.json").open("w", encoding="utf-8") as handle:
         json.dump(run_summary, handle, ensure_ascii=False, indent=2, sort_keys=True)
@@ -1585,6 +1846,7 @@ POOL_FIELDS = [
     "endpoint",
     "host",
     "port",
+    "line_id",
     "cfst_colo",
     "declared_country",
     "true_exit_country",
@@ -1594,11 +1856,14 @@ POOL_FIELDS = [
     "geo_evidence",
     "geo_selected_provider",
     "geo_fallback_used",
+    "geo_decision_status",
     "service_score",
     "google_ok",
     "youtube_ok",
     "gpt_ok",
     "proxy_latency_ms",
+    "proxy_latency_p90_ms",
+    "latency_sample_count",
     "cfst_tcp_latency_ms",
     "cfst_httping_latency_ms",
     "status",
@@ -1618,6 +1883,29 @@ POOL_FIELDS = [
 
 def now_iso() -> str:
     return time.strftime("%Y-%m-%dT%H:%M:%S%z", time.localtime())
+
+
+def parse_iso_datetime(value: Any) -> dt.datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = dt.datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=dt.datetime.now().astimezone().tzinfo)
+    return parsed
+
+
+def pool_success_is_fresh(row: dict[str, Any], ttl_days: float, now: dt.datetime | None = None) -> bool:
+    if ttl_days <= 0:
+        return bool(row.get("last_success_at"))
+    last_success = parse_iso_datetime(row.get("last_success_at"))
+    if last_success is None:
+        return False
+    current = now or dt.datetime.now().astimezone()
+    return current - last_success <= dt.timedelta(days=ttl_days)
 
 
 def int_field(row: dict[str, Any], key: str) -> int:
@@ -1684,6 +1972,9 @@ def update_edgetunnel_node_pool(
     pool_path = workdir / args.pool_file
     existing = load_pool_rows(pool_path)
     timestamp = now_iso()
+    ttl_days = float(getattr(args, "pool_success_ttl_days", 14.0) or 0.0)
+    cooldown_failures = int(getattr(args, "pool_cooldown_failures", 5) or 5)
+    latency_observations = getattr(args, "latency_observations", {}) or {}
 
     for result in results:
         candidate = result.candidate
@@ -1694,8 +1985,9 @@ def update_edgetunnel_node_pool(
         success_count = int_field(row, "success_count")
         fail_count = int_field(row, "fail_count")
         consecutive_fail = int_field(row, "consecutive_fail_count")
-        status = result_pool_status(result)
-        if status == "healthy":
+        observed_status = result_pool_status(result)
+        status = observed_status
+        if observed_status == "healthy":
             success_count += 1
             consecutive_fail = 0
             last_success_at = timestamp
@@ -1705,16 +1997,16 @@ def update_edgetunnel_node_pool(
             consecutive_fail += 1
             last_success_at = row.get("last_success_at", "")
             last_failure_at = timestamp
-            if consecutive_fail >= int(getattr(args, "pool_cooldown_failures", 5)):
+            previous_is_fresh = pool_success_is_fresh(row, ttl_days)
+            if previous_is_fresh and consecutive_fail < cooldown_failures:
+                status = "probation"
+            elif consecutive_fail >= cooldown_failures:
                 status = "cooldown"
 
-        row.update(
-            {
-                "endpoint": candidate.endpoint,
-                "host": candidate.host,
-                "port": candidate.port,
-                "cfst_colo": meta.get("cfst_colo", ""),
-                "declared_country": meta.get("declared_country", ""),
+        latency_observation = latency_observations.get(key, {})
+        verified_fields: dict[str, Any] = {}
+        if observed_status == "healthy":
+            verified_fields = {
                 "true_exit_country": result.exit_country_code or "",
                 "true_exit_region_name": result.exit_region if result.exit_country_code else "",
                 "exit_ip": result.exit_ip or "",
@@ -1722,15 +2014,32 @@ def update_edgetunnel_node_pool(
                 "geo_evidence": result.geo_evidence or "",
                 "geo_selected_provider": result.geo_selected_provider or "",
                 "geo_fallback_used": result.geo_fallback_used,
+                "geo_decision_status": result.geo_decision_status,
                 "service_score": result.service_score,
                 "google_ok": result.google_ok if result.google_ok is not None else "",
                 "youtube_ok": result.youtube_ok if result.youtube_ok is not None else "",
                 "gpt_ok": result.gpt_ok if result.gpt_ok is not None else "",
-                "proxy_latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
-                "cfst_tcp_latency_ms": meta.get("cfst_tcp_latency_ms", candidate.declared_latency or ""),
-                "cfst_httping_latency_ms": meta.get("cfst_httping_latency_ms", ""),
+            }
+
+        row.update(
+            {
+                "endpoint": candidate.endpoint,
+                "host": candidate.host,
+                "port": candidate.port,
+                "line_id": getattr(args, "line_id", "local"),
+                "cfst_colo": meta.get("cfst_colo") or row.get("cfst_colo", ""),
+                "declared_country": meta.get("declared_country") or row.get("declared_country", ""),
+                "proxy_latency_ms": (
+                    f"{result.latency_ms:.0f}" if result.latency_ms is not None else row.get("proxy_latency_ms", "")
+                ),
+                "proxy_latency_p90_ms": latency_observation.get("p90_ms") or row.get("proxy_latency_p90_ms", ""),
+                "latency_sample_count": latency_observation.get("sample_count") or row.get("latency_sample_count", ""),
+                "cfst_tcp_latency_ms": (
+                    meta.get("cfst_tcp_latency_ms") or candidate.declared_latency or row.get("cfst_tcp_latency_ms", "")
+                ),
+                "cfst_httping_latency_ms": meta.get("cfst_httping_latency_ms") or row.get("cfst_httping_latency_ms", ""),
                 "status": status,
-                "fail_reason": "" if status == "healthy" else f"{result.status}: {result.error}",
+                "fail_reason": "" if observed_status == "healthy" else f"{result.status}: {result.error}",
                 "first_seen_at": first_seen,
                 "last_seen_at": timestamp,
                 "last_tested_at": timestamp,
@@ -1743,17 +2052,33 @@ def update_edgetunnel_node_pool(
                 "raw_line": candidate.raw,
             }
         )
+        row.update(verified_fields)
         existing[key] = row
 
-    rows = sorted(existing.values(), key=lambda row: (row.get("status") != "healthy", row.get("true_exit_country", ""), row.get("endpoint", "")))
+    for row in existing.values():
+        if row.get("status") in {"healthy", "probation"} and not pool_success_is_fresh(row, ttl_days):
+            row["status"] = "expired"
+            row["fail_reason"] = f"last success older than {ttl_days:g} days"
+
+    status_order = {"healthy": 0, "probation": 1, "failed": 2, "unresolved": 3, "cooldown": 4, "expired": 5}
+    rows = sorted(
+        existing.values(),
+        key=lambda row: (
+            status_order.get(str(row.get("status") or ""), 9),
+            row.get("true_exit_country", ""),
+            row.get("endpoint", ""),
+        ),
+    )
     write_pool_rows(pool_path, rows)
     return rows
 
 
-def pool_rows_to_results(rows: list[dict[str, Any]]) -> list[TestResult]:
+def pool_rows_to_results(rows: list[dict[str, Any]], ttl_days: float = 0.0) -> list[TestResult]:
     results: list[TestResult] = []
     for row in rows:
-        if row.get("status") != "healthy":
+        if row.get("status") not in {"healthy", "probation"}:
+            continue
+        if ttl_days > 0 and not pool_success_is_fresh(row, ttl_days):
             continue
         country = str(row.get("true_exit_country") or "").upper()
         if not country:
@@ -1780,7 +2105,7 @@ def pool_rows_to_results(rows: list[dict[str, Any]]) -> list[TestResult]:
             TestResult(
                 candidate,
                 True,
-                "pool_healthy",
+                "pool_healthy" if row.get("status") == "healthy" else "pool_probation",
                 measured_speed=None,
                 latency_ms=float_field(row, "proxy_latency_ms"),
                 exit_ip=str(row.get("exit_ip") or "") or None,
@@ -1794,7 +2119,7 @@ def pool_rows_to_results(rows: list[dict[str, Any]]) -> list[TestResult]:
                 google_ok=bool_field(row, "google_ok"),
                 youtube_ok=bool_field(row, "youtube_ok"),
                 gpt_ok=bool_field(row, "gpt_ok"),
-                selection_stage="pool",
+                selection_stage="pool" if row.get("status") == "healthy" else "pool_probation",
             )
         )
     return results
@@ -1825,9 +2150,11 @@ def write_edgetunnel_pool_summary(workdir: Path, rows: list[dict[str, Any]], fin
                 "true_exit_country",
                 "total_nodes",
                 "healthy_nodes",
+                "probation_nodes",
                 "failed_nodes",
                 "unresolved_nodes",
                 "cooldown_nodes",
+                "expired_nodes",
                 "selected_count",
                 "min_proxy_latency_ms",
                 "median_proxy_latency_ms",
@@ -1844,14 +2171,62 @@ def write_edgetunnel_pool_summary(workdir: Path, rows: list[dict[str, Any]], fin
                     "true_exit_country": country,
                     "total_nodes": len(items),
                     "healthy_nodes": sum(1 for row in items if row.get("status") == "healthy"),
+                    "probation_nodes": sum(1 for row in items if row.get("status") == "probation"),
                     "failed_nodes": sum(1 for row in items if row.get("status") == "failed"),
                     "unresolved_nodes": sum(1 for row in items if row.get("status") == "unresolved"),
                     "cooldown_nodes": sum(1 for row in items if row.get("status") == "cooldown"),
+                    "expired_nodes": sum(1 for row in items if row.get("status") == "expired"),
                     "selected_count": final_counts.get(country, 0),
                     "min_proxy_latency_ms": f"{min(latencies):.0f}" if latencies else "",
                     "median_proxy_latency_ms": f"{median_number(latencies):.0f}" if latencies else "",
                 }
             )
+
+
+def write_incremental_pool_outputs(
+    workdir: Path,
+    results: list[TestResult],
+    args: argparse.Namespace,
+) -> dict[str, Any]:
+    bucket_rows = getattr(args, "cfst_bucket_rows", []) or []
+    bucket_by_key = {
+        (str(row.get("host") or "").lower(), int(row.get("port") or 0)): row
+        for row in bucket_rows
+        if row.get("host") and row.get("port")
+    }
+    pool_rows = update_edgetunnel_node_pool(workdir, results, bucket_by_key, args)
+    ttl_days = float(getattr(args, "pool_success_ttl_days", 14.0) or 0.0)
+    pool_ok_results = pool_rows_to_results(pool_rows, ttl_days=ttl_days)
+    pool_final_results = select_final_results(pool_ok_results, args)
+    write_final_from_results(workdir / "bestcf_final.txt", pool_final_results)
+    write_region_counts(workdir / "bestcf_region_counts.csv", pool_ok_results, pool_final_results)
+    write_edgetunnel_pool_summary(workdir, pool_rows, pool_final_results)
+    pool_status_counts = collections.Counter(str(row.get("status") or "unknown") for row in pool_rows)
+    pool_country_counts = collections.Counter(
+        str(row.get("true_exit_country") or "UNKNOWN").upper()
+        for row in pool_rows
+        if row.get("status") in {"healthy", "probation"} and pool_success_is_fresh(row, ttl_days)
+    )
+    summary = {
+        "pool_file": str(workdir / args.pool_file),
+        "pool_total": len(pool_rows),
+        "pool_healthy": len(pool_ok_results),
+        "pool_final_count": len(pool_final_results),
+        "pool_status_counts": dict(sorted(pool_status_counts.items())),
+        "pool_healthy_country_counts": dict(sorted(pool_country_counts.items())),
+        "pool_success_ttl_days": ttl_days,
+        "pool_cooldown_failures": int(getattr(args, "pool_cooldown_failures", 5) or 5),
+        "line_id": getattr(args, "line_id", "local"),
+    }
+    with (workdir / "hybrid_pool_run_summary.json").open("w", encoding="utf-8") as handle:
+        json.dump(summary, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+    print(
+        f"Pool final generated: eligible={len(pool_ok_results)} final={len(pool_final_results)} "
+        f"pool={workdir / args.pool_file}; line={getattr(args, 'line_id', 'local')}",
+        flush=True,
+    )
+    return summary
 
 
 def curl_text(
@@ -2297,6 +2672,32 @@ def test_proxy_delay(
     return proxy_name, None, json.dumps(data, ensure_ascii=False)
 
 
+def test_proxy_delay_samples(
+    controller_port: int,
+    proxy_name: str,
+    url: str,
+    timeout_ms: int,
+    sample_count: int,
+) -> tuple[str, int | None, int | None, int, list[int], str | None]:
+    delays: list[int] = []
+    errors: list[str] = []
+    sample_count = max(1, int(sample_count))
+    for _index in range(sample_count):
+        _name, delay, error = test_proxy_delay(controller_port, proxy_name, url, timeout_ms)
+        if delay is None:
+            if error:
+                errors.append(error)
+            continue
+        delays.append(delay)
+    minimum_successes = max(1, (sample_count + 1) // 2)
+    if len(delays) < minimum_successes:
+        return proxy_name, None, None, len(delays), delays, "; ".join(errors) or "insufficient latency samples"
+    ordered = sorted(delays)
+    median = median_number([float(value) for value in ordered])
+    p90_index = max(0, min(len(ordered) - 1, ((9 * len(ordered) + 9) // 10) - 1))
+    return proxy_name, int(round(median or 0)), ordered[p90_index], len(delays), delays, "; ".join(errors) or None
+
+
 def select_proxy(controller_port: int, proxy_name: str, timeout: int = 8) -> str | None:
     ok, data = controller_json(controller_port, "PUT", "/proxies/PROXY", {"name": proxy_name}, timeout=timeout)
     if ok:
@@ -2328,6 +2729,22 @@ def terminate_process(proc: subprocess.Popen[Any]) -> None:
         proc.wait(timeout=3)
 
 
+def direct_subprocess_env() -> dict[str, str]:
+    env = dict(os.environ)
+    for name in (
+        "HTTP_PROXY",
+        "HTTPS_PROXY",
+        "ALL_PROXY",
+        "http_proxy",
+        "https_proxy",
+        "all_proxy",
+    ):
+        env.pop(name, None)
+    env["NO_PROXY"] = "*"
+    env["no_proxy"] = "*"
+    return env
+
+
 def start_mihomo(mihomo: Path, config_path: Path, data_dir: Path, log_path: Path) -> subprocess.Popen[Any]:
     flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
     log_file = log_path.open("ab")
@@ -2337,6 +2754,7 @@ def start_mihomo(mihomo: Path, config_path: Path, data_dir: Path, log_path: Path
             stdout=log_file,
             stderr=subprocess.STDOUT,
             creationflags=flags,
+            env=direct_subprocess_env(),
         )
     except Exception:
         log_file.close()
@@ -2556,7 +2974,58 @@ def geo_decision_from_results(
     )
 
 
-def detect_geo(proxy: str, timeout: int, providers: list[str]) -> GeoDecision:
+def detect_geo_strict(proxy: str, timeout: int) -> GeoDecision:
+    providers = ["youtube", "ping0"]
+    initial = run_geo_probes_parallel(proxy, timeout, providers)
+    observations: list[strict_geo_policy.ProbeObservation] = []
+    latest: dict[str, tuple[str, str | None, str | None, str | None]] = {}
+    for name, code, ip, colo in initial:
+        latest[name] = (name, code, ip, colo)
+        observations.append(
+            strict_geo_policy.ProbeObservation(
+                provider=name,
+                country=code,
+                raw_country=code,
+                exit_ip=ip,
+                colo=colo,
+                attempt=1,
+                status="ok" if code else "unknown",
+            )
+        )
+    missing = [name for name in providers if not latest.get(name, (name, None, None, None))[1]]
+    if missing:
+        retry_rows = run_geo_probes_parallel(proxy, timeout, missing)
+        for name, code, ip, colo in retry_rows:
+            latest[name] = (name, code, ip, colo)
+            observations.append(
+                strict_geo_policy.ProbeObservation(
+                    provider=name,
+                    country=code,
+                    raw_country=code,
+                    exit_ip=ip,
+                    colo=colo,
+                    attempt=2,
+                    status="ok" if code else "unknown",
+                )
+            )
+    decision = strict_geo_policy.decide_from_observations(observations)
+    colo = next((row[3] for row in latest.values() if row[3]), None)
+    return GeoDecision(
+        country_code=decision.country,
+        region=country_name(decision.country),
+        exit_ip=decision.exit_ip,
+        cf_colo=colo,
+        evidence=decision.evidence,
+        policy=strict_geo_policy.POLICY_VERSION,
+        selected_provider="youtube+ping0" if decision.publishable else "",
+        fallback_used=False,
+        decision_status=decision.status,
+    )
+
+
+def detect_geo(proxy: str, timeout: int, providers: list[str], policy: str = "auto") -> GeoDecision:
+    if policy == "youtube-ping0-strict":
+        return detect_geo_strict(proxy, timeout)
     providers = [provider for provider in providers if provider in GEO_PROVIDER_URLS]
     if not providers:
         providers = list(DEFAULT_GEO_PROVIDERS_DAILY)
@@ -2662,7 +3131,12 @@ def test_candidate(
         if not wait_port(mixed_port, timeout=args.start_timeout):
             return TestResult(candidate, False, "mihomo_start_failed", "mixed port not ready")
         proxy = f"http://127.0.0.1:{mixed_port}"
-        geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+        geo = detect_geo(
+            proxy,
+            timeout=args.timeout,
+            providers=args.geo_providers_resolved,
+            policy=getattr(args, "geo_policy", "auto"),
+        )
         hint = geo_hint_fields(candidate, args)
         speed, latency, speed_status, error = measure_speed(
             proxy,
@@ -2961,7 +3435,22 @@ def country_limit_for_result(result: TestResult, args: argparse.Namespace) -> in
     return args.country_max
 
 
+def limit_results_per_host(results: list[TestResult], max_ports: int) -> list[TestResult]:
+    if max_ports <= 0:
+        return list(results)
+    selected: list[TestResult] = []
+    counts: collections.Counter[str] = collections.Counter()
+    for result in sorted(results, key=result_quality_key):
+        host = result.candidate.host.lower()
+        if counts[host] >= max_ports:
+            continue
+        selected.append(result)
+        counts[host] += 1
+    return selected
+
+
 def select_final_results(ok_results: list[TestResult], args: argparse.Namespace) -> list[TestResult]:
+    ok_results = limit_results_per_host(ok_results, int(getattr(args, "host_max_ports", 0) or 0))
     if getattr(args, "selection_mode", "preferred") == "all-regions":
         return select_final_results_all_regions(ok_results, args)
 
@@ -3213,10 +3702,13 @@ def write_results(
                 "port",
                 "endpoint",
                 "source",
+                "line_id",
                 "declared_region",
                 "declared_speed_MBps",
                 "measured_speed_MBps",
                 "latency_ms",
+                "latency_p90_ms",
+                "latency_sample_count",
                 "exit_ip",
                 "exit_country_code",
                 "exit_region_name",
@@ -3225,6 +3717,7 @@ def write_results(
                 "geo_policy",
                 "geo_selected_provider",
                 "geo_fallback_used",
+                "geo_decision_status",
                 "geo_cache_status",
                 "geo_hint_country",
                 "geo_hint_source",
@@ -3249,10 +3742,13 @@ def write_results(
                     "port": item.port,
                     "endpoint": item.endpoint,
                     "source": item.source,
+                    "line_id": getattr(args, "line_id", "local"),
                     "declared_region": item.declared_region or "",
                     "declared_speed_MBps": item.declared_speed if item.declared_speed is not None else "",
                     "measured_speed_MBps": f"{result.measured_speed:.2f}" if result.measured_speed is not None else "",
                     "latency_ms": f"{result.latency_ms:.0f}" if result.latency_ms is not None else "",
+                    "latency_p90_ms": (getattr(args, "latency_observations", {}).get(item.key, {}).get("p90_ms") or ""),
+                    "latency_sample_count": (getattr(args, "latency_observations", {}).get(item.key, {}).get("sample_count") or ""),
                     "exit_ip": result.exit_ip or "",
                     "exit_country_code": result.exit_country_code or "",
                     "exit_region_name": result.exit_region,
@@ -3261,6 +3757,7 @@ def write_results(
                     "geo_policy": result.geo_policy,
                     "geo_selected_provider": result.geo_selected_provider,
                     "geo_fallback_used": result.geo_fallback_used,
+                    "geo_decision_status": result.geo_decision_status,
                     "geo_cache_status": result.geo_cache_status,
                     "geo_hint_country": result.geo_hint_country,
                     "geo_hint_source": result.geo_hint_source,
@@ -3393,6 +3890,8 @@ def write_results(
                 }
             )
     write_cfst_post_reports(workdir, results, args)
+    if getattr(args, "source_mode", "legacy") != "cfst-only" and getattr(args, "pool_mode", "direct") != "direct":
+        write_incremental_pool_outputs(workdir, results, args)
     return final_path
 
 
@@ -3445,6 +3944,9 @@ def write_latency_results(workdir: Path, rows: list[dict[str, Any]]) -> None:
                 "proxy_name",
                 "source",
                 "delay_ms",
+                "latency_median_ms",
+                "latency_p90_ms",
+                "latency_sample_count",
                 "latency_status",
                 "error",
                 "declared_region",
@@ -3494,31 +3996,46 @@ def run_latency_tests(
         with ThreadPoolExecutor(max_workers=args.latency_concurrency) as pool:
             future_map = {
                 pool.submit(
-                    test_proxy_delay,
+                    test_proxy_delay_samples,
                     args.controller_base_port,
                     proxy_name,
                     args.latency_url,
                     args.latency_timeout,
+                    args.latency_samples,
                 ): proxy_name
                 for proxy_name in name_map
             }
             for future in as_completed(future_map):
-                proxy_name, delay, error = future.result()
+                proxy_name, delay, p90_delay, sample_count, raw_samples, error = future.result()
                 candidate = name_map[proxy_name]
                 done += 1
+                args.latency_observations[candidate.key] = {
+                    "median_ms": delay,
+                    "p90_ms": p90_delay,
+                    "sample_count": sample_count,
+                    "samples": raw_samples,
+                }
                 if delay is None:
                     status = "latency_failed"
                     failed_results.append(
                         TestResult(candidate, False, status, error or "delay test failed", latency_ms=None)
                     )
-                elif delay > args.latency_threshold:
+                elif (
+                    delay
+                    if getattr(args, "latency_gate", "p90") == "median"
+                    else (p90_delay if p90_delay is not None else delay)
+                ) > args.latency_threshold:
                     status = "latency_too_high"
                     failed_results.append(
                         TestResult(
                             candidate,
                             False,
                             status,
-                            f"{delay}ms > {args.latency_threshold}ms",
+                            (
+                                f"median={delay}ms > {args.latency_threshold}ms"
+                                if getattr(args, "latency_gate", "p90") == "median"
+                                else f"p90={p90_delay if p90_delay is not None else delay}ms > {args.latency_threshold}ms"
+                            ),
                             latency_ms=float(delay),
                         )
                     )
@@ -3533,6 +4050,9 @@ def run_latency_tests(
                         "proxy_name": proxy_name,
                         "source": candidate.source,
                         "delay_ms": delay if delay is not None else "",
+                        "latency_median_ms": delay if delay is not None else "",
+                        "latency_p90_ms": p90_delay if p90_delay is not None else "",
+                        "latency_sample_count": sample_count,
                         "latency_status": status,
                         "error": error or "",
                         "declared_region": candidate.declared_region or "",
@@ -3595,7 +4115,12 @@ def test_speed_geo_chunk(
             if switch_error:
                 results.append(TestResult(candidate, False, "select_proxy_failed", switch_error, latency_ms=delay))
                 continue
-            geo = detect_geo(proxy, timeout=args.timeout, providers=args.geo_providers_resolved)
+            geo = detect_geo(
+                proxy,
+                timeout=args.timeout,
+                providers=args.geo_providers_resolved,
+                policy=getattr(args, "geo_policy", "auto"),
+            )
             hint = geo_hint_fields(candidate, args)
             code = geo.country_code
             if not args.allow_other_regions and code and code.upper() not in args.preferred_countries:
@@ -3739,6 +4264,7 @@ def test_geo_chunk(
                     proxy,
                     timeout=args.timeout,
                     providers=args.geo_providers_resolved,
+                    policy=getattr(args, "geo_policy", "auto"),
                 )
                 geo_cache_status = cache_status
             code = geo.country_code
@@ -3764,8 +4290,8 @@ def test_geo_chunk(
                     TestResult(
                         candidate,
                         False,
-                        "region_unknown",
-                        "exit country unavailable",
+                        geo.decision_status or "region_unknown",
+                        f"strict geo decision: {geo.decision_status}" if geo.decision_status else "exit country unavailable",
                         latency_ms=delay,
                         geo_cache_status=geo_cache_status,
                         **geo_result_fields(geo),
@@ -5387,6 +5913,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=5,
         help="mark a previously tracked pool node as cooldown after this many consecutive failures",
     )
+    parser.add_argument(
+        "--pool-success-ttl-days",
+        type=float,
+        default=14.0,
+        help="retain a last-known-good pool observation for this many days; 0 disables expiry",
+    )
+    parser.add_argument("--line-id", default="local", help="stable observation line identifier, e.g. ct, cu, cmcc")
     parser.add_argument("--cfst-exe", default=str(DEFAULT_CFST_EXE_WINDOWS), help="CloudflareSpeedTest executable path")
     parser.add_argument("--cfst-ip-file", default=str(DEFAULT_CFST_IP_FILE), help="CloudflareSpeedTest IPv4 CIDR file")
     parser.add_argument("--cfst-port", type=int, default=443, help="CFST port for first-version cfst-only mode")
@@ -5410,10 +5943,32 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--cfst-trust-match-rate", type=float, default=0.98, help="match-rate threshold for trust recommendation")
     parser.add_argument("--cfst-trust-unknown-rate", type=float, default=0.02, help="unknown-rate threshold for trust recommendation")
     parser.add_argument("--no-discover-sources", action="store_true", help="disable bestcf.pages.dev source discovery")
+    parser.add_argument(
+        "--external-v2rayfree",
+        action="store_true",
+        help="discover the newest free-nodes/v2rayfree subscription and extract endpoint candidates",
+    )
+    parser.add_argument(
+        "--cloudflare-tls-ports",
+        default="",
+        help="expand confirmed Cloudflare hosts across 443,2053,2083,2087,2096,8443",
+    )
     parser.add_argument("--latency-url", default=DEFAULT_LATENCY_URL, help="URL used by Mihomo delay API")
     parser.add_argument("--latency-timeout", type=int, default=5000, help="Mihomo delay timeout in milliseconds")
     parser.add_argument("--latency-threshold", type=int, default=None, help="max delay in ms before geo pool")
+    parser.add_argument(
+        "--latency-gate",
+        choices=["median", "p90"],
+        default="p90",
+        help="latency statistic used for the hard threshold; stateful publishing uses median",
+    )
     parser.add_argument("--geo-providers", default=None, help="geo providers: daily, all, or comma-separated names")
+    parser.add_argument(
+        "--geo-policy",
+        choices=["auto", "youtube-ping0-strict"],
+        default="auto",
+        help="true-exit decision policy; strict requires normalized YouTube and Ping0 agreement",
+    )
     parser.add_argument("--geo-cache", default=None, help="geo cache path")
     parser.add_argument("--geo-cache-ttl-hours", type=float, default=12.0, help="hours before geo cache entries expire")
     parser.add_argument("--no-geo-cache", dest="geo_cache_enabled", action="store_false", help="disable geo cache read/write")
@@ -5428,6 +5983,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--latency-pool-limit", type=int, default=None, help="target number of preferred geo candidates; 0 disables target")
     parser.add_argument("--max-final-candidates", type=int, default=None, help="maximum preferred candidates written to final output; 0 disables")
     parser.add_argument("--country-max", type=int, default=None, help="maximum final output candidates per exit country; 0 disables")
+    parser.add_argument("--host-max-ports", type=int, default=0, help="maximum selected ports per front host; 0 disables")
     parser.add_argument(
         "--country-max-overrides",
         default="",
@@ -5533,6 +6089,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--hk-suppress-ipv6-prefix", type=int, default=40, help="IPv6 prefix length used by runtime HK prefix buckets")
     parser.add_argument("--hk-suppress-log-limit", type=int, default=12, help="maximum per-run HK suppression detail log lines")
     parser.add_argument("--latency-concurrency", type=int, default=32, help="parallel Mihomo delay API calls")
+    parser.add_argument("--latency-samples", type=int, default=1, help="delay samples per endpoint; median ranks and P90 gates")
     parser.add_argument("--geo-concurrency", type=int, default=None, help="parallel geo workers after latency pool selection")
     parser.add_argument("--speed-limit", type=int, default=None, help="maximum number of candidates selected for speed test; 0 disables speed test")
     parser.add_argument("--speed-bands", default=None, help="latency ranked band sampling, e.g. 100:50,100:30,100:20")
@@ -5654,9 +6211,15 @@ def main(argv: list[str] | None = None) -> int:
     args.cfst_trust_match_rate = max(0.0, min(1.0, float(args.cfst_trust_match_rate)))
     args.cfst_trust_unknown_rate = max(0.0, min(1.0, float(args.cfst_trust_unknown_rate)))
     args.pool_cooldown_failures = max(1, int(args.pool_cooldown_failures))
+    args.pool_success_ttl_days = max(0.0, float(args.pool_success_ttl_days))
+    args.line_id = str(args.line_id or "local").strip()
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+", args.line_id):
+        raise ValueError(f"invalid line id: {args.line_id!r}")
+    args.cloudflare_tls_ports_resolved = parse_cloudflare_tls_ports(args.cloudflare_tls_ports)
     args.source_concurrency = max(1, args.source_concurrency)
     args.source_retries = max(0, args.source_retries)
     args.latency_concurrency = max(1, args.latency_concurrency)
+    args.latency_samples = max(1, min(10, int(args.latency_samples)))
     args.geo_concurrency = max(1, args.geo_concurrency)
     args.geo_providers_resolved = parse_geo_providers(args.geo_providers)
     args.geo_cache_ttl_hours = max(0.0, float(args.geo_cache_ttl_hours))
@@ -5668,6 +6231,7 @@ def main(argv: list[str] | None = None) -> int:
     args.latency_pool_limit = max(0, int(args.latency_pool_limit))
     args.max_final_candidates = max(0, int(args.max_final_candidates))
     args.country_max = max(0, int(args.country_max))
+    args.host_max_ports = max(0, int(args.host_max_ports))
     args.final_preferred_latency_ms = max(0, int(args.final_preferred_latency_ms))
     args.geo_initial_limit = max(0, int(args.geo_initial_limit))
     args.geo_refill_batch_size = max(1, int(args.geo_refill_batch_size))
@@ -5699,6 +6263,7 @@ def main(argv: list[str] | None = None) -> int:
     args.target_refill_max_tested = parse_country_min(args.target_refill_max_tested)
     args.target_refill_min_service_score = max(0, min(3, int(args.target_refill_min_service_score)))
     args.timings = timer.timings
+    args.latency_observations = {}
     args.run_started_at = timer.started_at
     args.preferred_country_order = [
         item.strip().upper()
@@ -5798,10 +6363,41 @@ def main(argv: list[str] | None = None) -> int:
             concurrency=args.source_concurrency,
             retries=args.source_retries,
         )
-        source_failures = denied_source_failures + skipped_cached_failures + fetch_failures
+        external_failures: list[dict[str, str]] = []
+        if args.external_v2rayfree:
+            external_rows, external_url, external_error = fetch_v2rayfree_candidate_rows(args.source_timeout)
+            sources["github_v2rayfree"] = external_url
+            active_sources["github_v2rayfree"] = external_url
+            rows.extend(external_rows)
+            if external_error:
+                external_failures.append(
+                    {
+                        "source": "github_v2rayfree",
+                        "url": external_url,
+                        "status": "source_fetch_failed",
+                        "error": external_error,
+                    }
+                )
+            print(
+                f"External v2rayfree candidates: {len(external_rows)}"
+                + (f"; error={external_error}" if external_error else f"; url={external_url}"),
+                flush=True,
+            )
+        source_failures = denied_source_failures + skipped_cached_failures + fetch_failures + external_failures
         write_raw(workdir, rows)
         candidates, parse_failures, source_stats = parse_candidates(rows, active_sources)
         candidates = rank_candidates_by_source_quality(candidates, source_cache)
+        if args.cloudflare_tls_ports_resolved:
+            before_expansion = len(candidates)
+            classify_candidate_domains(candidates, concurrency=args.source_concurrency)
+            confirmed_hosts = len({candidate.host.lower() for candidate in candidates if candidate.is_cloudflare is True})
+            candidates = expand_cloudflare_candidates(candidates, args.cloudflare_tls_ports_resolved)
+            print(
+                "Cloudflare TLS port expansion: "
+                f"confirmed_hosts={confirmed_hosts}; before={before_expansion}; after={len(candidates)}; "
+                f"added={len(candidates) - before_expansion}",
+                flush=True,
+            )
         write_parsed(workdir, candidates)
         newly_denied: set[str] = set()
         if not args.no_auto_prune_sources and not args.refresh_sources:
