@@ -1,8 +1,7 @@
 ﻿source,url,status,raw_lines,nonempty_lines,valid_lines,invalid_lines,valid_ratio,invalid_ratio,unique_selected
-cfst_de_8443,tools\cfst\ip.txt,cfst_only,5,5,5,0,1.000000,0.000000,5
 cfst_fr_8443,tools\cfst\ip.txt,cfst_only,1,1,1,0,1.000000,0.000000,1
 cfst_hk_8443,tools\cfst\ip.txt,cfst_only,60,60,60,0,1.000000,0.000000,60
-cfst_jp_8443,tools\cfst\ip.txt,cfst_only,5,5,5,0,1.000000,0.000000,5
+cfst_jp_8443,tools\cfst\ip.txt,cfst_only,6,6,6,0,1.000000,0.000000,6
 cfst_sg_8443,tools\cfst\ip.txt,cfst_only,60,60,60,0,1.000000,0.000000,60
-cfst_unknown_8443,tools\cfst\ip.txt,cfst_only,293,293,293,0,1.000000,0.000000,293
-cfst_us_8443,tools\cfst\ip.txt,cfst_only,9,9,9,0,1.000000,0.000000,9
+cfst_unknown_8443,tools\cfst\ip.txt,cfst_only,289,289,289,0,1.000000,0.000000,289
+cfst_us_8443,tools\cfst\ip.txt,cfst_only,11,11,11,0,1.000000,0.000000,11
