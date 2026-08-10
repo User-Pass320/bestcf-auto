@@ -14,6 +14,20 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import bestcf_tool as tool
 
 
+STRICT_GEO_POLICY = "youtube_ping0_strict_v1"
+STRICT_GEO_PROVIDERS = ("youtube", "ping0")
+
+
+@dataclasses.dataclass(frozen=True)
+class StrictGeoDecision:
+    country_code: str
+    reason: str
+    raw_youtube_country: str
+    raw_ping0_country: str
+    youtube_country: str
+    ping0_country: str
+
+
 def parse_country_aliases(text: str) -> dict[str, str]:
     aliases: dict[str, str] = {}
     for part in str(text or "").split(","):
@@ -34,6 +48,51 @@ def parse_country_aliases(text: str) -> dict[str, str]:
 def normalize_country_code(code: str | None, aliases: dict[str, str]) -> str:
     normalized = (code or "UNKNOWN").upper()
     return aliases.get(normalized, normalized)
+
+
+def strict_youtube_ping0_decision(
+    result: tool.TestResult | None,
+    aliases: dict[str, str],
+) -> StrictGeoDecision:
+    if result is None:
+        return StrictGeoDecision("UNKNOWN", "missing_result", "", "", "UNKNOWN", "UNKNOWN")
+
+    evidence = tool.parse_geo_evidence(result.geo_evidence)
+
+    def provider_country(provider: str) -> str:
+        code = str(evidence.get(provider) or "").strip().upper()
+        return code if re.fullmatch(r"[A-Z]{2}", code) else ""
+
+    raw_youtube = provider_country("youtube")
+    raw_ping0 = provider_country("ping0")
+    youtube = normalize_country_code(raw_youtube, aliases)
+    ping0 = normalize_country_code(raw_ping0, aliases)
+    if not raw_youtube or not raw_ping0:
+        return StrictGeoDecision(
+            "UNKNOWN",
+            "provider_unknown",
+            raw_youtube,
+            raw_ping0,
+            youtube,
+            ping0,
+        )
+    if youtube != ping0:
+        return StrictGeoDecision(
+            "UNKNOWN",
+            "provider_mismatch",
+            raw_youtube,
+            raw_ping0,
+            youtube,
+            ping0,
+        )
+    return StrictGeoDecision(
+        youtube,
+        "accepted",
+        raw_youtube,
+        raw_ping0,
+        youtube,
+        ping0,
+    )
 
 
 def parse_expected_country(label: str) -> str:
@@ -110,7 +169,7 @@ def main() -> int:
     parser.add_argument("--workdir", required=True, help="verification work directory")
     parser.add_argument("--template", required=True, help="mihomo template YAML")
     parser.add_argument("--mihomo", required=True, help="mihomo executable")
-    parser.add_argument("--providers", default="youtube,ping0,ipwhois", help="geo providers")
+    parser.add_argument("--providers", default="youtube,ping0", help="geo providers; final acceptance requires YouTube/Ping0 agreement")
     parser.add_argument("--geo-concurrency", type=int, default=16)
     parser.add_argument("--timeout", type=int, default=10)
     parser.add_argument("--start-timeout", type=float, default=8.0)
@@ -127,6 +186,16 @@ def main() -> int:
     parser.add_argument("--max-final-candidates", type=int, default=0, help="maximum verified output nodes; 0 disables")
     args_ns = parser.parse_args()
     actual_country_aliases = parse_country_aliases(args_ns.actual_country_aliases)
+
+    resolved_providers = tool.parse_geo_providers(args_ns.providers)
+    missing_strict_providers = [provider for provider in STRICT_GEO_PROVIDERS if provider not in resolved_providers]
+    if missing_strict_providers:
+        raise SystemExit(
+            "final true-exit verification requires providers: "
+            + ",".join(STRICT_GEO_PROVIDERS)
+            + "; missing="
+            + ",".join(missing_strict_providers)
+        )
 
     input_path = Path(args_ns.input)
     output_path = Path(args_ns.output)
@@ -149,7 +218,7 @@ def main() -> int:
         start_timeout=float(args_ns.start_timeout),
         timeout=int(args_ns.timeout),
         geo_concurrency=max(1, int(args_ns.geo_concurrency)),
-        geo_providers_resolved=tool.parse_geo_providers(args_ns.providers),
+        geo_providers_resolved=resolved_providers,
         geo_cache_enabled=False,
         geo_cache={"version": tool.GEO_CACHE_VERSION, "entries": {}},
         geo_cache_ttl_hours=0,
@@ -187,23 +256,33 @@ def main() -> int:
     verified_results: list[tool.TestResult] = []
     for row in rows:
         result = result_by_key.get(row["candidate"].key)
+        strict_decision = strict_youtube_ping0_decision(result, actual_country_aliases)
         raw_actual = ((result.exit_country_code if result else "") or "UNKNOWN").upper()
-        actual = normalize_country_code(raw_actual, actual_country_aliases)
+        actual = strict_decision.country_code
         raw_expected = row["expected_country"]
         expected = normalize_country_code(raw_expected, actual_country_aliases)
         comparable = expected != "UNKNOWN"
-        consistent = comparable and actual == expected
-        if result and result.exit_country_code:
+        consistent = comparable and actual != "UNKNOWN" and actual == expected
+        if result and actual != "UNKNOWN":
+            alias_notes = []
+            if strict_decision.raw_youtube_country != strict_decision.youtube_country:
+                alias_notes.append(
+                    f"youtube_alias:{strict_decision.raw_youtube_country}->{strict_decision.youtube_country}"
+                )
+            if strict_decision.raw_ping0_country != strict_decision.ping0_country:
+                alias_notes.append(f"ping0_alias:{strict_decision.raw_ping0_country}->{strict_decision.ping0_country}")
+            verified_evidence = result.geo_evidence
+            if alias_notes:
+                verified_evidence = ";".join(filter(None, [verified_evidence, *alias_notes]))
             verified_results.append(
                 dataclasses.replace(
                     result,
                     exit_country_code=actual,
                     exit_region=tool.country_name(actual),
-                    geo_evidence=(
-                        f"{result.geo_evidence};alias:{raw_actual}->{actual}"
-                        if raw_actual != actual and result.geo_evidence
-                        else (f"alias:{raw_actual}->{actual}" if raw_actual != actual else result.geo_evidence)
-                    ),
+                    geo_evidence=verified_evidence,
+                    geo_policy=STRICT_GEO_POLICY,
+                    geo_selected_provider="youtube+ping0",
+                    geo_fallback_used=False,
                 )
             )
         detail_rows.append(
@@ -215,12 +294,22 @@ def main() -> int:
                 "expected_country": expected,
                 "raw_actual_country": raw_actual,
                 "actual_country": actual,
-                "actual_country_alias_applied": raw_actual != actual,
+                "actual_country_alias_applied": (
+                    strict_decision.raw_youtube_country != strict_decision.youtube_country
+                    or strict_decision.raw_ping0_country != strict_decision.ping0_country
+                ),
                 "input_consistent": consistent,
                 "input_comparable": comparable,
+                "verification_policy": STRICT_GEO_POLICY,
+                "verification_decision": strict_decision.reason,
+                "youtube_country_raw": strict_decision.raw_youtube_country,
+                "ping0_country_raw": strict_decision.raw_ping0_country,
+                "youtube_country": strict_decision.youtube_country,
+                "ping0_country": strict_decision.ping0_country,
                 "status": result.status if result else "missing_result",
                 "error": result.error if result else "result missing",
-                "exit_region": result.exit_region if result else "未知",
+                "raw_exit_region": result.exit_region if result else "未知",
+                "exit_region": tool.country_name(actual) if actual != "UNKNOWN" else "未知",
                 "exit_ip": result.exit_ip or "" if result else "",
                 "cf_colo": result.cf_colo or "" if result else "",
                 "geo_selected_provider": result.geo_selected_provider if result else "",
@@ -230,10 +319,8 @@ def main() -> int:
             }
         )
 
-    unknown_rows = [row for row in detail_rows if row["actual_country"] == "UNKNOWN"]
-    if unknown_rows:
-        sample = ", ".join(f"{row['line_no']}:{row['endpoint']}" for row in unknown_rows[:10])
-        raise SystemExit(f"true-exit verification failed: unknown actual exits={len(unknown_rows)} sample={sample}")
+    rejected_rows = [row for row in detail_rows if row["actual_country"] == "UNKNOWN"]
+    probe_unknown_rows = [row for row in detail_rows if row["raw_actual_country"] == "UNKNOWN"]
 
     country_max_overrides = tool.parse_country_min(args_ns.country_max_overrides)
     selected_results = select_verified_results(
@@ -251,8 +338,6 @@ def main() -> int:
 
     write_verified_final(output_path, selected_results)
     ok, message = tool.validate_final_output(output_path, min_lines=args_ns.min_lines, min_regions=args_ns.min_regions)
-    if not ok:
-        raise SystemExit(message)
     if args_ns.region_counts_csv:
         tool.write_region_counts(Path(args_ns.region_counts_csv), verified_results, selected_results)
 
@@ -271,8 +356,15 @@ def main() -> int:
                 "actual_country_alias_applied",
                 "input_consistent",
                 "input_comparable",
+                "verification_policy",
+                "verification_decision",
+                "youtube_country_raw",
+                "ping0_country_raw",
+                "youtube_country",
+                "ping0_country",
                 "status",
                 "error",
+                "raw_exit_region",
                 "exit_region",
                 "exit_ip",
                 "cf_colo",
@@ -288,6 +380,9 @@ def main() -> int:
 
     input_comparable = [row for row in detail_rows if row["input_comparable"]]
     input_mismatch = [row for row in input_comparable if not row["input_consistent"]]
+    rejection_reasons = Counter(
+        row["verification_decision"] for row in detail_rows if row["verification_decision"] != "accepted"
+    )
     summary = {
         "input": str(input_path),
         "output": str(output_path),
@@ -298,7 +393,11 @@ def main() -> int:
         "input_comparable_count": len(input_comparable),
         "input_consistent_count": len(input_comparable) - len(input_mismatch),
         "input_mismatch_count": len(input_mismatch),
-        "unknown_actual_count": len(unknown_rows),
+        "unknown_actual_count": len(probe_unknown_rows),
+        "strict_rejected_count": len(rejected_rows),
+        "dropped_unknown_count": rejection_reasons.get("provider_unknown", 0) + rejection_reasons.get("missing_result", 0),
+        "dropped_mismatch_count": rejection_reasons.get("provider_mismatch", 0),
+        "dropped_by_verification_reason": dict(sorted(rejection_reasons.items())),
         "verified_count": len(verified_results),
         "selected_count": len(selected_results),
         "dropped_by_post_verify_cap": len(verified_results) - len(selected_results),
@@ -306,9 +405,17 @@ def main() -> int:
         "country_max_overrides": country_max_overrides,
         "actual_country_aliases": actual_country_aliases,
         "input_by_expected_country": dict(sorted(Counter(row["expected_country"] for row in detail_rows).items())),
-        "verified_by_raw_actual_country": dict(sorted(Counter(row["raw_actual_country"] for row in detail_rows).items())),
-        "verified_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),
+        "observed_by_raw_actual_country": dict(sorted(Counter(row["raw_actual_country"] for row in detail_rows).items())),
+        "decision_by_actual_country": dict(sorted(Counter(row["actual_country"] for row in detail_rows).items())),
+        "verified_by_raw_actual_country": dict(
+            sorted(Counter(row["raw_actual_country"] for row in detail_rows if row["actual_country"] != "UNKNOWN").items())
+        ),
+        "verified_by_actual_country": dict(
+            sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in verified_results).items())
+        ),
         "output_by_actual_country": dict(sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in selected_results).items())),
+        "verification_policy": STRICT_GEO_POLICY,
+        "validation_ok": ok,
         "validation": message,
     }
     if args_ns.summary_json:
@@ -317,6 +424,8 @@ def main() -> int:
         summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True), flush=True)
+    if not ok:
+        raise SystemExit(message)
     return 0
 
 

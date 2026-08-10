@@ -101,7 +101,7 @@ foreach ($cfstPort in $cfstPorts) {
         --output $candidateOutput `
         --no-geo-cache `
         --no-geo-hint-cache `
-        --geo-providers youtube,ping0,ipwhois `
+        --geo-providers youtube,ping0 `
         --geo-concurrency 16 `
         --latency-threshold 1500 `
         --selection-mode all-regions `
@@ -183,7 +183,7 @@ python .\scripts\verify-final-true-exit.py `
     --workdir ".\bestcf_work\final_true_exit_verify" `
     --template ".\template.yaml" `
     --mihomo $mihomo `
-    --providers youtube,ping0,ipwhois `
+    --providers youtube,ping0 `
     --geo-concurrency 16 `
     --actual-country-aliases VN:HK `
     --country-max 30 `
@@ -214,6 +214,11 @@ if weekly_path.exists() and verify_path.exists():
     weekly["verified_final_count"] = verify.get("output_count")
     weekly["verified_final_by_country"] = verify.get("output_by_actual_country", {})
     weekly["post_verify_dropped_by_cap"] = verify.get("dropped_by_post_verify_cap")
+    weekly["post_verify_dropped_unknown"] = verify.get("dropped_unknown_count")
+    weekly["post_verify_dropped_mismatch"] = verify.get("dropped_mismatch_count")
+    weekly["post_verify_strict_rejected"] = verify.get("strict_rejected_count")
+    weekly["post_verify_dropped_by_reason"] = verify.get("dropped_by_verification_reason", {})
+    weekly["post_verify_policy"] = verify.get("verification_policy")
     weekly["post_verify_country_max"] = verify.get("country_max")
     weekly["post_verify_country_max_overrides"] = verify.get("country_max_overrides", {})
     weekly_path.write_text(json.dumps(weekly, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
