@@ -91,6 +91,16 @@ class GeoPolicyTests(unittest.TestCase):
 
 
 class SourceQualityTests(unittest.TestCase):
+    def test_s5gy_source_family_is_discoverable(self):
+        self.assertEqual(
+            tool.normalize_source_url("https://bestcf.pages.dev/s5gy/jp.txt"),
+            "https://bestcf.pages.dev/s5gy/jp.txt",
+        )
+
+    def test_current_regional_source_fallbacks_are_registered(self):
+        self.assertEqual(tool.DEFAULT_SOURCES["s5gy_jp"], "https://bestcf.pages.dev/s5gy/jp.txt")
+        self.assertEqual(tool.DEFAULT_SOURCES["tiancheng_jp"], "https://bestcf.pages.dev/tiancheng/jp.txt")
+
     def test_source_quality_ranking_prioritizes_cached_productive_source(self):
         fast_low_quality = tool.Candidate(
             source="low",

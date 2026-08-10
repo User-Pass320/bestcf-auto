@@ -81,7 +81,54 @@ $candidateOutput = ".\bestcf_work\bestcf_final_candidate.txt"
 $verifiedOutput = ".\bestcf_work\bestcf_final_verified.txt"
 $verifyDetails = ".\bestcf_work\final_true_exit_verify.csv"
 $verifySummary = ".\bestcf_work\final_true_exit_verify_summary.json"
+$sourceRefreshDir = ".\bestcf_work\source_refresh"
+$sourceCandidateOutput = Join-Path $sourceRefreshDir "bestcf_source_candidate.txt"
+$sourceMergeSummary = ".\bestcf_work\source_candidate_merge_summary.json"
 $cfstPorts = @(443, 2053, 2083, 2087, 2096, 8443)
+
+New-Item -ItemType Directory -Force -Path $sourceRefreshDir | Out-Null
+Remove-Item -LiteralPath $sourceCandidateOutput -Force -ErrorAction SilentlyContinue
+
+Write-Host "Refreshing live BestCF and third-party source candidates (time budget: 240 seconds)."
+Write-Host "This supplement is best-effort; CFST and the historical pool continue if source refresh fails."
+python .\bestcf_tool.py `
+    --profile fast `
+    --source-mode legacy `
+    --workdir $sourceRefreshDir `
+    --template .\template.yaml `
+    --mihomo $mihomo `
+    --output $sourceCandidateOutput `
+    --source-timeout 12 `
+    --source-retries 1 `
+    --source-concurrency 12 `
+    --use-source-cache-quarantine `
+    --geo-providers youtube,ping0 `
+    --geo-concurrency 16 `
+    --latency-threshold 1500 `
+    --selection-mode all-regions `
+    --preferred-country-min "JP:20,SG:20,US:20,HK:10,KR:5,TW:5" `
+    --country-max 30 `
+    --country-max-overrides "HK:20,DE:20" `
+    --max-final-candidates 180 `
+    --time-budget 240 `
+    --time-safety-margin 20 `
+    --allow-other-regions `
+    --no-service-check `
+    --no-hk-suppression
+$sourceRefreshExit = $LASTEXITCODE
+$sourceCandidateCount = 0
+if ($sourceRefreshExit -eq 0 -and (Test-Path -LiteralPath $sourceCandidateOutput)) {
+    $sourceCandidateCount = @(
+        Get-Content -LiteralPath $sourceCandidateOutput |
+            Where-Object { -not [string]::IsNullOrWhiteSpace($_) }
+    ).Count
+}
+if ($sourceCandidateCount -gt 0) {
+    Write-Host "External source refresh completed: candidates=$sourceCandidateCount"
+} else {
+    Remove-Item -LiteralPath $sourceCandidateOutput -Force -ErrorAction SilentlyContinue
+    Write-Warning "External source refresh produced no usable candidate output (exit=$sourceRefreshExit). Continuing with CFST pool."
+}
 
 foreach ($cfstPort in $cfstPorts) {
     Write-Host "Running weekly CFST incremental update for port $cfstPort"
@@ -177,6 +224,13 @@ print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
 '@ | python -
 Assert-NativeCommandSucceeded "weekly final generation"
 
+python .\scripts\merge-final-candidates.py `
+    --primary $candidateOutput `
+    --supplement $sourceCandidateOutput `
+    --output $candidateOutput `
+    --summary-json $sourceMergeSummary
+Assert-NativeCommandSucceeded "external source candidate merge"
+
 python .\scripts\verify-final-true-exit.py `
     --input $candidateOutput `
     --output $verifiedOutput `
@@ -206,6 +260,7 @@ from pathlib import Path
 workdir = Path("bestcf_work")
 weekly_path = workdir / "weekly_incremental_summary.json"
 verify_path = workdir / "final_true_exit_verify_summary.json"
+merge_path = workdir / "source_candidate_merge_summary.json"
 if weekly_path.exists() and verify_path.exists():
     weekly = json.loads(weekly_path.read_text(encoding="utf-8"))
     verify = json.loads(verify_path.read_text(encoding="utf-8"))
@@ -221,6 +276,8 @@ if weekly_path.exists() and verify_path.exists():
     weekly["post_verify_policy"] = verify.get("verification_policy")
     weekly["post_verify_country_max"] = verify.get("country_max")
     weekly["post_verify_country_max_overrides"] = verify.get("country_max_overrides", {})
+    if merge_path.exists():
+        weekly["external_source_merge"] = json.loads(merge_path.read_text(encoding="utf-8"))
     weekly_path.write_text(json.dumps(weekly, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 '@ | python -
 Assert-NativeCommandSucceeded "weekly summary post-verify merge"
@@ -242,6 +299,9 @@ Copy-Item -LiteralPath ".\bestcf_work\edgetunnel_pool_summary.csv" -Destination 
 Copy-Item -LiteralPath ".\bestcf_work\weekly_incremental_summary.json" -Destination ".\public\weekly_incremental_summary.json" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath $verifyDetails -Destination ".\public\final_true_exit_verify.csv" -Force -ErrorAction SilentlyContinue
 Copy-Item -LiteralPath $verifySummary -Destination ".\public\final_true_exit_verify_summary.json" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath $sourceMergeSummary -Destination ".\public\source_candidate_merge_summary.json" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath (Join-Path $sourceRefreshDir "bestcf_sources.csv") -Destination ".\public\bestcf_external_sources.csv" -Force -ErrorAction SilentlyContinue
+Copy-Item -LiteralPath (Join-Path $sourceRefreshDir "bestcf_source_prune_candidates.csv") -Destination ".\public\bestcf_external_source_prune_candidates.csv" -Force -ErrorAction SilentlyContinue
 
 if ($NoPush) {
     Write-Host "NoPush enabled; skipping git add/commit/push. Lines: $lineCount"

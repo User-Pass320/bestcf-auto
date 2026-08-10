@@ -76,7 +76,45 @@ jobs:
           chmod +x tools/cfst/cfst
           ./tools/cfst/cfst -v
 
-      - name: Run BestCF
+      - name: Refresh external source candidates
+        run: |
+          mkdir -p bestcf_work/source_refresh
+          rm -f bestcf_work/source_refresh/bestcf_source_candidate.txt
+          set +e
+          python bestcf_tool.py \
+            --profile fast \
+            --source-mode legacy \
+            --workdir bestcf_work/source_refresh \
+            --template ./template.yaml \
+            --mihomo ./bin/mihomo \
+            --output bestcf_work/source_refresh/bestcf_source_candidate.txt \
+            --source-timeout 12 \
+            --source-retries 1 \
+            --source-concurrency 12 \
+            --use-source-cache-quarantine \
+            --geo-providers youtube,ping0 \
+            --geo-concurrency 16 \
+            --latency-threshold 1500 \
+            --selection-mode all-regions \
+            --preferred-country-min JP:20,SG:20,US:20,HK:10,KR:5,TW:5 \
+            --country-max 30 \
+            --country-max-overrides HK:20,DE:20 \
+            --max-final-candidates 180 \
+            --time-budget 240 \
+            --time-safety-margin 20 \
+            --allow-other-regions \
+            --no-service-check \
+            --no-hk-suppression
+          source_exit=$?
+          set -e
+          if [ "$source_exit" -ne 0 ] || [ ! -s bestcf_work/source_refresh/bestcf_source_candidate.txt ]; then
+            echo "External source refresh produced no usable output (exit=$source_exit); continuing with CFST."
+            rm -f bestcf_work/source_refresh/bestcf_source_candidate.txt
+          else
+            echo "External source candidates: $(wc -l < bestcf_work/source_refresh/bestcf_source_candidate.txt)"
+          fi
+
+      - name: Run CFST candidate generation
         run: |
           mkdir -p public
           python bestcf_tool.py \
@@ -90,9 +128,10 @@ jobs:
             --workdir ./bestcf_work \
             --template ./template.yaml \
             --mihomo ./bin/mihomo \
+            --output bestcf_work/bestcf_final_candidate.txt \
             --no-geo-cache \
             --no-geo-hint-cache \
-            --geo-providers youtube,ping0,ipwhois \
+            --geo-providers youtube,ping0 \
             --geo-concurrency 16 \
             --latency-threshold 1500 \
             --selection-mode all-regions \
@@ -101,16 +140,24 @@ jobs:
             --max-final-candidates 0 \
             --no-hk-suppression
 
+      - name: Merge external source candidates
+        run: |
+          python scripts/merge-final-candidates.py \
+            --primary bestcf_work/bestcf_final_candidate.txt \
+            --supplement bestcf_work/source_refresh/bestcf_source_candidate.txt \
+            --output bestcf_work/bestcf_final_candidate.txt \
+            --summary-json bestcf_work/source_candidate_merge_summary.json
+
       - name: Validate generated result
         run: |
           echo "VALID_RESULT=false" >> "$GITHUB_ENV"
           if ! python scripts/verify-final-true-exit.py \
-            --input bestcf_work/bestcf_final.txt \
+            --input bestcf_work/bestcf_final_candidate.txt \
             --output bestcf_work/bestcf_final_verified.txt \
             --workdir bestcf_work/final_true_exit_verify \
             --template ./template.yaml \
             --mihomo ./bin/mihomo \
-            --providers youtube,ping0,ipwhois \
+            --providers youtube,ping0 \
             --geo-concurrency 16 \
             --actual-country-aliases VN:HK \
             --country-max 30 \
@@ -121,7 +168,7 @@ jobs:
             --details-csv bestcf_work/final_true_exit_verify.csv \
             --summary-json bestcf_work/final_true_exit_verify_summary.json \
             --region-counts-csv bestcf_work/bestcf_region_counts.csv; then
-            echo "Generated bestcf_final.txt failed true-exit verification; keeping previous public files."
+            echo "Generated candidate failed true-exit verification; keeping previous public files."
             exit 0
           fi
           if ! python bestcf_tool.py validate-output bestcf_work/bestcf_final_verified.txt --min-lines 30 --min-regions 3; then
@@ -165,6 +212,9 @@ jobs:
           cp bestcf_work/edgetunnel_pool_summary.csv public/edgetunnel_pool_summary.csv || true
           cp bestcf_work/final_true_exit_verify.csv public/final_true_exit_verify.csv || true
           cp bestcf_work/final_true_exit_verify_summary.json public/final_true_exit_verify_summary.json || true
+          cp bestcf_work/source_candidate_merge_summary.json public/source_candidate_merge_summary.json || true
+          cp bestcf_work/source_refresh/bestcf_sources.csv public/bestcf_external_sources.csv || true
+          cp bestcf_work/source_refresh/bestcf_source_prune_candidates.csv public/bestcf_external_source_prune_candidates.csv || true
 
       - name: Commit generated files
         if: env.VALID_RESULT == 'true'

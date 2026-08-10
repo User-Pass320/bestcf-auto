@@ -1,40 +1,61 @@
 {
   "candidate_final_by_country": {
-    "AT": 1,
+    "AT": 2,
     "AU": 1,
     "DE": 20,
-    "ES": 2,
+    "ES": 3,
     "FR": 30,
     "GB": 2,
     "HK": 20,
-    "IN": 8,
+    "IN": 9,
     "JP": 30,
     "PL": 2,
     "PT": 1,
-    "SA": 7,
+    "QA": 1,
+    "SA": 30,
     "SG": 30,
     "TW": 7,
     "US": 30,
     "VN": 30
   },
-  "candidate_final_count": 221,
+  "candidate_final_count": 248,
+  "external_source_merge": {
+    "duplicate_count": 0,
+    "output": "bestcf_work\\bestcf_final_candidate.txt",
+    "output_count": 402,
+    "primary": "bestcf_work\\bestcf_final_candidate.txt",
+    "primary_candidate_count": 248,
+    "primary_invalid_count": 0,
+    "supplement_added_count": 154,
+    "supplements": [
+      {
+        "added_count": 154,
+        "candidate_count": 154,
+        "duplicate_count": 0,
+        "exists": true,
+        "invalid_count": 0,
+        "path": "bestcf_work\\source_refresh\\bestcf_source_candidate.txt"
+      }
+    ]
+  },
   "healthy_by_country": {
-    "AT": 1,
+    "AT": 2,
     "AU": 1,
-    "DE": 165,
-    "ES": 2,
-    "FR": 30,
+    "DE": 194,
+    "ES": 3,
+    "FR": 31,
     "GB": 2,
-    "HK": 7513,
-    "IN": 8,
-    "JP": 210,
+    "HK": 7490,
+    "IN": 9,
+    "JP": 212,
     "PL": 2,
     "PT": 1,
-    "SA": 7,
-    "SG": 2897,
+    "QA": 1,
+    "SA": 35,
+    "SG": 3845,
     "TW": 7,
-    "US": 393,
-    "VN": 371
+    "US": 487,
+    "VN": 3002
   },
   "limits": {
     "DE": 20,
@@ -44,8 +65,8 @@
   },
   "mode": "weekly_incremental_multiport",
   "pool_file": "bestcf_work\\edgetunnel_node_pool.csv",
-  "pool_healthy": 11610,
-  "pool_rows": 22547,
+  "pool_healthy": 15324,
+  "pool_rows": 30887,
   "ports": [
     443,
     2053,
@@ -59,23 +80,30 @@
     "DE": 20,
     "HK": 20
   },
-  "post_verify_dropped_by_cap": 49,
-  "select_elapsed_seconds": 0.02275,
-  "total_elapsed_seconds": 0.202852,
+  "post_verify_dropped_by_cap": 130,
+  "post_verify_dropped_by_reason": {
+    "provider_mismatch": 98,
+    "provider_unknown": 37
+  },
+  "post_verify_dropped_mismatch": 98,
+  "post_verify_dropped_unknown": 37,
+  "post_verify_policy": "youtube_ping0_strict_v1",
+  "post_verify_strict_rejected": 135,
+  "select_elapsed_seconds": 0.028397,
+  "total_elapsed_seconds": 0.268871,
   "verified_final_by_country": {
     "AU": 1,
     "DE": 20,
     "ES": 2,
-    "FR": 21,
+    "FR": 14,
+    "GB": 8,
     "HK": 20,
+    "IE": 2,
     "IN": 1,
-    "IT": 1,
-    "JP": 30,
-    "NO": 1,
-    "PL": 1,
-    "SA": 19,
-    "SG": 27,
-    "US": 28
+    "JP": 8,
+    "SG": 30,
+    "TW": 1,
+    "US": 30
   },
-  "verified_final_count": 172
+  "verified_final_count": 137
 }

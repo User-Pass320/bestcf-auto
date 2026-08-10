@@ -5,7 +5,7 @@
 ## 数据链路
 
 ```text
-GitHub Actions 定时运行 bestcf_tool.py
+Windows 周任务或手动 GitHub Actions 运行 bestcf_tool.py
   -> 生成 public/bestcf_final.txt
   -> Cloudflare Pages 或 GitHub Pages 托管 bestcf_final.txt
   -> edgetunnel 后台“自定义优选地址”填写该 URL
@@ -90,7 +90,7 @@ https://test1-45b.pages.dev/sub?token=...
 
 ## 稳定定时更新
 
-GitHub Actions 会按 `.github/workflows/update.yml` 每 6 小时尝试云端更新，也可手动触发；如果云端生成结果未通过 `bestcf_tool.py validate-output` 校验，workflow 会保留现有 `public/` 文件，不覆盖有效结果。
+`.github/workflows/update.yml` 提供手动云端更新；如果生成结果未通过真实出口复验和 `bestcf_tool.py validate-output` 校验，workflow 会保留现有 `public/` 文件，不覆盖有效结果。
 
 稳定更新建议使用本机 Windows 定时任务：
 
@@ -99,33 +99,26 @@ cd C:\Users\sundewang\bestcf-auto
 .\scripts\register-windows-task.ps1
 ```
 
-本机任务每 6 小时运行，作为更贴近本地网络质量的主更新路径：
+本机任务每周日 04:00 运行，作为更贴近本地网络质量的主更新路径：
 
 ```text
 scripts/update-local-and-push.ps1
 ```
 
-它会本地生成新的 `public/bestcf_final.txt`，校验至少 10 行，然后提交并推送到 GitHub。Cloudflare Pages 会自动重新部署 `public/`。
+它会本地生成新的 `public/bestcf_final.txt`，校验至少 30 行、3 个地区，然后提交并推送到 GitHub。Cloudflare Pages 会自动重新部署 `public/`。
 
-本机更新默认禁用 `geo` 与 `geo hint` 缓存，并使用 `--geo-providers youtube,ping0,ipwhois --selection-mode all-regions --country-max 35 --max-final-candidates 0 --geo-concurrency 16`。它会对本轮真连接通过的候选同时执行 `https://www.youtube.com/`、`https://ip.ping0.cc/geo` 与 `https://ipwho.is/` 交叉验证；最终地区按 `YouTube GL > ping0 > ipwho.is` 优先级选择，不再按偏好国家提前过滤。只有探测服务明确给出出口地区的候选才参与最终选择，最终按真实出口地区分组，每个出口地区最多写入 35 个节点。
+本机主路径依次扫描 CFST 的 `443/2053/2083/2087/2096/8443` 六个端口，并复用增量历史池。每轮还会用最多约 240 秒刷新 `bestcf.pages.dev` 首页发现源及内置第三方源；刷新失败不会阻断 CFST/历史池发布。两个候选池按 `host+port` 去重合并后，再统一执行无缓存的 YouTube/Ping0 双主判。
 
-为减少大量无效香港出口探测，本机与 GitHub Actions 更新默认启用本轮运行时 HK suppression：
+最终发布要求 YouTube 与 Ping0 都返回地区且归一化后完全一致；`VN` 归一为 `HK`，UNKNOWN 和不一致候选直接淘汰。发布上限默认为每个地区 30 条，`HK` 和 `DE` 为 20 条。
 
 ```text
---hk-suppression
---hk-suppress-strategy worker
---hk-probe-cap 105
---hk-suppress-bucket-scope prefix
---hk-suppress-ipv4-prefix 20
---hk-suppress-ipv6-prefix 40
---hk-suppress-min-samples 6
---hk-suppress-confidence 0.98
---hk-suppress-explore-rate 0.05
+public/bestcf_external_sources.csv
+public/bestcf_external_source_prune_candidates.csv
+public/source_candidate_merge_summary.json
+public/final_true_exit_verify_summary.json
 ```
 
-该策略只使用本轮 `youtube/ping0/ipwhois` 实测结果，不使用持久 geo 缓存或 geo hint 缓存；只压制已实测为高置信 HK 的 IP 前缀桶，未知前缀与已出现非 HK 的前缀不会被压制。旧 825 个 geo 候选池离线回放显示：`prefix /20-/40 + min_samples=6 + hk_probe_cap=105` 可跳过约 185 个 HK 探测，JP/SG/KR/TW 误伤为 0；`min_samples=4/5` 会误伤 JP，因此不采用。
-
-未启用 `--selection-mode all-regions` 时，默认 `balanced` 配置会限制每个出口国家最多 50 个节点，避免单个国家占满结果。当前 all-regions 本机更新会把超过每地区 35 个上限的已探测候选写入：
+以上报告分别记录外部源健康状态、建议裁剪源、候选合并数量和最终真实出口复验结果。当前 all-regions 本机更新会把超过地区上限的已探测候选写入：
 
 ```text
 public/bestcf_other_regions.csv
