@@ -158,6 +158,7 @@ jobs:
             --template ./template.yaml \
             --mihomo ./bin/mihomo \
             --providers youtube,ping0 \
+            --provider-mismatch-policy ping0 \
             --geo-concurrency 16 \
             --actual-country-aliases VN:HK \
             --country-max 30 \
@@ -190,6 +191,10 @@ jobs:
               weekly["verified_final_count"] = verify.get("output_count")
               weekly["verified_final_by_country"] = verify.get("output_by_actual_country", {})
               weekly["post_verify_dropped_by_cap"] = verify.get("dropped_by_post_verify_cap")
+              weekly["post_verify_dropped_unknown"] = verify.get("dropped_unknown_count")
+              weekly["post_verify_dropped_mismatch"] = verify.get("dropped_mismatch_count")
+              weekly["post_verify_ping0_override"] = verify.get("accepted_ping0_override_count")
+              weekly["post_verify_policy"] = verify.get("verification_policy")
               weekly["post_verify_country_max"] = verify.get("country_max")
               weekly["post_verify_country_max_overrides"] = verify.get("country_max_overrides", {})
               weekly_path.write_text(json.dumps(weekly, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")

@@ -41,6 +41,24 @@ class StrictYoutubePing0DecisionTests(unittest.TestCase):
         self.assertEqual(decision.country_code, "UNKNOWN")
         self.assertEqual(decision.reason, "provider_mismatch")
 
+    def test_accepts_provider_mismatch_using_ping0(self):
+        decision = verify.strict_youtube_ping0_decision(
+            self.make_result("youtube:SG;ping0:HK"),
+            {},
+            mismatch_policy="ping0",
+        )
+        self.assertEqual(decision.country_code, "HK")
+        self.assertEqual(decision.reason, "accepted_ping0_override")
+
+    def test_ping0_override_applies_country_alias(self):
+        decision = verify.strict_youtube_ping0_decision(
+            self.make_result("youtube:JP;ping0:VN"),
+            {"VN": "HK"},
+            mismatch_policy="ping0",
+        )
+        self.assertEqual(decision.country_code, "HK")
+        self.assertEqual(decision.ping0_country, "HK")
+
     def test_rejects_when_either_provider_is_unknown(self):
         decision = verify.strict_youtube_ping0_decision(self.make_result("youtube:-;ping0:SG"), {})
         self.assertEqual(decision.country_code, "UNKNOWN")
@@ -56,7 +74,7 @@ class StrictYoutubePing0DecisionTests(unittest.TestCase):
 
 
 class FinalVerificationFlowTests(unittest.TestCase):
-    def run_flow(self, rows, min_lines=3, min_regions=3):
+    def run_flow(self, rows, min_lines=3, min_regions=3, mismatch_policy="reject"):
         tempdir = tempfile.TemporaryDirectory()
         root = Path(tempdir.name)
         input_path = root / "candidate.txt"
@@ -96,6 +114,8 @@ class FinalVerificationFlowTests(unittest.TestCase):
             str(root / "mihomo.exe"),
             "--providers",
             "youtube,ping0",
+            "--provider-mismatch-policy",
+            mismatch_policy,
             "--actual-country-aliases",
             "VN:HK",
             "--min-lines",
@@ -137,6 +157,26 @@ class FinalVerificationFlowTests(unittest.TestCase):
         self.assertEqual(summary["strict_rejected_count"], 1)
         self.assertEqual(summary["dropped_by_verification_reason"], {"provider_unknown": 1})
         self.assertTrue(summary["validation_ok"])
+
+    def test_flow_accepts_mismatch_with_ping0_label(self):
+        tempdir, output_path, summary_path, details_path, outcome = self.run_flow(
+            [
+                ("1.1.1.1:443", "SG", "SG", "HK"),
+                ("2.2.2.2:443", "JP", "JP", "JP"),
+                ("3.3.3.3:443", "US", "US", "US"),
+            ],
+            mismatch_policy="ping0",
+        )
+        self.addCleanup(tempdir.cleanup)
+        self.assertEqual(outcome, 0)
+        output_lines = output_path.read_text(encoding="utf-8").splitlines()
+        self.assertTrue(output_lines[0].endswith("#香港-1"))
+        summary = json.loads(summary_path.read_text(encoding="utf-8"))
+        self.assertEqual(summary["accepted_ping0_override_count"], 1)
+        self.assertEqual(summary["dropped_mismatch_count"], 0)
+        self.assertEqual(summary["provider_mismatch_policy"], "ping0")
+        details = details_path.read_text(encoding="utf-8-sig")
+        self.assertIn("accepted_ping0_override", details)
 
     def test_batch_fails_only_when_remaining_assets_miss_gate_and_keeps_diagnostics(self):
         tempdir, _output_path, summary_path, details_path, outcome = self.run_flow(

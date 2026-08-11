@@ -109,7 +109,7 @@ scripts/update-local-and-push.ps1
 
 本机主路径依次扫描 CFST 的 `443/2053/2083/2087/2096/8443` 六个端口，并复用增量历史池。每轮还会用最多约 240 秒刷新 `bestcf.pages.dev` 首页发现源及内置第三方源；刷新失败不会阻断 CFST/历史池发布。两个候选池按 `host+port` 去重合并后，再统一执行无缓存的 YouTube/Ping0 双主判。
 
-最终发布要求 YouTube 与 Ping0 都返回地区且归一化后完全一致；`VN` 归一为 `HK`，UNKNOWN 和不一致候选直接淘汰。发布上限默认为每个地区 30 条，`HK` 和 `DE` 为 20 条。
+最终发布要求 YouTube 与 Ping0 都返回地区；`VN` 先归一为 `HK`。两者一致时直接采用共同结果，两者不一致时统一采用 Ping0 的归一化地区，任一服务 UNKNOWN 时仍淘汰。发布上限默认为每个地区 30 条，`HK` 和 `DE` 为 20 条。
 
 ```text
 public/bestcf_external_sources.csv

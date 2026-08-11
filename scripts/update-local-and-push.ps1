@@ -238,6 +238,7 @@ python .\scripts\verify-final-true-exit.py `
     --template ".\template.yaml" `
     --mihomo $mihomo `
     --providers youtube,ping0 `
+    --provider-mismatch-policy ping0 `
     --geo-concurrency 16 `
     --actual-country-aliases VN:HK `
     --country-max 30 `
@@ -271,6 +272,7 @@ if weekly_path.exists() and verify_path.exists():
     weekly["post_verify_dropped_by_cap"] = verify.get("dropped_by_post_verify_cap")
     weekly["post_verify_dropped_unknown"] = verify.get("dropped_unknown_count")
     weekly["post_verify_dropped_mismatch"] = verify.get("dropped_mismatch_count")
+    weekly["post_verify_ping0_override"] = verify.get("accepted_ping0_override_count")
     weekly["post_verify_strict_rejected"] = verify.get("strict_rejected_count")
     weekly["post_verify_dropped_by_reason"] = verify.get("dropped_by_verification_reason", {})
     weekly["post_verify_policy"] = verify.get("verification_policy")

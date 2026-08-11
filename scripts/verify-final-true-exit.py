@@ -15,7 +15,9 @@ import bestcf_tool as tool
 
 
 STRICT_GEO_POLICY = "youtube_ping0_strict_v1"
+PING0_OVERRIDE_GEO_POLICY = "youtube_ping0_ping0_mismatch_v1"
 STRICT_GEO_PROVIDERS = ("youtube", "ping0")
+MISMATCH_POLICIES = ("reject", "ping0")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -53,7 +55,10 @@ def normalize_country_code(code: str | None, aliases: dict[str, str]) -> str:
 def strict_youtube_ping0_decision(
     result: tool.TestResult | None,
     aliases: dict[str, str],
+    mismatch_policy: str = "reject",
 ) -> StrictGeoDecision:
+    if mismatch_policy not in MISMATCH_POLICIES:
+        raise ValueError(f"unsupported provider mismatch policy: {mismatch_policy}")
     if result is None:
         return StrictGeoDecision("UNKNOWN", "missing_result", "", "", "UNKNOWN", "UNKNOWN")
 
@@ -77,6 +82,15 @@ def strict_youtube_ping0_decision(
             ping0,
         )
     if youtube != ping0:
+        if mismatch_policy == "ping0":
+            return StrictGeoDecision(
+                ping0,
+                "accepted_ping0_override",
+                raw_youtube,
+                raw_ping0,
+                youtube,
+                ping0,
+            )
         return StrictGeoDecision(
             "UNKNOWN",
             "provider_mismatch",
@@ -169,7 +183,13 @@ def main() -> int:
     parser.add_argument("--workdir", required=True, help="verification work directory")
     parser.add_argument("--template", required=True, help="mihomo template YAML")
     parser.add_argument("--mihomo", required=True, help="mihomo executable")
-    parser.add_argument("--providers", default="youtube,ping0", help="geo providers; final acceptance requires YouTube/Ping0 agreement")
+    parser.add_argument("--providers", default="youtube,ping0", help="geo providers; YouTube and Ping0 are both required")
+    parser.add_argument(
+        "--provider-mismatch-policy",
+        choices=MISMATCH_POLICIES,
+        default="reject",
+        help="reject provider disagreements or accept them using Ping0's normalized country",
+    )
     parser.add_argument("--geo-concurrency", type=int, default=16)
     parser.add_argument("--timeout", type=int, default=10)
     parser.add_argument("--start-timeout", type=float, default=8.0)
@@ -186,6 +206,9 @@ def main() -> int:
     parser.add_argument("--max-final-candidates", type=int, default=0, help="maximum verified output nodes; 0 disables")
     args_ns = parser.parse_args()
     actual_country_aliases = parse_country_aliases(args_ns.actual_country_aliases)
+    verification_policy = (
+        PING0_OVERRIDE_GEO_POLICY if args_ns.provider_mismatch_policy == "ping0" else STRICT_GEO_POLICY
+    )
 
     resolved_providers = tool.parse_geo_providers(args_ns.providers)
     missing_strict_providers = [provider for provider in STRICT_GEO_PROVIDERS if provider not in resolved_providers]
@@ -256,13 +279,21 @@ def main() -> int:
     verified_results: list[tool.TestResult] = []
     for row in rows:
         result = result_by_key.get(row["candidate"].key)
-        strict_decision = strict_youtube_ping0_decision(result, actual_country_aliases)
+        strict_decision = strict_youtube_ping0_decision(
+            result,
+            actual_country_aliases,
+            mismatch_policy=args_ns.provider_mismatch_policy,
+        )
         raw_actual = ((result.exit_country_code if result else "") or "UNKNOWN").upper()
         actual = strict_decision.country_code
         raw_expected = row["expected_country"]
         expected = normalize_country_code(raw_expected, actual_country_aliases)
         comparable = expected != "UNKNOWN"
         consistent = comparable and actual != "UNKNOWN" and actual == expected
+        decision_selected_provider = (
+            "ping0" if strict_decision.reason == "accepted_ping0_override" else "youtube+ping0"
+        )
+        decision_fallback_used = strict_decision.reason == "accepted_ping0_override"
         if result and actual != "UNKNOWN":
             alias_notes = []
             if strict_decision.raw_youtube_country != strict_decision.youtube_country:
@@ -280,9 +311,9 @@ def main() -> int:
                     exit_country_code=actual,
                     exit_region=tool.country_name(actual),
                     geo_evidence=verified_evidence,
-                    geo_policy=STRICT_GEO_POLICY,
-                    geo_selected_provider="youtube+ping0",
-                    geo_fallback_used=False,
+                    geo_policy=verification_policy,
+                    geo_selected_provider=decision_selected_provider,
+                    geo_fallback_used=decision_fallback_used,
                 )
             )
         detail_rows.append(
@@ -300,7 +331,7 @@ def main() -> int:
                 ),
                 "input_consistent": consistent,
                 "input_comparable": comparable,
-                "verification_policy": STRICT_GEO_POLICY,
+                "verification_policy": verification_policy,
                 "verification_decision": strict_decision.reason,
                 "youtube_country_raw": strict_decision.raw_youtube_country,
                 "ping0_country_raw": strict_decision.raw_ping0_country,
@@ -312,8 +343,8 @@ def main() -> int:
                 "exit_region": tool.country_name(actual) if actual != "UNKNOWN" else "未知",
                 "exit_ip": result.exit_ip or "" if result else "",
                 "cf_colo": result.cf_colo or "" if result else "",
-                "geo_selected_provider": result.geo_selected_provider if result else "",
-                "geo_fallback_used": result.geo_fallback_used if result else "",
+                "geo_selected_provider": decision_selected_provider if actual != "UNKNOWN" else "",
+                "geo_fallback_used": decision_fallback_used if actual != "UNKNOWN" else "",
                 "geo_evidence": result.geo_evidence if result else "",
                 "raw_line": row["raw_line"],
             }
@@ -380,9 +411,8 @@ def main() -> int:
 
     input_comparable = [row for row in detail_rows if row["input_comparable"]]
     input_mismatch = [row for row in input_comparable if not row["input_consistent"]]
-    rejection_reasons = Counter(
-        row["verification_decision"] for row in detail_rows if row["verification_decision"] != "accepted"
-    )
+    rejection_reasons = Counter(row["verification_decision"] for row in rejected_rows)
+    verification_decisions = Counter(row["verification_decision"] for row in detail_rows)
     summary = {
         "input": str(input_path),
         "output": str(output_path),
@@ -397,7 +427,9 @@ def main() -> int:
         "strict_rejected_count": len(rejected_rows),
         "dropped_unknown_count": rejection_reasons.get("provider_unknown", 0) + rejection_reasons.get("missing_result", 0),
         "dropped_mismatch_count": rejection_reasons.get("provider_mismatch", 0),
+        "accepted_ping0_override_count": verification_decisions.get("accepted_ping0_override", 0),
         "dropped_by_verification_reason": dict(sorted(rejection_reasons.items())),
+        "verification_decision_counts": dict(sorted(verification_decisions.items())),
         "verified_count": len(verified_results),
         "selected_count": len(selected_results),
         "dropped_by_post_verify_cap": len(verified_results) - len(selected_results),
@@ -414,7 +446,8 @@ def main() -> int:
             sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in verified_results).items())
         ),
         "output_by_actual_country": dict(sorted(Counter((result.exit_country_code or "UNKNOWN").upper() for result in selected_results).items())),
-        "verification_policy": STRICT_GEO_POLICY,
+        "provider_mismatch_policy": args_ns.provider_mismatch_policy,
+        "verification_policy": verification_policy,
         "validation_ok": ok,
         "validation": message,
     }

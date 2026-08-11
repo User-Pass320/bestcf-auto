@@ -80,30 +80,34 @@
     "DE": 20,
     "HK": 20
   },
-  "post_verify_dropped_by_cap": 130,
+  "post_verify_dropped_by_cap": 179,
   "post_verify_dropped_by_reason": {
-    "provider_mismatch": 98,
-    "provider_unknown": 37
+    "provider_unknown": 52
   },
-  "post_verify_dropped_mismatch": 98,
-  "post_verify_dropped_unknown": 37,
-  "post_verify_policy": "youtube_ping0_strict_v1",
-  "post_verify_strict_rejected": 135,
+  "post_verify_dropped_mismatch": 0,
+  "post_verify_dropped_unknown": 52,
+  "post_verify_ping0_override": 97,
+  "post_verify_policy": "youtube_ping0_ping0_mismatch_v1",
+  "post_verify_strict_rejected": 52,
   "select_elapsed_seconds": 0.028397,
   "total_elapsed_seconds": 0.268871,
   "verified_final_by_country": {
     "AU": 1,
+    "CA": 1,
+    "CH": 7,
     "DE": 20,
     "ES": 2,
-    "FR": 14,
-    "GB": 8,
+    "FR": 30,
+    "GB": 6,
     "HK": 20,
-    "IE": 2,
-    "IN": 1,
-    "JP": 8,
+    "IN": 4,
+    "JP": 10,
+    "NL": 6,
+    "PL": 1,
+    "SE": 2,
     "SG": 30,
     "TW": 1,
     "US": 30
   },
-  "verified_final_count": 137
+  "verified_final_count": 171
 }
