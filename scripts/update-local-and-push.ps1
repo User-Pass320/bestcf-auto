@@ -55,20 +55,32 @@ function Stop-BestCFWorkerProcesses {
     }
 }
 
-$mihomo = "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe"
-if (-not (Test-Path -LiteralPath $mihomo)) {
-    $fallbackMihomo = "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
-    if (-not (Test-Path -LiteralPath $fallbackMihomo)) {
-        $fallbackMihomo = Get-ChildItem -LiteralPath "C:\Users\sundewang\edgetunnel-bestcf-selfdeploy\bin" -Recurse -Filter "mihomo*.exe" -ErrorAction SilentlyContinue |
-        Select-Object -First 1 -ExpandProperty FullName
-    }
-    if ($fallbackMihomo -and (Test-Path -LiteralPath $fallbackMihomo)) {
-        $mihomo = $fallbackMihomo
-        Write-Host "Using fallback mihomo: $mihomo"
-    } else {
-        throw "mihomo not found: $mihomo; fallback not found: E:\v2rayN-windows-64\bin\mihomo\mihomo.exe"
+$projectParent = Split-Path -Parent $projectRoot
+$mihomoCandidates = @(
+    "D:\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe",
+    (Join-Path $projectParent "edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe")
+)
+$mihomo = $mihomoCandidates |
+    Where-Object { Test-Path -LiteralPath $_ } |
+    Select-Object -First 1
+if (-not $mihomo) {
+    $searchDirs = @(
+        "D:\edgetunnel-bestcf-selfdeploy\bin",
+        (Join-Path $projectParent "edgetunnel-bestcf-selfdeploy\bin")
+    )
+    foreach ($searchDir in $searchDirs) {
+        $foundMihomo = Get-ChildItem -LiteralPath $searchDir -Recurse -Filter "mihomo*.exe" -ErrorAction SilentlyContinue |
+            Select-Object -First 1 -ExpandProperty FullName
+        if ($foundMihomo) {
+            $mihomo = $foundMihomo
+            break
+        }
     }
 }
+if (-not $mihomo -or -not (Test-Path -LiteralPath $mihomo)) {
+    throw "mihomo not found in the configured local candidate paths"
+}
+Write-Host "Using mihomo: $mihomo"
 if (-not (Test-Path -LiteralPath ".\template.yaml")) {
     throw "template.yaml not found. This private file is required for local testing."
 }

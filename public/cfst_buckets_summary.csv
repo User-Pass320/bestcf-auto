@@ -1,7 +1,5 @@
 ﻿bucket,cfst_colos,total_candidates,selected_for_test,tested,ok,final,pool_limit
-DE,FRA,5,5,5,5,5,70
-FR,LYS,1,1,1,1,1,70
-HK,HKG,1937,60,60,60,29,60
-SG,SIN,319,60,60,60,30,60
-US,DEN|LAX|SJC,7,7,7,7,7,70
-UNKNOWN,DME|UNKNOWN,390,390,390,2,2,all
+HK,HKG,4,4,4,4,0,60
+SG,SIN,3,3,3,3,3,60
+US,DEN,1,1,1,1,1,70
+UNKNOWN,UNKNOWN,2720,2720,2720,2321,69,all

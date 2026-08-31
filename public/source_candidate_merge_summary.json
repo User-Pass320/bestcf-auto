@@ -1,15 +1,15 @@
 {
   "duplicate_count": 0,
   "output": "bestcf_work\\bestcf_final_candidate.txt",
-  "output_count": 430,
+  "output_count": 375,
   "primary": "bestcf_work\\bestcf_final_candidate.txt",
   "primary_candidate_count": 250,
   "primary_invalid_count": 0,
-  "supplement_added_count": 180,
+  "supplement_added_count": 125,
   "supplements": [
     {
-      "added_count": 180,
-      "candidate_count": 180,
+      "added_count": 125,
+      "candidate_count": 125,
       "duplicate_count": 0,
       "exists": true,
       "invalid_count": 0,

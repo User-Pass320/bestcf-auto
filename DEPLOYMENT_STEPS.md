@@ -5,7 +5,7 @@
 本地项目目录：
 
 ```text
-C:\Users\sundewang\bestcf-auto
+D:\bestcf-auto
 ```
 
 已准备：
@@ -80,7 +80,7 @@ https://github.com/User-Pass320/bestcf-auto
 在 PowerShell 执行：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\push-to-github.ps1
 ```
 
@@ -98,7 +98,7 @@ GitHub 仓库看不到 template.b64.txt
 先复制 Secret 值：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\copy-template-secret.ps1
 ```
 
@@ -232,21 +232,21 @@ GitHub Actions 会定时尝试更新，但云端网络不一定能测出适合�
 先手动跑一次：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\update-local-and-push.ps1
 ```
 
 注册每 6 小时运行一次的 Windows 定时任务：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\register-windows-task.ps1
 ```
 
 立即触发一次定时任务：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\run-windows-task-now.ps1
 ```
 
@@ -262,6 +262,6 @@ Get-ScheduledTaskInfo -TaskName "BestCF Auto Update"
 ```text
 本机已登录 Windows
 本机 GitHub 凭据可 push 到 User-Pass320/bestcf-auto
-E:\v2rayN-windows-64\bin\mihomo\mihomo.exe 存在
+D:\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe 存在
 template.yaml 存在
 ```

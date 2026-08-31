@@ -28,7 +28,7 @@ Secret value: template.yaml 的 Base64 内容
 本地生成 Base64 的 PowerShell 命令：
 
 ```powershell
-[Convert]::ToBase64String([IO.File]::ReadAllBytes("C:\Users\sundewang\bestcf-auto\template.yaml"))
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("D:\bestcf-auto\template.yaml"))
 ```
 
 GitHub 设置路径：
@@ -44,7 +44,7 @@ New repository secret
 ## 本地验证
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 python -m py_compile bestcf_tool.py
 python bestcf_tool.py --help
 ```
@@ -56,7 +56,7 @@ python bestcf_tool.py `
   --profile balanced `
   --workdir ./bestcf_work `
   --template ./template.yaml `
-  --mihomo "E:\v2rayN-windows-64\bin\mihomo\mihomo.exe" `
+  --mihomo "D:\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe" `
   --limit 20 `
   --latency-pool-limit 20 `
   --geo-initial-limit 20 `
@@ -95,7 +95,7 @@ https://test1-45b.pages.dev/sub?token=...
 稳定更新建议使用本机 Windows 定时任务：
 
 ```powershell
-cd C:\Users\sundewang\bestcf-auto
+cd D:\bestcf-auto
 .\scripts\register-windows-task.ps1
 ```
 

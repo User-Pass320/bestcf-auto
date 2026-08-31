@@ -1,3 +1,3 @@
 ﻿provider,total_geo_results,covered_count,coverage_rate,agree_count,agree_rate,disagree_count,unknown_count,gb_count,provider_country_top,selected_country_top
-youtube,135,135,1.000000,135,1.000000,0,0,0,VN:61|SG:60|US:8|DE:5|GR:1,VN:61|SG:60|US:8|DE:5|GR:1
-ping0,135,135,1.000000,73,0.540741,62,0,0,HK:61|SG:60|US:8|DE:5|IN:1,VN:61|SG:60|US:8|DE:5|GR:1
+youtube,2329,2329,1.000000,2329,1.000000,0,0,0,VN:1985|SG:331|US:11|SA:1|FR:1,VN:1985|SG:331|US:11|SA:1|FR:1
+ping0,2329,2327,0.999141,337,0.144822,1990,2,0,HK:1983|SG:332|US:6|DE:5|FR:1,VN:1985|SG:331|US:11|SA:1|FR:1

@@ -1,10 +1,5 @@
 ﻿cfst_colo,declared_country,tested_count,true_same_count,true_diff_count,unknown_count,match_rate,unknown_rate,recommended_trust,true_country_top
-DEN,US,4,4,0,0,1.000000,0.000000,False,US:4
-DME,,1,0,0,1,0.000000,1.000000,False,
-FRA,DE,5,5,0,0,1.000000,0.000000,False,DE:5
-HKG,HK,60,0,60,0,0.000000,0.000000,False,VN:60
-LAX,US,2,2,0,0,1.000000,0.000000,False,US:2
-LYS,FR,1,0,1,0,0.000000,0.000000,False,GR:1
-SIN,SG,60,60,0,0,1.000000,0.000000,True,SG:60
-SJC,US,1,1,0,0,1.000000,0.000000,False,US:1
-UNKNOWN,,389,0,2,387,0.000000,0.994859,False,US:1|VN:1
+DEN,US,1,1,0,0,1.000000,0.000000,False,US:1
+HKG,HK,4,0,4,0,0.000000,0.000000,False,VN:4
+SIN,SG,3,3,0,0,1.000000,0.000000,False,SG:3
+UNKNOWN,,2720,0,2321,399,0.000000,0.146691,False,VN:1981|SG:328|US:10|SA:1|FR:1

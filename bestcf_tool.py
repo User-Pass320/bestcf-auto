@@ -79,10 +79,10 @@ DEFAULT_SOURCES = {
 }
 
 DEFAULT_TEMPLATE = Path(
-    r"C:\Users\sundewang\AppData\Roaming\io.github.clash-verge-rev.clash-verge-rev\clash-verge.yaml"
+    r"C:\Users\GongJunwei\AppData\Roaming\io.github.clash-verge-rev.clash-verge-rev\clash-verge.yaml"
 )
-DEFAULT_MIHOMO = Path(r"E:\v2rayN-windows-64\bin\mihomo\mihomo.exe")
-DEFAULT_WORKDIR = Path(r"C:\Users\sundewang\bestcf_work")
+DEFAULT_MIHOMO = Path(r"D:\edgetunnel-bestcf-selfdeploy\bin\mihomo-windows-amd64-compatible.exe")
+DEFAULT_WORKDIR = Path(r"D:\bestcf-auto\bestcf_work")
 DEFAULT_SOURCE_CACHE_NAME = "bestcf_source_cache.json"
 DEFAULT_GEO_CACHE_NAME = "bestcf_geo_cache.json"
 DEFAULT_GEO_HINT_CACHE_NAME = "bestcf_geo_hint_cache.json"
