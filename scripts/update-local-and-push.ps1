@@ -10,9 +10,82 @@ Set-Location -LiteralPath $projectRoot
 $logDir = Join-Path $projectRoot "bestcf_work"
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $logPath = Join-Path $logDir "update-local-and-push.log"
+$runStamp = Get-Date -Format "yyyyMMdd_HHmmss"
+$runStatePath = Join-Path $logDir ("update-local-and-push_{0}.json" -f $runStamp)
+$script:CurrentStage = "initializing"
+$script:RunStartedAt = Get-Date
+$script:GitSafeDirectory = ($projectRoot -replace '\\','/')
+
+function Get-GitFailureType {
+    param([string]$Text)
+    $value = ($Text | Out-String)
+    if ($value -match '(?i)detected dubious ownership|safe\.directory') { return 'safe-directory' }
+    if ($value -match '(?i)authentication failed|invalid username or token|permission denied|could not read Username') { return 'credential-or-permission' }
+    if ($value -match '(?i)non-fast-forward|fetch first|rejected') { return 'non-fast-forward' }
+    if ($value -match '(?i)could not resolve host|connection .*failed|network is unreachable|timed out') { return 'network' }
+    if ($value -match '(?i)please tell me who you are|user\.name|user\.email') { return 'identity' }
+    return 'git-error'
+}
+
+function Write-RunState {
+    param(
+        [Parameter(Mandatory = $true)][string]$Status,
+        [Parameter(Mandatory = $true)][string]$Stage,
+        [string]$Message = '',
+        [string]$FailureType = '',
+        [int]$ExitCode = 0
+    )
+    try {
+        [ordered]@{
+            generated_at = (Get-Date).ToString('o')
+            status = $Status
+            stage = $Stage
+            message = $Message
+            failure_type = $FailureType
+            exit_code = $ExitCode
+            elapsed_seconds = [math]::Round(((Get-Date) - $script:RunStartedAt).TotalSeconds, 3)
+            project = $projectRoot
+        } | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath $runStatePath -Encoding UTF8
+    } catch {
+        Write-Warning "Unable to persist run state: $($_.Exception.Message)"
+    }
+}
+
+function Set-Stage {
+    param([Parameter(Mandatory = $true)][string]$Name)
+    $script:CurrentStage = $Name
+    Write-Host "[stage] $Name"
+    Write-RunState -Status 'running' -Stage $Name
+}
+
+function Invoke-GitCommand {
+    param(
+        [Parameter(Mandatory = $true)][string]$Stage,
+        [Parameter(Mandatory = $true)][string[]]$Arguments,
+        [int[]]$AllowedExitCodes = @(0)
+    )
+    $script:CurrentStage = "git:$Stage"
+    Write-Host "[stage] git:$Stage"
+    $gitLines = @(& git -c ("safe.directory={0}" -f $script:GitSafeDirectory) @Arguments 2>&1)
+    $exitCode = $LASTEXITCODE
+    $text = (($gitLines | ForEach-Object { $_.ToString() }) -join "`n").Trim()
+    if ($text) {
+        $gitLines | ForEach-Object { Write-Host ("[git:{0}] {1}" -f $Stage, $_) }
+    }
+    if ($AllowedExitCodes -notcontains $exitCode) {
+        $failureType = Get-GitFailureType $text
+        Write-RunState -Status 'failed' -Stage $script:CurrentStage -Message $text -FailureType $failureType -ExitCode $exitCode
+        throw "git $Stage failed (type=$failureType, exit=$exitCode): $text"
+    }
+    return [pscustomobject]@{ ExitCode = $exitCode; Text = $text }
+}
+
 Start-Transcript -Path $logPath -Append | Out-Null
 
 trap {
+    $errorMessage = $_.Exception.Message
+    $failureType = if ($script:CurrentStage -like 'git:*') { Get-GitFailureType $errorMessage } else { 'script-error' }
+    Write-RunState -Status 'failed' -Stage $script:CurrentStage -Message $errorMessage -FailureType $failureType -ExitCode 1
     Write-Error $_
     try {
         Stop-Transcript | Out-Null
@@ -81,6 +154,7 @@ if (-not $mihomo -or -not (Test-Path -LiteralPath $mihomo)) {
     throw "mihomo not found in the configured local candidate paths"
 }
 Write-Host "Using mihomo: $mihomo"
+Write-RunState -Status 'running' -Stage 'initializing' -Message ("run={0}; no_push={1}" -f $runStamp, [bool]$NoPush)
 if (-not (Test-Path -LiteralPath ".\template.yaml")) {
     throw "template.yaml not found. This private file is required for local testing."
 }
@@ -101,6 +175,7 @@ $cfstPorts = @(443, 2053, 2083, 2087, 2096, 8443)
 New-Item -ItemType Directory -Force -Path $sourceRefreshDir | Out-Null
 Remove-Item -LiteralPath $sourceCandidateOutput -Force -ErrorAction SilentlyContinue
 
+Set-Stage 'source-refresh'
 Write-Host "Refreshing live BestCF and third-party source candidates (time budget: 240 seconds)."
 Write-Host "This supplement is best-effort; CFST and the historical pool continue if source refresh fails."
 python .\bestcf_tool.py `
@@ -143,6 +218,7 @@ if ($sourceCandidateCount -gt 0) {
 }
 
 foreach ($cfstPort in $cfstPorts) {
+    Set-Stage ("cfst-update-{0}" -f $cfstPort)
     Write-Host "Running weekly CFST incremental update for port $cfstPort"
     python .\bestcf_tool.py `
         --profile balanced `
@@ -319,23 +395,34 @@ Copy-Item -LiteralPath (Join-Path $sourceRefreshDir "bestcf_source_prune_candida
 
 if ($NoPush) {
     Write-Host "NoPush enabled; skipping git add/commit/push. Lines: $lineCount"
+    Write-RunState -Status 'succeeded' -Stage 'no-push' -Message ("lines={0}" -f $lineCount)
     Stop-Transcript | Out-Null
     exit 0
 }
 
-git add public/
-git diff --cached --quiet
-if ($LASTEXITCODE -eq 0) {
+Set-Stage 'git-stage'
+$null = Invoke-GitCommand -Stage 'add' -Arguments @('add', '--', 'public/', 'scripts/update-local-and-push.ps1')
+$diffResult = Invoke-GitCommand -Stage 'diff-index' -Arguments @('diff', '--cached', '--quiet') -AllowedExitCodes @(0, 1)
+if ($diffResult.ExitCode -eq 0) {
     Write-Host "No public result changes to commit."
+    Write-RunState -Status 'succeeded' -Stage 'git-noop' -Message 'No staged changes'
     Stop-Transcript | Out-Null
     exit 0
 }
 
+Set-Stage 'git-commit'
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss K"
-git commit -m "Update BestCF results ($timestamp)"
-Assert-NativeCommandSucceeded "git commit"
-git push --porcelain
-Assert-NativeCommandSucceeded "git push"
+$null = Invoke-GitCommand -Stage 'commit' -Arguments @('commit', '-m', "Update BestCF results ($timestamp)")
+Set-Stage 'git-push'
+$null = Invoke-GitCommand -Stage 'push' -Arguments @('push', '--porcelain', 'origin', 'main')
+Set-Stage 'git-verify-remote'
+$null = Invoke-GitCommand -Stage 'fetch' -Arguments @('fetch', '--prune', 'origin', 'main')
+$localHash = (Invoke-GitCommand -Stage 'local-rev' -Arguments @('rev-parse', 'HEAD')).Text.Trim()
+$remoteHash = (Invoke-GitCommand -Stage 'remote-rev' -Arguments @('rev-parse', 'origin/main')).Text.Trim()
+if (-not $localHash -or -not $remoteHash -or $localHash -ne $remoteHash) {
+    throw "remote verification failed: local=$localHash origin/main=$remoteHash"
+}
 
+Write-RunState -Status 'succeeded' -Stage 'completed' -Message ("lines={0}; commit={1}; origin/main={2}" -f $lineCount, $localHash, $remoteHash)
 Write-Host "BestCF local update pushed. Lines: $lineCount"
 Stop-Transcript | Out-Null
